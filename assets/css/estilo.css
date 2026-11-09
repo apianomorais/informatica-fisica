@@ -595,7 +595,7 @@ h3.unidade:first-of-type{margin-top:1.2rem}
   padding:.2rem .6rem;cursor:pointer;transition:background .15s,color .15s}
 .codigo-barra button:hover{background:#1b2f2e;color:#fff}
 .codigo-barra button.feito{background:#1f7a78;border-color:#1f7a78;color:#fff}
-.codigo pre{margin:0;padding:.85rem 1rem;overflow-x:auto}
+.codigo pre{margin:0;padding:.85rem 1rem;overflow-x:auto;line-height:1.55}
 .codigo code{font-family:var(--mono);font-size:.84rem;line-height:1.55;
   color:#e3efee;background:none;padding:0;white-space:pre}
 .codigo .pal{color:#7fd1c8;font-weight:600}   /* palavra reservada */

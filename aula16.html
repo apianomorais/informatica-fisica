@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 16: Introdução ao Matplotlib: gráficos básicos | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
-<script src="assets/js/comum.js?v=202611091035"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
+<script src="assets/js/comum.js?v=202611091426"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -73,28 +73,28 @@
   <p>Vamos conferir os desafios da aula passada!</p>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.1: Soluções dos desafios</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
+<div class="codigo" data-lingua="Python"><pre><code>import numpy as np
 
-  # Desafio 1: Filtro com máscaras booleanas
-  dados = np.array([1, -2, 3, -4, 5, -6, 7, -8, 9])
-  positivos = dados[dados &gt; 0]
-  negativos = dados[dados &lt; 0]
+# Desafio 1: Filtro com máscaras booleanas
+dados = np.array([1, -2, 3, -4, 5, -6, 7, -8, 9])
+positivos = dados[dados &gt; 0]
+negativos = dados[dados &lt; 0]
 
-  print(f"originais: {dados}")
-  print(f"Positivos: {positivos} (média: {np.mean(positivos):.2f})")
-  print(f"Negativos: {negativos} (média: {np.mean(negativos):.2f})")
+print(f"originais: {dados}")
+print(f"Positivos: {positivos} (média: {np.mean(positivos):.2f})")
+print(f"Negativos: {negativos} (média: {np.mean(negativos):.2f})")
 
-  # Desafio 2: Identidade trigonométrica
-  angulos_graus = np.arange(0, 361, 15)  # 0° a 360°, passo 15°
-  angulos_rad = np.radians(angulos_graus)
+# Desafio 2: Identidade trigonométrica
+angulos_graus = np.arange(0, 361, 15)  # 0° a 360°, passo 15°
+angulos_rad = np.radians(angulos_graus)
 
-  senos = np.sin(angulos_rad)
-  cossenos = np.cos(angulos_rad)
-  identidade = senos**2 + cossenos**2
+senos = np.sin(angulos_rad)
+cossenos = np.cos(angulos_rad)
+identidade = senos**2 + cossenos**2
 
-  print(f"sen²θ + cos²θ = 1:")
-  print(f"Máximo desvio da identidade: {np.max(np.abs(identidade - 1)):.2e}")
-  print("Identidade verificada numericamente! ✓")</code></pre></div>
+print(f"sen²θ + cos²θ = 1:")
+print(f"Máximo desvio da identidade: {np.max(np.abs(identidade - 1)):.2e}")
+print("Identidade verificada numericamente! ✓")</code></pre></div>
   </div>
 
   <h2 id="s2">2. Por que visualizar dados?</h2>
@@ -104,36 +104,36 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.2: O poder da visualização</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
+<div class="codigo" data-lingua="Python"><pre><code>import numpy as np
 
-  # Vamos mostrar por que gráficos são essenciais
-  print("=== O MESMO DADO, HISTÓRIAS DIFERENTES ===")
+# Vamos mostrar por que gráficos são essenciais
+print("=== O MESMO DADO, HISTÓRIAS DIFERENTES ===")
 
-  # Criando dados que têm a mesma média, mas comportamentos diferentes
-  np.random.seed(42)
-  dados1 = np.random.normal(50, 10, 1000)  # Distribuição normal
-  dados2 = np.concatenate([np.random.normal(30, 5, 500), 
-                          np.random.normal(70, 5, 500)])  # Distribuição bimodal
-  dados3 = np.random.uniform(20, 80, 1000)  # Distribuição uniforme
+# Criando dados que têm a mesma média, mas comportamentos diferentes
+np.random.seed(42)
+dados1 = np.random.normal(50, 10, 1000)  # Distribuição normal
+dados2 = np.concatenate([np.random.normal(30, 5, 500), 
+                        np.random.normal(70, 5, 500)])  # Distribuição bimodal
+dados3 = np.random.uniform(20, 80, 1000)  # Distribuição uniforme
 
-  print(f"Dados 1 - Média: {np.mean(dados1):.2f}")
-  print(f"Dados 2 - Média: {np.mean(dados2):.2f}")
-  print(f"Dados 3 - Média: {np.mean(dados3):.2f}")
-  print("médias são quase iguais! Mas será que são iguais mesmo?")
-  print("Só o gráfico vai nos contar a história completa!")</code></pre></div>
+print(f"Dados 1 - Média: {np.mean(dados1):.2f}")
+print(f"Dados 2 - Média: {np.mean(dados2):.2f}")
+print(f"Dados 3 - Média: {np.mean(dados3):.2f}")
+print("médias são quase iguais! Mas será que são iguais mesmo?")
+print("Só o gráfico vai nos contar a história completa!")</code></pre></div>
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.3: Matplotlib - nossa ferramenta de visualização</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Importando matplotlib
-  import matplotlib.pyplot as plt
+<div class="codigo" data-lingua="Python"><pre><code># Importando matplotlib
+import matplotlib.pyplot as plt
 
-  # Configuração básica para gráficos mais bonitos
-  plt.rcParams['figure.figsize'] = (10, 6)  # Tamanho padrão
-  plt.rcParams['font.size'] = 12             # Tamanho da fonte
+# Configuração básica para gráficos mais bonitos
+plt.rcParams['figure.figsize'] = (10, 6)  # Tamanho padrão
+plt.rcParams['font.size'] = 12             # Tamanho da fonte
 
-  print("=== BEM-VINDOS AO MATPLOTLIB ===")
-  print("A biblioteca mais usada para gráficos em Python!")
-  print("Usada por cientistas do mundo todo!")</code></pre></div>
+print("=== BEM-VINDOS AO MATPLOTLIB ===")
+print("A biblioteca mais usada para gráficos em Python!")
+print("Usada por cientistas do mundo todo!")</code></pre></div>
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
@@ -148,45 +148,45 @@
   <p>Vamos começar simples e ir evoluindo!</p>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.4: O gráfico mais básico</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
+<div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
 
-  # Dados simples
-  x = [1, 2, 3, 4, 5]
-  y = [2, 4, 1, 5, 3]
+# Dados simples
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 1, 5, 3]
 
-  # Criando o gráfico
-  plt.figure()
-  plt.plot(x, y)
-  plt.show()
+# Criando o gráfico
+plt.figure()
+plt.plot(x, y)
+plt.show()
 
-  print("Parabéns! Você criou seu primeiro gráfico!")
-  print("Simples, mas já funciona!")</code></pre></div>
+print("Parabéns! Você criou seu primeiro gráfico!")
+print("Simples, mas já funciona!")</code></pre></div>
   </div>
 
   <figure><img src="assets/img/a07_01.png" alt="O primeiro gráfico com os dados \(x\) = [1, 2, 3, 4, 5] e \(y\) = [2, 4, 1, 5, 3]." loading="lazy"><figcaption>O primeiro gráfico com os dados \(x\) = [1, 2, 3, 4, 5] e \(y\) = [2, 4, 1, 5, 3].</figcaption></figure>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.5: Melhorando o primeiro gráfico</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
-  import numpy as np
+<div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
+import numpy as np
 
-  # Os mesmos dados
-  x = [1, 2, 3, 4, 5]
-  y = [2, 4, 1, 5, 3]
+# Os mesmos dados
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 1, 5, 3]
 
-  plt.figure()
-  plt.plot(x, y)
-  plt.title('Meu Primeiro Gráfico Melhorado')
-  plt.xlabel('Eixo X')
-  plt.ylabel('Eixo Y')
-  plt.grid(True)  # Adicionando grade
-  plt.show()
+plt.figure()
+plt.plot(x, y)
+plt.title('Meu Primeiro Gráfico Melhorado')
+plt.xlabel('Eixo X')
+plt.ylabel('Eixo Y')
+plt.grid(True)  # Adicionando grade
+plt.show()
 
-  print("Muito melhor! Agora tem título, rótulos e grade!")</code></pre></div>
+print("Muito melhor! Agora tem título, rótulos e grade!")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Função <code>plt.plot()</code> - Fundamentos</strong></span>
   <strong>Sintaxe Básica:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>plt.plot(x, y, fmt, **kwargs)</code></pre></div>
+<div class="codigo" data-lingua="Python"><pre><code>plt.plot(x, y, fmt, **kwargs)</code></pre></div>
 
   <strong>Parâmetros Essenciais:</strong>
 
@@ -219,9 +219,9 @@
   <ul><li><code>color</code>: Cor da linha (nome ou hex)  <code>Ex: 'C2', '#1f77b4'</code></li><li><code>linestyle</code>: Estilo da linha  <code>Ex: 'dashed', (0, (5, 10))</code></li><li><code>linewidth</code>: Espessura da linha  <code>Ex: 2.5</code></li><li><code>marker</code>: Marcador de pontos  <code>Ex: 'D' (diamante)</code></li><li><code>markersize</code>: Tamanho do marcador  <code>Ex: 8</code></li><li><code>label</code>: Rótulo para legenda  <code>Ex: 'Dados 2023'</code></li></ul>
 
   <strong>Exemplo Avançado:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>plt.plot(x, y, color='green', linestyle=':', 
-           linewidth=2, marker='o', markersize=8,
-           label='Tendência')</code></pre></div>
+<div class="codigo" data-lingua="Python"><pre><code>plt.plot(x, y, color='green', linestyle=':', 
+         linewidth=2, marker='o', markersize=8,
+         label='Tendência')</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Funções Complementares no Exemplo</strong></span>
@@ -230,29 +230,29 @@
   <ul><li><code>plt.title()</code>: Adiciona título ao gráfico</li><li><code>plt.xlabel()</code>/<code>plt.ylabel()</code>: Rótulos dos eixos</li><li><code>plt.grid()</code>: Ativa/desativa grade (<code>True/False</code>)</li><li><code>plt.figure()</code>: Cria nova figura (opcional)</li><li><code>plt.show()</code>: Exibe o gráfico</li></ul>
 
   <strong>Exemplo de Uso:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>plt.title('Meu Gráfico', fontsize=14, pad=20)
-  plt.xlabel('Tempo (s)', fontstyle='italic')
-  plt.ylabel('Amplitude (V)', fontweight='bold')
-  plt.grid(True, linestyle=':', alpha=0.7)</code></pre></div>
+<div class="codigo" data-lingua="Python"><pre><code>plt.title('Meu Gráfico', fontsize=14, pad=20)
+plt.xlabel('Tempo (s)', fontstyle='italic')
+plt.ylabel('Amplitude (V)', fontweight='bold')
+plt.grid(True, linestyle=':', alpha=0.7)</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Exemplo Completo com Personalização</strong></span>
-  <div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
-  import numpy as np
+<div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
+import numpy as np
 
-  x = np.linspace(0, 10, 100)
-  y = np.sin(x)
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
 
-  plt.figure(figsize=(8, 4), dpi=100)
-  plt.plot(x, y, 'r-', linewidth=2, label='Seno')
-  plt.title('Função Senoidal', fontsize=14)
-  plt.xlabel('Ângulo (rad)', fontsize=12)
-  plt.ylabel('sin(x)', fontsize=12)
-  plt.grid(True, linestyle='--', alpha=0.6)
-  plt.legend()
-  plt.tight_layout()
-  plt.savefig('seno.png', dpi=300)
-  plt.show()</code></pre></div>
+plt.figure(figsize=(8, 4), dpi=100)
+plt.plot(x, y, 'r-', linewidth=2, label='Seno')
+plt.title('Função Senoidal', fontsize=14)
+plt.xlabel('Ângulo (rad)', fontsize=12)
+plt.ylabel('sin(x)', fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.legend()
+plt.tight_layout()
+plt.savefig('seno.png', dpi=300)
+plt.show()</code></pre></div>
 
   <strong>Melhorias Incluídas:</strong>
 
@@ -263,22 +263,22 @@
   <figure><img src="assets/img/a07_02.png" alt="O gráfico melhorado com título, rótulos nos eixos e grade." loading="lazy"><figcaption>O gráfico melhorado com título, rótulos nos eixos e grade.</figcaption></figure>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.6: Usando NumPy para dados mais interessantes</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
-  import numpy as np
+<div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
+import numpy as np
 
-  # Criando dados com NumPy
-  x = np.linspace(0, 2*np.pi, 100)  # 100 pontos de 0 a 2π
-  y = np.sin(x)
+# Criando dados com NumPy
+x = np.linspace(0, 2*np.pi, 100)  # 100 pontos de 0 a 2π
+y = np.sin(x)
 
-  plt.figure()
-  plt.plot(x, y)
-  plt.title('Função Seno')
-  plt.xlabel('Ângulo (radianos)')
-  plt.ylabel('sen(x)')
-  plt.grid(True, alpha=0.3)  # Grade mais sutil
-  plt.show()
+plt.figure()
+plt.plot(x, y)
+plt.title('Função Seno')
+plt.xlabel('Ângulo (radianos)')
+plt.ylabel('sen(x)')
+plt.grid(True, alpha=0.3)  # Grade mais sutil
+plt.show()
 
-  print("Agora sim! Uma função matemática linda!")</code></pre></div>
+print("Agora sim! Uma função matemática linda!")</code></pre></div>
   </div>
 
   <figure><img src="assets/img/a07_03.png" alt="Gráfico da função \((x)\) com 100 pontos suaves." loading="lazy"><figcaption>Gráfico da função \((x)\) com 100 pontos suaves.</figcaption></figure>
@@ -342,23 +342,23 @@
 
   <div class="bloco def"><span class="rotulo"><strong>Extensões para Outras Funções</strong></span>
   <strong>Modificações Simples:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code># Cosseno
-  y = np.cos(x)
+<div class="codigo" data-lingua="Python"><pre><code># Cosseno
+y = np.cos(x)
 
-  # Seno com amplitude modificada
-  y = 2 * np.sin(x)
+# Seno com amplitude modificada
+y = 2 * np.sin(x)
 
-  # Seno com fase deslocada
-  y = np.sin(x - np.pi/4)
+# Seno com fase deslocada
+y = np.sin(x - np.pi/4)
 
-  # Seno com múltiplas frequências
-  y = np.sin(x) + 0.5*np.sin(3*x)</code></pre></div>
+# Seno com múltiplas frequências
+y = np.sin(x) + 0.5*np.sin(3*x)</code></pre></div>
 
   <strong>Exemplo Avançado:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>x = np.linspace(-2*np.pi, 2*np.pi, 500)
-  plt.plot(x, np.sin(x)/x, label='sinc(x)')
-  plt.plot(x, np.cos(x), '--', label='cos(x)')
-  plt.legend()</code></pre></div>
+<div class="codigo" data-lingua="Python"><pre><code>x = np.linspace(-2*np.pi, 2*np.pi, 500)
+plt.plot(x, np.sin(x)/x, label='sinc(x)')
+plt.plot(x, np.cos(x), '--', label='cos(x)')
+plt.legend()</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas</strong></span>
@@ -384,57 +384,57 @@
   <p>Vamos dominar os gráficos de linha, perfeitos para mostrar tendências!</p>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.7: Múltiplas funções no mesmo gráfico</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
-  import numpy as np
+<div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
+import numpy as np
 
-  # Criando dados para várias funções
-  x = np.linspace(0, 2*np.pi, 100)
-  seno = np.sin(x)
-  cosseno = np.cos(x)
+# Criando dados para várias funções
+x = np.linspace(0, 2*np.pi, 100)
+seno = np.sin(x)
+cosseno = np.cos(x)
 
-  plt.figure(figsize=(10, 6))
+plt.figure(figsize=(10, 6))
 
-  # Plotando múltiplas curvas
-  plt.plot(x, seno, label='sen(x)')     # Primeira curva
-  plt.plot(x, cosseno, label='cos(x)')  # Segunda curva
+# Plotando múltiplas curvas
+plt.plot(x, seno, label='sen(x)')     # Primeira curva
+plt.plot(x, cosseno, label='cos(x)')  # Segunda curva
 
-  plt.title('Funções Trigonométricas')
-  plt.xlabel('Ângulo (radianos)')
-  plt.ylabel('Valor')
-  plt.legend()  # Mostra a legenda
-  plt.grid(True, alpha=0.3)
-  plt.show()
+plt.title('Funções Trigonométricas')
+plt.xlabel('Ângulo (radianos)')
+plt.ylabel('Valor')
+plt.legend()  # Mostra a legenda
+plt.grid(True, alpha=0.3)
+plt.show()
 
-  print("Duas funções no mesmo gráfico! Agora dá para comparar!")</code></pre></div>
+print("Duas funções no mesmo gráfico! Agora dá para comparar!")</code></pre></div>
   </div>
 
   <figure><img src="assets/img/a07_04.png" alt="Gráfico comparativo das funções \((x)\) e \((x)\)." loading="lazy"><figcaption>Gráfico comparativo das funções \((x)\) e \((x)\).</figcaption></figure>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.8: Personalizando cores e estilos</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Mesmos dados, visual melhor
-  x = np.linspace(0, 2*np.pi, 100)
-  seno = np.sin(x)
-  cosseno = np.cos(x)
+<div class="codigo" data-lingua="Python"><pre><code># Mesmos dados, visual melhor
+x = np.linspace(0, 2*np.pi, 100)
+seno = np.sin(x)
+cosseno = np.cos(x)
 
-  plt.figure(figsize=(10, 6))
+plt.figure(figsize=(10, 6))
 
-  # Cores e estilos personalizados
-  plt.plot(x, seno, color='red', linewidth=2, linestyle='-', label='sen(x)')
-  plt.plot(x, cosseno, color='blue', linewidth=2, linestyle='--', label='cos(x)')
+# Cores e estilos personalizados
+plt.plot(x, seno, color='red', linewidth=2, linestyle='-', label='sen(x)')
+plt.plot(x, cosseno, color='blue', linewidth=2, linestyle='--', label='cos(x)')
 
-  plt.title('Funções Trigonométricas - Estilizadas', fontsize=16)
-  plt.xlabel('Ângulo (radianos)', fontsize=12)
-  plt.ylabel('Valor', fontsize=12)
-  plt.legend(fontsize=12)
-  plt.grid(True, alpha=0.3)
+plt.title('Funções Trigonométricas - Estilizadas', fontsize=16)
+plt.xlabel('Ângulo (radianos)', fontsize=12)
+plt.ylabel('Valor', fontsize=12)
+plt.legend(fontsize=12)
+plt.grid(True, alpha=0.3)
 
-  # Adicionando linhas de referência
-  plt.axhline(y=0, color='black', linewidth=0.5)  # Linha horizontal em y=0
-  plt.axvline(x=np.pi, color='gray', linestyle=':', alpha=0.7)  # Linha em x=π
+# Adicionando linhas de referência
+plt.axhline(y=0, color='black', linewidth=0.5)  # Linha horizontal em y=0
+plt.axvline(x=np.pi, color='gray', linestyle=':', alpha=0.7)  # Linha em x=π
 
-  plt.show()
+plt.show()
 
-  print("Agora sim! Visual profissional!")</code></pre></div>
+print("Agora sim! Visual profissional!")</code></pre></div>
   </div>
 
   <figure><img src="assets/img/a07_05.png" alt="Funções trigonométricas estilizadas com linhas de referência em \(y=0\) e \(x=\)." loading="lazy"><figcaption>Funções trigonométricas estilizadas com linhas de referência em \(y=0\) e \(x=\).</figcaption></figure>
@@ -447,35 +447,35 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.9: Aplicação prática - dados experimentais</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Simulando dados de temperatura ao longo do dia
-  horas = np.arange(0, 25)  # 0h às 24h
-  temp_teorica = 20 + 8 * np.sin(2 * np.pi * (horas - 6) / 24)  # Curva senoidal
+<div class="codigo" data-lingua="Python"><pre><code># Simulando dados de temperatura ao longo do dia
+horas = np.arange(0, 25)  # 0h às 24h
+temp_teorica = 20 + 8 * np.sin(2 * np.pi * (horas - 6) / 24)  # Curva senoidal
 
-  # "Medições experimentais" com pequenos erros
-  np.random.seed(42)
-  ruido = np.random.normal(0, 1, len(horas))
-  temp_medida = temp_teorica + ruido
+# "Medições experimentais" com pequenos erros
+np.random.seed(42)
+ruido = np.random.normal(0, 1, len(horas))
+temp_medida = temp_teorica + ruido
 
-  plt.figure(figsize=(12, 6))
+plt.figure(figsize=(12, 6))
 
-  # Plotando dados teóricos e experimentais
-  plt.plot(horas, temp_teorica, 'b-', linewidth=2, label='Modelo teórico')
-  plt.plot(horas, temp_medida, 'ro-', markersize=4, label='Dados experimentais')
+# Plotando dados teóricos e experimentais
+plt.plot(horas, temp_teorica, 'b-', linewidth=2, label='Modelo teórico')
+plt.plot(horas, temp_medida, 'ro-', markersize=4, label='Dados experimentais')
 
-  plt.title('Temperatura ao Longo do Dia', fontsize=16)
-  plt.xlabel('Hora do dia', fontsize=12)
-  plt.ylabel('Temperatura (°C)', fontsize=12)
-  plt.legend()
-  plt.grid(True, alpha=0.3)
+plt.title('Temperatura ao Longo do Dia', fontsize=16)
+plt.xlabel('Hora do dia', fontsize=12)
+plt.ylabel('Temperatura (°C)', fontsize=12)
+plt.legend()
+plt.grid(True, alpha=0.3)
 
-  # Marcando horários importantes
-  plt.axvline(x=6, color='orange', linestyle=':', alpha=0.7, label='Nascer do sol')
-  plt.axvline(x=18, color='red', linestyle=':', alpha=0.7, label='Pôr do sol')
+# Marcando horários importantes
+plt.axvline(x=6, color='orange', linestyle=':', alpha=0.7, label='Nascer do sol')
+plt.axvline(x=18, color='red', linestyle=':', alpha=0.7, label='Pôr do sol')
 
-  plt.xlim(0, 24)
-  plt.show()
+plt.xlim(0, 24)
+plt.show()
 
-  print("Perfeito! Dados experimentais vs teoria!")</code></pre></div>
+print("Perfeito! Dados experimentais vs teoria!")</code></pre></div>
   </div>
 
   <figure><img src="assets/img/a07_06.png" alt="Comparação entre modelo teórico e dados experimentais de temperatura diária." loading="lazy"><figcaption>Comparação entre modelo teórico e dados experimentais de temperatura diária.</figcaption></figure>
@@ -485,87 +485,87 @@
   <p>Cada tipo de dados pede um tipo específico de gráfico!</p>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.10: Gráfico de barras - comparando categorias</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Dados de notas por disciplina
-  disciplinas = ['Física II', 'Cálculo I', 'Álgebra Linear', 'Didática', 'Informática']
-  notas = [5.5, 9.2, 7.8, 3.0, 7.5]
+<div class="codigo" data-lingua="Python"><pre><code># Dados de notas por disciplina
+disciplinas = ['Física II', 'Cálculo I', 'Álgebra Linear', 'Didática', 'Informática']
+notas = [5.5, 9.2, 7.8, 3.0, 7.5]
 
-  plt.figure(figsize=(10, 6))
+plt.figure(figsize=(10, 6))
 
-  # Criando gráfico de barras
-  plt.bar(disciplinas, notas, color=['red', 'blue', 'green', 'orange', 'purple'])
+# Criando gráfico de barras
+plt.bar(disciplinas, notas, color=['red', 'blue', 'green', 'orange', 'purple'])
 
-  plt.title('Notas por Disciplina', fontsize=16)
-  plt.xlabel('Disciplina', fontsize=12)
-  plt.ylabel('Nota', fontsize=12)
-  plt.ylim(0, 10)  # Definindo limites do eixo Y
+plt.title('Notas por Disciplina', fontsize=16)
+plt.xlabel('Disciplina', fontsize=12)
+plt.ylabel('Nota', fontsize=12)
+plt.ylim(0, 10)  # Definindo limites do eixo Y
 
-  # Adicionando valores nas barras
-  for i, nota in enumerate(notas):
-      plt.text(i, nota + 0.1, f'{nota}', ha='center', fontsize=12)
+# Adicionando valores nas barras
+for i, nota in enumerate(notas):
+    plt.text(i, nota + 0.1, f'{nota}', ha='center', fontsize=12)
 
-  plt.grid(axis='y', alpha=0.3)  # Grade só no eixo Y
-  plt.show()
+plt.grid(axis='y', alpha=0.3)  # Grade só no eixo Y
+plt.show()
 
-  print("Gráfico de barras: perfeito para comparar categorias!")</code></pre></div>
+print("Gráfico de barras: perfeito para comparar categorias!")</code></pre></div>
   </div>
 
   <figure><img src="assets/img/a07_07.png" alt="Gráfico de barras mostrando notas por disciplina com valores anotados." loading="lazy"><figcaption>Gráfico de barras mostrando notas por disciplina com valores anotados.</figcaption></figure>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.11: Histograma - distribuição de dados</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Simulando alturas de estudantes
-  np.random.seed(42)
-  alturas = np.random.normal(170, 10, 200)  # média 170cm, desvio 10cm
+<div class="codigo" data-lingua="Python"><pre><code># Simulando alturas de estudantes
+np.random.seed(42)
+alturas = np.random.normal(170, 10, 200)  # média 170cm, desvio 10cm
 
-  plt.figure(figsize=(10, 6))
+plt.figure(figsize=(10, 6))
 
-  # Criando histograma
-  plt.hist(alturas, bins=20, color='skyblue', alpha=0.7, edgecolor='black')
+# Criando histograma
+plt.hist(alturas, bins=20, color='skyblue', alpha=0.7, edgecolor='black')
 
-  plt.title('Distribuição de Alturas dos Estudantes', fontsize=16)
-  plt.xlabel('Altura (cm)', fontsize=12)
-  plt.ylabel('Frequência', fontsize=12)
+plt.title('Distribuição de Alturas dos Estudantes', fontsize=16)
+plt.xlabel('Altura (cm)', fontsize=12)
+plt.ylabel('Frequência', fontsize=12)
 
-  # Adicionando linha vertical na média
-  media = np.mean(alturas)
-  plt.axvline(media, color='red', linestyle='--', linewidth=2, 
-             label=f'Média: {media:.1f} cm')
+# Adicionando linha vertical na média
+media = np.mean(alturas)
+plt.axvline(media, color='red', linestyle='--', linewidth=2, 
+           label=f'Média: {media:.1f} cm')
 
-  plt.legend()
-  plt.grid(axis='y', alpha=0.3)
-  plt.show()
+plt.legend()
+plt.grid(axis='y', alpha=0.3)
+plt.show()
 
-  print("Histograma: mostra como os dados se distribuem!")</code></pre></div>
+print("Histograma: mostra como os dados se distribuem!")</code></pre></div>
   </div>
 
   <figure><img src="assets/img/a07_08.png" alt="Histograma da distribuição de alturas com linha indicando a média." loading="lazy"><figcaption>Histograma da distribuição de alturas com linha indicando a média.</figcaption></figure>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.12: Gráfico de dispersão - relações entre variáveis</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Relação entre altura e peso
-  np.random.seed(42)
-  alturas = np.random.normal(170, 10, 50)
-  # Peso correlacionado com altura + ruído
-  pesos = 0.8 * alturas - 60 + np.random.normal(0, 5, 50)
+<div class="codigo" data-lingua="Python"><pre><code># Relação entre altura e peso
+np.random.seed(42)
+alturas = np.random.normal(170, 10, 50)
+# Peso correlacionado com altura + ruído
+pesos = 0.8 * alturas - 60 + np.random.normal(0, 5, 50)
 
-  plt.figure(figsize=(10, 6))
+plt.figure(figsize=(10, 6))
 
-  # Gráfico de dispersão
-  plt.scatter(alturas, pesos, color='green', alpha=0.6, s=50)
+# Gráfico de dispersão
+plt.scatter(alturas, pesos, color='green', alpha=0.6, s=50)
 
-  plt.title('Relação entre Altura e Peso', fontsize=16)
-  plt.xlabel('Altura (cm)', fontsize=12)
-  plt.ylabel('Peso (kg)', fontsize=12)
-  plt.grid(True, alpha=0.3)
+plt.title('Relação entre Altura e Peso', fontsize=16)
+plt.xlabel('Altura (cm)', fontsize=12)
+plt.ylabel('Peso (kg)', fontsize=12)
+plt.grid(True, alpha=0.3)
 
-  # Adicionando linha de tendência (opcional)
-  coeficientes = np.polyfit(alturas, pesos, 1)
-  linha_tendencia = np.polyval(coeficientes, alturas)
-  plt.plot(alturas, linha_tendencia, 'r--', linewidth=2, 
-           label='Linha de tendência')
+# Adicionando linha de tendência (opcional)
+coeficientes = np.polyfit(alturas, pesos, 1)
+linha_tendencia = np.polyval(coeficientes, alturas)
+plt.plot(alturas, linha_tendencia, 'r--', linewidth=2, 
+         label='Linha de tendência')
 
-  plt.legend()
-  plt.show()
+plt.legend()
+plt.show()
 
-  print("Dispersão: mostra relações entre variáveis!")</code></pre></div>
+print("Dispersão: mostra relações entre variáveis!")</code></pre></div>
   </div>
 
   <figure><img src="assets/img/a07_09.png" alt="Gráfico de dispersão altura vs peso com linha de tendência." loading="lazy"><figcaption>Gráfico de dispersão altura vs peso com linha de tendência.</figcaption></figure>
@@ -578,38 +578,38 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.13: Subplots - múltiplos gráficos organizados</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Criando múltiplos gráficos em uma figura
-  fig, axes = plt.subplots(2, 2, figsize=(12, 10))
-  fig.suptitle('Dashboard de Gráficos Básicos', fontsize=16)
+<div class="codigo" data-lingua="Python"><pre><code># Criando múltiplos gráficos em uma figura
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+fig.suptitle('Dashboard de Gráficos Básicos', fontsize=16)
 
-  # Gráfico 1: Linha
-  x = np.linspace(0, 10, 50)
-  y = np.sin(x)
-  axes[0, 0].plot(x, y, 'b-')
-  axes[0, 0].set_title('Gráfico de Linha')
-  axes[0, 0].grid(True, alpha=0.3)
+# Gráfico 1: Linha
+x = np.linspace(0, 10, 50)
+y = np.sin(x)
+axes[0, 0].plot(x, y, 'b-')
+axes[0, 0].set_title('Gráfico de Linha')
+axes[0, 0].grid(True, alpha=0.3)
 
-  # Gráfico 2: Barras
-  categorias = ['A', 'B', 'C', 'D']
-  valores = [23, 45, 56, 78]
-  axes[0, 1].bar(categorias, valores, color='orange')
-  axes[0, 1].set_title('Gráfico de Barras')
+# Gráfico 2: Barras
+categorias = ['A', 'B', 'C', 'D']
+valores = [23, 45, 56, 78]
+axes[0, 1].bar(categorias, valores, color='orange')
+axes[0, 1].set_title('Gráfico de Barras')
 
-  # Gráfico 3: Histograma
-  dados = np.random.normal(0, 1, 1000)
-  axes[1, 0].hist(dados, bins=30, color='green', alpha=0.7)
-  axes[1, 0].set_title('Histograma')
+# Gráfico 3: Histograma
+dados = np.random.normal(0, 1, 1000)
+axes[1, 0].hist(dados, bins=30, color='green', alpha=0.7)
+axes[1, 0].set_title('Histograma')
 
-  # Gráfico 4: Dispersão
-  x_rand = np.random.randn(50)
-  y_rand = 2 * x_rand + np.random.randn(50)
-  axes[1, 1].scatter(x_rand, y_rand, color='red', alpha=0.6)
-  axes[1, 1].set_title('Gráfico de Dispersão')
+# Gráfico 4: Dispersão
+x_rand = np.random.randn(50)
+y_rand = 2 * x_rand + np.random.randn(50)
+axes[1, 1].scatter(x_rand, y_rand, color='red', alpha=0.6)
+axes[1, 1].set_title('Gráfico de Dispersão')
 
-  plt.tight_layout()  # Ajusta automaticamente o espaçamento
-  plt.show()
+plt.tight_layout()  # Ajusta automaticamente o espaçamento
+plt.show()
 
-  print("Subplots: organizando múltiplos gráficos!")</code></pre></div>
+print("Subplots: organizando múltiplos gráficos!")</code></pre></div>
   </div>
 
   <figure><img src="assets/img/a07_10.png" alt="Dashboard com quatro tipos diferentes de gráficos organizados em subplots 2×2." loading="lazy"><figcaption>Dashboard com quatro tipos diferentes de gráficos organizados em subplots 2×2.</figcaption></figure>
@@ -619,29 +619,29 @@
   <p>Como preservar suas criações!</p>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.14: Salvando em diferentes formatos</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Criando um gráfico para salvar
-  x = np.linspace(0, 2*np.pi, 100)
-  y = np.sin(x)
+<div class="codigo" data-lingua="Python"><pre><code># Criando um gráfico para salvar
+x = np.linspace(0, 2*np.pi, 100)
+y = np.sin(x)
 
-  plt.figure(figsize=(10, 6))
-  plt.plot(x, y, 'b-', linewidth=2)
-  plt.title('Gráfico para Salvar', fontsize=16)
-  plt.xlabel('x', fontsize=12)
-  plt.ylabel('sen(x)', fontsize=12)
-  plt.grid(True, alpha=0.3)
+plt.figure(figsize=(10, 6))
+plt.plot(x, y, 'b-', linewidth=2)
+plt.title('Gráfico para Salvar', fontsize=16)
+plt.xlabel('x', fontsize=12)
+plt.ylabel('sen(x)', fontsize=12)
+plt.grid(True, alpha=0.3)
 
-  # Salvando o gráfico
-  # Descomente a linha abaixo para salvar de verdade
-  # plt.savefig('meu_primeiro_grafico.png', dpi=300, bbox_inches='tight')
+# Salvando o gráfico
+# Descomente a linha abaixo para salvar de verdade
+# plt.savefig('meu_primeiro_grafico.png', dpi=300, bbox_inches='tight')
 
-  plt.show()
+plt.show()
 
-  print("=== FORMATOS PARA SALVAR ===")
-  print("PNG: Melhor para apresentações e web")
-  print("PDF: Melhor para documentos científicos")
-  print("SVG: Melhor para edição posterior")
-  print("JPG: Menor tamanho, mas perde qualidade")
-  print(": plt.savefig('nome_arquivo.png')")</code></pre></div>
+print("=== FORMATOS PARA SALVAR ===")
+print("PNG: Melhor para apresentações e web")
+print("PDF: Melhor para documentos científicos")
+print("SVG: Melhor para edição posterior")
+print("JPG: Menor tamanho, mas perde qualidade")
+print(": plt.savefig('nome_arquivo.png')")</code></pre></div>
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>

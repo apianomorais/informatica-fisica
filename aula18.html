@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 18: Entrada e saída: teclado, arquivos e CSV | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
-<script src="assets/js/comum.js?v=202611091035"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
+<script src="assets/js/comum.js?v=202611091426"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -73,25 +73,25 @@
   </div>
   <div class="bloco ex"><span class="rotulo">Exemplo 18.1: período de um pêndulo pedido ao usuário</span>
   <div class="codigo" data-lingua="Python"><pre><code>import math
-  
-  L = float(input("Comprimento do pendulo (m): "))
-  g = 9.81
-  
-  T = 2 * math.pi * math.sqrt(L / g)
-  print(f"Periodo = {T:.4f} s")</code></pre></div>
+
+L = float(input("Comprimento do pendulo (m): "))
+g = 9.81
+
+T = 2 * math.pi * math.sqrt(L / g)
+print(f"Periodo = {T:.4f} s")</code></pre></div>
   </div>
   <p>Repare em duas coisas. A mensagem dentro de <code>input()</code> diz a unidade, porque quem digita precisa saber se o número vai em metros ou em centímetros. E o <code>float()</code> envolve o <code>input()</code> na mesma linha, o que é o jeito compacto de escrever, mas esconde um problema: se a pessoa escrever <code>cinquenta</code>, o programa quebra com <code>ValueError</code> e tudo o que já tinha sido calculado se perde. A seção 2 resolve isso.</p>
   <div class="bloco ex"><span class="rotulo">Exemplo 18.2: várias entradas e uma saída formatada</span>
   <div class="codigo" data-lingua="Python"><pre><code>nome = input("Nome da substancia: ")
-  m = float(input("Massa (kg): "))
-  c = float(input("Calor especifico (J/kg.K): "))
-  dT = float(input("Variacao de temperatura (K): "))
-  
-  Q = m * c * dT
-  
-  print()
-  print(f"Substancia: {nome}")
-  print(f"Calor trocado: {Q:.1f} J  ({Q/4186:.3f} kcal)")</code></pre></div>
+m = float(input("Massa (kg): "))
+c = float(input("Calor especifico (J/kg.K): "))
+dT = float(input("Variacao de temperatura (K): "))
+
+Q = m * c * dT
+
+print()
+print(f"Substancia: {nome}")
+print(f"Calor trocado: {Q:.1f} J  ({Q/4186:.3f} kcal)")</code></pre></div>
   </div>
   <div class="bloco alerta"><span class="rotulo">Cuidado</span>
   Em português escrevemos 1,5 e o Python espera 1.5. A vírgula faz <code>float("1,5")</code> levantar <code>ValueError</code>. Como o aluno vai digitar vírgula (é o que o teclado e o hábito pedem), vale trocar antes de converter: <code>bruto.replace(",", ".")</code>. Esse detalhe de uma linha é o mesmo problema que apareceu na unidade de planilhas, onde o ponto decimal era lido como separador de milhar.
@@ -103,38 +103,38 @@
   </div>
   <div class="bloco ex"><span class="rotulo">Exemplo 18.3: a conversão protegida</span>
   <div class="codigo" data-lingua="Python"><pre><code>bruto = input("Massa (kg): ")
-  
-  try:
-      m = float(bruto.replace(",", "."))
-  except ValueError:
-      print(f"Nao entendi '{bruto}'. Vou usar 1 kg.")
-      m = 1.0
-  
-  print(f"Massa usada: {m} kg")</code></pre></div>
+
+try:
+    m = float(bruto.replace(",", "."))
+except ValueError:
+    print(f"Nao entendi '{bruto}'. Vou usar 1 kg.")
+    m = 1.0
+
+print(f"Massa usada: {m} kg")</code></pre></div>
   </div>
   <p>O programa acima não quebra, mas também não é satisfatório: chutar 1 kg quando o usuário erra é inventar um dado. O que se quer de verdade é pedir de novo, quantas vezes forem necessárias, e só seguir adiante quando a entrada for válida. Esse é um laço <code>while True</code> com <code>return</code> na saída bem-sucedida.</p>
   <div class="bloco ex"><span class="rotulo">Exemplo 18.4: uma função de leitura que não aceita lixo</span>
   <div class="codigo" data-lingua="Python"><pre><code>def pede_numero(mensagem, minimo=None, maximo=None):
-      """Le um numero do teclado e insiste ate que ele seja valido."""
-      while True:
-          bruto = input(mensagem).replace(",", ".")
-          try:
-              valor = float(bruto)
-          except ValueError:
-              print(f"  '{bruto}' nao e um numero. Exemplo valido: 1.5")
-              continue
-          if minimo is not None and valor &lt; minimo:
-              print(f"  O valor deve ser pelo menos {minimo}.")
-              continue
-          if maximo is not None and valor &gt; maximo:
-              print(f"  O valor deve ser no maximo {maximo}.")
-              continue
-          return valor
-  
-  
-  L = pede_numero("Comprimento do pendulo (m): ", minimo=0.01, maximo=10)
-  n = pede_numero("Numero de oscilacoes cronometradas: ", minimo=1)
-  print(f"L = {L} m, n = {n:.0f} oscilacoes")</code></pre></div>
+    """Le um numero do teclado e insiste ate que ele seja valido."""
+    while True:
+        bruto = input(mensagem).replace(",", ".")
+        try:
+            valor = float(bruto)
+        except ValueError:
+            print(f"  '{bruto}' nao e um numero. Exemplo valido: 1.5")
+            continue
+        if minimo is not None and valor &lt; minimo:
+            print(f"  O valor deve ser pelo menos {minimo}.")
+            continue
+        if maximo is not None and valor &gt; maximo:
+            print(f"  O valor deve ser no maximo {maximo}.")
+            continue
+        return valor
+
+
+L = pede_numero("Comprimento do pendulo (m): ", minimo=0.01, maximo=10)
+n = pede_numero("Numero de oscilacoes cronometradas: ", minimo=1)
+print(f"L = {L} m, n = {n:.0f} oscilacoes")</code></pre></div>
   </div>
   <p>Vale olhar o que essa função faz de verdade, porque ela é o padrão que você vai copiar para o resto do curso. Ela trata dois tipos de erro diferentes com a mesma resposta: o erro de forma (não é número) e o erro de faixa (é número, mas impossível). Um comprimento de pêndulo negativo passa pelo <code>float()</code> sem reclamação alguma, e é justamente o tipo de dado que produz uma raiz de número negativo três linhas depois. O <code>continue</code> manda o laço começar outra vez, e o <code>return</code> é a única saída.</p>
   <div class="bloco fisica"><span class="rotulo">Na bancada</span>
@@ -151,45 +151,45 @@
   </div>
   <div class="bloco ex"><span class="rotulo">Exemplo 18.5: gravar uma tabela calculada</span>
   <div class="codigo" data-lingua="Python"><pre><code>g = 9.81
-  
-  with open("queda.txt", "w", encoding="utf-8") as f:
-      f.write("# tempo(s)  posicao(m)  velocidade(m/s)\n")
-      for i in range(11):
-          t = 0.1 * i
-          x = 0.5 * g * t**2
-          v = g * t
-          f.write(f"{t:.1f}  {x:.4f}  {v:.3f}\n")
-  
-  print("Arquivo queda.txt escrito.")</code></pre></div>
+
+with open("queda.txt", "w", encoding="utf-8") as f:
+    f.write("# tempo(s)  posicao(m)  velocidade(m/s)\n")
+    for i in range(11):
+        t = 0.1 * i
+        x = 0.5 * g * t**2
+        v = g * t
+        f.write(f"{t:.1f}  {x:.4f}  {v:.3f}\n")
+
+print("Arquivo queda.txt escrito.")</code></pre></div>
   </div>
   <p>Duas escolhas aí dentro não são decorativas. O <code>\n</code> no fim de cada <code>write</code> é obrigatório, porque <code>write</code> não pula linha sozinho (diferente de <code>print</code>), e sem ele a tabela inteira sai numa linha só. E <code>encoding="utf-8"</code> deveria estar em todo <code>open</code> que você escrever: sem ele o Python usa a codificação padrão do sistema, que varia entre o Windows e o Linux, e o arquivo com acentos que abre bem no seu computador aparece corrompido no do colega.</p>
   <div class="bloco ex"><span class="rotulo">Exemplo 18.6: ler de volta, pulando o cabeçalho</span>
   <div class="codigo" data-lingua="Python"><pre><code>tempos = []
-  posicoes = []
-  
-  with open("queda.txt", encoding="utf-8") as f:
-      for linha in f:
-          if linha.startswith("#") or not linha.strip():
-              continue              # comentario ou linha vazia
-          campos = linha.split()
-          tempos.append(float(campos[0]))
-          posicoes.append(float(campos[1]))
-  
-  print(f"{len(tempos)} pontos lidos")
-  print(f"ultimo instante: {tempos[-1]} s, posicao {posicoes[-1]:.4f} m")</code></pre></div>
+posicoes = []
+
+with open("queda.txt", encoding="utf-8") as f:
+    for linha in f:
+        if linha.startswith("#") or not linha.strip():
+            continue              # comentario ou linha vazia
+        campos = linha.split()
+        tempos.append(float(campos[0]))
+        posicoes.append(float(campos[1]))
+
+print(f"{len(tempos)} pontos lidos")
+print(f"ultimo instante: {tempos[-1]} s, posicao {posicoes[-1]:.4f} m")</code></pre></div>
   </div>
   <p>Percorrer o arquivo com <code>for linha in f</code> lê uma linha por vez, o que significa que o programa funciona igual com dez linhas ou com dez milhões: só uma está na memória em cada instante. A alternativa <code>f.read()</code> traz tudo de uma vez e é cômoda para arquivos pequenos. O teste com <code>startswith("#")</code> é o que faz o cabeçalho ser ignorado sem precisar contar linhas, e ele continua funcionando quando você acrescentar mais comentários no arquivo depois.</p>
   <div class="bloco ex"><span class="rotulo">Exemplo 18.7: o arquivo que pode não estar lá</span>
   <div class="codigo" data-lingua="Python"><pre><code>nome = input("Nome do arquivo de dados: ")
-  
-  try:
-      with open(nome, encoding="utf-8") as f:
-          linhas = f.readlines()
-  except FileNotFoundError:
-      print(f"Nao achei '{nome}'. Confira se ele esta na mesma pasta do programa.")
-      linhas = []
-  
-  print(f"{len(linhas)} linhas")</code></pre></div>
+
+try:
+    with open(nome, encoding="utf-8") as f:
+        linhas = f.readlines()
+except FileNotFoundError:
+    print(f"Nao achei '{nome}'. Confira se ele esta na mesma pasta do programa.")
+    linhas = []
+
+print(f"{len(linhas)} linhas")</code></pre></div>
   </div>
   <p>Esse <code>except FileNotFoundError</code> cobre o erro mais comum de todos no Spyder: o arquivo existe, mas numa pasta diferente da pasta de trabalho do console. A mensagem que dissemos ao usuário aponta exatamente para essa causa, e é por isso que uma mensagem de erro escrita por você vale mais que a mensagem genérica do Python.</p>
   <h2 id="s4">4. CSV: o formato que a planilha e o Python compartilham</h2>
@@ -202,79 +202,79 @@
   </div>
   <div class="bloco ex"><span class="rotulo">Exemplo 18.8: escrever um CSV de medidas</span>
   <div class="codigo" data-lingua="Python"><pre><code>import csv
-  
-  medidas = [
-      (1, 0.200, 0.8980),
-      (2, 0.200, 0.8975),
-      (3, 0.400, 1.2701),
-      (4, 0.400, 1.2698),
-      (5, 0.600, 1.5551),
-      (6, 0.600, 1.5559),
-  ]
-  
-  with open("pendulo.csv", "w", newline="", encoding="utf-8") as f:
-      escritor = csv.writer(f)
-      escritor.writerow(["n", "L_m", "T_s"])     # cabecalho
-      escritor.writerows(medidas)                # todas as linhas de uma vez
-  
-  print("pendulo.csv escrito com", len(medidas), "medidas.")</code></pre></div>
+
+medidas = [
+    (1, 0.200, 0.8980),
+    (2, 0.200, 0.8975),
+    (3, 0.400, 1.2701),
+    (4, 0.400, 1.2698),
+    (5, 0.600, 1.5551),
+    (6, 0.600, 1.5559),
+]
+
+with open("pendulo.csv", "w", newline="", encoding="utf-8") as f:
+    escritor = csv.writer(f)
+    escritor.writerow(["n", "L_m", "T_s"])     # cabecalho
+    escritor.writerows(medidas)                # todas as linhas de uma vez
+
+print("pendulo.csv escrito com", len(medidas), "medidas.")</code></pre></div>
   </div>
   <div class="bloco ex"><span class="rotulo">Exemplo 18.9: ler com <code>DictReader</code></span>
   <div class="codigo" data-lingua="Python"><pre><code>import csv
-  
-  with open("pendulo.csv", newline="", encoding="utf-8") as f:
-      leitor = csv.DictReader(f)
-      for registro in leitor:
-          L = float(registro["L_m"])
-          T = float(registro["T_s"])
-          print(f"L = {L:.3f} m  -&gt;  T = {T:.4f} s")</code></pre></div>
+
+with open("pendulo.csv", newline="", encoding="utf-8") as f:
+    leitor = csv.DictReader(f)
+    for registro in leitor:
+        L = float(registro["L_m"])
+        T = float(registro["T_s"])
+        print(f"L = {L:.3f} m  -&gt;  T = {T:.4f} s")</code></pre></div>
   </div>
   <p>A vantagem do <code>DictReader</code> aparece quando alguém acrescenta uma coluna no meio da planilha. Com <code>csv.reader</code> e índices, <code>campos[2]</code> passa a apontar para outra grandeza e o programa calcula silenciosamente a coisa errada. Com os nomes das colunas, <code>registro["T_s"]</code> continua sendo o período, e o programa quebra de forma visível se a coluna mudar de nome.</p>
   <h2 id="s5">5. Um programa completo: do arquivo bruto ao resultado</h2>
   <p>Vamos juntar as quatro peças num programa de verdade, do tipo que você vai escrever para um relatório de laboratório. Ele lê um CSV com medidas repetidas do período de um pêndulo para vários comprimentos, agrupa as repetições, calcula média e desvio padrão de cada grupo, extrai \(g\) de cada comprimento e escreve um segundo CSV com o resultado, pronto para voltar à planilha ou virar gráfico na aula anterior.</p>
   <div class="bloco ex"><span class="rotulo">Exemplo 18.10: o pipeline completo</span>
   <div class="codigo" data-lingua="Python"><pre><code>import csv
-  import math
-  import statistics
-  
-  ENTRADA = "pendulo.csv"
-  SAIDA = "resultado.csv"
-  
-  # ---- 1. leitura, agrupando os periodos por comprimento
-  dados = {}
-  try:
-      with open(ENTRADA, newline="", encoding="utf-8") as f:
-          for registro in csv.DictReader(f):
-              L = float(registro["L_m"])
-              T = float(registro["T_s"])
-              dados.setdefault(L, []).append(T)
-  except FileNotFoundError:
-      print(f"Arquivo '{ENTRADA}' nao encontrado.")
-      raise SystemExit
-  
-  # ---- 2. estatistica e g para cada comprimento
-  linhas = []
-  valores_g = []
-  for L in sorted(dados):
-      periodos = dados[L]
-      T_medio = statistics.fmean(periodos)
-      desvio = statistics.stdev(periodos) if len(periodos) &gt; 1 else 0.0
-      g = 4 * math.pi**2 * L / T_medio**2
-      valores_g.append(g)
-      linhas.append([L, round(T_medio, 4), round(desvio, 4),
-                     len(periodos), round(g, 3)])
-  
-  # ---- 3. escrita do resultado
-  with open(SAIDA, "w", newline="", encoding="utf-8") as f:
-      escritor = csv.writer(f)
-      escritor.writerow(["L_m", "T_medio_s", "desvio_s", "n", "g_m_s2"])
-      escritor.writerows(linhas)
-  
-  # ---- 4. resumo na tela
-  g_medio = statistics.fmean(valores_g)
-  erro = statistics.stdev(valores_g) / math.sqrt(len(valores_g))
-  print(f"{len(linhas)} comprimentos processados -&gt; {SAIDA}")
-  print(f"g = {g_medio:.3f} +- {erro:.3f} m/s2")</code></pre></div>
+import math
+import statistics
+
+ENTRADA = "pendulo.csv"
+SAIDA = "resultado.csv"
+
+# ---- 1. leitura, agrupando os periodos por comprimento
+dados = {}
+try:
+    with open(ENTRADA, newline="", encoding="utf-8") as f:
+        for registro in csv.DictReader(f):
+            L = float(registro["L_m"])
+            T = float(registro["T_s"])
+            dados.setdefault(L, []).append(T)
+except FileNotFoundError:
+    print(f"Arquivo '{ENTRADA}' nao encontrado.")
+    raise SystemExit
+
+# ---- 2. estatistica e g para cada comprimento
+linhas = []
+valores_g = []
+for L in sorted(dados):
+    periodos = dados[L]
+    T_medio = statistics.fmean(periodos)
+    desvio = statistics.stdev(periodos) if len(periodos) &gt; 1 else 0.0
+    g = 4 * math.pi**2 * L / T_medio**2
+    valores_g.append(g)
+    linhas.append([L, round(T_medio, 4), round(desvio, 4),
+                   len(periodos), round(g, 3)])
+
+# ---- 3. escrita do resultado
+with open(SAIDA, "w", newline="", encoding="utf-8") as f:
+    escritor = csv.writer(f)
+    escritor.writerow(["L_m", "T_medio_s", "desvio_s", "n", "g_m_s2"])
+    escritor.writerows(linhas)
+
+# ---- 4. resumo na tela
+g_medio = statistics.fmean(valores_g)
+erro = statistics.stdev(valores_g) / math.sqrt(len(valores_g))
+print(f"{len(linhas)} comprimentos processados -&gt; {SAIDA}")
+print(f"g = {g_medio:.3f} +- {erro:.3f} m/s2")</code></pre></div>
   </div>
   <p>Com as dez medidas do exemplo 18.8 estendidas até \(L = 1{,}000\) m, duas repetições por comprimento, a saída é <code>g = 9,797 ± 0,003 m/s²</code>, com os cinco valores individuais entre 9,790 e 9,803 m/s². O erro de 0,003 m/s² é o erro padrão da média dos cinco valores de \(g\), e não a incerteza do experimento: ele mede só a dispersão entre comprimentos, e ignora o erro sistemático da régua e do disparo do cronômetro, que é justamente o que a aula 4 da unidade de planilhas discute.</p>
   <p>A divisão do programa em quatro trechos comentados não é enfeite. Cada um deles pode ser trocado sem tocar nos outros: a leitura passa a vir de um arquivo com ponto e vírgula, a estatística passa a usar NumPy, a escrita passa a gerar um gráfico com Matplotlib. Essa é a forma de todo programa de análise de dados que você vai escrever, e é também a estrutura que o Pandas automatiza na próxima aula.</p>

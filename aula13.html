@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 13: Estruturas de controle | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
-<script src="assets/js/comum.js?v=202611091035"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
+<script src="assets/js/comum.js?v=202611091426"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -72,42 +72,42 @@
   <p>Vamos conferir os desafios da aula passada!</p>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.1: Soluções dos desafios</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Desafio 1: Resistores em série e paralelo
-  resistencias = [100, 220, 330, 470, 680]  # ohms
+<div class="codigo" data-lingua="Python"><pre><code># Desafio 1: Resistores em série e paralelo
+resistencias = [100, 220, 330, 470, 680]  # ohms
 
-  # Série: R_total = R1 + R2 + R3 + ...
-  resistencia_serie = sum(resistencias)
-  print(f"Resistência em série: {resistencia_serie} ohms")
+# Série: R_total = R1 + R2 + R3 + ...
+resistencia_serie = sum(resistencias)
+print(f"Resistência em série: {resistencia_serie} ohms")
 
-  # Paralelo: 1/R_total = 1/R1 + 1/R2 + 1/R3 + ...
-  inverso_total = sum([1/R for R in resistencias])
-  resistencia_paralelo = 1 / inverso_total
-  print(f"Resistência em paralelo: {resistencia_paralelo:.2f} ohms")
+# Paralelo: 1/R_total = 1/R1 + 1/R2 + 1/R3 + ...
+inverso_total = sum([1/R for R in resistencias])
+resistencia_paralelo = 1 / inverso_total
+print(f"Resistência em paralelo: {resistencia_paralelo:.2f} ohms")
 
-  # Desafio 2: Tabela periódica
-  elementos = [
-      ("H", "Hidrogênio", 1, 1.008),
-      ("He", "Hélio", 2, 4.003),
-      ("Li", "Lítio", 3, 6.941),
-      ("Be", "Berílio", 4, 9.012),
-      ("B", "Boro", 5, 10.811)
-  ]
+# Desafio 2: Tabela periódica
+elementos = [
+    ("H", "Hidrogênio", 1, 1.008),
+    ("He", "Hélio", 2, 4.003),
+    ("Li", "Lítio", 3, 6.941),
+    ("Be", "Berílio", 4, 9.012),
+    ("B", "Boro", 5, 10.811)
+]
 
-  for simbolo, nome, Z, massa in elementos:
-      print(f"{simbolo}: {nome} (Z={Z}, A={massa})")
+for simbolo, nome, Z, massa in elementos:
+    print(f"{simbolo}: {nome} (Z={Z}, A={massa})")
 
-  # Desafio 3: Oscilação amortecida
-  tempos = [0, 1, 2, 3, 4, 5]
-  amplitudes = [10, 7, 5, 3, 2, 1]
+# Desafio 3: Oscilação amortecida
+tempos = [0, 1, 2, 3, 4, 5]
+amplitudes = [10, 7, 5, 3, 2, 1]
 
-  for i, (t, A) in enumerate(zip(tempos, amplitudes)):
-      if A &lt; 3:
-          print(f"Amplitude fica menor que 3 no tempo t = {t} s")
-          break
+for i, (t, A) in enumerate(zip(tempos, amplitudes)):
+    if A &lt; 3:
+        print(f"Amplitude fica menor que 3 no tempo t = {t} s")
+        break
 
-  # Desafio 4: List comprehension - quadrados de ímpares
-  quadrados_impares = [n**2 for n in range(1, 21) if n % 2 == 1]
-  print("Quadrados dos ímpares de 1 a 20:", quadrados_impares)</code></pre></div>
+# Desafio 4: List comprehension - quadrados de ímpares
+quadrados_impares = [n**2 for n in range(1, 21) if n % 2 == 1]
+print("Quadrados dos ímpares de 1 a 20:", quadrados_impares)</code></pre></div>
   </div>
 
   <h2 id="s2">2. Condicionais - ensinando o programa a decidir</h2>
@@ -117,37 +117,37 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.2: Estrutura básica - if, elif, else</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Classificando partículas por carga
-  carga = +1  # Carga da partícula (em unidades de e)
+<div class="codigo" data-lingua="Python"><pre><code># Classificando partículas por carga
+carga = +1  # Carga da partícula (em unidades de e)
 
-  if carga &gt; 0:
-      tipo = "positiva"
-      cor = "vermelha"
-  elif carga &lt; 0:
-      tipo = "negativa" 
-      cor = "azul"
-  else:
-      tipo = "neutra"
-      cor = "verde"
+if carga &gt; 0:
+    tipo = "positiva"
+    cor = "vermelha"
+elif carga &lt; 0:
+    tipo = "negativa" 
+    cor = "azul"
+else:
+    tipo = "neutra"
+    cor = "verde"
 
-  print(f"Partícula {tipo} - representada em {cor}")
+print(f"Partícula {tipo} - representada em {cor}")
 
-  # Exemplo mais complexo: classificação de energia
-  energia_eletron = 0.511  # MeV (energia de repouso)
-  energia_particula = 2.5  # MeV
+# Exemplo mais complexo: classificação de energia
+energia_eletron = 0.511  # MeV (energia de repouso)
+energia_particula = 2.5  # MeV
 
-  if energia_particula &lt; energia_eletron:
-      regime = "não-relativística"
-      formula = "E_k = p2/2m"
-  elif energia_particula &lt; 10 * energia_eletron:
-      regime = "relativística moderada"
-      formula = "E2 = (pc)2 + (mc2)2"
-  else:
-      regime = "ultra-relativística"
-      formula = "E ≈ pc"
+if energia_particula &lt; energia_eletron:
+    regime = "não-relativística"
+    formula = "E_k = p2/2m"
+elif energia_particula &lt; 10 * energia_eletron:
+    regime = "relativística moderada"
+    formula = "E2 = (pc)2 + (mc2)2"
+else:
+    regime = "ultra-relativística"
+    formula = "E ≈ pc"
 
-  print(f"Regime: {regime}")
-  print(f"Fórmula apropriada: {formula}")</code></pre></div>
+print(f"Regime: {regime}")
+print(f"Fórmula apropriada: {formula}")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
@@ -158,24 +158,24 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.3: Operadores de comparação e lógicos</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Testando condições físicas
-  temperatura = 25  # Celsius
-  pressao = 101325  # Pa
+<div class="codigo" data-lingua="Python"><pre><code># Testando condições físicas
+temperatura = 25  # Celsius
+pressao = 101325  # Pa
 
-  # Operadores de comparação
-  print(f"Temperatura igual a 25°C? {temperatura == 25}")
-  print(f"Pressão diferente de 1 atm? {pressao != 101325}")
-  print(f"Temperatura maior que 0°C? {temperatura &gt; 0}")
+# Operadores de comparação
+print(f"Temperatura igual a 25°C? {temperatura == 25}")
+print(f"Pressão diferente de 1 atm? {pressao != 101325}")
+print(f"Temperatura maior que 0°C? {temperatura &gt; 0}")
 
-  # Operadores lógicos: and, or, not
-  condicoes_cntp = (temperatura == 0) and (pressao == 101325)
-  print(f"Condições CNTP? {condicoes_cntp}")
+# Operadores lógicos: and, or, not
+condicoes_cntp = (temperatura == 0) and (pressao == 101325)
+print(f"Condições CNTP? {condicoes_cntp}")
 
-  temperatura_confortavel = (temperatura &gt;= 20) and (temperatura &lt;= 30)
-  print(f"Temperatura confortável? {temperatura_confortavel}")
+temperatura_confortavel = (temperatura &gt;= 20) and (temperatura &lt;= 30)
+print(f"Temperatura confortável? {temperatura_confortavel}")
 
-  nao_e_vacuo = not (pressao == 0)
-  print(f"Não é vácuo? {nao_e_vacuo}")</code></pre></div>
+nao_e_vacuo = not (pressao == 0)
+print(f"Não é vácuo? {nao_e_vacuo}")</code></pre></div>
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
@@ -186,36 +186,36 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.4: Aplicação prática - Classificação de ondas eletromagnéticas</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Sistema de classificação de ondas eletromagnéticas
-  frequencia = 5.4e14  # Hz (luz verde)
+<div class="codigo" data-lingua="Python"><pre><code># Sistema de classificação de ondas eletromagnéticas
+frequencia = 5.4e14  # Hz (luz verde)
 
-  if frequencia &lt; 3e9:
-      tipo_onda = "Rádio"
-      aplicacao = "Comunicações"
-  elif frequencia &lt; 3e12:
-      tipo_onda = "Microondas"
-      aplicacao = "Radar, forno microondas"
-  elif frequencia &lt; 4.3e14:
-      tipo_onda = "Infravermelho"
-      aplicacao = "Visão térmica"
-  elif frequencia &lt; 7.5e14:
-      tipo_onda = "Luz visível"
-      aplicacao = "Visão humana"
-  elif frequencia &lt; 3e16:
-      tipo_onda = "Ultravioleta"
-      aplicacao = "Esterilização"
-  elif frequencia &lt; 3e19:
-      tipo_onda = "Raios X"
-      aplicacao = "Medicina, cristalografia"
-  else:
-      tipo_onda = "Raios Gama"
-      aplicacao = "Medicina nuclear"
+if frequencia &lt; 3e9:
+    tipo_onda = "Rádio"
+    aplicacao = "Comunicações"
+elif frequencia &lt; 3e12:
+    tipo_onda = "Microondas"
+    aplicacao = "Radar, forno microondas"
+elif frequencia &lt; 4.3e14:
+    tipo_onda = "Infravermelho"
+    aplicacao = "Visão térmica"
+elif frequencia &lt; 7.5e14:
+    tipo_onda = "Luz visível"
+    aplicacao = "Visão humana"
+elif frequencia &lt; 3e16:
+    tipo_onda = "Ultravioleta"
+    aplicacao = "Esterilização"
+elif frequencia &lt; 3e19:
+    tipo_onda = "Raios X"
+    aplicacao = "Medicina, cristalografia"
+else:
+    tipo_onda = "Raios Gama"
+    aplicacao = "Medicina nuclear"
 
-  comprimento_onda = 3e8 / frequencia  # c = λ×f
-  print(f"Frequência: {frequencia:.2e} Hz")
-  print(f"Comprimento de onda: {comprimento_onda:.2e} m")
-  print(f"Tipo: {tipo_onda}")
-  print(f"Aplicação: {aplicacao}")</code></pre></div>
+comprimento_onda = 3e8 / frequencia  # c = λ×f
+print(f"Frequência: {frequencia:.2e} Hz")
+print(f"Comprimento de onda: {comprimento_onda:.2e} m")
+print(f"Tipo: {tipo_onda}")
+print(f"Aplicação: {aplicacao}")</code></pre></div>
   </div>
 
   <h2 id="s3">3. Loops - repetindo tarefas automaticamente</h2>
@@ -228,25 +228,25 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.5: Loop for - repetições conhecidas</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Calculando fatorial (importante em estatística)
-  n = 5
-  fatorial = 1
+<div class="codigo" data-lingua="Python"><pre><code># Calculando fatorial (importante em estatística)
+n = 5
+fatorial = 1
 
-  print(f"Calculando {n}!")
-  for i in range(1, n + 1):
-      fatorial = fatorial * i
-      print(f"{i}! = {fatorial}")
+print(f"Calculando {n}!")
+for i in range(1, n + 1):
+    fatorial = fatorial * i
+    print(f"{i}! = {fatorial}")
 
-  print(f"Resultado final: {n}! = {fatorial}")
+print(f"Resultado final: {n}! = {fatorial}")
 
-  # Exemplo prático: conversão de temperaturas
-  print("de conversão Celsius → Fahrenheit:")
-  print("Celsius | Fahrenheit")
-  print("-" * 20)
+# Exemplo prático: conversão de temperaturas
+print("de conversão Celsius → Fahrenheit:")
+print("Celsius | Fahrenheit")
+print("-" * 20)
 
-  for celsius in range(0, 101, 10):  # 0°C a 100°C de 10 em 10
-      fahrenheit = celsius * 9/5 + 32
-      print(f"{celsius:7}° | {fahrenheit:10.1f}°")</code></pre></div>
+for celsius in range(0, 101, 10):  # 0°C a 100°C de 10 em 10
+    fahrenheit = celsius * 9/5 + 32
+    print(f"{celsius:7}° | {fahrenheit:10.1f}°")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
@@ -257,23 +257,23 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.6: Loop while - repetições condicionais</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Encontrando quando uma população dobra
-  populacao_inicial = 100
-  populacao_atual = populacao_inicial
-  taxa_crescimento = 1.1  # Cresce 10% por ano
-  anos = 0
+<div class="codigo" data-lingua="Python"><pre><code># Encontrando quando uma população dobra
+populacao_inicial = 100
+populacao_atual = populacao_inicial
+taxa_crescimento = 1.1  # Cresce 10% por ano
+anos = 0
 
-  print(f"População inicial: {populacao_inicial}")
-  print("Crescimento anual: 10%")
-  print()
+print(f"População inicial: {populacao_inicial}")
+print("Crescimento anual: 10%")
+print()
 
-  while populacao_atual &lt; 2 * populacao_inicial:
-      anos += 1
-      populacao_atual = populacao_atual * taxa_crescimento
-      print(f"Ano {anos}: {populacao_atual:.0f} habitantes")
+while populacao_atual &lt; 2 * populacao_inicial:
+    anos += 1
+    populacao_atual = populacao_atual * taxa_crescimento
+    print(f"Ano {anos}: {populacao_atual:.0f} habitantes")
 
-  print(f"ção dobrou em {anos} anos!")
-  print(f"População final: {populacao_atual:.0f} habitantes")</code></pre></div>
+print(f"ção dobrou em {anos} anos!")
+print(f"População final: {populacao_atual:.0f} habitantes")</code></pre></div>
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
@@ -281,30 +281,30 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.7: Controle de fluxo - break e continue</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Busca do primeiro número primo maior que 10
-  numero = 11  # Começamos testando o 11
+<div class="codigo" data-lingua="Python"><pre><code># Busca do primeiro número primo maior que 10
+numero = 11  # Começamos testando o 11
 
-  while True:  # Loop "infinito" - sai com break
-      # Teste se é primo
-      eh_primo = True
-      for divisor in range(2, numero):
-          if numero % divisor == 0:  # Se divide exatamente
-              eh_primo = False
-              break  # Não precisa testar outros divisores
+while True:  # Loop "infinito" - sai com break
+    # Teste se é primo
+    eh_primo = True
+    for divisor in range(2, numero):
+        if numero % divisor == 0:  # Se divide exatamente
+            eh_primo = False
+            break  # Não precisa testar outros divisores
     
-      if eh_primo:
-          print(f"Primeiro primo maior que 10: {numero}")
-          break  # Encontrou - sai do while
+    if eh_primo:
+        print(f"Primeiro primo maior que 10: {numero}")
+        break  # Encontrou - sai do while
     
-      numero += 1  # Tenta o próximo número
+    numero += 1  # Tenta o próximo número
 
-  # Exemplo com continue - números pares de 1 a 20
-  print("úmeros pares de 1 a 20:")
-  for n in range(1, 21):
-      if n % 2 == 1:  # Se for ímpar
-          continue  # Pula para a próxima iteração
-      print(n, end=" ")
-  print()  # Nova linha no final</code></pre></div>
+# Exemplo com continue - números pares de 1 a 20
+print("úmeros pares de 1 a 20:")
+for n in range(1, 21):
+    if n % 2 == 1:  # Se for ímpar
+        continue  # Pula para a próxima iteração
+    print(n, end=" ")
+print()  # Nova linha no final</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
@@ -321,19 +321,19 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.8: Criando tabelas</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Criando uma tabela de multiplicação simples
-  print("Tabela de multiplicação (1 a 5):")
-  print("   ", end="")  # Espaço inicial
-  for j in range(1, 6):
-      print(f"{j:4}", end="")  # Cabeçalho das colunas
-  print()  # Nova linha
+<div class="codigo" data-lingua="Python"><pre><code># Criando uma tabela de multiplicação simples
+print("Tabela de multiplicação (1 a 5):")
+print("   ", end="")  # Espaço inicial
+for j in range(1, 6):
+    print(f"{j:4}", end="")  # Cabeçalho das colunas
+print()  # Nova linha
 
-  for i in range(1, 6):  # Loop externo: linhas
-      print(f"{i}: ", end="")  # Número da linha
-      for j in range(1, 6):  # Loop interno: colunas
-          produto = i * j
-          print(f"{produto:4}", end="")
-      print()  # Nova linha após cada linha da tabela</code></pre></div>
+for i in range(1, 6):  # Loop externo: linhas
+    print(f"{i}: ", end="")  # Número da linha
+    for j in range(1, 6):  # Loop interno: colunas
+        produto = i * j
+        print(f"{produto:4}", end="")
+    print()  # Nova linha após cada linha da tabela</code></pre></div>
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
@@ -344,19 +344,19 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.9: Simulação física simples</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Simulação: temperatura em uma grade 4x4
-  print("Distribuição de temperatura (°C) em uma placa:")
-  print("(Simulação simplificada)")
+<div class="codigo" data-lingua="Python"><pre><code># Simulação: temperatura em uma grade 4x4
+print("Distribuição de temperatura (°C) em uma placa:")
+print("(Simulação simplificada)")
 
-  for linha in range(4):
-      for coluna in range(4):
-          # Temperatura mais alta no centro, menor nas bordas
-          distancia_centro = abs(linha - 1.5) + abs(coluna - 1.5)
-          temperatura = 100 - distancia_centro * 10
-          print(f"{temperatura:5.0f}", end=" ")
-      print()  # Nova linha após cada linha da grade
+for linha in range(4):
+    for coluna in range(4):
+        # Temperatura mais alta no centro, menor nas bordas
+        distancia_centro = abs(linha - 1.5) + abs(coluna - 1.5)
+        temperatura = 100 - distancia_centro * 10
+        print(f"{temperatura:5.0f}", end=" ")
+    print()  # Nova linha após cada linha da grade
 
-  print(": temperatura decresce do centro para as bordas")</code></pre></div>
+print(": temperatura decresce do centro para as bordas")</code></pre></div>
   </div>
 
   <h2 id="s5">5. Aplicações práticas</h2>
@@ -364,51 +364,51 @@
   <p>Vamos combinar tudo que aprendemos em problemas interessantes!</p>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.10: Sequência de Fibonacci</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Gerando a famosa sequência de Fibonacci
-  print("Sequência de Fibonacci:")
-  print("(Cada número é a soma dos dois anteriores)")
+<div class="codigo" data-lingua="Python"><pre><code># Gerando a famosa sequência de Fibonacci
+print("Sequência de Fibonacci:")
+print("(Cada número é a soma dos dois anteriores)")
 
-  # Primeiros dois números
-  a, b = 1, 1
-  print(f"Termo 1: {a}")
-  print(f"Termo 2: {b}")
+# Primeiros dois números
+a, b = 1, 1
+print(f"Termo 1: {a}")
+print(f"Termo 2: {b}")
 
-  # Gerando os próximos 8 termos
-  for i in range(3, 11):
-      proximo = a + b
-      print(f"Termo {i}: {proximo}")
-      a, b = b, proximo  # Atualiza para próxima iteração
+# Gerando os próximos 8 termos
+for i in range(3, 11):
+    proximo = a + b
+    print(f"Termo {i}: {proximo}")
+    a, b = b, proximo  # Atualiza para próxima iteração
 
-  print(f"primeiros 10 números de Fibonacci são:")
-  print("1, 1, 2, 3, 5, 8, 13, 21, 34, 55")</code></pre></div>
+print(f"primeiros 10 números de Fibonacci são:")
+print("1, 1, 2, 3, 5, 8, 13, 21, 34, 55")</code></pre></div>
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.11: Simulação de crescimento populacional</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Simulação: crescimento de bactérias
-  print("Simulação: Crescimento de bactérias")
-  print("Condições: cada bactéria se divide a cada hora")
-  print()
+<div class="codigo" data-lingua="Python"><pre><code># Simulação: crescimento de bactérias
+print("Simulação: Crescimento de bactérias")
+print("Condições: cada bactéria se divide a cada hora")
+print()
 
-  populacao_inicial = 10
-  taxa_crescimento = 2  # Cada bactéria vira 2
-  horas_simulacao = 6
+populacao_inicial = 10
+taxa_crescimento = 2  # Cada bactéria vira 2
+horas_simulacao = 6
 
-  populacao = populacao_inicial
-  print(f"Hora 0: {populacao} bactérias")
+populacao = populacao_inicial
+print(f"Hora 0: {populacao} bactérias")
 
-  for hora in range(1, horas_simulacao + 1):
-      populacao = populacao * taxa_crescimento
-      print(f"Hora {hora}: {populacao} bactérias")
+for hora in range(1, horas_simulacao + 1):
+    populacao = populacao * taxa_crescimento
+    print(f"Hora {hora}: {populacao} bactérias")
     
-      # Evento especial na hora 4
-      if hora == 4:
-          print("   → Antibiótico aplicado! 50% das bactérias morrem")
-          populacao = populacao // 2  # Divisão inteira
-          print(f"   → População após antibiótico: {populacao}")
+    # Evento especial na hora 4
+    if hora == 4:
+        print("   → Antibiótico aplicado! 50% das bactérias morrem")
+        populacao = populacao // 2  # Divisão inteira
+        print(f"   → População após antibiótico: {populacao}")
 
-  print(f"ção final: {populacao} bactérias")
-  crescimento_total = populacao / populacao_inicial
-  print(f"Crescimento total: {crescimento_total:.1f}x")</code></pre></div>
+print(f"ção final: {populacao} bactérias")
+crescimento_total = populacao / populacao_inicial
+print(f"Crescimento total: {crescimento_total:.1f}x")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
@@ -416,39 +416,39 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 13.12: Análise simples de texto</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Analisando características de um texto
-  texto = "A Física é a ciência que estuda a natureza"
+<div class="codigo" data-lingua="Python"><pre><code># Analisando características de um texto
+texto = "A Física é a ciência que estuda a natureza"
 
-  print(f"Texto analisado: '{texto}'")
-  print("-" * 40)
+print(f"Texto analisado: '{texto}'")
+print("-" * 40)
 
-  # Contando caracteres
-  total_caracteres = len(texto)
-  print(f"Total de caracteres: {total_caracteres}")
+# Contando caracteres
+total_caracteres = len(texto)
+print(f"Total de caracteres: {total_caracteres}")
 
-  # Contando espaços
-  espacos = 0
-  for caractere in texto:
-      if caractere == ' ':
-          espacos += 1
+# Contando espaços
+espacos = 0
+for caractere in texto:
+    if caractere == ' ':
+        espacos += 1
 
-  print(f"Número de espaços: {espacos}")
-  print(f"Número de palavras: {espacos + 1}")  # Espaços + 1 = palavras
+print(f"Número de espaços: {espacos}")
+print(f"Número de palavras: {espacos + 1}")  # Espaços + 1 = palavras
 
-  # Contando vogais
-  vogais = "aeiouAEIOU"
-  contador_vogais = 0
-  for caractere in texto:
-      if caractere in vogais:
-          contador_vogais += 1
+# Contando vogais
+vogais = "aeiouAEIOU"
+contador_vogais = 0
+for caractere in texto:
+    if caractere in vogais:
+        contador_vogais += 1
 
-  print(f"Número de vogais: {contador_vogais}")
+print(f"Número de vogais: {contador_vogais}")
 
-  # Mostrando cada palavra
-  palavras = texto.split()  # Divide o texto em palavras
-  print(f"encontradas:")
-  for i, palavra in enumerate(palavras):
-      print(f"{i+1}. {palavra}")</code></pre></div>
+# Mostrando cada palavra
+palavras = texto.split()  # Divide o texto em palavras
+print(f"encontradas:")
+for i, palavra in enumerate(palavras):
+    print(f"{i+1}. {palavra}")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>

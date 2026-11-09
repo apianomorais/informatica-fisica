@@ -143,13 +143,31 @@ def renumera(html, origem):
     return rotulo.sub(troca, html)
 
 
+def indenta(html):
+    """Recua o HTML em dois espaços para encaixar no molde, deixando intactos
+    os blocos <pre>. Dentro de <pre> todo espaço é significativo, e recuar as
+    linhas ali dentro desalinhava a indentação do Python, que é justamente o
+    que a linguagem usa para delimitar blocos."""
+    saida, dentro = [], False
+    for l in html.split('\n'):
+        if '<pre' in l:
+            dentro = True
+        if dentro:
+            saida.append(l)
+        else:
+            saida.append('  ' + l if l.strip() else l)
+        if '</pre>' in l:
+            dentro = False
+    return '\n'.join(saida)
+
+
 def monta():
     feitas = []
     for a in AULAS:
         n = a['numero'] + DESLOCA
         titulo = TITULOS[n]
         corpo = renumera(a['html'], a['numero'])
-        corpo = '\n'.join('  ' + l if l.strip() else l for l in corpo.split('\n'))
+        corpo = indenta(corpo)
         indice = '\n'.join(
             '    <li><a href="#s%d">%d. %s</a></li>' % (i + 1, i + 1, s)
             for i, s in enumerate(a['secoes']))

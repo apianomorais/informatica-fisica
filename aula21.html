@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 21: Matemática simbólica com SymPy | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
-<script src="assets/js/comum.js?v=202611091035"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
+<script src="assets/js/comum.js?v=202611091426"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -78,25 +78,25 @@
   <h2 id="s1">1. Revisão rápida dos desafios</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 21.1: Solução do desafio — Lei de resfriamento de Newton</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
-  from scipy.optimize import curve_fit
+<div class="codigo" data-lingua="Python"><pre><code>import numpy as np
+from scipy.optimize import curve_fit
 
-  t_min = np.array([0, 2, 4, 6, 8, 10, 12, 15, 20])
-  T_C   = np.array([90, 78, 67, 59, 51, 46, 41, 35, 28])
+t_min = np.array([0, 2, 4, 6, 8, 10, 12, 15, 20])
+T_C   = np.array([90, 78, 67, 59, 51, 46, 41, 35, 28])
 
-  def resfriamento(t, T_inf, T0, k):
-      return T_inf + (T0 - T_inf)*np.exp(-k*t)
+def resfriamento(t, T_inf, T0, k):
+    return T_inf + (T0 - T_inf)*np.exp(-k*t)
 
-  popt, pcov = curve_fit(resfriamento, t_min, T_C,
-                         p0=[20, 90, 0.1],
-                         bounds=([0, 0, 0], [50, 150, 5]))
-  T_inf, T0, k = popt
-  erros = np.sqrt(np.diag(pcov))
+popt, pcov = curve_fit(resfriamento, t_min, T_C,
+                       p0=[20, 90, 0.1],
+                       bounds=([0, 0, 0], [50, 150, 5]))
+T_inf, T0, k = popt
+erros = np.sqrt(np.diag(pcov))
 
-  print(f"T_inf = ({T_inf:.1f} +/- {erros[0]:.1f}) graus C")
-  print(f"T_0   = ({T0:.1f}  +/- {erros[1]:.1f}) graus C")
-  print(f"k     = ({k:.4f} +/- {erros[2]:.4f}) 1/min")
-  print(f"tau   = {1/k:.1f} min (constante de tempo)")</code></pre></div>
+print(f"T_inf = ({T_inf:.1f} +/- {erros[0]:.1f}) graus C")
+print(f"T_0   = ({T0:.1f}  +/- {erros[1]:.1f}) graus C")
+print(f"k     = ({k:.4f} +/- {erros[2]:.4f}) 1/min")
+print(f"tau   = {1/k:.1f} min (constante de tempo)")</code></pre></div>
   </div>
 
   <h2 id="s2">2. Numérico vs simbólico</h2>
@@ -115,26 +115,26 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 21.2: Numérico vs simbólico — a diferença fundamental</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
-  import sympy as sp
+<div class="codigo" data-lingua="Python"><pre><code>import numpy as np
+import sympy as sp
 
-  # Numerico: resultado aproximado
-  print("=== NUMERICO (NumPy) ===")
-  print(f"sqrt(2) = {np.sqrt(2):.15f}")
-  print(f"pi      = {np.pi:.15f}")
-  integral_np = np.trapz(np.sin(np.linspace(0, np.pi, 10000)),
-                         np.linspace(0, np.pi, 10000))
-  print(f"integral aprox = {integral_np:.10f}")
+# Numerico: resultado aproximado
+print("=== NUMERICO (NumPy) ===")
+print(f"sqrt(2) = {np.sqrt(2):.15f}")
+print(f"pi      = {np.pi:.15f}")
+integral_np = np.trapz(np.sin(np.linspace(0, np.pi, 10000)),
+                       np.linspace(0, np.pi, 10000))
+print(f"integral aprox = {integral_np:.10f}")
 
-  # Simbolico: resultado exato
-  print("=== SIMBOLICO (SymPy) ===")
-  print(f"sqrt(2) = {sp.sqrt(2)}")           # mostra simbolicamente
-  print(f"sqrt(2) = {float(sp.sqrt(2)):.15f}")  # avalia numericamente
-  print(f"pi      = {sp.pi}")
+# Simbolico: resultado exato
+print("=== SIMBOLICO (SymPy) ===")
+print(f"sqrt(2) = {sp.sqrt(2)}")           # mostra simbolicamente
+print(f"sqrt(2) = {float(sp.sqrt(2)):.15f}")  # avalia numericamente
+print(f"pi      = {sp.pi}")
 
-  x = sp.Symbol("x")
-  integral_sp = sp.integrate(sp.sin(x), (x, 0, sp.pi))
-  print(f"Integral exata de sin(x) de 0 a pi = {integral_sp}")  # 2</code></pre></div>
+x = sp.Symbol("x")
+integral_sp = sp.integrate(sp.sin(x), (x, 0, sp.pi))
+print(f"Integral exata de sin(x) de 0 a pi = {integral_sp}")  # 2</code></pre></div>
   </div>
 
   <h2 id="s3">3. Símbolos e expressões</h2>
@@ -150,180 +150,180 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 21.3: Manipulação algébrica de expressões físicas</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
+<div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
 
-  x, t, omega, gamma = sp.symbols("x t omega gamma", real=True, positive=True)
-  m, k = sp.symbols("m k", positive=True)
+x, t, omega, gamma = sp.symbols("x t omega gamma", real=True, positive=True)
+m, k = sp.symbols("m k", positive=True)
 
-  # Identidade trigonometrica
-  expr = sp.sin(omega*t)**2 + sp.cos(omega*t)**2
-  print(f"sin2 + cos2 = {sp.simplify(expr)}")    # -&gt; 1
+# Identidade trigonometrica
+expr = sp.sin(omega*t)**2 + sp.cos(omega*t)**2
+print(f"sin2 + cos2 = {sp.simplify(expr)}")    # -&gt; 1
 
-  # Expansao e fatoracao
-  poly = (x + 1)**3
-  print(f"(x+1)^3 expandido: {sp.expand(poly)}")
-  print(f"(x+1)^3 fatorado:  {sp.factor(poly)}")
+# Expansao e fatoracao
+poly = (x + 1)**3
+print(f"(x+1)^3 expandido: {sp.expand(poly)}")
+print(f"(x+1)^3 fatorado:  {sp.factor(poly)}")
 
-  # Energia de um oscilador harmonico
-  E_cin = sp.Rational(1, 2) * m * omega**2 * x**2
-  E_pot = sp.Rational(1, 2) * k * x**2
-  E_mec = E_cin + E_pot
-  print(f": E = {sp.collect(E_mec, x**2)}")
+# Energia de um oscilador harmonico
+E_cin = sp.Rational(1, 2) * m * omega**2 * x**2
+E_pot = sp.Rational(1, 2) * k * x**2
+E_mec = E_cin + E_pot
+print(f": E = {sp.collect(E_mec, x**2)}")
 
-  # Substituicao numerica
-  val = E_mec.subs([(m, 2), (omega, 3), (k, 18), (x, 0.5)])
-  print(f"Valor numerico: E = {val} J")</code></pre></div>
+# Substituicao numerica
+val = E_mec.subs([(m, 2), (omega, 3), (k, 18), (x, 0.5)])
+print(f"Valor numerico: E = {val} J")</code></pre></div>
   </div>
 
   <h2 id="s4">4. Derivadas</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 21.4: Cinemática simbólica</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
+<div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
 
-  t, A, omega, phi, g = sp.symbols("t A omega phi g", real=True, positive=True)
-  v0, theta_0 = sp.symbols("v_0 theta_0", positive=True)
+t, A, omega, phi, g = sp.symbols("t A omega phi g", real=True, positive=True)
+v0, theta_0 = sp.symbols("v_0 theta_0", positive=True)
 
-  # --- 1. Movimento Harmonico Simples ---
-  x_MHS = A * sp.cos(omega*t + phi)
-  v_MHS = sp.diff(x_MHS, t)         # 1a derivada
-  a_MHS = sp.diff(x_MHS, t, 2)      # 2a derivada
+# --- 1. Movimento Harmonico Simples ---
+x_MHS = A * sp.cos(omega*t + phi)
+v_MHS = sp.diff(x_MHS, t)         # 1a derivada
+a_MHS = sp.diff(x_MHS, t, 2)      # 2a derivada
 
-  print("=== MHS ===")
-  print(f"x(t) = {x_MHS}")
-  print(f"v(t) = {v_MHS}")
-  print(f"a(t) = {sp.simplify(a_MHS)}")
+print("=== MHS ===")
+print(f"x(t) = {x_MHS}")
+print(f"v(t) = {v_MHS}")
+print(f"a(t) = {sp.simplify(a_MHS)}")
 
-  # Verificando: a = -omega^2 * x ?
-  print(f"a + omega^2*x = {sp.simplify(a_MHS + omega**2 * x_MHS)}")  # 0
+# Verificando: a = -omega^2 * x ?
+print(f"a + omega^2*x = {sp.simplify(a_MHS + omega**2 * x_MHS)}")  # 0
 
-  # --- 2. Lancamento obliquo ---
-  x_proj = v0 * sp.cos(theta_0) * t
-  y_proj = v0 * sp.sin(theta_0) * t - sp.Rational(1, 2)*g*t**2
+# --- 2. Lancamento obliquo ---
+x_proj = v0 * sp.cos(theta_0) * t
+y_proj = v0 * sp.sin(theta_0) * t - sp.Rational(1, 2)*g*t**2
 
-  vy = sp.diff(y_proj, t)
-  ay = sp.diff(y_proj, t, 2)
-  print("=== LANCAMENTO OBLIQUO ===")
-  print(f"y(t)  = {y_proj}")
-  print(f"vy(t) = {vy}")
-  print(f"ay(t) = {ay}")       # deve ser -g
+vy = sp.diff(y_proj, t)
+ay = sp.diff(y_proj, t, 2)
+print("=== LANCAMENTO OBLIQUO ===")
+print(f"y(t)  = {y_proj}")
+print(f"vy(t) = {vy}")
+print(f"ay(t) = {ay}")       # deve ser -g
 
-  # Tempo de voo: resolver y = 0
-  t_voo = sp.solve(y_proj, t)
-  print(f"Tempos em que y=0: {t_voo}")
+# Tempo de voo: resolver y = 0
+t_voo = sp.solve(y_proj, t)
+print(f"Tempos em que y=0: {t_voo}")
 
-  alcance = sp.simplify(x_proj.subs(t, t_voo[1]))
-  print(f"Alcance: R = {alcance}")    # v0^2 * sin(2*theta0) / g</code></pre></div>
+alcance = sp.simplify(x_proj.subs(t, t_voo[1]))
+print(f"Alcance: R = {alcance}")    # v0^2 * sin(2*theta0) / g</code></pre></div>
   </div>
 
   <h2 id="s5">5. Integrais</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 21.5: Integrais exatas importantes em física</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
+<div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
 
-  z, x, r = sp.symbols("z x r", real=True)
-  n        = sp.Symbol("n", nonneg=True, integer=True)
-  k_e, q   = sp.symbols("k_e q")
+z, x, r = sp.symbols("z x r", real=True)
+n        = sp.Symbol("n", nonneg=True, integer=True)
+k_e, q   = sp.symbols("k_e q")
 
-  print("=== INTEGRAIS FUNDAMENTAIS ===")
+print("=== INTEGRAIS FUNDAMENTAIS ===")
 
-  # Integral de Gauss (fundamental em mecanica quantica e estatistica)
-  I_gauss = sp.integrate(sp.exp(-z**2), (z, -sp.oo, sp.oo))
-  print(f"Integral de Gauss: {I_gauss}")   # -&gt; sqrt(pi)
+# Integral de Gauss (fundamental em mecanica quantica e estatistica)
+I_gauss = sp.integrate(sp.exp(-z**2), (z, -sp.oo, sp.oo))
+print(f"Integral de Gauss: {I_gauss}")   # -&gt; sqrt(pi)
 
-  # Funcao Gamma: integral de Euler
-  I_gamma = sp.integrate(x**n * sp.exp(-x), (x, 0, sp.oo))
-  print(f"Integral de Euler: {I_gamma}")   # -&gt; gamma(n+1) = n!
+# Funcao Gamma: integral de Euler
+I_gamma = sp.integrate(x**n * sp.exp(-x), (x, 0, sp.oo))
+print(f"Integral de Euler: {I_gamma}")   # -&gt; gamma(n+1) = n!
 
-  # Campo eletrico a partir do potencial de Coulomb
-  V_coulomb = k_e * q / r
-  E_r = -sp.diff(V_coulomb, r)
-  print(f": V(r) = {V_coulomb}")
-  print(f"Campo:     E(r) = -dV/dr = {E_r}")   # k_e*q / r^2
+# Campo eletrico a partir do potencial de Coulomb
+V_coulomb = k_e * q / r
+E_r = -sp.diff(V_coulomb, r)
+print(f": V(r) = {V_coulomb}")
+print(f"Campo:     E(r) = -dV/dr = {E_r}")   # k_e*q / r^2
 
-  # Integral indefinida (constante de integracao incluida)
-  k_spring = sp.Symbol("k_s", positive=True)
-  U_mola   = sp.integrate(k_spring*x, x)
-  print(f"da mola: U = integral de k*x dx = {U_mola}")</code></pre></div>
+# Integral indefinida (constante de integracao incluida)
+k_spring = sp.Symbol("k_s", positive=True)
+U_mola   = sp.integrate(k_spring*x, x)
+print(f"da mola: U = integral de k*x dx = {U_mola}")</code></pre></div>
   </div>
 
   <h2 id="s6">6. Resolvendo equações</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 21.6: Equações algébricas e transcendentais em física</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
+<div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
 
-  t, v, v0, a_s, g  = sp.symbols("t v v_0 a g", real=True)
-  theta, m, k       = sp.symbols("theta m k", positive=True)
-  omega             = sp.symbols("omega", positive=True)
+t, v, v0, a_s, g  = sp.symbols("t v v_0 a g", real=True)
+theta, m, k       = sp.symbols("theta m k", positive=True)
+omega             = sp.symbols("omega", positive=True)
 
-  # 1. Equacao cinematica: achar t quando v = 0
-  v_t  = v0 + a_s*t
-  t_eq = sp.solve(sp.Eq(v_t, 0), t)
-  print("v = v0 + at = 0  --&gt;  t =", t_eq)   # [-v0/a]
+# 1. Equacao cinematica: achar t quando v = 0
+v_t  = v0 + a_s*t
+t_eq = sp.solve(sp.Eq(v_t, 0), t)
+print("v = v0 + at = 0  --&gt;  t =", t_eq)   # [-v0/a]
 
-  # 2. Angulo otimo de lancamento: maximizar alcance
-  R       = v0**2 * sp.sin(2*theta) / g
-  dR      = sp.diff(R, theta)
-  theta_m = sp.solve(sp.Eq(dR, 0), theta)
-  print(f"dR/dtheta = {sp.simplify(dR)}")
-  print(f"theta_max  = {theta_m}")     # [pi/4]
+# 2. Angulo otimo de lancamento: maximizar alcance
+R       = v0**2 * sp.sin(2*theta) / g
+dR      = sp.diff(R, theta)
+theta_m = sp.solve(sp.Eq(dR, 0), theta)
+print(f"dR/dtheta = {sp.simplify(dR)}")
+print(f"theta_max  = {theta_m}")     # [pi/4]
 
-  # 3. Frequencia natural do oscilador
-  omega_0 = sp.sqrt(k/m)
-  T_0     = 2*sp.pi/omega_0
-  print(f"_0 = {omega_0}")
-  print(f"T_0     = {sp.simplify(T_0)}")
+# 3. Frequencia natural do oscilador
+omega_0 = sp.sqrt(k/m)
+T_0     = 2*sp.pi/omega_0
+print(f"_0 = {omega_0}")
+print(f"T_0     = {sp.simplify(T_0)}")
 
-  # 4. Sistema de equacoes: circuito RC em regime permanente
-  V_R, V_C = sp.symbols("V_R V_C")
-  R_s, C_s, Vs_s = sp.symbols("R C V_s", positive=True)
-  freq_s = sp.Symbol("f", positive=True)
-  Z_C    = 1 / (2*sp.pi*freq_s*C_s*sp.I)
+# 4. Sistema de equacoes: circuito RC em regime permanente
+V_R, V_C = sp.symbols("V_R V_C")
+R_s, C_s, Vs_s = sp.symbols("R C V_s", positive=True)
+freq_s = sp.Symbol("f", positive=True)
+Z_C    = 1 / (2*sp.pi*freq_s*C_s*sp.I)
 
-  sol = sp.solve([
-      sp.Eq(V_R + V_C, Vs_s),
-      sp.Eq(V_R / R_s, V_C / Z_C)
-  ], [V_R, V_C])
-  print(f"no resistor: V_R = {sp.simplify(sol[V_R])}")</code></pre></div>
+sol = sp.solve([
+    sp.Eq(V_R + V_C, Vs_s),
+    sp.Eq(V_R / R_s, V_C / Z_C)
+], [V_R, V_C])
+print(f"no resistor: V_R = {sp.simplify(sol[V_R])}")</code></pre></div>
   </div>
 
   <h2 id="s7">7. Séries de Taylor e limites</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 21.7: Aproximações clássicas da Física via expansão em série</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
-  import numpy as np, matplotlib.pyplot as plt
+<div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
+import numpy as np, matplotlib.pyplot as plt
 
-  x, v, c_sym = sp.symbols("x v c", real=True, positive=True)
-  m_sym       = sp.Symbol("m", positive=True)
+x, v, c_sym = sp.symbols("x v c", real=True, positive=True)
+m_sym       = sp.Symbol("m", positive=True)
 
-  print("=== EXPANSOES DE TAYLOR ===")
+print("=== EXPANSOES DE TAYLOR ===")
 
-  # 1. Fator de Lorentz para v &lt;&lt; c
-  beta   = v/c_sym
-  gamma  = 1/sp.sqrt(1 - beta**2)
-  g_exp  = sp.series(gamma, beta, 0, n=5).removeO()
-  print(f"(beta) = {g_exp}")
-  print("  -&gt; Para v &lt;&lt; c: gamma ~ 1 + beta^2/2 + ...")
+# 1. Fator de Lorentz para v &lt;&lt; c
+beta   = v/c_sym
+gamma  = 1/sp.sqrt(1 - beta**2)
+g_exp  = sp.series(gamma, beta, 0, n=5).removeO()
+print(f"(beta) = {g_exp}")
+print("  -&gt; Para v &lt;&lt; c: gamma ~ 1 + beta^2/2 + ...")
 
-  # 2. Energia relativistica expandida em v/c
-  E_rel  = m_sym*c_sym**2 * 1/sp.sqrt(1 - (v/c_sym)**2)
-  E_exp  = sp.series(E_rel, v, 0, n=5).removeO()
-  print(f"(v) ~ {E_exp}")
-  print("  -&gt; mc^2 + mv^2/2 + ... (repouso + cinetica classica)")
+# 2. Energia relativistica expandida em v/c
+E_rel  = m_sym*c_sym**2 * 1/sp.sqrt(1 - (v/c_sym)**2)
+E_exp  = sp.series(E_rel, v, 0, n=5).removeO()
+print(f"(v) ~ {E_exp}")
+print("  -&gt; mc^2 + mv^2/2 + ... (repouso + cinetica classica)")
 
-  # 3. Visualizacao: sin(x) vs Taylor
-  x_num = np.linspace(-2*np.pi, 2*np.pi, 400)
-  fig, ax = plt.subplots(figsize=(11, 6))
-  ax.plot(x_num, np.sin(x_num), "k-", lw=2.5, label="sin(x) exato")
-  for ordem, cor, ls in [(3,"C1","--"),(5,"C2","-."),(7,"C3",":")]:
-      coefs  = [(-1)**(k) / sp.factorial(2*k+1) for k in range((ordem+1)//2)]
-      Taylor = sum(float(c)*x_num**(2*i+1) for i, c in enumerate(coefs))
-      ax.plot(x_num, Taylor, color=cor, ls=ls, lw=1.5,
-              label=f"Taylor ordem {ordem}")
-  ax.set_ylim(-2, 2); ax.set_xlim(-2*np.pi, 2*np.pi)
-  ax.set_xlabel("x (rad)"); ax.set_ylabel("sin(x)")
-  ax.set_title("Aproximacao de Taylor para sin(x)")
-  ax.legend(); ax.axhline(0, color="k", lw=0.5); ax.grid(True, alpha=0.3)
-  plt.tight_layout(); plt.show()</code></pre></div>
+# 3. Visualizacao: sin(x) vs Taylor
+x_num = np.linspace(-2*np.pi, 2*np.pi, 400)
+fig, ax = plt.subplots(figsize=(11, 6))
+ax.plot(x_num, np.sin(x_num), "k-", lw=2.5, label="sin(x) exato")
+for ordem, cor, ls in [(3,"C1","--"),(5,"C2","-."),(7,"C3",":")]:
+    coefs  = [(-1)**(k) / sp.factorial(2*k+1) for k in range((ordem+1)//2)]
+    Taylor = sum(float(c)*x_num**(2*i+1) for i, c in enumerate(coefs))
+    ax.plot(x_num, Taylor, color=cor, ls=ls, lw=1.5,
+            label=f"Taylor ordem {ordem}")
+ax.set_ylim(-2, 2); ax.set_xlim(-2*np.pi, 2*np.pi)
+ax.set_xlabel("x (rad)"); ax.set_ylabel("sin(x)")
+ax.set_title("Aproximacao de Taylor para sin(x)")
+ax.legend(); ax.axhline(0, color="k", lw=0.5); ax.grid(True, alpha=0.3)
+plt.tight_layout(); plt.show()</code></pre></div>
   </div>
 
   <h2 id="s8">8. Da expressão simbólica à função numérica</h2>
@@ -332,9 +332,9 @@
   Converte uma expressão simbólica em função Python eficiente, compatível
   com arrays NumPy:
 
-  <div class="codigo" data-lingua="Python"><pre><code>f_sym = sp.sin(x)**2 / x               # expressao simbolica
-  f_num = sp.lambdify(x, f_sym, "numpy") # funcao numerica
-  y     = f_num(np.linspace(0.1, 10, 100))</code></pre></div>
+<div class="codigo" data-lingua="Python"><pre><code>f_sym = sp.sin(x)**2 / x               # expressao simbolica
+f_num = sp.lambdify(x, f_sym, "numpy") # funcao numerica
+y     = f_num(np.linspace(0.1, 10, 100))</code></pre></div>
 
   <strong>Fluxo de trabalho típico:</strong>
 
@@ -343,84 +343,84 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 21.8: Potencial de Lennard-Jones — SymPy + NumPy + Matplotlib</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
-  import numpy as np, matplotlib.pyplot as plt
+<div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
+import numpy as np, matplotlib.pyplot as plt
 
-  r, eps, sig = sp.symbols("r epsilon sigma", positive=True)
+r, eps, sig = sp.symbols("r epsilon sigma", positive=True)
 
-  # Potencial de Lennard-Jones
-  V_LJ = 4*eps * ((sig/r)**12 - (sig/r)**6)
+# Potencial de Lennard-Jones
+V_LJ = 4*eps * ((sig/r)**12 - (sig/r)**6)
 
-  # Forca: F = -dV/dr
-  F_LJ = sp.simplify(-sp.diff(V_LJ, r))
-  print("V(r) =", V_LJ)
-  print("F(r) =", F_LJ)
+# Forca: F = -dV/dr
+F_LJ = sp.simplify(-sp.diff(V_LJ, r))
+print("V(r) =", V_LJ)
+print("F(r) =", F_LJ)
 
-  # Posicao de equilibrio: F = 0
-  r_eq = sp.solve(F_LJ, r)
-  print(f"Equilibrio: r_eq = {r_eq}")    # 2^(1/6) * sigma
+# Posicao de equilibrio: F = 0
+r_eq = sp.solve(F_LJ, r)
+print(f"Equilibrio: r_eq = {r_eq}")    # 2^(1/6) * sigma
 
-  # Converter para funcoes numericas (unidades reduzidas: eps=1, sig=1)
-  params = {eps: 1.0, sig: 1.0}
-  V_num  = sp.lambdify(r, V_LJ.subs(params), "numpy")
-  F_num  = sp.lambdify(r, F_LJ.subs(params), "numpy")
-  r_eq_v = float(r_eq[0].subs(params))
+# Converter para funcoes numericas (unidades reduzidas: eps=1, sig=1)
+params = {eps: 1.0, sig: 1.0}
+V_num  = sp.lambdify(r, V_LJ.subs(params), "numpy")
+F_num  = sp.lambdify(r, F_LJ.subs(params), "numpy")
+r_eq_v = float(r_eq[0].subs(params))
 
-  r_arr = np.linspace(0.85, 3.5, 400)
+r_arr = np.linspace(0.85, 3.5, 400)
 
-  fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 5))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 5))
 
-  ax1.plot(r_arr, V_num(r_arr), "b-", lw=2)
-  ax1.axhline(0, color="k", lw=0.5)
-  ax1.axhline(-1, color="r", ls="--", lw=1, label="V_min = -epsilon")
-  ax1.axvline(r_eq_v, color="g", ls="--", lw=1.5,
-              label=f"r_eq = 2^(1/6) sigma = {r_eq_v:.3f}")
-  ax1.set_ylim(-1.5, 2); ax1.set_xlabel("r / sigma")
-  ax1.set_ylabel("V(r) / epsilon"); ax1.set_title("Potencial LJ")
-  ax1.legend(); ax1.grid(True, alpha=0.3)
+ax1.plot(r_arr, V_num(r_arr), "b-", lw=2)
+ax1.axhline(0, color="k", lw=0.5)
+ax1.axhline(-1, color="r", ls="--", lw=1, label="V_min = -epsilon")
+ax1.axvline(r_eq_v, color="g", ls="--", lw=1.5,
+            label=f"r_eq = 2^(1/6) sigma = {r_eq_v:.3f}")
+ax1.set_ylim(-1.5, 2); ax1.set_xlabel("r / sigma")
+ax1.set_ylabel("V(r) / epsilon"); ax1.set_title("Potencial LJ")
+ax1.legend(); ax1.grid(True, alpha=0.3)
 
-  ax2.plot(r_arr, F_num(r_arr), "r-", lw=2)
-  ax2.axhline(0, color="k", lw=0.5); ax2.set_ylim(-5, 5)
-  ax2.set_xlabel("r / sigma"); ax2.set_ylabel("F(r)")
-  ax2.set_title("Forca LJ"); ax2.grid(True, alpha=0.3)
+ax2.plot(r_arr, F_num(r_arr), "r-", lw=2)
+ax2.axhline(0, color="k", lw=0.5); ax2.set_ylim(-5, 5)
+ax2.set_xlabel("r / sigma"); ax2.set_ylabel("F(r)")
+ax2.set_title("Forca LJ"); ax2.grid(True, alpha=0.3)
 
-  plt.tight_layout(); plt.show()</code></pre></div>
+plt.tight_layout(); plt.show()</code></pre></div>
   </div>
 
   <h2 id="s9">9. Saída automática em LaTeX</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 21.9: SymPy gerando código LaTeX\ para relatórios</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
+<div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
 
-  t, A, omega, phi = sp.symbols("t A omega phi", real=True)
-  hbar, x_s        = sp.symbols(r"x", positive=True)
+t, A, omega, phi = sp.symbols("t A omega phi", real=True)
+hbar, x_s        = sp.symbols(r"x", positive=True)
 
-  expressoes = {
-      "Oscilador amortecido":
-          A * sp.exp(-phi*t) * sp.cos(omega*t),
-      "Integral de Gauss":
-          sp.Integral(sp.exp(-t**2), (t, -sp.oo, sp.oo)),
-      "Serie de Taylor e^x":
-          sp.series(sp.exp(t), t, 0, n=5).removeO(),
-      "Equacao de Euler":
-          sp.exp(sp.I*sp.pi) + 1,
-  }
+expressoes = {
+    "Oscilador amortecido":
+        A * sp.exp(-phi*t) * sp.cos(omega*t),
+    "Integral de Gauss":
+        sp.Integral(sp.exp(-t**2), (t, -sp.oo, sp.oo)),
+    "Serie de Taylor e^x":
+        sp.series(sp.exp(t), t, 0, n=5).removeO(),
+    "Equacao de Euler":
+        sp.exp(sp.I*sp.pi) + 1,
+}
 
-  print("=== SAIDA LaTeX AUTOMATICA ===")
-  for nome, expr in expressoes.items():
-      print(f"{nome}:")
-      print(f"  Expressao : {expr}")
-      print(f"  LaTeX     : ${sp.latex(expr)}$")
-      print()
+print("=== SAIDA LaTeX AUTOMATICA ===")
+for nome, expr in expressoes.items():
+    print(f"{nome}:")
+    print(f"  Expressao : {expr}")
+    print(f"  LaTeX     : ${sp.latex(expr)}$")
+    print()
 
-  # pretty_print — visualizacao bonita no terminal
-  print("Identidade de Euler (pretty_print):")
-  sp.pprint(sp.Eq(sp.exp(sp.I*sp.pi) + 1, 0), use_unicode=True)
+# pretty_print — visualizacao bonita no terminal
+print("Identidade de Euler (pretty_print):")
+sp.pprint(sp.Eq(sp.exp(sp.I*sp.pi) + 1, 0), use_unicode=True)
 
-  # Calculando e exibindo em LaTeX
-  integral = sp.integrate(sp.exp(-t**2), (t, -sp.oo, sp.oo))
-  print(f": {sp.latex(integral)}")
-  print(f"Valor: {integral}")</code></pre></div>
+# Calculando e exibindo em LaTeX
+integral = sp.integrate(sp.exp(-t**2), (t, -sp.oo, sp.oo))
+print(f": {sp.latex(integral)}")
+print(f"Valor: {integral}")</code></pre></div>
   </div>
 
   <h2 id="s10">10. Desafios para casa</h2>

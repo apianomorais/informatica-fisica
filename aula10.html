@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 10: Introdução ao Python e ao Spyder | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
-<script src="assets/js/comum.js?v=202611091035"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
+<script src="assets/js/comum.js?v=202611091426"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -120,36 +120,36 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 10.1: Primeiro programa</span>
-  <div class="codigo" data-lingua="Python"><pre><code>print("Olá, Física!")
-  print("Meu nome é Maria")
-  print("Bem-vindos aos Métodos Numéricos!")
+<div class="codigo" data-lingua="Python"><pre><code>print("Olá, Física!")
+print("Meu nome é Maria")
+print("Bem-vindos aos Métodos Numéricos!")
 
-  # Combinando parametros
-  print("Python", "é", "incrível", sep="-", end="!")
-  # Saída: Python-é-incrível!</code></pre></div>
+# Combinando parametros
+print("Python", "é", "incrível", sep="-", end="!")
+# Saída: Python-é-incrível!</code></pre></div>
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 10.2: Python como calculadora científica</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Operações básicas - teste no console primeiro!
-  soma = 5 + 3
-  produto = 4 * 7
-  divisao = 15 / 4
-  potencia = 2**10
+<div class="codigo" data-lingua="Python"><pre><code># Operações básicas - teste no console primeiro!
+soma = 5 + 3
+produto = 4 * 7
+divisao = 15 / 4
+potencia = 2**10
 
-  print(f"5 + 3 = {soma}")
-  print(f"4 x 7 = {produto}")
-  print(f"15 / 4 = {divisao}")
-  print(f"2^10 = {potencia}")
+print(f"5 + 3 = {soma}")
+print(f"4 x 7 = {produto}")
+print(f"15 / 4 = {divisao}")
+print(f"2^10 = {potencia}")
 
-  # Agora vamos usar funções matemáticas
-  import math
-  raiz = math.sqrt(16)
-  seno = math.sin(math.pi/2)
-  logaritmo = math.log10(100)
+# Agora vamos usar funções matemáticas
+import math
+raiz = math.sqrt(16)
+seno = math.sin(math.pi/2)
+logaritmo = math.log10(100)
 
-  print(f"sqrt(16) = {raiz}")
-  print(f"sen(pi/2) = {seno}")
-  print(f"log10(100) = {logaritmo}")</code></pre></div>
+print(f"sqrt(16) = {raiz}")
+print(f"sen(pi/2) = {seno}")
+print(f"log10(100) = {logaritmo}")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Bibliotecas em Python e o módulo <code>math</code></strong></span>
@@ -164,22 +164,22 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 10.3: Cálculos matemáticos básicos</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import math
+<div class="codigo" data-lingua="Python"><pre><code>import math
 
-  # Cálculo de hipotenusa pelo Teorema de Pitágoras
-  cateto_a = 3
-  cateto_b = 4
-  hipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)
-  print(f"Hipotenusa: {hipotenusa:.2f}")  # 5.00
+# Cálculo de hipotenusa pelo Teorema de Pitágoras
+cateto_a = 3
+cateto_b = 4
+hipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)
+print(f"Hipotenusa: {hipotenusa:.2f}")  # 5.00
 
-  # Conversão graus para radianos
-  angulo_graus = 30
-  angulo_rad = math.radians(angulo_graus)
-  print(f"Seno de 30°: {math.sin(angulo_rad):.3f}")  # 0.500
+# Conversão graus para radianos
+angulo_graus = 30
+angulo_rad = math.radians(angulo_graus)
+print(f"Seno de 30°: {math.sin(angulo_rad):.3f}")  # 0.500
 
-  # Cálculo logarítmico
-  ph = -math.log10(2.5e-4)
-  print(f"pH da solução: {ph:.1f}")  # 3.6</code></pre></div>
+# Cálculo logarítmico
+ph = -math.log10(2.5e-4)
+print(f"pH da solução: {ph:.1f}")  # 3.6</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Funções Matemáticas em Python (<code>math</code>)</strong></span>
@@ -221,18 +221,18 @@
   <p>Agora vamos resolver problemas reais de Física. Execute cada código e observe o Variable Explorer!</p>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 10.4: As constantes que governam o universo</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Constantes físicas fundamentais - decorar não precisa, 
-  # mas entender é fundamental!
-  c = 299792458  # velocidade da luz (m/s)
-  h = 6.62607015e-34  # constante de Planck (J.s)
-  e = 1.602176634e-19  # carga elementar (C)
-  k_B = 1.380649e-23  # constante de Boltzmann (J/K)
+<div class="codigo" data-lingua="Python"><pre><code># Constantes físicas fundamentais - decorar não precisa, 
+# mas entender é fundamental!
+c = 299792458  # velocidade da luz (m/s)
+h = 6.62607015e-34  # constante de Planck (J.s)
+e = 1.602176634e-19  # carga elementar (C)
+k_B = 1.380649e-23  # constante de Boltzmann (J/K)
 
-  print("=== CONSTANTES FÍSICAS FUNDAMENTAIS ===")
-  print(f"Velocidade da luz: {c:e} m/s")
-  print(f"Constante de Planck: {h:e} J*s")
-  print(f"Carga elementar: {e:e} C")
-  print(f"Constante de Boltzmann: {k_B:e} J/K")</code></pre></div>
+print("=== CONSTANTES FÍSICAS FUNDAMENTAIS ===")
+print(f"Velocidade da luz: {c:e} m/s")
+print(f"Constante de Planck: {h:e} J*s")
+print(f"Carga elementar: {e:e} C")
+print(f"Constante de Boltzmann: {k_B:e} J/K")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Temperatura na Física: Conceitos Fundamentais</strong></span>
@@ -255,25 +255,25 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 10.5: Conversões de temperatura</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Todo físico precisa dominar conversões de temperatura
-  temp_celsius = 25  # temperatura ambiente em Juazeiro do Norte
-  temp_kelvin = temp_celsius + 273.15
+<div class="codigo" data-lingua="Python"><pre><code># Todo físico precisa dominar conversões de temperatura
+temp_celsius = 25  # temperatura ambiente em Juazeiro do Norte
+temp_kelvin = temp_celsius + 273.15
 
-  print(f"Temperatura ambiente: {temp_celsius}°C = {temp_kelvin} K")
+print(f"Temperatura ambiente: {temp_celsius}°C = {temp_kelvin} K")
 
-  # Outras conversões importantes
-  temp_fahrenheit = temp_celsius * 9/5 + 32
-  print(f"Em Fahrenheit: {temp_fahrenheit}°F")
+# Outras conversões importantes
+temp_fahrenheit = temp_celsius * 9/5 + 32
+print(f"Em Fahrenheit: {temp_fahrenheit}°F")
 
-  # Zero absoluto
-  zero_absoluto_C = -273.15
-  zero_absoluto_F = zero_absoluto_C * 9/5 + 32
-  print(f"Zero absoluto: {zero_absoluto_C}°C = {zero_absoluto_F}°F")
+# Zero absoluto
+zero_absoluto_C = -273.15
+zero_absoluto_F = zero_absoluto_C * 9/5 + 32
+print(f"Zero absoluto: {zero_absoluto_C}°C = {zero_absoluto_F}°F")
 
-  # Ponto de ebulição da água
-  ebulicao_C = 100
-  ebulicao_K = ebulicao_C + 273.15
-  print(f"Ebulição da água: {ebulicao_C}°C = {ebulicao_K} K")</code></pre></div>
+# Ponto de ebulição da água
+ebulicao_C = 100
+ebulicao_K = ebulicao_C + 273.15
+print(f"Ebulição da água: {ebulicao_C}°C = {ebulicao_K} K")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas</strong></span>
@@ -300,24 +300,24 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 10.6: A famosa \(E=mc^2\) na prática</span>
-  <div class="codigo" data-lingua="Python"><pre><code># A equação mais famosa da Física!
-  c = 299792458  # velocidade da luz (m/s)
-  m_eletron = 9.10938356e-31  # massa do elétron (kg)
+<div class="codigo" data-lingua="Python"><pre><code># A equação mais famosa da Física!
+c = 299792458  # velocidade da luz (m/s)
+m_eletron = 9.10938356e-31  # massa do elétron (kg)
 
-  # Energia de repouso do elétron
-  E_eletron = m_eletron * c**2
-  print(f"Energia de repouso do elétron: {E_eletron:e} J")
+# Energia de repouso do elétron
+E_eletron = m_eletron * c**2
+print(f"Energia de repouso do elétron: {E_eletron:e} J")
 
-  # Vamos converter para uma unidade mais familiar: eV
-  eV = 1.602176634e-19  # 1 eV em Joules
-  E_eletron_eV = E_eletron / eV
-  print(f"Em elétron-volts: {E_eletron_eV/1e6:.3f} MeV")
+# Vamos converter para uma unidade mais familiar: eV
+eV = 1.602176634e-19  # 1 eV em Joules
+E_eletron_eV = E_eletron / eV
+print(f"Em elétron-volts: {E_eletron_eV/1e6:.3f} MeV")
 
-  # Quanto de energia tem em 1 grama de matéria?
-  m_grama = 1e-3  # kg
-  E_grama = m_grama * c**2
-  print(f"Energia em 1g de matéria: {E_grama/1e15:.1f} PJ")
-  print("Isso equivale à energia de 17 bombas de Hiroshima!")</code></pre></div>
+# Quanto de energia tem em 1 grama de matéria?
+m_grama = 1e-3  # kg
+E_grama = m_grama * c**2
+print(f"Energia em 1g de matéria: {E_grama/1e15:.1f} PJ")
+print("Isso equivale à energia de 17 bombas de Hiroshima!")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Contexto Histórico e Aplicações</strong></span>

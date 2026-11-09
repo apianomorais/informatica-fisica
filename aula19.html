@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 19: Análise de dados com Pandas | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
-<script src="assets/js/comum.js?v=202611091035"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
+<script src="assets/js/comum.js?v=202611091426"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -78,53 +78,53 @@
   <h2 id="s1">1. Revisão rápida dos desafios</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 19.1: Soluções dos desafios da Aula 18</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
-  import csv
+<div class="codigo" data-lingua="Python"><pre><code>import numpy as np
+import csv
 
-  # Desafio 1: Diário de temperaturas interativo
-  medicoes = []
-  while True:
-      entrada = input("Temperatura (graus C) [ou 'fim']: ")
-      if entrada.lower() == "fim":
-          break
-      try:
-          medicoes.append(float(entrada))
-      except ValueError:
-          print("  Valor invalido. Use ponto decimal.")
+# Desafio 1: Diário de temperaturas interativo
+medicoes = []
+while True:
+    entrada = input("Temperatura (graus C) [ou 'fim']: ")
+    if entrada.lower() == "fim":
+        break
+    try:
+        medicoes.append(float(entrada))
+    except ValueError:
+        print("  Valor invalido. Use ponto decimal.")
 
-  if medicoes:
-      with open("diario.csv", "w", newline="", encoding="utf-8") as f:
-          csv.writer(f).writerows(
-              [["medicao", "celsius", "kelvin"]] +
-              [[i+1, t, t+273.15] for i, t in enumerate(medicoes)]
-          )
-      arr = np.array(medicoes)
-      print(f"Salvo! Media={arr.mean():.2f} Min={arr.min():.2f} Max={arr.max():.2f}")
+if medicoes:
+    with open("diario.csv", "w", newline="", encoding="utf-8") as f:
+        csv.writer(f).writerows(
+            [["medicao", "celsius", "kelvin"]] +
+            [[i+1, t, t+273.15] for i, t in enumerate(medicoes)]
+        )
+    arr = np.array(medicoes)
+    print(f"Salvo! Media={arr.mean():.2f} Min={arr.min():.2f} Max={arr.max():.2f}")
 
-  # Desafio 2: Pipeline completo (calculadora de energia)
-  def pipeline_energia():
-      m = float(input("Massa (kg): "))
-      v = float(input("Velocidade (m/s): "))
-      h = float(input("Altura (m): "))
-      g = 9.81
-      Ec = 0.5 * m * v**2
-      Ep = m * g * h
-      Em = Ec + Ep
+# Desafio 2: Pipeline completo (calculadora de energia)
+def pipeline_energia():
+    m = float(input("Massa (kg): "))
+    v = float(input("Velocidade (m/s): "))
+    h = float(input("Altura (m): "))
+    g = 9.81
+    Ec = 0.5 * m * v**2
+    Ep = m * g * h
+    Em = Ec + Ep
 
-      with open("energia.txt", "w", encoding="utf-8") as f:
-          f.write("# Analise de Energia Mecanica")
-          f.write(f"# massa={m} kg  velocidade={v} m/s  altura={h} m")
-          f.write("Ec_J  Ep_J  Em_J")
-          f.write(f"{Ec:.4f}  {Ep:.4f}  {Em:.4f}")
+    with open("energia.txt", "w", encoding="utf-8") as f:
+        f.write("# Analise de Energia Mecanica")
+        f.write(f"# massa={m} kg  velocidade={v} m/s  altura={h} m")
+        f.write("Ec_J  Ep_J  Em_J")
+        f.write(f"{Ec:.4f}  {Ep:.4f}  {Em:.4f}")
 
-      print(f"{'Grandeza':20s} {'Valor (J)':&gt;12s}")
-      print("-" * 33)
-      for nome, val in [("Energia cinetica", Ec),
-                        ("Energia potencial", Ep),
-                        ("Energia mecanica", Em)]:
-          print(f"{nome:20s} {val:&gt;12.4f}")
+    print(f"{'Grandeza':20s} {'Valor (J)':&gt;12s}")
+    print("-" * 33)
+    for nome, val in [("Energia cinetica", Ec),
+                      ("Energia potencial", Ep),
+                      ("Energia mecanica", Em)]:
+        print(f"{nome:20s} {val:&gt;12.4f}")
 
-  pipeline_energia()</code></pre></div>
+pipeline_energia()</code></pre></div>
   </div>
 
   <h2 id="s2">2. Por que Pandas?</h2>
@@ -138,28 +138,28 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 19.2: Por que Pandas em vez de NumPy para dados tabulares?</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
-  import pandas as pd
+<div class="codigo" data-lingua="Python"><pre><code>import numpy as np
+import pandas as pd
 
-  # Com NumPy: colunas sao acessadas por indice numerico
-  dados_np = np.array([
-      [1.0, 25.3, 101.2],
-      [2.0, 26.1, 100.9],
-      [3.0, 24.8, 101.5],
-  ])
-  print("NumPy - temperatura (coluna 1):", dados_np[:, 1])
+# Com NumPy: colunas sao acessadas por indice numerico
+dados_np = np.array([
+    [1.0, 25.3, 101.2],
+    [2.0, 26.1, 100.9],
+    [3.0, 24.8, 101.5],
+])
+print("NumPy - temperatura (coluna 1):", dados_np[:, 1])
 
-  # Com Pandas: colunas tem nomes; tipos mistos sao ok
-  dados_pd = pd.DataFrame({
-      "experimento":    [1, 2, 3],
-      "temperatura_C":  [25.3, 26.1, 24.8],
-      "pressao_hPa":    [101.2, 100.9, 101.5],
-      "valido":         [True, True, False],       # booleano
-      "local":          ["Lab A", "Lab A", "Lab B"], # texto
-  })
-  print("- temperatura:")
-  print(dados_pd["temperatura_C"])
-  print(f": {dados_pd['temperatura_C'].mean():.2f} graus C")</code></pre></div>
+# Com Pandas: colunas tem nomes; tipos mistos sao ok
+dados_pd = pd.DataFrame({
+    "experimento":    [1, 2, 3],
+    "temperatura_C":  [25.3, 26.1, 24.8],
+    "pressao_hPa":    [101.2, 100.9, 101.5],
+    "valido":         [True, True, False],       # booleano
+    "local":          ["Lab A", "Lab A", "Lab B"], # texto
+})
+print("- temperatura:")
+print(dados_pd["temperatura_C"])
+print(f": {dados_pd['temperatura_C'].mean():.2f} graus C")</code></pre></div>
   </div>
 
   <h2 id="s3">3. Series e DataFrame</h2>
@@ -182,57 +182,57 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 19.3: Criando Series e DataFrames</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
-  import numpy as np
+<div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
+import numpy as np
 
-  # --- Series ---
-  massas = pd.Series(
-      [1.008, 4.003, 6.941, 9.012, 10.811],
-      index=["H", "He", "Li", "Be", "B"],
-      name="massa_atomica_u"
-  )
-  print("Series de massas atomicas:")
-  print(massas)
-  print(f"do Litio: {massas['Li']} u")
-  print(f"Elementos mais pesados que 5 u:{massas[massas &gt; 5]}")
+# --- Series ---
+massas = pd.Series(
+    [1.008, 4.003, 6.941, 9.012, 10.811],
+    index=["H", "He", "Li", "Be", "B"],
+    name="massa_atomica_u"
+)
+print("Series de massas atomicas:")
+print(massas)
+print(f"do Litio: {massas['Li']} u")
+print(f"Elementos mais pesados que 5 u:{massas[massas &gt; 5]}")
 
-  # --- DataFrame a partir de dicionario ---
-  tabela = pd.DataFrame({
-      "simbolo": ["H",  "He", "Li",     "Be",      "B"],
-      "nome":    ["Hidrogenio","Helio","Litio","Berilio","Boro"],
-      "Z":       [1, 2, 3, 4, 5],
-      "massa_u": [1.008, 4.003, 6.941, 9.012, 10.811],
-      "periodo": [1, 1, 2, 2, 2],
-  })
-  print("- tabela periodica parcial:")
-  print(tabela)
-  print(f": {tabela.shape}")
-  print(f"Colunas: {list(tabela.columns)}")</code></pre></div>
+# --- DataFrame a partir de dicionario ---
+tabela = pd.DataFrame({
+    "simbolo": ["H",  "He", "Li",     "Be",      "B"],
+    "nome":    ["Hidrogenio","Helio","Litio","Berilio","Boro"],
+    "Z":       [1, 2, 3, 4, 5],
+    "massa_u": [1.008, 4.003, 6.941, 9.012, 10.811],
+    "periodo": [1, 1, 2, 2, 2],
+})
+print("- tabela periodica parcial:")
+print(tabela)
+print(f": {tabela.shape}")
+print(f"Colunas: {list(tabela.columns)}")</code></pre></div>
   </div>
 
   <h2 id="s4">4. Carregando dados experimentais</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 19.4: Lendo CSV</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
-  import numpy as np
+<div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
+import numpy as np
 
-  # Criando um arquivo de exemplo
-  np.random.seed(42)
-  t = np.linspace(0, 10, 50)
-  x = 5*t + 0.5*9.81*t**2 + np.random.normal(0, 0.5, 50)
-  v = 5 + 9.81*t + np.random.normal(0, 0.2, 50)
+# Criando um arquivo de exemplo
+np.random.seed(42)
+t = np.linspace(0, 10, 50)
+x = 5*t + 0.5*9.81*t**2 + np.random.normal(0, 0.5, 50)
+v = 5 + 9.81*t + np.random.normal(0, 0.2, 50)
 
-  pd.DataFrame({"tempo_s": t, "posicao_m": x, "velocidade_ms": v}).to_csv(
-      "cinematica.csv", index=False, float_format="%.4f"
-  )
+pd.DataFrame({"tempo_s": t, "posicao_m": x, "velocidade_ms": v}).to_csv(
+    "cinematica.csv", index=False, float_format="%.4f"
+)
 
-  # Carregando
-  df = pd.read_csv("cinematica.csv")
-  print(f"Arquivo carregado: {df.shape[0]} linhas x {df.shape[1]} colunas")
-  print("5 linhas:")
-  print(df.head())
-  print("3 linhas:")
-  print(df.tail(3))</code></pre></div>
+# Carregando
+df = pd.read_csv("cinematica.csv")
+print(f"Arquivo carregado: {df.shape[0]} linhas x {df.shape[1]} colunas")
+print("5 linhas:")
+print(df.head())
+print("3 linhas:")
+print(df.tail(3))</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Parâmetros úteis de <code>pd.read_csv()</code></strong></span>
@@ -244,21 +244,21 @@
   <h2 id="s5">5. Explorando o DataFrame</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 19.5: Funções de exploração essenciais</span>
-  <div class="codigo" data-lingua="Python"><pre><code>print("=== EXPLORACAO DO DATASET ===")
+<div class="codigo" data-lingua="Python"><pre><code>print("=== EXPLORACAO DO DATASET ===")
 
-  # Informacoes gerais (tipos, memoria)
-  df.info()
+# Informacoes gerais (tipos, memoria)
+df.info()
 
-  # Estatisticas descritivas automaticas
-  print(":")
-  print(df.describe().round(3))
+# Estatisticas descritivas automaticas
+print(":")
+print(df.describe().round(3))
 
-  # Dados faltantes
-  print(f"faltantes: {df.isnull().sum().sum()}")
+# Dados faltantes
+print(f"faltantes: {df.isnull().sum().sum()}")
 
-  # Amostra aleatoria
-  print("aleatoria (3 linhas):")
-  print(df.sample(3, random_state=42))</code></pre></div>
+# Amostra aleatoria
+print("aleatoria (3 linhas):")
+print(df.sample(3, random_state=42))</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo"><strong>Funções de exploração rápida</strong></span>
@@ -280,83 +280,83 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 19.6: Indexação e filtros booleanos</span>
-  <div class="codigo" data-lingua="Python"><pre><code># iloc: posicional (como NumPy)
-  print("Primeiras 3 linhas, colunas 0 e 2:")
-  print(df.iloc[:3, [0, 2]])
+<div class="codigo" data-lingua="Python"><pre><code># iloc: posicional (como NumPy)
+print("Primeiras 3 linhas, colunas 0 e 2:")
+print(df.iloc[:3, [0, 2]])
 
-  # loc: por rotulo
-  print("'tempo_s' e 'velocidade_ms', linhas 0-4:")
-  print(df.loc[:4, ["tempo_s", "velocidade_ms"]])
+# loc: por rotulo
+print("'tempo_s' e 'velocidade_ms', linhas 0-4:")
+print(df.loc[:4, ["tempo_s", "velocidade_ms"]])
 
-  # Filtros booleanos
-  fase_rapida = df[df["velocidade_ms"] &gt; 50]
-  print(f"com v &gt; 50 m/s: {len(fase_rapida)}")
+# Filtros booleanos
+fase_rapida = df[df["velocidade_ms"] &gt; 50]
+print(f"com v &gt; 50 m/s: {len(fase_rapida)}")
 
-  # Multiplas condicoes com &amp; e |
-  janela = df[(df["tempo_s"] &gt;= 3) &amp; (df["tempo_s"] &lt;= 6)]
-  print(f"Janela 3-6 s: {len(janela)} pontos")
+# Multiplas condicoes com &amp; e |
+janela = df[(df["tempo_s"] &gt;= 3) &amp; (df["tempo_s"] &lt;= 6)]
+print(f"Janela 3-6 s: {len(janela)} pontos")
 
-  # query(): sintaxe mais legivel
-  rapidos = df.query("velocidade_ms &gt; 80 and posicao_m &gt; 300")
-  print(f"v &gt; 80 e x &gt; 300: {len(rapidos)} pontos")</code></pre></div>
+# query(): sintaxe mais legivel
+rapidos = df.query("velocidade_ms &gt; 80 and posicao_m &gt; 300")
+print(f"v &gt; 80 e x &gt; 300: {len(rapidos)} pontos")</code></pre></div>
   </div>
 
   <h2 id="s7">7. Transformando dados</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 19.7: Adicionando colunas e aplicando funções</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Coluna calculada
-  df["energia_cinetica_J"] = 0.5 * 1.0 * df["velocidade_ms"]**2
+<div class="codigo" data-lingua="Python"><pre><code># Coluna calculada
+df["energia_cinetica_J"] = 0.5 * 1.0 * df["velocidade_ms"]**2
 
-  # apply(): aplica funcao elemento a elemento
-  def classificar_fase(v):
-      if   v &lt; 20: return "inicial"
-      elif v &lt; 60: return "aceleracao"
-      else:        return "alta velocidade"
+# apply(): aplica funcao elemento a elemento
+def classificar_fase(v):
+    if   v &lt; 20: return "inicial"
+    elif v &lt; 60: return "aceleracao"
+    else:        return "alta velocidade"
 
-  df["fase"] = df["velocidade_ms"].apply(classificar_fase)
+df["fase"] = df["velocidade_ms"].apply(classificar_fase)
 
-  print("DataFrame com novas colunas:")
-  print(df[["tempo_s", "velocidade_ms", "energia_cinetica_J", "fase"]].head(8))</code></pre></div>
+print("DataFrame com novas colunas:")
+print(df[["tempo_s", "velocidade_ms", "energia_cinetica_J", "fase"]].head(8))</code></pre></div>
   </div>
 
   <h2 id="s8">8. Agrupamento e agregação</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 19.8: groupby — estatísticas por grupos experimentais</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
-  import numpy as np
+<div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
+import numpy as np
 
-  np.random.seed(7)
-  dados_exp = pd.DataFrame({
-      "condicao":       ["A"]*30 + ["B"]*30 + ["C"]*30,
-      "operador":       (["P1"]*15 + ["P2"]*15)*3,
-      "temperatura_C":  np.concatenate([
-          np.random.normal(20, 0.5, 30),
-          np.random.normal(25, 0.8, 30),
-          np.random.normal(30, 0.3, 30),
-      ]),
-      "resistencia_ohm": np.concatenate([
-          np.random.normal(100, 2, 30),
-          np.random.normal(108, 3, 30),
-          np.random.normal(116, 1.5, 30),
-      ]),
-  })
+np.random.seed(7)
+dados_exp = pd.DataFrame({
+    "condicao":       ["A"]*30 + ["B"]*30 + ["C"]*30,
+    "operador":       (["P1"]*15 + ["P2"]*15)*3,
+    "temperatura_C":  np.concatenate([
+        np.random.normal(20, 0.5, 30),
+        np.random.normal(25, 0.8, 30),
+        np.random.normal(30, 0.3, 30),
+    ]),
+    "resistencia_ohm": np.concatenate([
+        np.random.normal(100, 2, 30),
+        np.random.normal(108, 3, 30),
+        np.random.normal(116, 1.5, 30),
+    ]),
+})
 
-  # Estatisticas por condicao
-  print("Resistencia por condicao:")
-  por_condicao = dados_exp.groupby("condicao")["resistencia_ohm"].agg(
-      media="mean", desvio="std", n="count"
-  ).round(3)
-  print(por_condicao)
+# Estatisticas por condicao
+print("Resistencia por condicao:")
+por_condicao = dados_exp.groupby("condicao")["resistencia_ohm"].agg(
+    media="mean", desvio="std", n="count"
+).round(3)
+print(por_condicao)
 
-  # Tabela pivo
-  print("pivo (condicao x operador):")
-  pivo = dados_exp.pivot_table(
-      values="resistencia_ohm",
-      index="condicao",
-      columns="operador",
-      aggfunc="mean"
-  ).round(2)
-  print(pivo)</code></pre></div>
+# Tabela pivo
+print("pivo (condicao x operador):")
+pivo = dados_exp.pivot_table(
+    values="resistencia_ohm",
+    index="condicao",
+    columns="operador",
+    aggfunc="mean"
+).round(2)
+print(pivo)</code></pre></div>
   </div>
 
   <h2 id="s9">9. Dados faltantes</h2>
@@ -371,100 +371,100 @@
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 19.9: Comparando estratégias de preenchimento</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
-  import numpy as np
-  import matplotlib.pyplot as plt
+<div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
-  np.random.seed(3)
-  t     = np.linspace(0, 4*np.pi, 80)
-  sinal = np.sin(t)
+np.random.seed(3)
+t     = np.linspace(0, 4*np.pi, 80)
+sinal = np.sin(t)
 
-  # Introduzindo falhas (10% dos pontos)
-  falhas = np.random.choice(len(sinal), size=8, replace=False)
-  sinal_falho = sinal.astype(float).copy()
-  sinal_falho[falhas] = np.nan
+# Introduzindo falhas (10% dos pontos)
+falhas = np.random.choice(len(sinal), size=8, replace=False)
+sinal_falho = sinal.astype(float).copy()
+sinal_falho[falhas] = np.nan
 
-  df_sensor = pd.DataFrame({"tempo_s": t, "sinal": sinal_falho})
-  print(f"Falhas: {df_sensor['sinal'].isnull().sum()} pontos")
+df_sensor = pd.DataFrame({"tempo_s": t, "sinal": sinal_falho})
+print(f"Falhas: {df_sensor['sinal'].isnull().sum()} pontos")
 
-  df_sensor["ffill"]  = df_sensor["sinal"].fillna(method="ffill")
-  df_sensor["interp"] = df_sensor["sinal"].interpolate(method="linear")
+df_sensor["ffill"]  = df_sensor["sinal"].fillna(method="ffill")
+df_sensor["interp"] = df_sensor["sinal"].interpolate(method="linear")
 
-  # Erro quadratico medio nos pontos falhos
-  for col in ["ffill", "interp"]:
-      eqm = np.mean((df_sensor.loc[falhas, col] - sinal[falhas])**2)
-      print(f"EQM {col:6s}: {eqm:.6f}")
+# Erro quadratico medio nos pontos falhos
+for col in ["ffill", "interp"]:
+    eqm = np.mean((df_sensor.loc[falhas, col] - sinal[falhas])**2)
+    print(f"EQM {col:6s}: {eqm:.6f}")
 
-  # Grafico comparativo
-  fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
-  for ax, col, titulo in zip(axes,
-      ["ffill", "interp"],
-      ["Preenchimento anterior (ffill)", "Interpolacao linear"]):
-      ax.plot(df_sensor["tempo_s"], df_sensor[col], "b-", lw=1.5)
-      ax.plot(df_sensor["tempo_s"], sinal, "k--", lw=1, alpha=0.5,
-              label="Sinal verdadeiro")
-      ax.scatter(df_sensor.loc[falhas, "tempo_s"],
-                 df_sensor.loc[falhas, col],
-                 color="red", s=60, zorder=5, label="Ponto tratado")
-      ax.set_title(titulo); ax.set_xlabel("Tempo (s)")
-      ax.legend(); ax.grid(True, alpha=0.3)
-  axes[0].set_ylabel("Sinal")
-  plt.tight_layout(); plt.show()</code></pre></div>
+# Grafico comparativo
+fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
+for ax, col, titulo in zip(axes,
+    ["ffill", "interp"],
+    ["Preenchimento anterior (ffill)", "Interpolacao linear"]):
+    ax.plot(df_sensor["tempo_s"], df_sensor[col], "b-", lw=1.5)
+    ax.plot(df_sensor["tempo_s"], sinal, "k--", lw=1, alpha=0.5,
+            label="Sinal verdadeiro")
+    ax.scatter(df_sensor.loc[falhas, "tempo_s"],
+               df_sensor.loc[falhas, col],
+               color="red", s=60, zorder=5, label="Ponto tratado")
+    ax.set_title(titulo); ax.set_xlabel("Tempo (s)")
+    ax.legend(); ax.grid(True, alpha=0.3)
+axes[0].set_ylabel("Sinal")
+plt.tight_layout(); plt.show()</code></pre></div>
   </div>
 
   <h2 id="s10">10. Pipeline completo de análise</h2>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 19.10: Resistência elétrica em função da temperatura</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
-  import numpy as np
-  import matplotlib.pyplot as plt
+<div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
-  # 1. Gerar e salvar dados brutos
-  np.random.seed(99)
-  T  = np.repeat(np.arange(20, 121, 10), 5)
-  R  = 100 * (1 + 3.9e-3*(T - 20)) + np.random.normal(0, 0.5, len(T))
-  pd.DataFrame({"T_C": T, "R_ohm": R}).to_csv(
-      "resistencia_T.csv", index=False, float_format="%.3f"
-  )
+# 1. Gerar e salvar dados brutos
+np.random.seed(99)
+T  = np.repeat(np.arange(20, 121, 10), 5)
+R  = 100 * (1 + 3.9e-3*(T - 20)) + np.random.normal(0, 0.5, len(T))
+pd.DataFrame({"T_C": T, "R_ohm": R}).to_csv(
+    "resistencia_T.csv", index=False, float_format="%.3f"
+)
 
-  # 2. Carregar e explorar
-  df = pd.read_csv("resistencia_T.csv")
-  print(f"Dataset: {df.shape[0]} medicoes, {df['T_C'].nunique()} temperaturas")
+# 2. Carregar e explorar
+df = pd.read_csv("resistencia_T.csv")
+print(f"Dataset: {df.shape[0]} medicoes, {df['T_C'].nunique()} temperaturas")
 
-  # 3. Estatisticas por temperatura
-  resumo = df.groupby("T_C")["R_ohm"].agg(
-      media="mean", desvio="std", n="count"
-  ).reset_index().round(3)
+# 3. Estatisticas por temperatura
+resumo = df.groupby("T_C")["R_ohm"].agg(
+    media="mean", desvio="std", n="count"
+).reset_index().round(3)
 
-  # 4. Ajuste linear
-  coef   = np.polyfit(resumo["T_C"], resumo["media"], 1)
-  T_fit  = np.linspace(20, 120, 100)
-  R_fit  = np.polyval(coef, T_fit)
-  alpha  = coef[0] / 100
-  print(f"Coeficiente de temperatura: alpha = {alpha:.2e} 1/grauC")
-  print(f"(Literatura para cobre: alpha = 3.9e-3 1/grauC)")
+# 4. Ajuste linear
+coef   = np.polyfit(resumo["T_C"], resumo["media"], 1)
+T_fit  = np.linspace(20, 120, 100)
+R_fit  = np.polyval(coef, T_fit)
+alpha  = coef[0] / 100
+print(f"Coeficiente de temperatura: alpha = {alpha:.2e} 1/grauC")
+print(f"(Literatura para cobre: alpha = 3.9e-3 1/grauC)")
 
-  # 5. Grafico profissional
-  fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+# 5. Grafico profissional
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
 
-  ax1.scatter(df["T_C"], df["R_ohm"], alpha=0.35, s=15,
-              color="steelblue", label="Medicoes")
-  ax1.errorbar(resumo["T_C"], resumo["media"], yerr=resumo["desvio"],
-               fmt="ro", capsize=4, label="Media +/- desvio")
-  ax1.plot(T_fit, R_fit, "k--", lw=2, label="Ajuste linear")
-  ax1.set_xlabel("Temperatura (graus C)"); ax1.set_ylabel("Resistencia (Ohm)")
-  ax1.set_title("R(T) - Dados e Ajuste"); ax1.legend(); ax1.grid(True, alpha=0.3)
+ax1.scatter(df["T_C"], df["R_ohm"], alpha=0.35, s=15,
+            color="steelblue", label="Medicoes")
+ax1.errorbar(resumo["T_C"], resumo["media"], yerr=resumo["desvio"],
+             fmt="ro", capsize=4, label="Media +/- desvio")
+ax1.plot(T_fit, R_fit, "k--", lw=2, label="Ajuste linear")
+ax1.set_xlabel("Temperatura (graus C)"); ax1.set_ylabel("Resistencia (Ohm)")
+ax1.set_title("R(T) - Dados e Ajuste"); ax1.legend(); ax1.grid(True, alpha=0.3)
 
-  residuos = resumo["media"] - np.polyval(coef, resumo["T_C"])
-  ax2.bar(resumo["T_C"], residuos, width=4, color="coral", alpha=0.7)
-  ax2.axhline(0, color="k", lw=1)
-  ax2.set_xlabel("Temperatura (graus C)"); ax2.set_ylabel("Residuo (Ohm)")
-  ax2.set_title("Residuos do Ajuste"); ax2.grid(True, alpha=0.3)
+residuos = resumo["media"] - np.polyval(coef, resumo["T_C"])
+ax2.bar(resumo["T_C"], residuos, width=4, color="coral", alpha=0.7)
+ax2.axhline(0, color="k", lw=1)
+ax2.set_xlabel("Temperatura (graus C)"); ax2.set_ylabel("Residuo (Ohm)")
+ax2.set_title("Residuos do Ajuste"); ax2.grid(True, alpha=0.3)
 
-  plt.tight_layout(); plt.show()
+plt.tight_layout(); plt.show()
 
-  # 6. Exportar relatorio
-  resumo.to_csv("relatorio_resistencia.csv", index=False)</code></pre></div>
+# 6. Exportar relatorio
+resumo.to_csv("relatorio_resistencia.csv", index=False)</code></pre></div>
   </div>
 
   <h2 id="s11">11. Desafios para casa</h2>
