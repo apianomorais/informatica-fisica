@@ -86,19 +86,47 @@ def limpa_simples(s):
     return s
 
 
+MATH = re.compile(r'\\\[.*?\\\]|(?<!\\)\$\$.+?\$\$|(?<!\\)\$.+?(?<!\\)\$', re.S)
+
+
 def inline(s):
+    # A matemática sai do caminho antes de tudo: dentro dela \pyth{} é um
+    # trecho de código para o MathJax compor, e não uma tag <code>, e os
+    # escapes de \_ e \& têm outro significado. Sem isto, uma fórmula com
+    # \text{\pyth{dados[a:b]}} chega à página com HTML cru no meio.
+    guardadas = []
+
+    def guarda(m):
+        guardadas.append(m.group(0))
+        return '\x03%d\x03' % (len(guardadas) - 1)
+
+    s = MATH.sub(guarda, s)
+
     for padrao, f in INLINE:
         anterior = None
         while anterior != s:
             anterior = s
             s = re.sub(padrao, f, s)
-    # matemática: $...$ vira \(...\); \[...\] fica como está para o MathJax
-    s = re.sub(r'(?<!\\)\$\$(.+?)\$\$', lambda m: r'\[%s\]' % m.group(1), s, flags=re.S)
-    s = re.sub(r'(?<!\\)\$(.+?)(?<!\\)\$', lambda m: r'\(%s\)' % m.group(1), s, flags=re.S)
     # escapes que sobraram, fora da matemática
     for a, b in [(r'\_', '_'), (r'\&', '&amp;'), (r'\%', '%'), (r'\$', '$'),
                  (r'\#', '#'), (r'~', ' ')]:
         s = s.replace(a, b)
+
+    def repoe(m):
+        t = guardadas[int(m.group(1))]
+        t = re.sub(r'\\pyth\{((?:[^{}]|\{[^{}]*\})*)\}',
+                   lambda q: r'\texttt{%s}' % q.group(1), t)
+        # dentro de \text{} o MathJax não expande macro nenhuma: o
+        # \texttt apareceria cru na página
+        t = re.sub(r'\\text\{\s*\\texttt\{((?:[^{}]|\{[^{}]*\})*)\}\s*\}',
+                   lambda q: r'\texttt{%s}' % q.group(1), t)
+        if t.startswith('$$'):
+            return r'\[%s\]' % t[2:-2]
+        if t.startswith('$'):
+            return r'\(%s\)' % t[1:-1]
+        return t
+
+    s = re.sub('\x03(\\d+)\x03', repoe, s)
     s = s.replace('``', '“').replace("''", '”')
     s = re.sub(r'(?<![\\A-Za-z0-9])-{3}(?![-])', '—', s)
     s = re.sub(r'(?<![\\A-Za-z0-9])-{2}(?![-])', '–', s)
@@ -187,6 +215,15 @@ def caixas(s, estado):
     return s
 
 
+# Algumas figuras do material de origem vêm sem \caption; a legenda abaixo
+# descreve o que elas mostram, para que a página não fique com um texto
+# alternativo genérico.
+LEGENDAS = {
+    'a08_11.png': 'Três modos de desenhar a mesma superfície tridimensional: '
+                  'superfície preenchida, contornos projetados e malha de arame.',
+}
+
+
 def figuras(s, aula):
     """As figuras do LaTeX viram imagens do site, com legenda."""
     def troca(m):
@@ -199,7 +236,7 @@ def figuras(s, aula):
         if not arq.endswith(('.png', '.jpg', '.pdf')):
             arq += '.png'
         arq = arq.replace('.pdf', '.png')
-        leg = mc.group(1).strip() if mc else ''
+        leg = mc.group(1).strip() if mc else LEGENDAS.get(arq, '')
         return ('\x01<figure><img src="assets/img/%s" alt="%s" loading="lazy">'
                 '%s</figure>\x01'
                 % (arq, leg or 'figura da aula %d' % aula,
@@ -211,6 +248,15 @@ def tabelas(s):
     def troca(m):
         corpo = m.group(2)
         corpo = re.sub(r'\\(toprule|midrule|bottomrule|hline)\b', '', corpo)
+        # uma célula pode conter $\begin{cases} a & b \\ c & d \end{cases}$:
+        # esses & e \\ são da matemática, não da tabela
+        guardadas = []
+
+        def guarda(mm):
+            guardadas.append(mm.group(0))
+            return '\x04%d\x04' % (len(guardadas) - 1)
+
+        corpo = MATH.sub(guarda, corpo)
         linhas = [l.strip() for l in corpo.split(r'\\') if l.strip()]
         if not linhas:
             return ''
@@ -223,7 +269,10 @@ def tabelas(s):
                 out.insert(1, '<thead>')
                 out.append('</thead><tbody>')
         out.append('</tbody></table></div>')
-        return '\x01' + ''.join(out) + '\x01'
+        tabela = ''.join(out)
+        tabela = re.sub('\x04(\\d+)\x04',
+                        lambda mm: guardadas[int(mm.group(1))], tabela)
+        return '\x01' + tabela + '\x01'
     return re.sub(r'\\begin\{tabular\}\{([^}]*)\}(.*?)\\end\{tabular\}', troca, s, flags=re.S)
 
 
@@ -265,7 +314,10 @@ def converte_aula(num, titulo, corpo):
     # as seções viram h2 numeradas
     secoes = []
     def marca(m):
-        secoes.append(m.group(1).strip())
+        # o índice lateral é texto puro: o título passa pela mesma conversão
+        # do h2 e depois perde as tags, senão um \texttt{curve\_fit} aparece
+        # cru no menu da aula
+        secoes.append(re.sub(r'<[^>]+>', '', inline(m.group(1).strip())).strip())
         return '\x01<h2 id="s%d">%d. %s</h2>\x01' % (len(secoes), len(secoes),
                                                      inline(m.group(1).strip()))
     corpo = re.sub(r'\\subsubsection\{((?:[^{}]|\{[^{}]*\})*)\}', marca, corpo)
@@ -277,9 +329,16 @@ def converte_aula(num, titulo, corpo):
     corpo = re.sub(r'\\begin\{center\}(.*?)\\end\{center\}',
                    lambda m: '\x01<p class="centro">%s</p>\x01' % m.group(1).strip(),
                    corpo, flags=re.S)
-    corpo = re.sub(r'\\begin\{(equation\*?|align\*?)\}(.*?)\\end\{\1\}',
-                   lambda m: '\x01<p>\\[%s\\]</p>\x01' % m.group(2).strip(),
-                   corpo, flags=re.S)
+    def destacada(m):
+        corpo_eq = m.group(2).strip()
+        if m.group(1).startswith('align'):
+            # o & e o \\ precisam de um ambiente de alinhamento; sem ele o
+            # MathJax recusa a expressão inteira
+            corpo_eq = '\\begin{aligned}%s\\end{aligned}' % corpo_eq
+        return '\x01<p>\\[%s\\]</p>\x01' % corpo_eq
+
+    corpo = re.sub(r'\\begin\{(equation\*?|align\*?|gather\*?)\}(.*?)\\end\{\1\}',
+                   destacada, corpo, flags=re.S)
     corpo = inline(corpo)
     corpo = paragrafos(corpo)
 
@@ -290,8 +349,32 @@ def converte_aula(num, titulo, corpo):
     corpo = re.sub(r'\x00(\d+)\x00', repoe, corpo)
 
     # limpeza final
-    corpo = re.sub(r'\\[a-zA-Z]+\s*', lambda m: m.group(0)
-                   if m.group(0).strip('\\ ') in MATEMATICA else '', corpo)
+    # comandos de espaçamento levam o argumento junto; sem isto um
+    # \vspace{0.3cm} deixa o "{0.3cm}" solto no meio do texto
+    corpo = re.sub(r'\\(?:v|h)space\*?\{[^{}]*\}|\\(?:vskip|hskip)\s*[^\s]+|'
+                   r'\\(?:smallskip|medskip|bigskip|noindent|centering|raggedright)\b',
+                   '', corpo)
+    # A lista branca vale dentro da matemática. Fora dela um \quad não é
+    # espaçamento nenhum: aparece cru na página, como apareceu nas listas de
+    # parâmetros do Matplotlib.
+    def limpa_fora(trecho):
+        trecho = trecho.replace(r'\^{}', '^').replace(r'\~{}', '~')
+        trecho = re.sub(r'\\textbackslash\b\s*\{?\}?', '\\\\', trecho)
+        trecho = re.sub(r'\\q?quad\s*', ' ', trecho)
+        return re.sub(r'\\[a-zA-Z]+\s*', '', trecho)
+
+    def limpa_dentro(trecho):
+        return re.sub(r'\\[a-zA-Z]+\s*', lambda m: m.group(0)
+                      if m.group(0).strip('\\ ') in MATEMATICA else '', trecho)
+
+    pedacos = []
+    fim = 0
+    for m in MATH.finditer(corpo):
+        pedacos.append(limpa_fora(corpo[fim:m.start()]))
+        pedacos.append(limpa_dentro(m.group(0)))
+        fim = m.end()
+    pedacos.append(limpa_fora(corpo[fim:]))
+    corpo = ''.join(pedacos)
     corpo = re.sub(r'\n{3,}', '\n\n', corpo)
     return {'numero': num, 'titulo': titulo, 'secoes': secoes, 'html': corpo.strip(),
             'exemplos': estado['exemplo'], 'exercicios': estado['exercicio']}
@@ -301,7 +384,11 @@ MATEMATICA = set('''frac sqrt vec times cdot approx to rightarrow Delta pi theta
 nu alpha beta gamma lambda mu sigma rho phi sum int infty partial left right
 begin end text quad qquad ln log sin cos tan exp pm mp le ge neq equiv cdots
 ldots dot ddot hat bar tilde mathrm mathbf boldsymbol bmatrix cases align
-displaystyle lim prod binom'''.split())
+displaystyle lim prod binom aligned texttt dfrac tfrac det dots leq geq
+in notin mid propto tau Omega Theta Lambda Gamma Pi Sigma Phi Psi xi zeta eta
+chi psi kappa iota delta epsilon varepsilon varphi langle rangle overline
+underbrace overbrace nabla oint iint simeq sim ne gg ll perp parallel circ
+subset cup cap forall exists therefore hbar ell Re Im arg max min'''.split())
 
 
 def main():

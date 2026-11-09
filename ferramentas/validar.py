@@ -25,14 +25,16 @@ for p in paginas:
     # 3. chapéu combina com o nome do arquivo
     m = re.match(r'aula(\d{2})\.html$', p)
     if m:
-        ch = re.search(r'<p class="chapeu">Módulo (\d+)', t)
+        ch = re.search(r'<p class="chapeu">Aula (\d+)', t)
         if not ch:
             erros.append('%s: sem chapéu' % p)
         elif int(ch.group(1)) != int(m.group(1)):
-            erros.append('%s: chapéu diz Módulo %s' % (p, ch.group(1)))
+            erros.append('%s: chapéu diz Aula %s' % (p, ch.group(1)))
 
         # 4. seções sequenciais e índice lateral igual aos h2
-        h2 = re.findall(r'<h2 id="s(\d+)">(\d+)\. ([^<]+)</h2>', t)
+        h2 = [(a, b, re.sub(r'<[^>]+>', '', c).strip())
+              for a, b, c in re.findall(
+                  r'<h2 id="s(\d+)">\s*(\d+)\.\s*(.*?)</h2>', t, re.S)]
         nums = [int(a) for a, _, _ in h2]
         if nums != list(range(1, len(nums) + 1)):
             erros.append('%s: seções fora de ordem: %s' % (p, nums))
@@ -43,16 +45,21 @@ for p in paginas:
         if [a for a, _ in lat] != [a for a, _, _ in h2]:
             erros.append('%s: índice lateral não bate com os h2' % p)
 
+        for ex in re.findall(r'Exemplo (\d+)\.\d+', t):
+            if int(ex) != int(m.group(1)):
+                avisos.append('%s: exemplo numerado %s.x' % (p, ex))
+
         # 5. exercícios numerados pelo módulo
-        for ex in re.findall(r'Exercício resolvido (\d+)\.\d+', t):
+        for ex in re.findall(r'Exerc[íi]cio (?:resolvido )?(\d+)\.\d+', t):
             if int(ex) != int(m.group(1)):
                 erros.append('%s: exercício numerado %s.x' % (p, ex))
 
-    # 6. todo widget citado tem implementação
-    reg = open('assets/js/widgets.js', encoding='utf-8').read()
-    for w in re.findall(r'data-widget="([^"]+)"', t):
-        if 'REGISTRO.%s =' % w not in reg:
-            erros.append('%s: widget "%s" sem implementação' % (p, w))
+    # 6. este site não usa widgets; se um dia usar, a conferência volta aqui
+    if os.path.exists('assets/js/widgets.js'):
+        reg = open('assets/js/widgets.js', encoding='utf-8').read()
+        for w in re.findall(r'data-widget="([^"]+)"', t):
+            if 'REGISTRO.%s =' % w not in reg:
+                erros.append('%s: widget "%s" sem implementação' % (p, w))
 
     # 7. sem travessões no texto corrido
     # É preferência de estilo, não erro de código, e o texto do autor manda:
@@ -67,9 +74,12 @@ for p in paginas:
         erros.append('%s: caractere de controle 0x%02x no arquivo '
                      '(provável \\f ou \\b do LaTeX corrompido)' % (p, ord(ch)))
 
-    # 9. nenhum "<" seguido de letra dentro de matemática: o navegador o lê
-    #    como abertura de tag e come a equação até o próximo ">"
-    for mat in re.finditer(r'\\\((.*?)\\\)|\\\[(.*?)\\\]', t, re.S):
+    # 9. nenhum "<" seguido de letra dentro de matemática. O que aparece
+    #    dentro de <code> é texto sobre LaTeX, não matemática: sai antes.
+    #    O navegador lê um "<" solto como abertura de tag e come a equação
+    #    até o próximo ">".
+    sem_codigo = re.sub(r'<code>.*?</code>', '', t, flags=re.S)
+    for mat in re.finditer(r'\\\((.*?)\\\)|\\\[(.*?)\\\]', sem_codigo, re.S):
         trecho = mat.group(1) or mat.group(2) or ''
         if re.search(r'<(?=[A-Za-z/])', trecho):
             erros.append('%s: "<" cru antes de letra em "%s" '

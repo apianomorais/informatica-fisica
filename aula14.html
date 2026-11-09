@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aula 14: Introdução ao NumPy | Informática para Física</title>
+<title>Aula 14: Funções e modularização | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
-<script src="assets/js/comum.js?v=202611091010"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
+<script src="assets/js/comum.js?v=202611091035"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -20,20 +20,27 @@
       <span class="grupo">Planilhas</span>
       <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
       <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
-      <a href="aula03.html" class="num" title="Módulo 3: Dados experimentais na planilha">3</a>
-      <a href="aula04.html" class="num" title="Módulo 4: Gráficos em planilha">4</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Estatística descritiva e distribuições">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Propagação de erros e barras de erro">4</a>
+      <a href="aula05.html" class="num" title="Módulo 5: Gráficos e simulação na planilha">5</a>
+      <span class="grupo">LaTeX</span>
+      <a href="aula06.html" class="num" title="Módulo 6: O primeiro documento no Overleaf">6</a>
+      <a href="aula07.html" class="num" title="Módulo 7: Equações em LaTeX">7</a>
+      <a href="aula08.html" class="num" title="Módulo 8: Matrizes, sistemas e alinhamento">8</a>
+      <a href="aula09.html" class="num" title="Módulo 9: Figuras, tabelas e bibliografia">9</a>
       <span class="grupo">Python</span>
-      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
-      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
-      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
-      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
-      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
-      <a href="aula14.html" class="num ativo" title="Módulo 14: Introdução ao NumPy">14</a>
-      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
-      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
-      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
-      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
-      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Introdução ao Python e ao Spyder">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Tipos de dados e variáveis">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de dados: listas e tuplas">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Estruturas de controle">13</a>
+      <a href="aula14.html" class="num ativo" title="Módulo 14: Funções e modularização">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao NumPy">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Introdução ao Matplotlib: gráficos básicos">16</a>
+      <a href="aula17.html" class="num" title="Módulo 17: Matplotlib avançado: personalização e visualizações especiais">17</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Entrada e saída: teclado, arquivos e CSV">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Análise de dados com Pandas">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Métodos numéricos com SciPy">20</a>
+      <a href="aula21.html" class="num" title="Módulo 21: Matemática simbólica com SymPy">21</a>
     </nav>
   </div>
 </header>
@@ -44,723 +51,976 @@
   <h4>Nesta aula</h4>
   <ol>
     <li><a href="#s1">1. Revisão rápida dos desafios</a></li>
-    <li><a href="#s2">2. Por que NumPy?</a></li>
-    <li><a href="#s3">3. Criando arrays NumPy</a></li>
-    <li><a href="#s4">4. Indexação e fatiamento</a></li>
-    <li><a href="#s5">5. Operações matemáticas com arrays</a></li>
-    <li><a href="#s6">6. Desafios para casa</a></li>
+    <li><a href="#s2">2. O que são funções?</a></li>
+    <li><a href="#s3">3. Parâmetros e argumentos</a></li>
+    <li><a href="#s4">4. Escopo de variáveis</a></li>
+    <li><a href="#s5">5. Aplicações práticas e divertidas</a></li>
+    <li><a href="#s6">6. Documentação e boas práticas</a></li>
+    <li><a href="#s7">7. Desafios para casa</a></li>
   </ol>
 </aside>
 
 <main class="conteudo">
 
   <p class="chapeu">Aula 14 · Programação em Python</p>
-  <h1>Introdução ao NumPy</h1>
-  <p class="subtitulo">O vetor que a física pedia: operações elemento a elemento, sem laços, com a velocidade de código compilado e a legibilidade de Python.</p>
+  <h1>Funções e modularização</h1>
+  <p class="subtitulo">Empacotar um trecho de código num nome, com entrada e saída bem definidas. É o passo que transforma um script numa ferramenta reutilizável.</p>
 
-  <p>Hoje vamos conhecer o NumPy, a biblioteca que torna Python poderoso para cálculos científicos! É como trocar uma calculadora simples por uma calculadora científica turbinada.</p>
+  <p>Hoje vamos aprender a organizar nosso código em pedaços reutilizáveis! É como criar suas próprias ferramentas personalizadas que podem ser usadas quantas vezes quiser.</p>
 
   <h2 id="s1">1. Revisão rápida dos desafios</h2>
 
   <p>Vamos conferir os desafios da aula passada!</p>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.1: Soluções dos desafios</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Desafio 1: Conversor de unidades
-  def metros_para_pes(metros):
-      """Converte metros para pés (1 metro = 3.281 pés)"""
-      return metros * 3.281
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.1: Soluções dos desafios</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Desafio 1: Sequência de Fibonacci
+  print("Primeiros 15 números de Fibonacci:")
+  a, b = 1, 1
+  print(f"{a}, {b}", end="")
 
-  def kg_para_libras(kg):
-      """Converte kg para libras (1 kg = 2.205 libras)"""
-      return kg * 2.205
+  for i in range(13):  # Mais 13 números (1+1+13=15)
+      proximo = a + b
+      print(f", {proximo}", end="")
+      a, b = b, proximo
+  print()
 
-  def celsius_para_kelvin(celsius):
-      """Converte Celsius para Kelvin"""
-      return celsius + 273.15
+  # Desafio 2: Simulação de lançamento de moeda
+  import random
+  cara = 0
+  coroa = 0
 
-  def testar_conversores():
-      """Testa todas as funções de conversão"""
-      print("=== TESTANDO CONVERSORES ===")
-      print(f"10 metros = {metros_para_pes(10):.2f} pés")
-      print(f"70 kg = {kg_para_libras(70):.2f} libras")
-      print(f"25°C = {celsius_para_kelvin(25):.2f} K")
+  print("100 lançamentos de moeda:")
+  for i in range(100):
+      if random.random() &lt; 0.5:
+          cara += 1
+      else:
+          coroa += 1
 
-  testar_conversores()
+  print(f"Cara: {cara} vezes ({cara}%)")
+  print(f"Coroa: {coroa} vezes ({coroa}%)")
 
-  # Desafio 2: Calculadora de juros
-  def juros_simples(principal, taxa, tempo):
-      """Calcula juros simples: J = P * i * t"""
-      return principal * taxa * tempo
+  # Desafio 3: Números primos menores que 50
+  print("úmeros primos menores que 50:")
+  primos = []
 
-  def juros_compostos(principal, taxa, tempo):
-      """Calcula montante com juros compostos: M = P * (1 + i)^t"""
-      return principal * (1 + taxa) ** tempo
+  for numero in range(2, 50):
+      eh_primo = True
+      for divisor in range(2, int(numero**0.5) + 1):
+          if numero % divisor == 0:
+              eh_primo = False
+              break
+      if eh_primo:
+          primos.append(numero)
 
-  def comparar_juros(principal, taxa, tempo):
-      """Compara juros simples e compostos"""
-      js = juros_simples(principal, taxa, tempo)
-      montante_jc = juros_compostos(principal, taxa, tempo)
-      jc = montante_jc - principal
+  print(primos)
+  print(f"Total: {len(primos)} números primos")
+
+  # Desafio 4: Movimento parabólico
+  import math
+  print("ória do projétil (45°, v0=20m/s):")
+  v0 = 20  # m/s
+  angulo = 45  # graus
+  g = 9.81  # m/s2
+
+  # Componentes da velocidade inicial
+  vx = v0 * math.cos(math.radians(angulo))
+  vy = v0 * math.sin(math.radians(angulo))
+
+  t = 0
+  while True:
+      x = vx * t
+      y = vy * t - 0.5 * g * t**2
     
-      print(f"Principal: R$ {principal:.2f}")
-      print(f"Juros simples: R$ {js:.2f}")
-      print(f"Juros compostos: R$ {jc:.2f}")
-      print(f"Diferença: R$ {jc - js:.2f}")
+      if y &lt; 0:  # Tocou o solo
+          break
+        
+      print(f"t={t:.1f}s: x={x:.1f}m, y={y:.1f}m")
+      t += 0.5
 
-  comparar_juros(1000, 0.05, 5)  # R$ 1000, 5% ao ano, 5 anos
-
-  # Desafio 3: Validadores
-  def validar_email(email):
-      """Validação básica de email"""
-      return "@" in email and "." in email and len(email) &gt; 5
-
-  def validar_telefone(telefone):
-      """Validação básica de telefone"""
-      numeros = telefone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "")
-      return numeros.isdigit() and 10 &lt;= len(numeros) &lt;= 11
-
-  def validar_idade(idade):
-      """Validação de idade"""
-      return 0 &lt;= idade &lt;= 120
-
-  # Testando validadores
-  emails = ["ana@gmail.com", "carlos@", "maria.silva@hotmail.com", "joão"]
-  for email in emails:
-      print(f"{email}: {'ok' if validar_email(email) else 'X'}")</code></pre></div>
+  print(f"Alcance máximo: {x:.1f} metros")</code></pre></div>
   </div>
 
-  <h2 id="s2">2. Por que NumPy?</h2>
+  <h2 id="s2">2. O que são funções?</h2>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>NumPy</strong> (Numerical Python) é a biblioteca fundamental para computação científica em Python. Oferece arrays multidimensionais eficientes e funções matemáticas otimizadas que tornam Python competitivo com linguagens como MATLAB e R.
+  <strong>Funções</strong> são como "mini-programas" dentro do seu programa principal. É uma forma de organizar e reutilizar código! Elas permitem dividir problemas complexos em partes menores e mais gerenciáveis.
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.2: Comparação: Lista Python vs Array NumPy</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
-  import time
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.2: Primeira função - saudação personalizada</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Definindo nossa primeira função
+  def saudar(nome):
+      """Esta função cumprimenta uma pessoa pelo nome"""
+      print(f"Olá, {nome}! Bem-vindo à aula de funções!")
+      print("Espero que você se divirta programando!")
 
-  # Vamos comparar performance
-  print("=== COMPARAÇÃO: LISTAS vs NUMPY ===")
+  # Usando (chamando) a função
+  saudar("Ana")
+  saudar("Carlos")
+  saudar("Maria")
 
-  # Operações com listas Python (método tradicional)
-  def somar_listas_python(lista1, lista2):
-      """Soma duas listas elemento por elemento"""
-      resultado = []
-      for i in range(len(lista1)):
-          resultado.append(lista1[i] + lista2[i])
-      return resultado
+  print()
+  print("Sem função, teríamos que repetir o código:")
+  print("Olá, Ana! Bem-vindo à aula de funções!")
+  print("Espero que você se divirta programando!")
+  print("Olá, Carlos! Bem-vindo à aula de funções!")
+  print("Espero que você se divirta programando!")
+  # ... muito trabalho repetitivo!</code></pre></div>
+  </div>
 
-  # Criando listas grandes
-  tamanho = 1000000
-  lista_a = list(range(tamanho))
-  lista_b = list(range(tamanho, 2*tamanho))
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.3: Funções que retornam valores</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Função que calcula e retorna um resultado
+  def calcular_area_retangulo(largura, altura):
+      """Calcula a área de um retângulo"""
+      area = largura * altura
+      return area
 
-  # Medindo tempo com listas Python
-  inicio = time.time()
-  resultado_python = somar_listas_python(lista_a[:1000], lista_b[:1000])
-  fim = time.time()
-  tempo_python = fim - inicio
+  # Usando a função
+  area1 = calcular_area_retangulo(5, 3)
+  area2 = calcular_area_retangulo(10, 2)
 
-  print(f"Lista Python - Tempo: {tempo_python:.6f} segundos")
+  print(f"Área do retângulo 1: {area1} m2")
+  print(f"Área do retângulo 2: {area2} m2")
+  print(f"Área total: {area1 + area2} m2")
 
-  # Agora com NumPy
-  array_a = np.array(lista_a[:1000])
-  array_b = np.array(lista_b[:1000])
+  # Função para conversão de temperatura
+  def celsius_para_fahrenheit(celsius):
+      """Converte temperatura de Celsius para Fahrenheit"""
+      fahrenheit = celsius * 9/5 + 32
+      return fahrenheit
 
-  inicio = time.time()
-  resultado_numpy = array_a + array_b  # Operação vetorizada!
-  fim = time.time()
-  tempo_numpy = fim - inicio
+  def fahrenheit_para_celsius(fahrenheit):
+      """Converte temperatura de Fahrenheit para Celsius"""
+      celsius = (fahrenheit - 32) * 5/9
+      return celsius
 
-  print(f"NumPy Array - Tempo: {tempo_numpy:.6f} segundos")
-  print(f"NumPy é {tempo_python/tempo_numpy:.1f}x mais rápido!")
+  # Testando as conversões
+  temp_c = 25
+  temp_f = celsius_para_fahrenheit(temp_c)
+  temp_c_volta = fahrenheit_para_celsius(temp_f)
 
-  # Verificando se dão o mesmo resultado
-  print(f"Resultados iguais? {np.array_equal(resultado_python, resultado_numpy)}")</code></pre></div>
+  print(f"{temp_c}°C = {temp_f}°F")
+  print(f"{temp_f}°F = {temp_c_volta}°C")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  <strong>Anatomia de uma função:</strong>
+
+  <ul><li><code>def</code>: palavra-chave para definir função</li><li><code>nome_funcao</code>: nome descritivo da função</li><li><code>(parametros)</code>: informações que a função recebe</li><li><code>return</code>: valor que a função devolve</li><li><code>"""docstring"""</code>: documentação da função</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Estrutura Condicional <code>if</code> em Python</strong></span>
+  O comando <code>if</code> é fundamental para controle de fluxo em programas, permitindo executar blocos de código condicionalmente. Sua sintaxe básica é:
+
+  <div class="codigo" data-lingua="Python"><pre><code>if condição:
+      # bloco executado se condição for True
+  elif outra_condição:  # opcional
+      # bloco executado se outra_condição for True
+  else:  # opcional
+      # bloco executado se nenhuma condição anterior for True</code></pre></div>
+
+  <strong>Componentes essenciais:</strong>
+
+  <ul><li><strong>Condição:</strong> Expressão que avalia para <code>True</code> ou <code>False</code></li><li><strong>Indentação:</strong> Define os blocos de código (4 espaços recomendados)</li><li><strong>Operadores de comparação:</strong> <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li><li><strong>Operadores lógicos:</strong> <code>and</code>, <code>or</code>, <code>not</code></li></ul>
+
+  <strong>No exemplo fornecido:</strong>
+
+  <ul><li><code>if len(numeros) == 0:</code> Verifica se a lista está vazia</li><li><code>if not dados:</code> Forma 'pythônica' de checar listas vazias</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.4: Aplicações avançadas de <code>if</code> em funções científicas</span>
+  <div class="codigo" data-lingua="Python"><pre><code>def avaliar_experimento(dados, limite_inferior, limite_superior, nome="experimento"):
+      """Analisa dados experimentais com verificações de validade"""
+    
+      # Verificação de segurança dos dados
+      if not isinstance(dados, list):
+          print("Erro: Dados devem ser uma lista")
+          return None
+        
+      if len(dados) == 0:
+          print("Aviso: Nenhum dado fornecido")
+          return None
+    
+      # Pré-processamento (remove outliers)
+      dados_validos = []
+      for valor in dados:
+          if limite_inferior &lt;= valor &lt;= limite_superior:
+              dados_validos.append(valor)
+          else:
+              print(f"Valor {valor} fora dos limites aceitáveis")
+    
+      # Análise estatística condicional
+      if len(dados_validos) &gt;= 5:  # Mínimo para estatística confiável
+          media = sum(dados_validos) / len(dados_validos)
+          desvio = (sum((x-media)**2 for x in dados_validos)/len(dados_validos))**0.5
+        
+          print(f"=== Resultados para {nome} ===")
+          print(f"Amostras válidas: {len(dados_validos)}/{len(dados)}")
+          print(f"Média: {media:.2f} ± {desvio:.2f}")
+        
+          if desvio &gt; media * 0.2:
+              print("ALERTA: Alta variabilidade nos dados!")
+          elif desvio &gt; media * 0.1:
+              print("OBS: Variabilidade moderada")
+          else:
+              print("Variabilidade dentro do esperado")
+        
+          return {"media": media, "desvio": desvio}
+      else:
+          print("Dados insuficientes para análise (mínimo 5 valores válidos)")
+          return None
+
+  # Testando com dados de pH
+  dados_ph = [7.1, 7.3, 6.8, 7.5, 8.2, 6.5, 7.8, 5.9, 7.2, 7.4]
+  resultado = avaliar_experimento(dados_ph, 6.0, 8.0, "níveis de pH")
+
+  # Teste com dados inválidos
+  dados_invalidos = [10.2, 4.5, "texto", None]
+  avaliar_experimento(dados_invalidos, 0, 10, "dados inválidos")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Padrões de Uso Científico do <code>if</code></strong></span>
+  <strong>Aplicações comuns em análise de dados:</strong>
+
+  <ul><li><strong>Validação de entrada:</strong> Verificar tipo e formato dos dados</li><li><strong>Controle de qualidade:</strong> Filtrar valores fora de faixa aceitável</li><li><strong>Análise de tendências:</strong> Classificar resultados em categorias</li><li><strong>Proteção contra erros:</strong> Evitar divisões por zero ou operações inválidas</li><li><strong>Seleção de algoritmos:</strong> Escolher método de cálculo baseado nos dados</li></ul>
+
+  <strong>Boas práticas:</strong>
+
+  <ul><li>Use <code>if not lista</code> em vez de <code>if len(lista) == 0</code> para verificar listas vazias</li><li>Para múltiplas condições complexas, considere funções separadas</li><li>Documente sempre as condições de contorno</li><li>Prefira condições positivas (<code>if valido</code>) em vez de negativas (<code>if not invalido</code>)</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Operadores Úteis para Condições Científicas</strong></span>
+  <strong>Verificação de faixas de valores:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>if limite_inferior &lt;= valor &lt;= limite_superior:  # Teste de intervalo</code></pre></div>
+
+  <strong>Comparação com tolerância (para números decimais):</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>if abs(valor1 - valor2) &lt; 1e-6:  # Considera iguais se diferença &lt; 0.000001</code></pre></div>
+
+  <strong>Teste de tipo seguro:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>if isinstance(valor, (int, float)):  # Aceita inteiros ou floats</code></pre></div>
+
+  <strong>Verificação de valores especiais:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>if math.isnan(valor):  # Testa se é Not a Number
+  if valor is None:      # Teste explícito para None</code></pre></div>
+
+  <strong>Condições complexas:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>if (cond1 and cond2) or (cond3 and not cond4):
+      # Use parênteses para clareza em condições complexas</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Exemplo Físico: Lei de Ohm com Verificações</strong></span>
+  <div class="codigo" data-lingua="Python"><pre><code>def lei_de_ohm(V=None, I=None, R=None):
+      """Calcula a grandeza ausente na lei de Ohm com verificações"""
+      if sum(x is not None for x in [V, I, R]) != 2:
+          print("Erro: Forneça exatamente duas grandezas")
+          return None
+    
+      try:
+          if V is None:
+              return I * R
+          elif I is None:
+              return V / R if R != 0 else None
+          elif R is None:
+              return V / I if I != 0 else None
+      except TypeError:
+          print("Erro: Valores devem ser numéricos")
+          return None
+
+  # Testes
+  print("Resistência:", lei_de_ohm(V=12, I=0.5))  # 24 ohms
+  print("Tensão:", lei_de_ohm(I=0.1, R=100))     # 10 volts
+  print("Corrente:", lei_de_ohm(V=9, R=300))     # 0.03 amps
+  print("Caso inválido:", lei_de_ohm(V=12))      # Erro</code></pre></div>
+  </div>
+
+  <h2 id="s3">3. Parâmetros e argumentos</h2>
+
+  <p>Vamos entender melhor como passar informações para as funções!</p>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.5: Diferentes tipos de parâmetros</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Parâmetros obrigatórios
+  def apresentar_pessoa(nome, idade):
+      print(f"Nome: {nome}")
+      print(f"Idade: {idade} anos")
+
+  apresentar_pessoa("João", 20)
+
+  # Parâmetros com valores padrão (opcionais)
+  def criar_usuario(nome, idade, cidade="Não informada", ativo=True):
+      print(f"Usuário criado:")
+      print(f"  Nome: {nome}")
+      print(f"  Idade: {idade}")
+      print(f"  Cidade: {cidade}")
+      print(f"  Ativo: {'Sim' if ativo else 'Não'}")
+      print()
+
+  # Diferentes formas de chamar a função
+  criar_usuario("Ana", 25)
+  criar_usuario("Carlos", 30, "São Paulo")
+  criar_usuario("Maria", 22, "Rio de Janeiro", False)
+
+  # Usando argumentos nomeados (pode mudar a ordem!)
+  criar_usuario(idade=28, nome="Pedro", ativo=False, cidade="Brasília")</code></pre></div>
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
-  <strong>Vantagens do NumPy:</strong>
+  <strong>Tipos de parâmetros:</strong>
 
-  <ul><li><strong>Performance</strong>: 10-100x mais rápido que listas Python</li><li><strong>Menos código</strong>: operações vetorizadas eliminam loops</li><li><strong>Memória eficiente</strong>: armazena dados de forma compacta</li><li><strong>Funcionalidade</strong>: centenas de funções matemáticas prontas</li><li><strong>Interoperabilidade</strong>: base para outras bibliotecas (pandas, matplotlib)</li></ul>
+  <ul><li><strong>Obrigatórios</strong>: devem sempre ser fornecidos</li><li><strong>Opcionais</strong>: têm valores padrão, podem ser omitidos</li><li><strong>Nomeados</strong>: especificam qual parâmetro está sendo passado</li><li><strong>Posicionais</strong>: ordem importa</li></ul>
 
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.3: Demonstração das vantagens</span>
-  <div class="codigo" data-lingua="Python"><pre><code># 1. Operações vetorizadas (sem loops explícitos)
-  numeros = np.array([1, 2, 3, 4, 5])
-  print("Array original:", numeros)
-  print("Cada elemento × 2:", numeros * 2)
-  print("Cada elemento ao quadrado:", numeros ** 2)
-  print("Raiz quadrada:", np.sqrt(numeros))
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.6: Funções que recebem listas e as modificam</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Função que modifica uma lista
+  def duplicar_valores(lista):
+      """Duplica todos os valores de uma lista"""
+      for i in range(len(lista)):
+          lista[i] = lista[i] * 2
 
-  # 2. Menos código, mais claro
-  print("=== COMPARAÇÃO DE CÓDIGO ===")
-  print("Lista Python - calcular média:")
-  lista = [1, 2, 3, 4, 5]
-  media_python = sum(lista) / len(lista)
-  print(f"Código: sum(lista) / len(lista) = {media_python}")
+  # Função que NÃO modifica a lista original
+  def duplicar_valores_nova_lista(lista):
+      """Retorna uma nova lista com valores duplicados"""
+      nova_lista = []
+      for valor in lista:
+          nova_lista.append(valor * 2)
+      return nova_lista
 
-  print("- calcular média:")
-  array = np.array([1, 2, 3, 4, 5])
-  media_numpy = np.mean(array)
-  print(f"Código: np.mean(array) = {media_numpy}")
+  # Testando
+  numeros_originais = [1, 2, 3, 4, 5]
+  print(f"Lista original: {numeros_originais}")
 
-  # 3. Mais funções matemáticas disponíveis
-  print(f"édia: {np.mean(array)}")
-  print(f"Mediana: {np.median(array)}")
-  print(f"Desvio padrão: {np.std(array):.3f}")
-  print(f"Valor mínimo: {np.min(array)}")
-  print(f"Valor máximo: {np.max(array)}")
-  print(f"Soma: {np.sum(array)}")</code></pre></div>
+  # Duplicando sem modificar a original
+  numeros_duplicados = duplicar_valores_nova_lista(numeros_originais)
+  print(f"Nova lista duplicada: {numeros_duplicados}")
+  print(f"Lista original ainda: {numeros_originais}")
+
+  # Duplicando a lista original
+  duplicar_valores(numeros_originais)
+  print(f"Lista original após modificação: {numeros_originais}")</code></pre></div>
   </div>
 
-  <h2 id="s3">3. Criando arrays NumPy</h2>
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.7: Funções com número variável de argumentos</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Função que aceita qualquer quantidade de números
+  def somar_todos(*numeros):
+      """Soma qualquer quantidade de números"""
+      print(f"Números recebidos: {numeros}")
+      total = sum(numeros)
+      return total
 
-  <p>Vamos aprender diferentes formas de criar arrays!</p>
+  # Testando
+  resultado1 = somar_todos(1, 2, 3)
+  resultado2 = somar_todos(10, 20, 30, 40, 50)
+  resultado3 = somar_todos(5)
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.4: Formas básicas de criar arrays</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
+  print(f"Soma 1: {resultado1}")
+  print(f"Soma 2: {resultado2}")
+  print(f"Soma 3: {resultado3}")
 
-  # 1. A partir de listas Python
-  lista = [1, 2, 3, 4, 5]
-  array_1d = np.array(lista)
-  print("Array 1D:", array_1d)
-  print("Tipo:", type(array_1d))
-  print("Forma (shape):", array_1d.shape)
+  # Função que cria uma mensagem personalizada
+  def criar_mensagem(saudacao, *nomes, despedida="Até logo!"):
+      """Cria mensagem para várias pessoas"""
+      print(saudacao)
+      for nome in nomes:
+          print(f"  - {nome}")
+      print(despedida)
+      print()
 
-  # 2. Arrays 2D (matrizes)
-  matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-  array_2d = np.array(matriz)
-  print("2D:")
-  print(array_2d)
-  print("Forma:", array_2d.shape)  # (linhas, colunas)
-  print("Número de dimensões:", array_2d.ndim)
-  print("Total de elementos:", array_2d.size)
-
-  # 3. Arrays preenchidos com zeros
-  zeros = np.zeros(5)
-  print("de zeros:", zeros)
-
-  zeros_2d = np.zeros((3, 4))  # 3 linhas, 4 colunas
-  print("Matriz de zeros:")
-  print(zeros_2d)
-
-  # 4. Arrays preenchidos com uns
-  uns = np.ones(4)
-  print("de uns:", uns)
-
-  uns_2d = np.ones((2, 3))
-  print("Matriz de uns:")
-  print(uns_2d)
-
-  # 5. Arrays com valores constantes
-  constante = np.full(5, 7)  # Array com 5 elementos, todos = 7
-  print("constante:", constante)
-
-  constante_2d = np.full((2, 3), 3.14)
-  print("Matriz constante:")
-  print(constante_2d)</code></pre></div>
+  criar_mensagem("Bom dia para:", "Ana", "Bruno", "Carlos")
+  criar_mensagem("Boa tarde,", "Maria", "João", despedida="Tchau!")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>Propriedades importantes de arrays NumPy:</strong>
+  <strong>Argumentos variáveis:</strong>
 
-  <ul><li><code>shape</code>: dimensões do array (linhas, colunas, ...)</li><li><code>ndim</code>: número de dimensões</li><li><code>size</code>: total de elementos</li><li><code>dtype</code>: tipo de dados (int64, float64, etc.)</li></ul>
-
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.5: Gerando sequências de números</span>
-  <div class="codigo" data-lingua="Python"><pre><code># 1. Sequência com passo fixo (como range, mas para floats)
-  sequencia1 = np.arange(0, 10, 1)  # De 0 a 9, passo 1
-  print("arange(0, 10, 1):", sequencia1)
-
-  sequencia2 = np.arange(0, 5, 0.5)  # De 0 a 4.5, passo 0.5
-  print("arange(0, 5, 0.5):", sequencia2)
-
-  # 2. Sequência com número fixo de pontos
-  sequencia3 = np.linspace(0, 10, 5)  # 5 pontos entre 0 e 10
-  print("linspace(0, 10, 5):", sequencia3)
-
-  sequencia4 = np.linspace(0, 1, 11)  # 11 pontos entre 0 e 1
-  print("linspace(0, 1, 11):", sequencia4)
-
-  # 3. Arrays aleatórios
-  np.random.seed(42)  # Para resultados reproduzíveis
-  aleatorio = np.random.random(5)  # 5 números entre 0 e 1
-  print("úmeros aleatórios [0,1):", aleatorio)
-
-  aleatorio_int = np.random.randint(1, 7, 10)  # 10 dados de 6 faces
-  print("Dados de 6 faces:", aleatorio_int)
-
-  # 4. Matriz identidade
-  identidade = np.eye(3)  # Matriz identidade 3x3
-  print("identidade 3x3:")
-  print(identidade)</code></pre></div>
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.6: Aplicações práticas - dados experimentais</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Simulando dados de um experimento
-  print("=== SIMULAÇÃO DE EXPERIMENTO ===")
-
-  # Dados de tempo (0 a 10 segundos, medições a cada 0.5s)
-  tempo = np.linspace(0, 10, 21)
-  print(f"Tempos de medição: {len(tempo)} pontos")
-  print(f"Primeiros 5: {tempo[:5]}")
-  print(f"Últimos 5: {tempo[-5:]}")
-
-  # Simulando posições de um objeto em movimento
-  # Posição = 5t + 0.1t² (movimento acelerado)
-  posicao = 5 * tempo + 0.1 * tempo**2
-  print(f"ções calculadas: {len(posicao)} pontos")
-  print(f"Posição inicial: {posicao[0]:.2f} m")
-  print(f"Posição final: {posicao[-1]:.2f} m")
-
-  # Adicionando ruído experimental (erro de medição)
-  ruido = np.random.normal(0, 0.2, len(posicao))  # Média 0, desvio 0.2
-  posicao_com_ruido = posicao + ruido
-
-  print(f"algumas medições:")
-  for i in [0, 5, 10, 15, 20]:
-      print(f"t={tempo[i]:4.1f}s: teórica={posicao[i]:5.2f}m, medida={posicao_com_ruido[i]:5.2f}m")
-
-  # Estatísticas dos dados
-  print(f"ísticas das posições:")
-  print(f"Média: {np.mean(posicao_com_ruido):.2f} m")
-  print(f"Desvio padrão: {np.std(posicao_com_ruido):.2f} m")
-  print(f"Valor mínimo: {np.min(posicao_com_ruido):.2f} m")
-  print(f"Valor máximo: {np.max(posicao_com_ruido):.2f} m")</code></pre></div>
-  </div>
-
-  <h2 id="s4">4. Indexação e fatiamento</h2>
-
-  <p>Como acessar e modificar partes específicas dos arrays!</p>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.7: Indexação básica</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Array 1D
-  dados = np.array([10, 20, 30, 40, 50, 60, 70])
-  print("Array original:", dados)
-
-  # Acessando elementos individuais
-  print(f"Primeiro elemento: {dados[0]}")
-  print(f"Último elemento: {dados[-1]}")
-  print(f"Terceiro elemento: {dados[2]}")
-
-  # Modificando elementos
-  dados[0] = 100
-  print("Após modificar primeiro elemento:", dados)
-
-  # Fatiamento (slicing)
-  print(f"Primeiros 3 elementos: {dados[:3]}")
-  print(f"Últimos 3 elementos: {dados[-3:]}")
-  print(f"Elementos do meio: {dados[2:5]}")
-  print(f"Elementos pares (pulando de 2 em 2): {dados[::2]}")
-  print(f"Array invertido: {dados[::-1]}")</code></pre></div>
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.8: Indexação em arrays 2D</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Criando uma matriz 4x3
-  matriz = np.array([[1, 2, 3],
-                     [4, 5, 6], 
-                     [7, 8, 9],
-                     [10, 11, 12]])
-
-  print("Matriz original:")
-  print(matriz)
-  print(f"Forma: {matriz.shape}")
-
-  # Acessando elementos individuais
-  print(f"[0,0]: {matriz[0, 0]}")
-  print(f"Elemento [1,2]: {matriz[1, 2]}")
-  print(f"Elemento [2,1]: {matriz[2, 1]}")
-
-  # Acessando linhas completas
-  print(f"linha: {matriz[0]}")
-  print(f"Segunda linha: {matriz[1]}")
-  print(f"Última linha: {matriz[-1]}")
-
-  # Acessando colunas completas
-  print(f"coluna: {matriz[:, 0]}")
-  print(f"Segunda coluna: {matriz[:, 1]}")
-  print(f"Última coluna: {matriz[:, -1]}")
-
-  # Fatias de submatrizes
-  print(f"2x2 superior esquerda:")
-  print(matriz[:2, :2])
-
-  print(f"2x2 inferior direita:")
-  print(matriz[2:, 1:])
-
-  print(f"1 e 2, colunas 0 e 2:")
-  print(matriz[1:3, [0, 2]])</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>Regras de indexação NumPy:</strong>
-
-  <ul><li>Indexação começa em 0 (como listas Python)</li><li>Índices negativos contam do final: -1 é o último elemento</li><li>Fatiamento: <code>[início:fim:passo]</code></li><li>Arrays 2D: <code>[linha, coluna]</code></li><li><code>:</code> significa "todos os elementos daquela dimensão"</li></ul>
+  <ul><li><code>*args</code>: aceita qualquer número de argumentos posicionais</li><li><code>**kwargs</code>: aceita qualquer número de argumentos nomeados</li><li><code>*numeros</code>: coleta argumentos em uma tupla</li></ul>
 
   </div>
 
-  <div class="bloco def"><span class="rotulo"><strong>Indexação Condicional com Máscaras Booleanas em NumPy</strong></span>
-  <strong>Conceito Fundamental:</strong>
-  Máscaras booleanas são arrays de valores <code>True/False</code> que permitem selecionar elementos de um array NumPy baseado em condições. Funcionam como "filtros" para dados.
+  <h2 id="s4">4. Escopo de variáveis</h2>
 
-  <strong>Sintaxe Básica:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>array_original[condição]  # Retorna elementos onde condição é True</code></pre></div>
+  <p>Onde as variáveis "vivem" e podem ser acessadas?</p>
 
-  <strong>Operadores Lógicos:</strong>
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.8: Variáveis locais vs globais</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Variável global
+  contador_global = 0
+  nome_programa = "Sistema de Análise"
 
-  <ul><li><code>&amp;</code> (E lógico) - Requer parênteses devido à precedência</li><li><code>|</code> (OU lógico) - Também requer parênteses</li><li><code> </code> (NEGAÇÃO) - Inverte a máscara</li></ul>
+  def incrementar_contador():
+      """Tenta modificar contador global"""
+      global contador_global  # Precisa declarar como global!
+      contador_global += 1
+      print(f"Contador agora é: {contador_global}")
 
-  <strong>Vantagens:</strong>
+  def mostrar_info():
+      """Acessa variável global (só leitura)"""
+      print(f"Programa: {nome_programa}")
+      print(f"Contador atual: {contador_global}")
 
-  <ul><li>Velocidade: Operações vetorizadas sem loops</li><li>Legibilidade: Código mais expressivo</li><li>Flexibilidade: Combinação de múltiplas condições</li><li>Integração: Funciona com outras funções do NumPy</li></ul>
+  def exemplo_local():
+      """Demonstra variáveis locais"""
+      variavel_local = "Só existe aqui dentro!"
+      numero_local = 42
+    
+      print(f"Dentro da função: {variavel_local}")
+      print(f"Número local: {numero_local}")
+
+  # Testando
+  print("=== Teste de Escopo ===")
+  mostrar_info()
+  incrementar_contador()
+  incrementar_contador()
+  exemplo_local()
+
+  # Esta linha daria erro - variavel_local não existe aqui!
+  # print(variavel_local)  # NameError!
+
+  print(f"Contador final: {contador_global}")</code></pre></div>
+  </div>
+
+  <div class="bloco fisica"><span class="rotulo">Intuição</span>
+  <strong>Regras de escopo:</strong>
+
+  <ul><li><strong>Variáveis locais</strong>: existem apenas dentro da função</li><li><strong>Variáveis globais</strong>: existem em todo o programa</li><li>Para modificar global: use <code>global nome_variavel</code></li><li>Python procura: local → global → built-in</li></ul>
 
   </div>
 
-  <div class="bloco def"><span class="rotulo"><strong>Aplicações em Análise de Dados Educacionais</strong></span>
-  <strong>Casos de Uso no Exemplo:</strong>
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.9: Exemplo prático - calculadora simples</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Criando uma calculadora com funções
+  def somar(a, b):
+      return a + b
 
-  <ul><li><strong>Filtragem Simples:</strong> <code>notas &gt;= 7.0</code></li><li><strong>Faixas de Valores:</strong> <code>(notas &gt;= 6.0) &amp; (notas &lt; 8.0)</code></li><li><strong>Estatísticas Condicionais:</strong> <code>np.mean(notas[notas &gt;= 9.0])</code></li><li><strong>Contagem:</strong> <code>np.sum(notas &gt;= 7.0)</code> (conta aprovados)</li></ul>
+  def subtrair(a, b):
+      return a - b
 
-  <strong>Exemplo Expandido:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code># Dados adicionais de estudantes
-  nomes = np.array(['Ana', 'Carlos', 'Maria', 'Pedro', 'Julia', 'Lucas', 'Luiza', 'Felipe', 'Gabriela', 'Rafael'])
-  faltas = np.array([2, 5, 1, 8, 3, 0, 4, 2, 7, 3])
+  def multiplicar(a, b):
+      return a * b
 
-  # Condição complexa: aprovados com menos de 4 faltas
-  bons_alunos = nomes[(notas &gt;= 7.0) &amp; (faltas &lt; 4)]
-  print("Alunos destaque:", bons_alunos)
+  def dividir(a, b):
+      if b == 0:
+          return "Erro: Divisão por zero!"
+      return a / b
 
-  # Média apenas dos reprovados
-  media_reprovados = np.mean(notas[~aprovados])
-  print(f"Média dos reprovados: {media_reprovados:.2f}")</code></pre></div>
+  def calculadora():
+      """Interface simples da calculadora"""
+      print("=== CALCULADORA SIMPLES ===")
+      print("Operações disponíveis:")
+      print("1. Somar")
+      print("2. Subtrair") 
+      print("3. Multiplicar")
+      print("4. Dividir")
+    
+      # Simulando entrada do usuário (normalmente usaria input())
+      operacao = 1  # Vamos simular que escolheu somar
+      num1 = 10
+      num2 = 5
+    
+      print(f"úmeros: {num1} e {num2}")
+    
+      if operacao == 1:
+          resultado = somar(num1, num2)
+          print(f"Resultado: {num1} + {num2} = {resultado}")
+      elif operacao == 2:
+          resultado = subtrair(num1, num2)
+          print(f"Resultado: {num1} - {num2} = {resultado}")
+      elif operacao == 3:
+          resultado = multiplicar(num1, num2)
+          print(f"Resultado: {num1} × {num2} = {resultado}")
+      elif operacao == 4:
+          resultado = dividir(num1, num2)
+          print(f"Resultado: {num1} ÷ {num2} = {resultado}")
+    
+      # Testando todas as operações
+      print("todas as operações:")
+      print(f"{num1} + {num2} = {somar(num1, num2)}")
+      print(f"{num1} - {num2} = {subtrair(num1, num2)}")
+      print(f"{num1} × {num2} = {multiplicar(num1, num2)}")
+      print(f"{num1} ÷ {num2} = {dividir(num1, num2)}")
+
+  # Executar a calculadora
+  calculadora()</code></pre></div>
   </div>
 
-  <div class="bloco def"><span class="rotulo"><strong>Performance: Máscaras vs Loops</strong></span>
-  <strong>Comparação de Eficiência:</strong>
+  <h2 id="s5">5. Aplicações práticas e divertidas</h2>
 
-  <ul><li><strong>Abordagem Vetorizada (máscaras):</strong>
+  <p>Vamos criar funções úteis e interessantes!</p>
 
-  <ul><li>Operações em nível de C (otimizadas)</li><li>Sem overhead de interpretador Python</li><li>Exemplo: <code>notas[notas &gt; 7]</code></li></ul>
+  <div class="bloco def"><span class="rotulo"><strong>Bibliotecas <code>random</code> e <code>string</code> em Python</strong></span>
+  As bibliotecas <code>random</code> e <code>string</code> fornecem ferramentas essenciais para geração de valores aleatórios e manipulação de strings.
 
-  <p></li><li><strong>Abordagem com Loop:</strong></p>
+  <ul><li><b><code>string</code> - Constantes úteis para strings</b>
 
-  <ul><li>Processamento elemento por elemento</li><li>Mais lento para grandes datasets</li><li>Exemplo:
-  <div class="codigo" data-lingua="Python"><pre><code>aprovados = []
-  for nota in notas:
-      if nota &gt; 7:
-          aprovados.append(nota)</code></pre></div></li></ul>
+  <ul><li><code>ascii-letters</code>: Contém todas as letras ASCII (a-z e A-Z)</li><li><code>digits</code>: Contém dígitos de 0 a 9</li><li><code>punctuation</code>: Contém caracteres de pontuação/símbolos</li><li><code>ascii-lowercase</code>: Letras minúsculas (a-z)</li><li><code>ascii-uppercase</code>: Letras maiúsculas (A-Z)</li></ul>
+
+  <p></li><li><b><code>random</code> - Geração de números aleatórios</b></p>
+
+  <ul><li><code>choice(sequência)</code>: Escolhe um elemento aleatório da sequência</li><li><code>randint(a, b)</code>: Inteiro aleatório entre a e b (inclusive)</li><li><code>shuffle(lista)</code>: Embaralha a lista in-place</li><li><code>sample(sequência, k)</code>: Amostra k elementos únicos</li><li><code>random()</code>: Float aleatório entre 0.0 e 1.0</li></ul>
 
   <p></li></ul></p>
 
-  <strong>Benchmark:</strong>
-  Para um array com 1 milhão de elementos:
+  </div>
 
-  <ul><li>Máscara booleana:  2ms</li><li>Loop Python:  500ms (250x mais lento)</li></ul>
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.10: Gerador Avançado de Senhas Seguras</span>
+  <div class="codigo" data-lingua="Python"><pre><code>import random
+  import string
+
+  def gerar_senha_segura(tamanho=12, usar_numeros=True, usar_simbolos=True, usar_maiusculas=True):
+      """Gera senhas seguras com garantia de caracteres mínimos de cada tipo"""
+    
+      # Definindo conjuntos de caracteres
+      minusculas = string.ascii_lowercase
+      maiusculas = string.ascii_uppercase if usar_maiusculas else ""
+      numeros = string.digits if usar_numeros else ""
+      simbolos = string.punctuation if usar_simbolos else ""
+    
+      # Garantindo pelo menos um caractere de cada tipo selecionado
+      senha = []
+      if usar_maiusculas:
+          senha.append(random.choice(maiusculas))
+      if usar_numeros:
+          senha.append(random.choice(numeros))
+      if usar_simbolos:
+          senha.append(random.choice(simbolos))
+    
+      # Completando o restante da senha
+      todos_caracteres = minusculas + maiusculas + numeros + simbolos
+      for _ in range(tamanho - len(senha)):
+          senha.append(random.choice(todos_caracteres))
+    
+      # Embaralhando para não ter padrão previsível
+      random.shuffle(senha)
+    
+      return ''.join(senha)
+
+  # Testando o gerador avançado
+  print("=== SENHAS SEGURAS ===")
+  print(f"Básica: {gerar_senha_segura(8, True, False, False)}")
+  print(f"Forte: {gerar_senha_segura(12, True, True, True)}")
+  print(f"Máxima segurança: {gerar_senha_segura(16, True, True, True)}")
+
+  # Gerar senha com requisitos específicos
+  print("para sistema financeiro:")
+  print(gerar_senha_segura(10, True, True, True))</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Boas Práticas para Gerar Senhas Seguras</strong></span>
+  Para criar geradores de senhas realmente seguros:
+
+  <ul><li><strong>Garanta diversidade:</strong> Inclua pelo menos um caractere de cada tipo</li><li><strong>Use tamanho adequado:</strong> Mínimo de 12 caracteres para segurança</li><li><strong>Embaralhe sempre:</strong> Evite padrões previsíveis</li><li><strong>Evite ambiguidade:</strong> Remova caracteres similares (1, l, I, 0, O)</li><li><strong>Use <code>secrets</code>:</strong> Para aplicações críticas, prefira o módulo <code>secrets</code></li></ul>
+
+  <strong>Exemplo de remoção de caracteres ambíguos:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>caracteres_seguros = (
+      string.ascii_letters.replace('l','').replace('I','').replace('O','') + 
+      string.digits.replace('0','').replace('1','') +
+      "!@#$%&amp;*"
+  )</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas dessas Bibliotecas</strong></span>
+  Além de gerar senhas, estas bibliotecas são úteis para:
+
+  <ul><li><strong>Simulações:</strong> Geração de dados aleatórios para testes</li><li><strong>Amosragem:</strong> Seleção aleatória de conjuntos de dados</li><li><strong>Criptografia:</strong> Geração de chaves e tokens (com <code>secrets</code>)</li><li><strong>Machine Learning:</strong> Divisão aleatória de conjuntos de treino/teste</li><li><strong>Experimentação:</strong> Ordem aleatória de testes científicos</li></ul>
+
+  <strong>Exemplo científico - Amostragem aleatória:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code># Selecionar 10 elementos aleatórios sem repetição
+  amostra = random.sample(range(1000), 10)
+
+  # Embaralhar ordem experimental
+  condicoes_experimentais = ['A', 'B', 'C', 'D']
+  random.shuffle(condicoes_experimentais)</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Segurança: <code>random</code> vs <code>secrets</code></strong></span>
+  Para aplicações de segurança:
+
+  <ul><li><code>random</code>: Adequado para fins gerais não-críticos
+
+  <ul><li>Usa algoritmo pseudo-aleatório (previsível com semente conhecida)</li><li>Bom para simulações e jogos</li></ul>
+
+  <p></li><li><code>secrets</code>: Deve ser usado para criptografia e segurança</p>
+
+  <ul><li>Gera números verdadeiramente aleatórios (usa fontes do SO)</li><li>Fornece <code>token_hex</code>, <code>token_urlsafe</code> para tokens seguros</li><li>Recomendado para senhas, chaves de autenticação, CSRF tokens</li></ul>
+
+  <p></li></ul></p>
+
+  <strong>Exemplo com <code>secrets</code>:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>import secrets
+
+  # Gerar senha realmente segura
+  senha_ultra_segura = ''.join(secrets.choice(
+      string.ascii_letters + string.digits + string.punctuation
+  ) for _ in range(20))</code></pre></div>
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.11: Validador de CPF - algoritmo simplificado</span>
+  <div class="codigo" data-lingua="Python"><pre><code>def validar_cpf_simples(cpf):
+      """Validação básica de CPF (apenas formato e tamanho)"""
+    
+      # Remover pontos e traços
+      cpf_numeros = cpf.replace(".", "").replace("-", "")
+    
+      # Verificar se tem 11 dígitos
+      if len(cpf_numeros) != 11:
+          return False
+    
+      # Verificar se todos são dígitos
+      if not cpf_numeros.isdigit():
+          return False
+    
+      # Verificar se não são todos iguais (111.111.111-11, etc.)
+      if cpf_numeros == cpf_numeros[0] * 11:
+          return False
+    
+      return True
+
+  def formatar_cpf(cpf):
+      """Formata CPF no padrão XXX.XXX.XXX-XX"""
+      cpf_numeros = cpf.replace(".", "").replace("-", "")
+      if len(cpf_numeros) == 11:
+          return f"{cpf_numeros[:3]}.{cpf_numeros[3:6]}.{cpf_numeros[6:9]}-{cpf_numeros[9:]}"
+      return cpf
+
+  # Testando
+  cpfs_teste = [
+      "12345678901",
+      "111.111.111-11",
+      "123.456.789-01",
+      "12345678",
+      "123abc45678"
+  ]
+
+  print("=== VALIDADOR DE CPF ===")
+  for cpf in cpfs_teste:
+      valido = validar_cpf_simples(cpf)
+      status = "✓ VÁLIDO" if valido else "✗ INVÁLIDO"
+      cpf_formatado = formatar_cpf(cpf) if valido else cpf
+      print(f"{cpf_formatado}: {status}")</code></pre></div>
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.12: Sistema de notas e média</span>
+  <div class="codigo" data-lingua="Python"><pre><code>def calcular_media_ponderada(notas, pesos):
+      """Calcula média ponderada dado notas e seus pesos"""
+      if len(notas) != len(pesos):
+          return "Erro: Número de notas e pesos deve ser igual!"
+    
+      soma_produtos = 0
+      soma_pesos = 0
+    
+      for nota, peso in zip(notas, pesos):
+          soma_produtos += nota * peso
+          soma_pesos += peso
+    
+      if soma_pesos == 0:
+          return "Erro: Soma dos pesos não pode ser zero!"
+    
+      return soma_produtos / soma_pesos
+
+  def determinar_situacao(media, nota_minima=7.0):
+      """Determina situação do aluno baseada na média"""
+      if media &gt;= nota_minima:
+          return "APROVADO"
+      elif media &gt;= nota_minima * 0.6:  # 60% da nota mínima
+          return "RECUPERAÇÃO"
+      else:
+          return "REPROVADO"
+
+  def relatorio_aluno(nome, notas, pesos=None):
+      """Gera relatório completo do aluno"""
+      print(f"=== RELATÓRIO: {nome.upper()} ===")
+    
+      if pesos is None:
+          # Média simples
+          media = sum(notas) / len(notas)
+          print("Tipo: Média Simples")
+      else:
+          # Média ponderada
+          media = calcular_media_ponderada(notas, pesos)
+          print("Tipo: Média Ponderada")
+          if isinstance(media, str):  # Se retornou erro
+              print(f"Erro: {media}")
+              return
+    
+      situacao = determinar_situacao(media)
+    
+      print(f"Notas: {notas}")
+      if pesos:
+          print(f"Pesos: {pesos}")
+      print(f"Média: {media:.2f}")
+      print(f"Situação: {situacao}")
+    
+      # Dica motivacional
+      if situacao == "APROVADO":
+          print("Parabéns! Continue assim!")
+      elif situacao == "RECUPERAÇÃO":
+          print("Quase lá! Estude mais um pouco.")
+      else:
+          print("Não desista! Você consegue melhorar!")
+
+  # Testando o sistema
+  alunos = [
+      ("Ana Silva", [8.5, 7.2, 9.1, 8.0]),
+      ("Carlos Santos", [6.0, 5.5, 7.0, 6.8]),
+      ("Maria Oliveira", [9.5, 8.8, 9.2, 9.0])
+  ]
+
+  for nome, notas in alunos:
+      relatorio_aluno(nome, notas)
+
+  # Exemplo com média ponderada
+  print("" + "="*50)
+  print("EXEMPLO COM MÉDIA PONDERADA")
+  relatorio_aluno("João Pedro", [7.0, 8.5, 6.0], [2, 3, 1])</code></pre></div>
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.13: Jogo da velha - funções para organizar o código</span>
+  <div class="codigo" data-lingua="Python"><pre><code>def criar_tabuleiro():
+      """Cria um tabuleiro vazio 3x3"""
+      return [[" " for _ in range(3)] for _ in range(3)]
+
+  def mostrar_tabuleiro(tabuleiro):
+      """Exibe o tabuleiro na tela"""
+      print("0   1   2")
+      for i in range(3):
+          print(f"{i}  {tabuleiro[i][0]} | {tabuleiro[i][1]} | {tabuleiro[i][2]} ")
+          if i &lt; 2:
+              print("  -----------")
+
+  def fazer_jogada(tabuleiro, linha, coluna, jogador):
+      """Faz uma jogada no tabuleiro"""
+      if tabuleiro[linha][coluna] == " ":
+          tabuleiro[linha][coluna] = jogador
+          return True
+      return False
+
+  def verificar_vitoria(tabuleiro, jogador):
+      """Verifica se o jogador ganhou"""
+      # Verificar linhas
+      for linha in tabuleiro:
+          if all(casa == jogador for casa in linha):
+              return True
+    
+      # Verificar colunas
+      for col in range(3):
+          if all(tabuleiro[linha][col] == jogador for linha in range(3)):
+              return True
+    
+      # Verificar diagonais
+      if all(tabuleiro[i][i] == jogador for i in range(3)):
+          return True
+      if all(tabuleiro[i][2-i] == jogador for i in range(3)):
+          return True
+    
+      return False
+
+  def tabuleiro_cheio(tabuleiro):
+      """Verifica se o tabuleiro está cheio"""
+      for linha in tabuleiro:
+          if " " in linha:
+              return False
+      return True
+
+  # Simulação de algumas jogadas
+  print("=== JOGO DA VELHA - SIMULAÇÃO ===")
+  tabuleiro = criar_tabuleiro()
+
+  # Simulando uma partida
+  jogadas = [
+      (1, 1, "X"),  # X no centro
+      (0, 0, "O"),  # O no canto
+      (1, 0, "X"),  # X na lateral
+      (2, 2, "O"),  # O no canto oposto
+      (1, 2, "X"),  # X completa a linha do meio
+  ]
+
+  for linha, coluna, jogador in jogadas:
+      fazer_jogada(tabuleiro, linha, coluna, jogador)
+      mostrar_tabuleiro(tabuleiro)
+    
+      if verificar_vitoria(tabuleiro, jogador):
+          print(f"Jogador {jogador} GANHOU!")
+          break
+      elif tabuleiro_cheio(tabuleiro):
+          print("EMPATE!")
+          break
+    
+      print(f"{jogador} jogou na posição ({linha}, {coluna})")</code></pre></div>
+  </div>
+
+  <h2 id="s6">6. Documentação e boas práticas</h2>
+
+  <p>Como escrever funções que outras pessoas (e você no futuro) conseguem entender?</p>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 14.14: Documentando funções adequadamente</span>
+  <div class="codigo" data-lingua="Python"><pre><code>def calcular_imc(peso, altura):
+      """
+      Calcula o Índice de Massa Corporal (IMC).
+    
+      Parâmetros:
+          peso (float): Peso da pessoa em quilogramas
+          altura (float): Altura da pessoa em metros
+    
+      Retorna:
+          float: Valor do IMC calculado
+        
+      Exemplo:
+          &gt;&gt;&gt; calcular_imc(70, 1.75)
+          22.86
+      """
+      if altura &lt;= 0:
+          raise ValueError("Altura deve ser maior que zero")
+      if peso &lt;= 0:
+          raise ValueError("Peso deve ser maior que zero")
+    
+      imc = peso / (altura ** 2)
+      return round(imc, 2)
+
+  def classificar_imc(imc):
+      """
+      Classifica o IMC segundo padrões da OMS.
+    
+      Parâmetros:
+          imc (float): Valor do Índice de Massa Corporal
+    
+      Retorna:
+          str: Classificação do IMC
+      """
+      if imc &lt; 18.5:
+          return "Abaixo do peso"
+      elif imc &lt; 25:
+          return "Peso normal"
+      elif imc &lt; 30:
+          return "Sobrepeso"
+      else:
+          return "Obesidade"
+
+  def relatorio_saude(nome, peso, altura):
+      """
+      Gera relatório completo de saúde baseado no IMC.
+    
+      Parâmetros:
+          nome (str): Nome da pessoa
+          peso (float): Peso em kg
+          altura (float): Altura em metros
+      """
+      try:
+          imc = calcular_imc(peso, altura)
+          classificacao = classificar_imc(imc)
+        
+          print(f"=== RELATÓRIO DE SAÚDE: {nome.upper()} ===")
+          print(f"Peso: {peso} kg")
+          print(f"Altura: {altura} m")
+          print(f"IMC: {imc}")
+          print(f"Classificação: {classificacao}")
+        
+          # Dicas baseadas na classificação
+          if "normal" in classificacao.lower():
+              print("Seu peso está na faixa ideal!")
+          else:
+              print("Considere consultar um profissional de saúde.")
+            
+      except ValueError as erro:
+          print(f"Erro: {erro}")
+
+  # Testando
+  pessoas = [
+      ("Ana", 65, 1.70),
+      ("Bruno", 80, 1.80),
+      ("Carlos", 90, 1.75),
+      ("Diana", 55, 1.65)
+  ]
+
+  for nome, peso, altura in pessoas:
+      relatorio_saude(nome, peso, altura)</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  <strong>Boas práticas para funções:</strong>
+
+  <ul><li><strong>Nome descritivo</strong>: função deve ter nome claro sobre o que faz</li><li><strong>Uma responsabilidade</strong>: cada função deve fazer apenas uma coisa</li><li><strong>Documentação</strong>: sempre inclua docstring explicando a função</li><li><strong>Parâmetros claros</strong>: nomes de parâmetros devem ser autoexplicativos</li><li><strong>Retorno consistente</strong>: sempre retorne o mesmo tipo de dado</li><li><strong>Tratamento de erros</strong>: valide entradas e trate casos especiais</li></ul>
 
   </div>
 
-  <div class="bloco def"><span class="rotulo"><strong>Combinação com Outras Funções do NumPy</strong></span>
-  <strong>Padrões Úteis:</strong>
+  <h2 id="s7">7. Desafios para casa</h2>
 
-  <ul><li><strong>Seleção com <code>np.where</code>:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code># Substitui notas &lt; 6 por 6.0
-  notas_ajustadas = np.where(notas &lt; 6.0, 6.0, notas)</code></pre></div></li><li><strong>Contagem com <code>np.count_nonzero</code>:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>num_reprovados = np.count_nonzero(notas &lt; 7.0)</code></pre></div></li><li><strong>Seleção Aleatória:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code># Amostra aleatória de aprovados
-  amostra = np.random.choice(notas[aprovados], size=3)</code></pre></div></li><li><strong>Agregação:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code># Média das 3 melhores notas
-  top3 = np.mean(np.sort(notas)[-3:])</code></pre></div></li></ul>
+  <p>Agora é hora de criar suas próprias funções! Vamos praticar:</p>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 14.1: Conversor de unidades</span>
+  Crie funções para converter metros em pés, quilogramas em libras, e Celsius em Kelvin. Faça uma função principal que teste todas as conversões.
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 14.2: Calculadora de juros</span>
+  Crie uma função que calcule juros simples e outra para juros compostos. Compare os resultados para diferentes períodos.
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 14.3: Validador de dados</span>
+  Crie funções para validar email (deve ter @ e .), telefone (só números, 10-11 dígitos), e idade (entre 0 e 120 anos).
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 14.4: Jogo de pedra, papel e tesoura</span>
+  Crie funções separadas para: gerar jogada do computador, determinar vencedor, e contar pontuação. Simule 10 rodadas.
+  </div>
+
+  <p>Dicas</p>
+
+  <div class="bloco def"><span class="rotulo"><strong>Fundamentação Teórica - Exercício 1: Conversor de Unidades</strong></span>
+  <strong>Conceitos Físicos Envolvidos:</strong>
+
+  <ul><li><strong>Sistemas de Unidades:</strong> Diferenças entre SI (metro, kg) e sistema imperial (pés, libras)</li><li><strong>Conversão de Distância:</strong> \(1\ {m} = 3.28084\ {pés}\)</li><li><strong>Conversão de Massa:</strong> \(1\ {kg} = 2.20462\ {lb}\)</li><li><strong>Escalas Termométricas:</strong> \(K = °C + 273.15\) (zero absoluto = 0K)</li></ul>
+
+  <strong>Implementação Recomendada:</strong>
+
+  <ul><li>Funções puras (sem efeitos colaterais)</li><li>Constantes para fatores de conversão</li><li>Arredondamento para 2-4 casas decimais</li><li>Tratamento de valores negativos (exceto Kelvin)</li></ul>
 
   </div>
 
-  <div class="bloco def"><span class="rotulo"><strong>Armadilhas Comuns e Boas Práticas</strong></span>
-  <strong>Cuidados Necessários:</strong>
+  <div class="bloco def"><span class="rotulo"><strong>Fundamentação Teórica - Exercício 2: Calculadora de Juros</strong></span>
+  <strong>Matemática Financeira:</strong>
 
-  <ul><li><strong>Parênteses em condições múltiplas:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code># Correto:
-  (notas &gt;= 6.0) &amp; (notas &lt; 8.0)
-  # Errado:
-  notas &gt;= 6.0 &amp; notas &lt; 8.0  # Gera erro</code></pre></div></li><li><strong>Operadores lógicos:</strong> Usar <code>&amp;,|, </code> em vez de <code>and,or,not</code></li><li><strong>Cópia vs View:</strong> Filtros criam novos arrays (não views)</li><li><strong>NaN e valores especiais:</strong> Requer tratamento especial</li></ul>
+  <ul><li><strong>Juros Simples:</strong> \(J = C i t\)
 
-  <strong>Boas Práticas:</strong>
+  <ul><li>Linear no tempo</li><li>Apenas sobre capital inicial</li></ul>
 
-  <ul><li>Nomear máscaras para clareza (ex: <code>aprovados = notas &gt;= 7</code>)</li><li>Documentar condições complexas</li><li>Validar dados antes de filtrar</li><li>Usar funções NumPy em vez de Python puro</li></ul>
+  <p></li><li><strong>Juros Compostos:</strong> \(M = C (1 + i)^t\)</p>
 
-  </div>
+  <ul><li>Crescimento exponencial</li><li>"Juros sobre juros"</li></ul>
 
-  <h2 id="s5">5. Operações matemáticas com arrays</h2>
+  <p></li></ul></p>
 
-  <p>A verdadeira força do NumPy está nas operações matemáticas!</p>
+  <strong>Parâmetros Essenciais:</strong>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.9: Operações elemento por elemento</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Dois arrays para operações
-  a = np.array([1, 2, 3, 4, 5])
-  b = np.array([2, 4, 6, 8, 10])
+  <ul><li>\(C\) = Capital inicial</li><li>\(i\) = Taxa de juros (decimal)</li><li>\(t\) = Tempo/períodos</li><li>\(J\) = Juros acumulados</li><li>\(M\) = Montante final</li></ul>
 
-  print("Array a:", a)
-  print("Array b:", b)
+  <strong>Comparação:</strong>
+  Para \(t>1\), compostos \(>\) simples. Exemplo com \(C=1000\), \(i=0.1\):
 
-  # Operações básicas
-  print(f"+ b = {a + b}")
-  print(f"a - b = {a - b}")
-  print(f"a * b = {a * b}")  # Multiplicação elemento por elemento
-  print(f"a / b = {a / b}")
-  print(f"a ** 2 = {a ** 2}")
-  print(f"b // 3 = {b // 3}")
+  <p class="centro">
 
-  # Operações com escalares
-  print(f"+ 10 = {a + 10}")
-  print(f"a * 3 = {a * 3}")
-  print(f"b / 2 = {b / 2}")
+  <div class="tabela-rolavel"><table><thead><tr><th>Ano</th><th>Simples</th><th>Composto</th></tr></thead><tbody><tr><td>1</td><td>1100</td><td>1100</td></tr><tr><td>5</td><td>1500</td><td>1610.51</td></tr><tr><td>10</td><td>2000</td><td>2593.74</td></tr></tbody></table></div>
 
-  # Comparações
-  print(f"&gt; 3: {a &gt; 3}")
-  print(f"b == 8: {b == 8}")
-  print(f"a &lt;= b: {a &lt;= b}")</code></pre></div>
-  </div>
+  <p></p></p>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.10: Funções matemáticas universais</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Array com ângulos em graus
-  angulos_graus = np.array([0, 30, 45, 60, 90, 120, 150, 180])
-  print("Ângulos (graus):", angulos_graus)
-
-  # Convertendo para radianos
-  angulos_rad = np.radians(angulos_graus)
-  print("Ângulos (radianos):", np.round(angulos_rad, 3))
-
-  # Funções trigonométricas
-  senos = np.sin(angulos_rad)
-  cossenos = np.cos(angulos_rad)
-  tangentes = np.tan(angulos_rad)
-
-  print(f"ções trigonométricas:")
-  print(f"Senos: {np.round(senos, 3)}")
-  print(f"Cossenos: {np.round(cossenos, 3)}")
-
-  # Outras funções matemáticas
-  numeros = np.array([1, 4, 9, 16, 25, 100])
-  print(f": {numeros}")
-  print(f"Raiz quadrada: {np.sqrt(numeros)}")
-  print(f"Logaritmo natural: {np.round(np.log(numeros), 2)}")
-  print(f"Logaritmo base 10: {np.round(np.log10(numeros), 2)}")
-  print(f"Exponencial: {np.round(np.exp([1, 2, 3]), 2)}")
-
-  # Funções de arredondamento
-  decimais = np.array([3.14159, 2.71828, 1.41421, 1.73205])
-  print(f"úmeros decimais: {decimais}")
-  print(f"Arredondado: {np.round(decimais, 2)}")
-  print(f"Teto (ceiling): {np.ceil(decimais)}")
-  print(f"Piso (floor): {np.floor(decimais)}")</code></pre></div>
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.11: Álgebra linear básica</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Vetores
-  vetor_a = np.array([1, 2, 3])
-  vetor_b = np.array([4, 5, 6])
-
-  print("Vetor A:", vetor_a)
-  print("Vetor B:", vetor_b)
-
-  # Produto escalar (dot product)
-  produto_escalar = np.dot(vetor_a, vetor_b)
-  print(f"Produto escalar A·B: {produto_escalar}")
-
-  # Norma (magnitude) de um vetor
-  norma_a = np.linalg.norm(vetor_a)
-  norma_b = np.linalg.norm(vetor_b)
-  print(f"Norma de A: {norma_a:.3f}")
-  print(f"Norma de B: {norma_b:.3f}")
-
-  # Matrizes
-  matriz_a = np.array([[1, 2], [3, 4]])
-  matriz_b = np.array([[5, 6], [7, 8]])
-
-  print(f"A:")
-  print(matriz_a)
-  print(f"Matriz B:")
-  print(matriz_b)
-
-  # Multiplicação de matrizes
-  produto_matrizes = np.dot(matriz_a, matriz_b)
-  print(f"Produto A × B:")
-  print(produto_matrizes)
-
-  # Determinante
-  det_a = np.linalg.det(matriz_a)
-  print(f"Determinante de A: {det_a:.1f}")
-
-  # Transposta
-  transposta_a = matriz_a.T
-  print(f"Transposta de A:")
-  print(transposta_a)</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Operações de Álgebra Linear no Exemplo</strong></span>
-  <strong>1. Vetores e Operações Básicas:</strong>
-
-  <ul><li><strong>Vetor:</strong> Array unidimensional que representa magnitude e direção</li><li><strong>Exemplo:</strong> \(\vec{a} = [1, 2, 3]\), \(\vec{b} = [4, 5, 6]\)</li></ul>
-
-  <strong>2. Produto Escalar (np.dot):</strong>
-
-  <ul><li><strong>Definição:</strong> \(\vec{a} \cdot \vec{b} = \sum_{i=1}^n a_i b_i = a_1b_1 + a_2b_2 + a_3b_3\)</li><li><strong>Cálculo:</strong> \(1\times4 + 2\times5 + 3\times6 = 4 + 10 + 18 = 32\)</li><li><strong>Aplicação:</strong> Ângulo entre vetores, projeções, trabalho em física</li></ul>
-
-  <strong>3. Norma de Vetor (np.linalg.norm):</strong>
-
-  <ul><li><strong>Definição:</strong> \(||\vec{a}|| = \sqrt{a_1^2 + a_2^2 + a_3^2}\) (comprimento do vetor)</li><li><strong>Cálculo:</strong> \(||\vec{a}|| = \sqrt{1^2 + 2^2 + 3^2} = \sqrt{14} \approx 3.742\)</li><li><strong>Aplicação:</strong> Normalização de vetores, cálculo de distâncias</li></ul>
-
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Operações com Matrizes</strong></span>
-  <strong>4. Multiplicação de Matrizes (np.dot):</strong>
-
-  <ul><li><strong>Definição:</strong> \(C = AB\) onde \(c_{ij} = \sum_{k=1}^n a_{ik}b_{kj}\)</li><li><strong>Cálculo para o exemplo:</strong>
-      \(
-      \begin{bmatrix}
-      1 & 2 \\
-      3 & 4 \\
-      \end{bmatrix}
-      \begin{bmatrix}
-      5 & 6 \\
-      7 & 8 \\
-      \end{bmatrix}
-      =
-      \begin{bmatrix}
-      1\times5+2\times7 & 1\times6+2\times8 \\
-      3\times5+4\times7 & 3\times6+4\times8 \\
-      \end{bmatrix}
-      =
-      \begin{bmatrix}
-      19 & 22 \\
-      43 & 50 \\
-      \end{bmatrix}
-      \)</li><li><strong>Aplicação:</strong> Transformações lineares, sistemas de equações</li></ul>
-
-  <strong>5. Determinante (np.linalg.det):</strong>
-
-  <ul><li><strong>Definição (2x2):</strong> \((A) = a_{11}a_{22} - a_{12}a_{21}\)</li><li><strong>Cálculo:</strong> \(1\times4 - 2\times3 = 4 - 6 = -2\)</li><li><strong>Interpretação:</strong> Fator de escala da transformação linear (negativo indica inversão de orientação)</li><li><strong>Aplicação:</strong> Verificar invertibilidade, cálculo de áreas/volumes</li></ul>
-
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Transposição de Matrizes</strong></span>
-  <strong>6. Matriz Transposta (.T):</strong>
-
-  <ul><li><strong>Definição:</strong> \(A^T_{ij} = A_{ji}\) (troca linhas por colunas)</li><li><strong>Exemplo:</strong>
-      \(
-      A = \begin{bmatrix}
-      1 & 2 \\
-      3 & 4 \\
-      \end{bmatrix}
-      A^T = \begin{bmatrix}
-      1 & 3 \\
-      2 & 4 \\
-      \end{bmatrix}
-      \)</li><li><strong>Aplicação:</strong> Produtos matriciais simétricos, sistemas de equações lineares</li></ul>
-
-  <strong>Propriedades Importantes:</strong>
-
-  <ul><li>\((AB)^T = B^T A^T\)</li><li>\((A^T) = (A)\)</li><li>\((A^T)^T = A\)</li></ul>
-
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Contextualização Física</strong></span>
-  <strong>Aplicações Práticas:</strong>
-
-  <ul><li><strong>Produto Escalar:</strong> Trabalho mecânico (\(W = \vec{F} \cdot \vec{d}\))</li><li><strong>Norma:</strong> Intensidade de forças/campos (\(||\vec{E}||\) em eletromagnetismo)</li><li><strong>Matrizes:</strong> Rotação de corpos rígidos, óptica matricial</li><li><strong>Determinante:</strong> Jacobianos em mudança de coordenadas</li></ul>
-
-  <strong>Exemplo Mecânico:</strong>
-
-  <ul><li>Força \(\vec{F} = [3, -2, 5]\)</li><li>Deslocamento \(\vec{d} = [2, 4, 1]\)</li><li>Trabalho \(W = \vec{F} \cdot \vec{d} = 6 - 8 + 5 = 3\) Joules</li></ul>
-
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Extensões NumPy Avançadas</strong></span>
-  <strong>Outras Operações Úteis:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code># Autovalores e autovetores
-  autovalores, autovetores = np.linalg.eig(matriz_a)
-
-  # Matriz inversa
-  inversa_a = np.linalg.inv(matriz_a)
-
-  # Produto vetorial (3D)
-  produto_vetorial = np.cross(vetor_a, vetor_b)
-
-  # Decomposição QR
-  Q, R = np.linalg.qr(matriz_a)</code></pre></div>
-
-  <strong>Equivalência Matemática:</strong>
-
-  <ul><li><code>np.linalg.eig</code>: Resolve \(A\vec{v} = \lambda\vec{v}\)</li><li><code>np.linalg.inv</code>: Encontra \(A^{-1}\) tal que \(AA^{-1} = I\)</li><li><code>np.cross</code>: \(\vec{a} \times \vec{b} = [a_2b_3-a_3b_2, a_3b_1-a_1b_3, a_1b_2-a_2b_1]\)</li></ul>
-
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 6.12: Aplicação: análise de dados experimentais</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Simulando dados de temperatura ao longo do dia
-  horas = np.linspace(0, 24, 25)  # 0h-24h
-  temp_base = 20 + 10 * np.sin(2 * np.pi * (horas - 6) / 24)  # Curva senoidal
-  ruido = np.random.normal(0, 1, len(horas))  # Ruído experimental
-  temperaturas = temp_base + ruido
-
-  print("=== ANÁLISE DE TEMPERATURA DIÁRIA ===")
-  print(f"Dados coletados: {len(temperaturas)} medições")
-
-  # Estatísticas básicas
-  print(f"ísticas:")
-  print(f"Temperatura média: {np.mean(temperaturas):.2f}°C")
-  print(f"Temperatura mínima: {np.min(temperaturas):.2f}°C")
-  print(f"Temperatura máxima: {np.max(temperaturas):.2f}°C")
-  print(f"Amplitude térmica: {np.max(temperaturas) - np.min(temperaturas):.2f}°C")
-  print(f"Desvio padrão: {np.std(temperaturas):.2f}°C")
-
-  # Encontrando horários específicos
-  idx_min = np.argmin(temperaturas)
-  idx_max = np.argmax(temperaturas)
-  print(f"ário mais frio: {horas[idx_min]:.1f}h ({temperaturas[idx_min]:.2f}°C)")
-  print(f"Horário mais quente: {horas[idx_max]:.1f}h ({temperaturas[idx_max]:.2f}°C)")
-
-  # Contando temperaturas acima de 25°C
-  quentes = temperaturas &gt; 25
-  print(f"ários com T &gt; 25°C: {np.sum(quentes)} ({np.sum(quentes)/len(temperaturas)*100:.1f}%)")
-
-  # Calculando tendência (diferenças entre medições consecutivas)
-  variacao = np.diff(temperaturas)  # Diferença entre pontos consecutivos
-  print(f"Maior aquecimento: {np.max(variacao):.2f}°C/h")
-  print(f"Maior resfriamento: {np.min(variacao):.2f}°C/h")</code></pre></div>
-  </div>
-
-  <h2 id="s6">6. Desafios para casa</h2>
-
-  <p>Agora é hora de dominar o NumPy com exercícios práticos!</p>
-
-  <div class="bloco ex"><span class="rotulo">Exercício 6.1: Filtro de dados</span>
-  Dado o array <code>[1, -2, 3, -4, 5, -6, 7, -8, 9]</code>, use máscaras booleanas para separar números positivos e negativos. Calcule a média de cada grupo.
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exercício 6.2: Operações com ângulos</span>
-  Crie um array com ângulos de 0° a 360° (passo 15°). Calcule seno e cosseno, e verifique numericamente a identidade <code>sen²θ + cos²θ = 1</code>.
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
   <strong>Novos conceitos que vocês dominam:</strong>
 
-  <ul><li>Arrays NumPy vs listas Python</li><li>Criação de arrays (zeros, ones, arange, linspace)</li><li>Indexação e fatiamento de arrays</li><li>Máscaras booleanas para filtrar dados</li><li>Operações matemáticas vetorizadas</li><li>Funções matemáticas universais</li><li>Álgebra linear básica</li><li>Análise estatística de dados</li></ul>
+  <ul><li>Definição e chamada de funções</li><li>Parâmetros obrigatórios e opcionais</li><li>Valores de retorno</li><li>Escopo de variáveis (local vs global)</li><li>Documentação de funções (docstrings)</li><li>Modularização de código</li><li>Funções com múltiplos parâmetros</li><li>Tratamento básico de erros</li></ul>
 
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
-  <strong>Funções NumPy essenciais para lembrar:</strong>
+  <strong>Padrões importantes para lembrar:</strong>
 
-  <ul><li><code>np.array()</code>: criar array</li><li><code>np.zeros()</code>, <code>np.ones()</code>: arrays preenchidos</li><li><code>np.arange()</code>, <code>np.linspace()</code>: sequências</li><li><code>np.mean()</code>, <code>np.std()</code>: estatísticas</li><li><code>np.min()</code>, <code>np.max()</code>: extremos</li><li><code>np.sin()</code>, <code>np.cos()</code>: trigonometria</li><li><code>np.sqrt()</code>, <code>np.log()</code>: matemática</li><li><code>np.dot()</code>: produto escalar/matricial</li></ul>
+  <ul><li><code>def nome_funcao():</code>: definir função</li><li><code>return valor</code>: retornar resultado</li><li><code>"""docstring"""</code>: documentar função</li><li><code>global variavel</code>: usar variável global</li><li>Nomes descritivos para funções e parâmetros</li><li>Uma função = uma responsabilidade</li><li>Sempre teste suas funções com diferentes valores</li></ul>
 
   </div>
 
-  <p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+  <p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
 
   <nav class="nav-aulas">
-    <a href="aula13.html"><small>Módulo anterior</small>← 13. Funções</a>
-    <a class="prox" href="aula15.html"><small>Próximo módulo</small>15. Matplotlib →</a>
+    <a href="aula13.html"><small>Módulo anterior</small>← 13. Controle</a>
+    <a class="prox" href="aula15.html"><small>Próximo módulo</small>15. NumPy →</a>
   </nav>
 
 </main>
@@ -772,6 +1032,5 @@
   Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
 </footer>
 
-<script src="assets/js/comum.js?v=202611091010"></script>
 </body>
 </html>

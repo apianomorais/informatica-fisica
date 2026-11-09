@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 6: O primeiro documento no Overleaf | Informática para Física</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
+<script src="assets/js/comum.js?v=202611091035"></script>
+<script src="assets/js/codigo.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="index.html">Informática para Física <span>· LFCA/URCA</span></a>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <span class="grupo">Planilhas</span>
+      <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
+      <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Estatística descritiva e distribuições">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Propagação de erros e barras de erro">4</a>
+      <a href="aula05.html" class="num" title="Módulo 5: Gráficos e simulação na planilha">5</a>
+      <span class="grupo">LaTeX</span>
+      <a href="aula06.html" class="num ativo" title="Módulo 6: O primeiro documento no Overleaf">6</a>
+      <a href="aula07.html" class="num" title="Módulo 7: Equações em LaTeX">7</a>
+      <a href="aula08.html" class="num" title="Módulo 8: Matrizes, sistemas e alinhamento">8</a>
+      <a href="aula09.html" class="num" title="Módulo 9: Figuras, tabelas e bibliografia">9</a>
+      <span class="grupo">Python</span>
+      <a href="aula10.html" class="num" title="Módulo 10: Introdução ao Python e ao Spyder">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Tipos de dados e variáveis">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de dados: listas e tuplas">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Estruturas de controle">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Funções e modularização">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao NumPy">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Introdução ao Matplotlib: gráficos básicos">16</a>
+      <a href="aula17.html" class="num" title="Módulo 17: Matplotlib avançado: personalização e visualizações especiais">17</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Entrada e saída: teclado, arquivos e CSV">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Análise de dados com Pandas">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Métodos numéricos com SciPy">20</a>
+      <a href="aula21.html" class="num" title="Módulo 21: Matemática simbólica com SymPy">21</a>
+    </nav>
+  </div>
+</header>
+
+<div class="envoltorio">
+
+<aside class="lateral">
+  <h4>Nesta aula</h4>
+  <ol>
+    <li><a href="#s1">1. O que é LaTeX e por que ele existe</a></li>\n    <li><a href="#s2">2. Conta e primeiro projeto no Overleaf</a></li>\n    <li><a href="#s3">3. A interface e o ciclo de compilação</a></li>\n    <li><a href="#s4">4. Anatomia de um documento</a></li>\n    <li><a href="#s5">5. Classes e opções</a></li>\n    <li><a href="#s6">6. Pacotes</a></li>\n    <li><a href="#s7">7. Texto: formatação, seções e listas</a></li>\n    <li><a href="#s8">8. Caracteres especiais e os erros mais comuns</a></li>\n    <li><a href="#s9">9. Exercícios</a></li>
+  </ol>
+</aside>
+
+<main class="conteudo">
+
+  <p class="chapeu">Aula 6 · LaTeX e Overleaf</p>
+  <h1>O primeiro documento no Overleaf</h1>
+  <p class="subtitulo">O LaTeX separa o que você escreve de como aquilo aparece na página. Esta aula monta o primeiro documento no Overleaf, apresenta as partes de um arquivo .tex e ensina a ler as mensagens de erro, que é a habilidade que destrava todo o resto.</p>
+
+  <div class="bloco def">
+    <span class="rotulo">Nesta aula você vai</span>
+    <ul>
+      <li>Criar conta no Overleaf e abrir o primeiro projeto.</li>
+      <li>Reconhecer as partes de um documento LaTeX e o que cada uma faz.</li>
+      <li>Escolher classe, opções e pacotes com critério.</li>
+      <li>Compilar, ler as mensagens de erro e corrigir os problemas mais comuns.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1">1. O que é LaTeX e por que ele existe</h2>
+
+  <p>Num editor comum, o que você vê na tela é o que sai impresso, e a formatação é feita à
+  mão, clicando em botões. Isso funciona bem para uma carta e mal para um texto científico de
+  trinta páginas com quarenta equações, vinte figuras numeradas e cinquenta referências
+  bibliográficas, onde acrescentar uma figura no meio obriga a renumerar tudo o que vem
+  depois.</p>
+
+  <p>O LaTeX trabalha de outro jeito. Você escreve o <strong>conteúdo</strong> marcado com
+  comandos que dizem o que cada coisa é, e um programa decide como aquilo fica na página. Uma
+  equação é marcada como equação, uma seção como seção, uma referência como referência, e a
+  numeração, o espaçamento e o índice saem sozinhos e sempre coerentes.</p>
+
+  <p>Foi criado por Leslie Lamport nos anos 1980 sobre o TeX, de Donald Knuth, que escreveu o
+  TeX porque estava insatisfeito com a qualidade tipográfica dos seus próprios livros de
+  computação. Essa origem explica o resultado: nenhum outro sistema compõe matemática tão
+  bem, e é por isso que praticamente toda revista de física exige ou prefere LaTeX.</p>
+
+  <div class="bloco fisica">
+    <span class="rotulo">Quatro coisas que você ganha de graça</span>
+    <ul>
+      <li><b>Equações profissionais</b>, com espaçamento e tamanhos corretos sem ajuste
+      manual.</li>
+      <li><b>Numeração automática</b> de seções, equações, figuras e tabelas.</li>
+      <li><b>Referências cruzadas</b> que se atualizam sozinhas quando algo é inserido no
+      meio.</li>
+      <li><b>Bibliografia formatada</b> a partir de uma base de dados, em qualquer estilo,
+      inclusive ABNT.</li>
+    </ul>
+  </div>
+
+  <h2 id="s2">2. Conta e primeiro projeto no Overleaf</h2>
+
+  <p>O <strong>Overleaf</strong> é um editor de LaTeX que roda no navegador. Ele evita a
+  instalação de uma distribuição TeX completa, que ocupa alguns gigabytes, e permite que duas
+  pessoas editem o mesmo documento ao mesmo tempo, como no Google Planilhas da unidade
+  anterior.</p>
+
+  <ol>
+    <li>Acesse <code>overleaf.com</code> e clique em <b>Register</b>.</li>
+    <li>Use o seu e-mail institucional: muitas universidades têm acesso ampliado gratuito.</li>
+    <li>Na tela inicial, clique em <b>New Project</b> e escolha <b>Blank Project</b>.</li>
+    <li>Dê um nome descritivo ao projeto, como <code>Relatorio-Pendulo</code>.</li>
+  </ol>
+
+  <p>O Overleaf já cria um documento mínimo que compila. A partir dele, tudo é edição.</p>
+
+  <h2 id="s3">3. A interface e o ciclo de compilação</h2>
+
+  <p>A tela se divide em três partes. À esquerda, o <strong>gerenciador de arquivos</strong>,
+  onde ficam o <code>.tex</code>, as figuras e o arquivo de bibliografia. No centro, o
+  <strong>editor</strong>, onde você escreve. À direita, a <strong>visualização do PDF</strong>,
+  que é o resultado.</p>
+
+  <p>Entre o que você escreve e o que aparece à direita existe uma etapa que não existe num
+  editor comum: a <strong>compilação</strong>. O botão verde <b>Recompile</b>, ou
+  <code>Ctrl+Enter</code>, manda o programa ler o seu texto e produzir o PDF. Se houver um erro
+  de sintaxe, o PDF não é gerado e aparece uma lista de mensagens em vermelho.</p>
+
+  <p>Dois recursos valem conhecer desde o começo: <b>History</b>, que guarda todas as versões
+  anteriores e permite voltar, e <b>Share</b>, que convida outra pessoa para o projeto.</p>
+
+  <h2 id="s4">4. Anatomia de um documento</h2>
+
+  <p>Todo arquivo LaTeX tem duas partes. O <strong>preâmbulo</strong>, que vai do começo até o
+  <code>\begin{document}</code> e configura o documento; e o <strong>corpo</strong>, entre
+  <code>\begin{document}</code> e <code>\end{document}</code>, que é o texto propriamente
+  dito.</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\documentclass[12pt,a4paper]{article}      % classe e opções
+
+\usepackage[utf8]{inputenc}                % acentuação
+\usepackage[brazilian]{babel}              % hifenização e nomes em português
+\usepackage{amsmath,amssymb}               % matemática
+\usepackage{graphicx}                      % figuras
+\usepackage{geometry}                      % margens
+
+\title{Determinação da aceleração da gravidade}
+\author{Nome do Estudante}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+O período de um pêndulo simples depende do comprimento e da gravidade local.
+
+\section{Resultados}
+Medimos quinze vezes o período e obtivemos a gravidade local.
+
+\end{document}</code></pre></div>
+
+  <p>Tudo o que vem depois de <code>%</code> é comentário e não aparece no PDF. Use comentários
+  à vontade: eles são a única maneira de deixar recado para você mesmo dentro do arquivo.</p>
+
+  <h2 id="s5">5. Classes e opções</h2>
+
+  <p>A <strong>classe</strong>, declarada na primeira linha, define a estrutura geral: margens,
+  fontes, espaçamento, aparência das seções e até quais comandos existem. As nativas mais
+  usadas são:</p>
+
+  <div class="tabela-rolavel"><table>
+    <thead><tr><th>Classe</th><th>Para quê</th></tr></thead>
+    <tbody>
+      <tr><td><code>article</code></td><td>artigos e relatórios curtos; é a que usaremos</td></tr>
+      <tr><td><code>report</code></td><td>documentos longos, com capítulos</td></tr>
+      <tr><td><code>book</code></td><td>livros e teses</td></tr>
+      <tr><td><code>beamer</code></td><td>apresentações de slides</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>As opções vão entre colchetes, antes do nome da classe: <code>10pt</code>,
+  <code>11pt</code> ou <code>12pt</code> para o tamanho da fonte, <code>a4paper</code> para o
+  papel, <code>twocolumn</code> para duas colunas e <code>twoside</code> para impressão frente
+  e verso.</p>
+
+  <p>Qualquer pessoa pode escrever uma classe, e revistas e universidades fazem isso o tempo
+  todo. A <em>Physical Review</em> tem a sua, e o departamento tem a classe
+  <code>urca-experimental</code>, que a aula 9 apresenta: ela já traz a capa, o cabeçalho e as
+  seções do relatório de laboratório prontas.</p>
+
+  <h2 id="s6">6. Pacotes</h2>
+
+  <p>Os <strong>pacotes</strong> acrescentam funcionalidades, e vão no preâmbulo com
+  <code>\usepackage</code>. Os indispensáveis para um texto de física em português:</p>
+
+  <div class="tabela-rolavel"><table>
+    <thead><tr><th>Pacote</th><th>O que traz</th></tr></thead>
+    <tbody>
+      <tr><td><code>inputenc</code> e <code>babel</code></td><td>acentuação e hifenização em português</td></tr>
+      <tr><td><code>amsmath</code>, <code>amssymb</code></td><td>ambientes e símbolos matemáticos</td></tr>
+      <tr><td><code>graphicx</code></td><td>inclusão de figuras</td></tr>
+      <tr><td><code>geometry</code></td><td>controle de margens</td></tr>
+      <tr><td><code>booktabs</code></td><td>tabelas de aparência profissional</td></tr>
+      <tr><td><code>siunitx</code></td><td>números e unidades do SI bem formatados</td></tr>
+      <tr><td><code>physics</code></td><td>atalhos para derivadas, vetores e notação de Dirac</td></tr>
+      <tr><td><code>hyperref</code></td><td>links clicáveis no PDF</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="s7">7. Texto: formatação, seções e listas</h2>
+
+  <p>A formatação de texto é feita por comandos, não por botões:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\textbf{negrito}   \textit{itálico}   \underline{sublinhado}   \texttt{máquina}
+
+\section{Seção}
+\subsection{Subseção}
+\subsubsection{Sub-subseção}
+
+\begin{itemize}
+  \item primeiro item
+  \item segundo item
+\end{itemize}
+
+\begin{enumerate}
+  \item primeiro passo
+  \item segundo passo
+\end{enumerate}</code></pre></div>
+
+  <p>Um parágrafo novo se faz deixando uma <strong>linha em branco</strong>, e não apertando
+  Enter uma vez. Espaços repetidos e linhas em branco a mais são ignorados: o LaTeX decide o
+  espaçamento, e insistir contra ele costuma piorar o resultado.</p>
+
+  <h2 id="s8">8. Caracteres especiais e os erros mais comuns</h2>
+
+  <p>Dez caracteres têm significado próprio e precisam ser escapados quando se quer o símbolo
+  literal:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\%  \$  \&  \#  \_  \{  \}       \textbackslash para a própria barra</code></pre></div>
+
+  <p>E os erros que aparecem na primeira semana são sempre os mesmos:</p>
+
+  <div class="tabela-rolavel"><table>
+    <thead><tr><th>Mensagem</th><th>Quase sempre é</th></tr></thead>
+    <tbody>
+      <tr><td><code>Undefined control sequence</code></td><td>comando escrito errado, ou pacote não carregado</td></tr>
+      <tr><td><code>Missing $ inserted</code></td><td>símbolo matemático usado fora do modo matemático</td></tr>
+      <tr><td><code>Missing \begin{document}</code></td><td>texto escrito no preâmbulo por engano</td></tr>
+      <tr><td><code>File not found</code></td><td>figura com nome diferente do que está no código</td></tr>
+      <tr><td><code>Runaway argument</code></td><td>chave <code>{</code> aberta e não fechada</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="bloco fisica">
+    <span class="rotulo">Como depurar sem desespero</span>
+    <p>O LaTeX aponta a <b>primeira</b> linha em que se perdeu, que nem sempre é a linha do
+    erro, e um erro costuma gerar vários outros em cascata. A regra é corrigir o primeiro da
+    lista e recompilar, em vez de tentar entender todos de uma vez.</p>
+    <p>Se mesmo assim não achar, comente metade do documento com <code>%</code> e recompile. Se
+    o erro sumiu, ele está na metade comentada; se continua, está na outra. Em quatro ou cinco
+    rodadas dessas, qualquer erro aparece.</p>
+  </div>
+
+  <h2 id="s9">9. Exercícios</h2>
+
+  <div class="bloco ex">
+    <ol>
+      <li><b>6.1</b> Crie a conta e um projeto em branco, compile o documento que o Overleaf
+      oferece e baixe o PDF.</li>
+      <li><b>6.2</b> Reproduza o documento da seção 4, trocando título, autor e o texto das
+      seções pelo seu próprio relatório do pêndulo. Acrescente uma terceira seção chamada
+      Conclusões.</li>
+      <li><b>6.3</b> Mude a opção da classe de <code>12pt</code> para <code>10pt</code> e
+      depois acrescente <code>twocolumn</code>. Recompile a cada mudança e descreva o que
+      mudou na página.</li>
+      <li><b>6.4</b> Provoque de propósito cada um dos cinco erros da tabela da seção 8, anote
+      a mensagem que apareceu e corrija. Entregue a lista com a mensagem e a correção de cada
+      um.</li>
+      <li><b>6.5</b> Escreva um parágrafo que contenha, literalmente, os símbolos
+      <code>%</code>, <code>$</code>, <code>&amp;</code> e <code>_</code>, e faça-o
+      compilar.</li>
+    </ol>
+  </div>
+
+
+  <nav class="nav-aulas">
+    <a href="aula05.html"><small>Módulo anterior</small>← 5. Gráficos e simulação</a>
+    <a class="prox" href="aula07.html"><small>Próximo módulo</small>7. Equações →</a>
+  </nav>
+
+</main>
+</div>
+
+<footer class="rodape">
+  <img class="logo-rodape" src="assets/img/logo-lfca.png" alt="LFCA | URCA">
+  <p><strong>Prof. Apiano Morais</strong> · <a href="mailto:apiano.morais@urca.br">apiano.morais@urca.br</a><br>
+  Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
+</footer>
+
+</body>
+</html>

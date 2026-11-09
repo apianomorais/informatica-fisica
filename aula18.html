@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aula 18: Análise de dados com Pandas | Informática para Física</title>
+<title>Aula 18: Entrada e saída: teclado, arquivos e CSV | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
-<script src="assets/js/comum.js?v=202611091010"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
+<script src="assets/js/comum.js?v=202611091035"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -20,20 +20,27 @@
       <span class="grupo">Planilhas</span>
       <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
       <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
-      <a href="aula03.html" class="num" title="Módulo 3: Dados experimentais na planilha">3</a>
-      <a href="aula04.html" class="num" title="Módulo 4: Gráficos em planilha">4</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Estatística descritiva e distribuições">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Propagação de erros e barras de erro">4</a>
+      <a href="aula05.html" class="num" title="Módulo 5: Gráficos e simulação na planilha">5</a>
+      <span class="grupo">LaTeX</span>
+      <a href="aula06.html" class="num" title="Módulo 6: O primeiro documento no Overleaf">6</a>
+      <a href="aula07.html" class="num" title="Módulo 7: Equações em LaTeX">7</a>
+      <a href="aula08.html" class="num" title="Módulo 8: Matrizes, sistemas e alinhamento">8</a>
+      <a href="aula09.html" class="num" title="Módulo 9: Figuras, tabelas e bibliografia">9</a>
       <span class="grupo">Python</span>
-      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
-      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
-      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
-      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
-      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
-      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
-      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
-      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
-      <a href="aula18.html" class="num ativo" title="Módulo 18: Análise de dados com Pandas">18</a>
-      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
-      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Introdução ao Python e ao Spyder">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Tipos de dados e variáveis">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de dados: listas e tuplas">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Estruturas de controle">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Funções e modularização">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao NumPy">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Introdução ao Matplotlib: gráficos básicos">16</a>
+      <a href="aula17.html" class="num" title="Módulo 17: Matplotlib avançado: personalização e visualizações especiais">17</a>
+      <a href="aula18.html" class="num ativo" title="Módulo 18: Entrada e saída: teclado, arquivos e CSV">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Análise de dados com Pandas">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Métodos numéricos com SciPy">20</a>
+      <a href="aula21.html" class="num" title="Módulo 21: Matemática simbólica com SymPy">21</a>
     </nav>
   </div>
 </header>
@@ -43,476 +50,257 @@
 <aside class="lateral">
   <h4>Nesta aula</h4>
   <ol>
-    <li><a href="#s1">1. Revisão rápida dos desafios</a></li>
-    <li><a href="#s2">2. Por que Pandas?</a></li>
-    <li><a href="#s3">3. Series e DataFrame</a></li>
-    <li><a href="#s4">4. Carregando dados experimentais</a></li>
-    <li><a href="#s5">5. Explorando o DataFrame</a></li>
-    <li><a href="#s6">6. Seleção e filtros</a></li>
-    <li><a href="#s7">7. Transformando dados</a></li>
-    <li><a href="#s8">8. Agrupamento e agregação</a></li>
-    <li><a href="#s9">9. Dados faltantes</a></li>
-    <li><a href="#s10">10. Pipeline completo de análise</a></li>
-    <li><a href="#s11">11. Desafios para casa</a></li>
+    <li><a href="#s1">1. O programa que pergunta: input()</a></li>
+    <li><a href="#s2">2. Validar a entrada: try, except e o laço que insiste</a></li>
+    <li><a href="#s3">3. Arquivos de texto: abrir, escrever, ler</a></li>
+    <li><a href="#s4">4. CSV: o formato que a planilha e o Python compartilham</a></li>
+    <li><a href="#s5">5. Um programa completo: do arquivo bruto ao resultado</a></li>
+    <li><a href="#s6">6. Exercícios</a></li>
   </ol>
 </aside>
 
 <main class="conteudo">
 
   <p class="chapeu">Aula 18 · Programação em Python</p>
-  <h1>Análise de dados com Pandas</h1>
-  <p class="subtitulo">A planilha programável. Tudo o que a unidade I fez à mão no Google Planilhas, agora feito em código e com dezenas de milhares de linhas.</p>
+  <h1>Entrada e saída: teclado, arquivos e CSV</h1>
+  <p class="subtitulo">Programas úteis conversam com o mundo: leem do teclado, leem e escrevem arquivos, e não quebram quando o dado vem errado.</p>
 
-  <p>Hoje vamos conhecer o <strong>Pandas</strong>, a biblioteca que transformou Python
-  na ferramenta favorita para análise de dados científicos.
-  Se o NumPy é nossa calculadora vetorial, o Pandas é nossa planilha
-  programável — com superpoderes!</p>
-
-  <h2 id="s1">1. Revisão rápida dos desafios</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 10.1: Soluções dos desafios da Aula 17</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
-  import csv
-
-  # Desafio 1: Diário de temperaturas interativo
-  medicoes = []
-  while True:
-      entrada = input("Temperatura (graus C) [ou 'fim']: ")
-      if entrada.lower() == "fim":
-          break
-      try:
-          medicoes.append(float(entrada))
-      except ValueError:
-          print("  Valor invalido. Use ponto decimal.")
-
-  if medicoes:
-      with open("diario.csv", "w", newline="", encoding="utf-8") as f:
-          csv.writer(f).writerows(
-              [["medicao", "celsius", "kelvin"]] +
-              [[i+1, t, t+273.15] for i, t in enumerate(medicoes)]
-          )
-      arr = np.array(medicoes)
-      print(f"Salvo! Media={arr.mean():.2f} Min={arr.min():.2f} Max={arr.max():.2f}")
-
-  # Desafio 2: Pipeline completo (calculadora de energia)
-  def pipeline_energia():
-      m = float(input("Massa (kg): "))
-      v = float(input("Velocidade (m/s): "))
-      h = float(input("Altura (m): "))
-      g = 9.81
-      Ec = 0.5 * m * v**2
-      Ep = m * g * h
-      Em = Ec + Ep
-
-      with open("energia.txt", "w", encoding="utf-8") as f:
-          f.write("# Analise de Energia Mecanica")
-          f.write(f"# massa={m} kg  velocidade={v} m/s  altura={h} m")
-          f.write("Ec_J  Ep_J  Em_J")
-          f.write(f"{Ec:.4f}  {Ep:.4f}  {Em:.4f}")
-
-      print(f"{'Grandeza':20s} {'Valor (J)':&gt;12s}")
-      print("-" * 33)
-      for nome, val in [("Energia cinetica", Ec),
-                        ("Energia potencial", Ep),
-                        ("Energia mecanica", Em)]:
-          print(f"{nome:20s} {val:&gt;12.4f}")
-
-  pipeline_energia()</code></pre></div>
-  </div>
-
-  <h2 id="s2">2. Por que Pandas?</h2>
-
+  <h2 id="s1">1. O programa que pergunta: <code>input()</code></h2>
+  <p>Todos os programas que escrevemos até aqui tinham os dados escritos no meio do código. Para mudar o comprimento do pêndulo era preciso abrir o arquivo, achar a linha <code>L = 0.5</code> e editá-la. Isso funciona enquanto o programa é seu e roda uma vez. No momento em que outra pessoa precisa usá-lo, ou em que você mesmo precisa repeti-lo com vinte conjuntos de dados, o dado tem que vir de fora.</p>
+  <p>A porta mais simples é o teclado. A função <code>input()</code> para o programa, espera que alguém escreva algo e aperte Enter, e devolve o que foi escrito.</p>
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  O <strong>Pandas</strong> organiza dados em estruturas tabulares chamadas
-  <strong>DataFrame</strong> — pense em uma planilha Excel acessível por código.
-  Ao contrário de arrays NumPy (que exigem que todos os dados sejam do
-  mesmo tipo), DataFrames suportam colunas de tipos mistos, rótulos nomeados
-  e operações poderosas de agrupamento e filtragem.
+  <strong><code>input()</code> sempre devolve texto.</strong> Mesmo que a pessoa escreva <code>42</code>, o que chega ao programa é a cadeia de caracteres <code>"42"</code>, e não o número 42. Somar dois desses resultados concatena (<code>"42" + "7"</code> é <code>"427"</code>). A conversão para número é sempre sua responsabilidade: <code>float()</code> ou <code>int()</code>.
   </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 10.2: Por que Pandas em vez de NumPy para dados tabulares?</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
-  import pandas as pd
-
-  # Com NumPy: colunas sao acessadas por indice numerico
-  dados_np = np.array([
-      [1.0, 25.3, 101.2],
-      [2.0, 26.1, 100.9],
-      [3.0, 24.8, 101.5],
-  ])
-  print("NumPy - temperatura (coluna 1):", dados_np[:, 1])
-
-  # Com Pandas: colunas tem nomes; tipos mistos sao ok
-  dados_pd = pd.DataFrame({
-      "experimento":    [1, 2, 3],
-      "temperatura_C":  [25.3, 26.1, 24.8],
-      "pressao_hPa":    [101.2, 100.9, 101.5],
-      "valido":         [True, True, False],       # booleano
-      "local":          ["Lab A", "Lab A", "Lab B"], # texto
-  })
-  print("- temperatura:")
-  print(dados_pd["temperatura_C"])
-  print(f": {dados_pd['temperatura_C'].mean():.2f} graus C")</code></pre></div>
+  <div class="bloco ex"><span class="rotulo">Exemplo 18.1: período de um pêndulo pedido ao usuário</span>
+  <div class="codigo" data-lingua="Python"><pre><code>import math
+  
+  L = float(input("Comprimento do pendulo (m): "))
+  g = 9.81
+  
+  T = 2 * math.pi * math.sqrt(L / g)
+  print(f"Periodo = {T:.4f} s")</code></pre></div>
   </div>
-
-  <h2 id="s3">3. Series e DataFrame</h2>
-
-  <div class="bloco def"><span class="rotulo"><strong>Estruturas fundamentais do Pandas</strong></span>
-
-  <ul><li><b><code>pd.Series</code></b> Array 1-D com rótulos (índice). Equivale a uma
-      coluna de tabela.
-
-  <ul><li><code>pd.Series(data, index=None, name=None)</code></li><li>Atributos: <code>s.index</code>, <code>s.values</code>, <code>s.dtype</code>, <code>s.name</code></li></ul>
-
-  <p></li><li><b><code>pd.DataFrame</code></b> Tabela 2-D com rótulos de linha e coluna.</p>
-
-  <ul><li>Criado a partir de dicionário, lista de listas, array NumPy ou
-          arquivo.</li><li>Atributos: <code>df.shape</code>, <code>df.columns</code>, <code>df.dtypes</code>,
-          <code>df.index</code></li></ul>
-
-  <p></li></ul></p>
-
+  <p>Repare em duas coisas. A mensagem dentro de <code>input()</code> diz a unidade, porque quem digita precisa saber se o número vai em metros ou em centímetros. E o <code>float()</code> envolve o <code>input()</code> na mesma linha, o que é o jeito compacto de escrever, mas esconde um problema: se a pessoa escrever <code>cinquenta</code>, o programa quebra com <code>ValueError</code> e tudo o que já tinha sido calculado se perde. A seção 2 resolve isso.</p>
+  <div class="bloco ex"><span class="rotulo">Exemplo 18.2: várias entradas e uma saída formatada</span>
+  <div class="codigo" data-lingua="Python"><pre><code>nome = input("Nome da substancia: ")
+  m = float(input("Massa (kg): "))
+  c = float(input("Calor especifico (J/kg.K): "))
+  dT = float(input("Variacao de temperatura (K): "))
+  
+  Q = m * c * dT
+  
+  print()
+  print(f"Substancia: {nome}")
+  print(f"Calor trocado: {Q:.1f} J  ({Q/4186:.3f} kcal)")</code></pre></div>
   </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 10.3: Criando Series e DataFrames</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
-  import numpy as np
-
-  # --- Series ---
-  massas = pd.Series(
-      [1.008, 4.003, 6.941, 9.012, 10.811],
-      index=["H", "He", "Li", "Be", "B"],
-      name="massa_atomica_u"
-  )
-  print("Series de massas atomicas:")
-  print(massas)
-  print(f"do Litio: {massas['Li']} u")
-  print(f"Elementos mais pesados que 5 u:{massas[massas &gt; 5]}")
-
-  # --- DataFrame a partir de dicionario ---
-  tabela = pd.DataFrame({
-      "simbolo": ["H",  "He", "Li",     "Be",      "B"],
-      "nome":    ["Hidrogenio","Helio","Litio","Berilio","Boro"],
-      "Z":       [1, 2, 3, 4, 5],
-      "massa_u": [1.008, 4.003, 6.941, 9.012, 10.811],
-      "periodo": [1, 1, 2, 2, 2],
-  })
-  print("- tabela periodica parcial:")
-  print(tabela)
-  print(f": {tabela.shape}")
-  print(f"Colunas: {list(tabela.columns)}")</code></pre></div>
+  <div class="bloco alerta"><span class="rotulo">Cuidado</span>
+  Em português escrevemos 1,5 e o Python espera 1.5. A vírgula faz <code>float("1,5")</code> levantar <code>ValueError</code>. Como o aluno vai digitar vírgula (é o que o teclado e o hábito pedem), vale trocar antes de converter: <code>bruto.replace(",", ".")</code>. Esse detalhe de uma linha é o mesmo problema que apareceu na unidade de planilhas, onde o ponto decimal era lido como separador de milhar.
   </div>
-
-  <h2 id="s4">4. Carregando dados experimentais</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 10.4: Lendo CSV</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
-  import numpy as np
-
-  # Criando um arquivo de exemplo
-  np.random.seed(42)
-  t = np.linspace(0, 10, 50)
-  x = 5*t + 0.5*9.81*t**2 + np.random.normal(0, 0.5, 50)
-  v = 5 + 9.81*t + np.random.normal(0, 0.2, 50)
-
-  pd.DataFrame({"tempo_s": t, "posicao_m": x, "velocidade_ms": v}).to_csv(
-      "cinematica.csv", index=False, float_format="%.4f"
-  )
-
-  # Carregando
-  df = pd.read_csv("cinematica.csv")
-  print(f"Arquivo carregado: {df.shape[0]} linhas x {df.shape[1]} colunas")
-  print("5 linhas:")
-  print(df.head())
-  print("3 linhas:")
-  print(df.tail(3))</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Parâmetros úteis de <code>pd.read_csv()</code></strong></span>
-
-  <ul><li><b><code>sep=','</code></b> Separador de colunas (<code>';'</code> para padrão BR).</li><li><b><code>decimal='.'</code></b> Separador decimal (<code>','</code> para padrão BR).</li><li><b><code>comment='#'</code></b> Ignora linhas que começam com <code>#</code>.</li><li><b><code>skiprows=n</code></b> Pula as primeiras \(n\) linhas.</li><li><b><code>usecols=[...&lt;/b&gt; </code>]    Carrega apenas colunas especificadas.</li><li><b><code>parse_dates</code></b> Converte colunas para tipo <em>datetime</em>.</li><li><b><code>encoding</code></b> Codificação (<code>'utf-8'</code>, <code>'latin-1'</code>).</li></ul>
-
-  </div>
-
-  <h2 id="s5">5. Explorando o DataFrame</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 10.5: Funções de exploração essenciais</span>
-  <div class="codigo" data-lingua="Python"><pre><code>print("=== EXPLORACAO DO DATASET ===")
-
-  # Informacoes gerais (tipos, memoria)
-  df.info()
-
-  # Estatisticas descritivas automaticas
-  print(":")
-  print(df.describe().round(3))
-
-  # Dados faltantes
-  print(f"faltantes: {df.isnull().sum().sum()}")
-
-  # Amostra aleatoria
-  print("aleatoria (3 linhas):")
-  print(df.sample(3, random_state=42))</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Funções de exploração rápida</strong></span>
-
-  <ul><li><b><code>df.head(n=5)</code></b> Primeiras \(n\) linhas.</li><li><b><code>df.tail(n=5)</code></b> Últimas \(n\) linhas.</li><li><b><code>df.info()</code></b> Tipos, contagem, uso de memória.</li><li><b><code>df.describe()</code></b> Estatísticas: contagem, média, desvio, quartis.</li><li><b><code>df.shape</code></b> Tupla (linhas, colunas).</li><li><b><code>df.isnull().sum()</code></b> Conta valores faltantes por coluna.</li><li><b><code>df.sample(n)</code></b> \(n\) linhas aleatórias.</li><li><b><code>df.nunique()</code></b> Número de valores únicos por coluna.</li></ul>
-
-  </div>
-
-  <h2 id="s6">6. Seleção e filtros</h2>
-
-  <div class="bloco def"><span class="rotulo"><strong><code>loc</code> vs <code>iloc</code>: a diferença fundamental</strong></span>
-
-  <ul><li><b><code>df.loc[linhas, colunas&lt;/b&gt; </code>]
-      Indexação por <strong>rótulo</strong> (nome do índice e nome da coluna).</li><li><b><code>df.iloc[linhas, colunas&lt;/b&gt; </code>]
-      Indexação por <strong>posição</strong> numérica (como NumPy).</li></ul>
-
-  <strong>Regra prática:</strong> use <code>loc</code> quando souber os nomes;
-  use <code>iloc</code> quando souber as posições.
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 10.6: Indexação e filtros booleanos</span>
-  <div class="codigo" data-lingua="Python"><pre><code># iloc: posicional (como NumPy)
-  print("Primeiras 3 linhas, colunas 0 e 2:")
-  print(df.iloc[:3, [0, 2]])
-
-  # loc: por rotulo
-  print("'tempo_s' e 'velocidade_ms', linhas 0-4:")
-  print(df.loc[:4, ["tempo_s", "velocidade_ms"]])
-
-  # Filtros booleanos
-  fase_rapida = df[df["velocidade_ms"] &gt; 50]
-  print(f"com v &gt; 50 m/s: {len(fase_rapida)}")
-
-  # Multiplas condicoes com &amp; e |
-  janela = df[(df["tempo_s"] &gt;= 3) &amp; (df["tempo_s"] &lt;= 6)]
-  print(f"Janela 3-6 s: {len(janela)} pontos")
-
-  # query(): sintaxe mais legivel
-  rapidos = df.query("velocidade_ms &gt; 80 and posicao_m &gt; 300")
-  print(f"v &gt; 80 e x &gt; 300: {len(rapidos)} pontos")</code></pre></div>
-  </div>
-
-  <h2 id="s7">7. Transformando dados</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 10.7: Adicionando colunas e aplicando funções</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Coluna calculada
-  df["energia_cinetica_J"] = 0.5 * 1.0 * df["velocidade_ms"]**2
-
-  # apply(): aplica funcao elemento a elemento
-  def classificar_fase(v):
-      if   v &lt; 20: return "inicial"
-      elif v &lt; 60: return "aceleracao"
-      else:        return "alta velocidade"
-
-  df["fase"] = df["velocidade_ms"].apply(classificar_fase)
-
-  print("DataFrame com novas colunas:")
-  print(df[["tempo_s", "velocidade_ms", "energia_cinetica_J", "fase"]].head(8))</code></pre></div>
-  </div>
-
-  <h2 id="s8">8. Agrupamento e agregação</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 10.8: groupby — estatísticas por grupos experimentais</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
-  import numpy as np
-
-  np.random.seed(7)
-  dados_exp = pd.DataFrame({
-      "condicao":       ["A"]*30 + ["B"]*30 + ["C"]*30,
-      "operador":       (["P1"]*15 + ["P2"]*15)*3,
-      "temperatura_C":  np.concatenate([
-          np.random.normal(20, 0.5, 30),
-          np.random.normal(25, 0.8, 30),
-          np.random.normal(30, 0.3, 30),
-      ]),
-      "resistencia_ohm": np.concatenate([
-          np.random.normal(100, 2, 30),
-          np.random.normal(108, 3, 30),
-          np.random.normal(116, 1.5, 30),
-      ]),
-  })
-
-  # Estatisticas por condicao
-  print("Resistencia por condicao:")
-  por_condicao = dados_exp.groupby("condicao")["resistencia_ohm"].agg(
-      media="mean", desvio="std", n="count"
-  ).round(3)
-  print(por_condicao)
-
-  # Tabela pivo
-  print("pivo (condicao x operador):")
-  pivo = dados_exp.pivot_table(
-      values="resistencia_ohm",
-      index="condicao",
-      columns="operador",
-      aggfunc="mean"
-  ).round(2)
-  print(pivo)</code></pre></div>
-  </div>
-
-  <h2 id="s9">9. Dados faltantes</h2>
-
-  <div class="bloco def"><span class="rotulo"><strong>Tratando dados faltantes em experimentos reais</strong></span>
-  Falhas de sensor, leituras fora de faixa e registros corrompidos são comuns.
-  O Pandas usa <code>NaN</code> para representar valores faltantes.
-
-  <ul><li><b><code>df.isnull()</code></b> Máscara booleana de faltantes.</li><li><b><code>df.dropna()</code></b> Remove linhas com <code>NaN</code>.</li><li><b><code>df.fillna(valor)</code></b> Preenche com valor fixo.</li><li><b><code>df.fillna(method='ffill')</code></b> Preenche com valor anterior.</li><li><b><code>df.interpolate()</code></b> Interpolação linear — ideal para séries
-                                          temporais físicas.</li></ul>
-
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 10.9: Comparando estratégias de preenchimento</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
-  import numpy as np
-  import matplotlib.pyplot as plt
-
-  np.random.seed(3)
-  t     = np.linspace(0, 4*np.pi, 80)
-  sinal = np.sin(t)
-
-  # Introduzindo falhas (10% dos pontos)
-  falhas = np.random.choice(len(sinal), size=8, replace=False)
-  sinal_falho = sinal.astype(float).copy()
-  sinal_falho[falhas] = np.nan
-
-  df_sensor = pd.DataFrame({"tempo_s": t, "sinal": sinal_falho})
-  print(f"Falhas: {df_sensor['sinal'].isnull().sum()} pontos")
-
-  df_sensor["ffill"]  = df_sensor["sinal"].fillna(method="ffill")
-  df_sensor["interp"] = df_sensor["sinal"].interpolate(method="linear")
-
-  # Erro quadratico medio nos pontos falhos
-  for col in ["ffill", "interp"]:
-      eqm = np.mean((df_sensor.loc[falhas, col] - sinal[falhas])**2)
-      print(f"EQM {col:6s}: {eqm:.6f}")
-
-  # Grafico comparativo
-  fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
-  for ax, col, titulo in zip(axes,
-      ["ffill", "interp"],
-      ["Preenchimento anterior (ffill)", "Interpolacao linear"]):
-      ax.plot(df_sensor["tempo_s"], df_sensor[col], "b-", lw=1.5)
-      ax.plot(df_sensor["tempo_s"], sinal, "k--", lw=1, alpha=0.5,
-              label="Sinal verdadeiro")
-      ax.scatter(df_sensor.loc[falhas, "tempo_s"],
-                 df_sensor.loc[falhas, col],
-                 color="red", s=60, zorder=5, label="Ponto tratado")
-      ax.set_title(titulo); ax.set_xlabel("Tempo (s)")
-      ax.legend(); ax.grid(True, alpha=0.3)
-  axes[0].set_ylabel("Sinal")
-  plt.tight_layout(); plt.show()</code></pre></div>
-  </div>
-
-  <h2 id="s10">10. Pipeline completo de análise</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 10.10: Resistência elétrica em função da temperatura</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
-  import numpy as np
-  import matplotlib.pyplot as plt
-
-  # 1. Gerar e salvar dados brutos
-  np.random.seed(99)
-  T  = np.repeat(np.arange(20, 121, 10), 5)
-  R  = 100 * (1 + 3.9e-3*(T - 20)) + np.random.normal(0, 0.5, len(T))
-  pd.DataFrame({"T_C": T, "R_ohm": R}).to_csv(
-      "resistencia_T.csv", index=False, float_format="%.3f"
-  )
-
-  # 2. Carregar e explorar
-  df = pd.read_csv("resistencia_T.csv")
-  print(f"Dataset: {df.shape[0]} medicoes, {df['T_C'].nunique()} temperaturas")
-
-  # 3. Estatisticas por temperatura
-  resumo = df.groupby("T_C")["R_ohm"].agg(
-      media="mean", desvio="std", n="count"
-  ).reset_index().round(3)
-
-  # 4. Ajuste linear
-  coef   = np.polyfit(resumo["T_C"], resumo["media"], 1)
-  T_fit  = np.linspace(20, 120, 100)
-  R_fit  = np.polyval(coef, T_fit)
-  alpha  = coef[0] / 100
-  print(f"Coeficiente de temperatura: alpha = {alpha:.2e} 1/grauC")
-  print(f"(Literatura para cobre: alpha = 3.9e-3 1/grauC)")
-
-  # 5. Grafico profissional
-  fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
-
-  ax1.scatter(df["T_C"], df["R_ohm"], alpha=0.35, s=15,
-              color="steelblue", label="Medicoes")
-  ax1.errorbar(resumo["T_C"], resumo["media"], yerr=resumo["desvio"],
-               fmt="ro", capsize=4, label="Media +/- desvio")
-  ax1.plot(T_fit, R_fit, "k--", lw=2, label="Ajuste linear")
-  ax1.set_xlabel("Temperatura (graus C)"); ax1.set_ylabel("Resistencia (Ohm)")
-  ax1.set_title("R(T) - Dados e Ajuste"); ax1.legend(); ax1.grid(True, alpha=0.3)
-
-  residuos = resumo["media"] - np.polyval(coef, resumo["T_C"])
-  ax2.bar(resumo["T_C"], residuos, width=4, color="coral", alpha=0.7)
-  ax2.axhline(0, color="k", lw=1)
-  ax2.set_xlabel("Temperatura (graus C)"); ax2.set_ylabel("Residuo (Ohm)")
-  ax2.set_title("Residuos do Ajuste"); ax2.grid(True, alpha=0.3)
-
-  plt.tight_layout(); plt.show()
-
-  # 6. Exportar relatorio
-  resumo.to_csv("relatorio_resistencia.csv", index=False)</code></pre></div>
-  </div>
-
-  <h2 id="s11">11. Desafios para casa</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exercício 10.1: Tabela periódica</span>
-  Crie um DataFrame com os 18 primeiros elementos (símbolo, nome, \(Z\), período,
-  grupo, massa atômica, eletronegatividade). Use filtros para encontrar:
-  (a) elementos do período 2; (b) elementos com eletronegatividade \(> 3{,}0\);
-  (c) elemento de maior massa por período.
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exercício 10.2: Análise de sensor com falhas</span>
-  Simule 200 leituras de um sensor com 8% de falhas aleatórias e ruído
-  gaussiano. Compare as estratégias <code>ffill</code>, <code>bfill</code> e interpolação
-  linear calculando o erro quadrático médio em relação ao sinal verdadeiro
-  e plote a comparação.
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exercício 10.3: Diário meteorológico</span>
-  Gere dados de temperatura e umidade para 30 dias com variação senoidal diária.
-  Adicione uma coluna <code>periodo</code> (manhã/tarde/noite).
-  Use <code>groupby</code> para calcular a média por período e plote o resultado
-  com barras de erro.
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exercício 10.4: Experimento de Millikan</span>
-  Crie dois DataFrames simulando duas montagens experimentais distintas para
-  medir a carga elementar (distribuição normal em torno de
-  \(e = 1{,}602\times10^{-19}\) C com diferentes desvios).
-  Una-os com <code>pd.concat</code>, adicione coluna identificadora e compare
-  as distribuições com histogramas sobrepostos.
-  </div>
-
+  <h2 id="s2">2. Validar a entrada: <code>try</code>, <code>except</code> e o laço que insiste</h2>
+  <p>Um erro de digitação é a coisa mais previsível do mundo, e ainda assim a reação padrão do Python é interromper o programa inteiro. A estrutura <code>try</code>/<code>except</code> permite tentar uma operação que pode falhar e decidir o que fazer quando ela falha, em vez de deixar o interpretador decidir por nós.</p>
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>Novos conceitos que vocês dominam:</strong>
-
-  <ul><li><code>pd.Series</code> e <code>pd.DataFrame</code> — estruturas fundamentais</li><li><code>pd.read_csv()</code> e <code>df.to_csv()</code> — I/O de dados</li><li><code>df.head()</code>, <code>df.info()</code>, <code>df.describe()</code> — exploração</li><li><code>df.loc[]</code>, <code>df.iloc[]</code>, filtros booleanos, <code>query()</code></li><li><code>df.apply()</code> — aplicando funções coluna a coluna</li><li><code>df.groupby().agg()</code> — agrupamento e estatísticas</li><li><code>df.fillna()</code>, <code>df.interpolate()</code> — dados faltantes</li><li><code>df.pivot_table()</code> — tabelas cruzadas</li></ul>
-
+  O bloco <code>try</code> contém o código que pode dar errado. Se uma exceção acontece dentro dele, a execução pula imediatamente para o <code>except</code> correspondente ao tipo daquela exceção. Se nada dá errado, o <code>except</code> é ignorado. Os tipos que mais aparecem aqui são <code>ValueError</code> (o texto não é um número), <code>ZeroDivisionError</code> e <code>FileNotFoundError</code> (o arquivo não existe).
   </div>
-
-  <div class="bloco fisica"><span class="rotulo">Intuição</span>
-  <strong>Quando usar Pandas vs NumPy?</strong>
-
-  <ul><li><strong>NumPy:</strong> dados puramente numéricos, matrizes, álgebra
-      linear, máxima performance.</li><li><strong>Pandas:</strong> dados tabulares com colunas nomeadas, tipos
-      mistos, grupos, datas.</li><li>Na prática, usamos os dois juntos: Pandas para organizar,
-      NumPy/SciPy para calcular.</li></ul>
-
+  <div class="bloco ex"><span class="rotulo">Exemplo 18.3: a conversão protegida</span>
+  <div class="codigo" data-lingua="Python"><pre><code>bruto = input("Massa (kg): ")
+  
+  try:
+      m = float(bruto.replace(",", "."))
+  except ValueError:
+      print(f"Nao entendi '{bruto}'. Vou usar 1 kg.")
+      m = 1.0
+  
+  print(f"Massa usada: {m} kg")</code></pre></div>
   </div>
-
-  <p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+  <p>O programa acima não quebra, mas também não é satisfatório: chutar 1 kg quando o usuário erra é inventar um dado. O que se quer de verdade é pedir de novo, quantas vezes forem necessárias, e só seguir adiante quando a entrada for válida. Esse é um laço <code>while True</code> com <code>return</code> na saída bem-sucedida.</p>
+  <div class="bloco ex"><span class="rotulo">Exemplo 18.4: uma função de leitura que não aceita lixo</span>
+  <div class="codigo" data-lingua="Python"><pre><code>def pede_numero(mensagem, minimo=None, maximo=None):
+      """Le um numero do teclado e insiste ate que ele seja valido."""
+      while True:
+          bruto = input(mensagem).replace(",", ".")
+          try:
+              valor = float(bruto)
+          except ValueError:
+              print(f"  '{bruto}' nao e um numero. Exemplo valido: 1.5")
+              continue
+          if minimo is not None and valor &lt; minimo:
+              print(f"  O valor deve ser pelo menos {minimo}.")
+              continue
+          if maximo is not None and valor &gt; maximo:
+              print(f"  O valor deve ser no maximo {maximo}.")
+              continue
+          return valor
+  
+  
+  L = pede_numero("Comprimento do pendulo (m): ", minimo=0.01, maximo=10)
+  n = pede_numero("Numero de oscilacoes cronometradas: ", minimo=1)
+  print(f"L = {L} m, n = {n:.0f} oscilacoes")</code></pre></div>
+  </div>
+  <p>Vale olhar o que essa função faz de verdade, porque ela é o padrão que você vai copiar para o resto do curso. Ela trata dois tipos de erro diferentes com a mesma resposta: o erro de forma (não é número) e o erro de faixa (é número, mas impossível). Um comprimento de pêndulo negativo passa pelo <code>float()</code> sem reclamação alguma, e é justamente o tipo de dado que produz uma raiz de número negativo três linhas depois. O <code>continue</code> manda o laço começar outra vez, e o <code>return</code> é a única saída.</p>
+  <div class="bloco fisica"><span class="rotulo">Na bancada</span>
+  Validar faixa não é preciosismo de programador. Num experimento de calorimetria, uma temperatura final fora do intervalo entre as duas temperaturas iniciais é fisicamente impossível, e detectar isso na hora da digitação custa uma linha de código. Descobrir depois, quando o calor específico sai negativo, custa a repetição do experimento.
+  </div>
+  <h2 id="s3">3. Arquivos de texto: abrir, escrever, ler</h2>
+  <p>O teclado resolve três ou quatro dados. Uma tabela de cinquenta medidas pelo teclado é tortura, e pior, é volátil: ao fechar o programa, tudo o que foi digitado desaparece. Os dados de um experimento precisam viver num arquivo.</p>
+  <p>A função <code>open()</code> abre um arquivo e devolve um objeto por onde se escreve ou se lê. Os modos que importam são <code>"r"</code> para ler (o padrão), <code>"w"</code> para escrever do zero, apagando o que havia, e <code>"a"</code> para acrescentar ao fim.</p>
+  <div class="bloco alerta"><span class="rotulo">Cuidado</span>
+  O modo <code>"w"</code> apaga o conteúdo anterior no instante em que o arquivo é aberto, antes mesmo de qualquer escrita. Abrir por engano o arquivo das suas medidas em modo <code>"w"</code> destrói o experimento. Quando houver dúvida, escreva num arquivo de nome diferente e compare depois.
+  </div>
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  Use sempre <code>with open(...) as f:</code>. O <code>with</code> fecha o arquivo automaticamente ao sair do bloco, inclusive quando acontece um erro no meio. Sem isso, um programa que quebra no meio da escrita pode deixar o arquivo incompleto no disco, porque o que foi escrito ainda estava na memória esperando para ser gravado.
+  </div>
+  <div class="bloco ex"><span class="rotulo">Exemplo 18.5: gravar uma tabela calculada</span>
+  <div class="codigo" data-lingua="Python"><pre><code>g = 9.81
+  
+  with open("queda.txt", "w", encoding="utf-8") as f:
+      f.write("# tempo(s)  posicao(m)  velocidade(m/s)\n")
+      for i in range(11):
+          t = 0.1 * i
+          x = 0.5 * g * t**2
+          v = g * t
+          f.write(f"{t:.1f}  {x:.4f}  {v:.3f}\n")
+  
+  print("Arquivo queda.txt escrito.")</code></pre></div>
+  </div>
+  <p>Duas escolhas aí dentro não são decorativas. O <code>\n</code> no fim de cada <code>write</code> é obrigatório, porque <code>write</code> não pula linha sozinho (diferente de <code>print</code>), e sem ele a tabela inteira sai numa linha só. E <code>encoding="utf-8"</code> deveria estar em todo <code>open</code> que você escrever: sem ele o Python usa a codificação padrão do sistema, que varia entre o Windows e o Linux, e o arquivo com acentos que abre bem no seu computador aparece corrompido no do colega.</p>
+  <div class="bloco ex"><span class="rotulo">Exemplo 18.6: ler de volta, pulando o cabeçalho</span>
+  <div class="codigo" data-lingua="Python"><pre><code>tempos = []
+  posicoes = []
+  
+  with open("queda.txt", encoding="utf-8") as f:
+      for linha in f:
+          if linha.startswith("#") or not linha.strip():
+              continue              # comentario ou linha vazia
+          campos = linha.split()
+          tempos.append(float(campos[0]))
+          posicoes.append(float(campos[1]))
+  
+  print(f"{len(tempos)} pontos lidos")
+  print(f"ultimo instante: {tempos[-1]} s, posicao {posicoes[-1]:.4f} m")</code></pre></div>
+  </div>
+  <p>Percorrer o arquivo com <code>for linha in f</code> lê uma linha por vez, o que significa que o programa funciona igual com dez linhas ou com dez milhões: só uma está na memória em cada instante. A alternativa <code>f.read()</code> traz tudo de uma vez e é cômoda para arquivos pequenos. O teste com <code>startswith("#")</code> é o que faz o cabeçalho ser ignorado sem precisar contar linhas, e ele continua funcionando quando você acrescentar mais comentários no arquivo depois.</p>
+  <div class="bloco ex"><span class="rotulo">Exemplo 18.7: o arquivo que pode não estar lá</span>
+  <div class="codigo" data-lingua="Python"><pre><code>nome = input("Nome do arquivo de dados: ")
+  
+  try:
+      with open(nome, encoding="utf-8") as f:
+          linhas = f.readlines()
+  except FileNotFoundError:
+      print(f"Nao achei '{nome}'. Confira se ele esta na mesma pasta do programa.")
+      linhas = []
+  
+  print(f"{len(linhas)} linhas")</code></pre></div>
+  </div>
+  <p>Esse <code>except FileNotFoundError</code> cobre o erro mais comum de todos no Spyder: o arquivo existe, mas numa pasta diferente da pasta de trabalho do console. A mensagem que dissemos ao usuário aponta exatamente para essa causa, e é por isso que uma mensagem de erro escrita por você vale mais que a mensagem genérica do Python.</p>
+  <h2 id="s4">4. CSV: o formato que a planilha e o Python compartilham</h2>
+  <p>Separar os campos por espaços dá conta de uma tabela de números, e falha no primeiro campo de texto que contenha um espaço. O formato CSV (<em>comma-separated values</em>) resolve isso com uma regra simples: um registro por linha, campos separados por um delimitador, e campos que contenham o delimitador vêm entre aspas. É o formato que o Google Planilhas e o Excel exportam e importam, o que faz dele a ponte natural entre a unidade I e esta unidade.</p>
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  O módulo <code>csv</code> da biblioteca padrão cuida das aspas, dos delimitadores e das quebras de linha dentro de um campo. <code>csv.reader</code> devolve cada linha como lista de textos, <code>csv.DictReader</code> devolve um dicionário usando a primeira linha como nomes das colunas, e <code>csv.writer</code> escreve. Em todos os casos os valores continuam sendo <strong>texto</strong>: a conversão com <code>float()</code> é sua.
+  </div>
+  <div class="bloco alerta"><span class="rotulo">Cuidado</span>
+  Abra o arquivo com <code>newline=""</code> ao usar o módulo <code>csv</code>. Sem isso, no Windows o arquivo escrito sai com uma linha em branco entre os registros. E note o delimitador: uma planilha configurada em português costuma exportar com ponto e vírgula, porque a vírgula já é o separador decimal. Nesse caso use <code>csv.reader(f, delimiter=";")</code>.
+  </div>
+  <div class="bloco ex"><span class="rotulo">Exemplo 18.8: escrever um CSV de medidas</span>
+  <div class="codigo" data-lingua="Python"><pre><code>import csv
+  
+  medidas = [
+      (1, 0.200, 0.8980),
+      (2, 0.200, 0.8975),
+      (3, 0.400, 1.2701),
+      (4, 0.400, 1.2698),
+      (5, 0.600, 1.5551),
+      (6, 0.600, 1.5559),
+  ]
+  
+  with open("pendulo.csv", "w", newline="", encoding="utf-8") as f:
+      escritor = csv.writer(f)
+      escritor.writerow(["n", "L_m", "T_s"])     # cabecalho
+      escritor.writerows(medidas)                # todas as linhas de uma vez
+  
+  print("pendulo.csv escrito com", len(medidas), "medidas.")</code></pre></div>
+  </div>
+  <div class="bloco ex"><span class="rotulo">Exemplo 18.9: ler com <code>DictReader</code></span>
+  <div class="codigo" data-lingua="Python"><pre><code>import csv
+  
+  with open("pendulo.csv", newline="", encoding="utf-8") as f:
+      leitor = csv.DictReader(f)
+      for registro in leitor:
+          L = float(registro["L_m"])
+          T = float(registro["T_s"])
+          print(f"L = {L:.3f} m  -&gt;  T = {T:.4f} s")</code></pre></div>
+  </div>
+  <p>A vantagem do <code>DictReader</code> aparece quando alguém acrescenta uma coluna no meio da planilha. Com <code>csv.reader</code> e índices, <code>campos[2]</code> passa a apontar para outra grandeza e o programa calcula silenciosamente a coisa errada. Com os nomes das colunas, <code>registro["T_s"]</code> continua sendo o período, e o programa quebra de forma visível se a coluna mudar de nome.</p>
+  <h2 id="s5">5. Um programa completo: do arquivo bruto ao resultado</h2>
+  <p>Vamos juntar as quatro peças num programa de verdade, do tipo que você vai escrever para um relatório de laboratório. Ele lê um CSV com medidas repetidas do período de um pêndulo para vários comprimentos, agrupa as repetições, calcula média e desvio padrão de cada grupo, extrai \(g\) de cada comprimento e escreve um segundo CSV com o resultado, pronto para voltar à planilha ou virar gráfico na aula anterior.</p>
+  <div class="bloco ex"><span class="rotulo">Exemplo 18.10: o pipeline completo</span>
+  <div class="codigo" data-lingua="Python"><pre><code>import csv
+  import math
+  import statistics
+  
+  ENTRADA = "pendulo.csv"
+  SAIDA = "resultado.csv"
+  
+  # ---- 1. leitura, agrupando os periodos por comprimento
+  dados = {}
+  try:
+      with open(ENTRADA, newline="", encoding="utf-8") as f:
+          for registro in csv.DictReader(f):
+              L = float(registro["L_m"])
+              T = float(registro["T_s"])
+              dados.setdefault(L, []).append(T)
+  except FileNotFoundError:
+      print(f"Arquivo '{ENTRADA}' nao encontrado.")
+      raise SystemExit
+  
+  # ---- 2. estatistica e g para cada comprimento
+  linhas = []
+  valores_g = []
+  for L in sorted(dados):
+      periodos = dados[L]
+      T_medio = statistics.fmean(periodos)
+      desvio = statistics.stdev(periodos) if len(periodos) &gt; 1 else 0.0
+      g = 4 * math.pi**2 * L / T_medio**2
+      valores_g.append(g)
+      linhas.append([L, round(T_medio, 4), round(desvio, 4),
+                     len(periodos), round(g, 3)])
+  
+  # ---- 3. escrita do resultado
+  with open(SAIDA, "w", newline="", encoding="utf-8") as f:
+      escritor = csv.writer(f)
+      escritor.writerow(["L_m", "T_medio_s", "desvio_s", "n", "g_m_s2"])
+      escritor.writerows(linhas)
+  
+  # ---- 4. resumo na tela
+  g_medio = statistics.fmean(valores_g)
+  erro = statistics.stdev(valores_g) / math.sqrt(len(valores_g))
+  print(f"{len(linhas)} comprimentos processados -&gt; {SAIDA}")
+  print(f"g = {g_medio:.3f} +- {erro:.3f} m/s2")</code></pre></div>
+  </div>
+  <p>Com as dez medidas do exemplo 18.8 estendidas até \(L = 1{,}000\) m, duas repetições por comprimento, a saída é <code>g = 9,797 ± 0,003 m/s²</code>, com os cinco valores individuais entre 9,790 e 9,803 m/s². O erro de 0,003 m/s² é o erro padrão da média dos cinco valores de \(g\), e não a incerteza do experimento: ele mede só a dispersão entre comprimentos, e ignora o erro sistemático da régua e do disparo do cronômetro, que é justamente o que a aula 4 da unidade de planilhas discute.</p>
+  <p>A divisão do programa em quatro trechos comentados não é enfeite. Cada um deles pode ser trocado sem tocar nos outros: a leitura passa a vir de um arquivo com ponto e vírgula, a estatística passa a usar NumPy, a escrita passa a gerar um gráfico com Matplotlib. Essa é a forma de todo programa de análise de dados que você vai escrever, e é também a estrutura que o Pandas automatiza na próxima aula.</p>
+  <div class="bloco fisica"><span class="rotulo">Na bancada</span>
+  Guarde sempre o arquivo de dados brutos e nunca o sobrescreva. O programa lê <code>pendulo.csv</code> e escreve <code>resultado.csv</code>, dois nomes diferentes de propósito. Quando um resultado estranho aparecer três semanas depois, o dado bruto é a única coisa que permite descobrir se o erro estava na medida ou no processamento.
+  </div>
+  <h2 id="s6">6. Exercícios</h2>
+  <div class="bloco def"><span class="rotulo">Exercício 18.1</span>
+  Escreva uma função <code>pede_inteiro(mensagem, minimo, maximo)</code> no molde do exemplo 18.4, usando <code>int()</code> em vez de <code>float()</code>. Teste com entradas <code>3.5</code>, <code>abc</code>, <code>0</code> e <code>7</code> para um intervalo de 1 a 5.
+  </div>
+  <div class="bloco def"><span class="rotulo">Exercício 18.2</span>
+  Gere um arquivo de texto com 200 linhas contendo \(t\) e \(x(t) = A\,e^{-t/\tau}\cos(\omega t)\) para um oscilador amortecido de sua escolha. Depois escreva um segundo programa que leia esse arquivo e informe quantas vezes a posição passou pelo zero.
+  </div>
+  <div class="bloco def"><span class="rotulo">Exercício 18.3</span>
+  Exporte do Google Planilhas uma das tabelas da unidade I em formato CSV, descubra qual é o delimitador abrindo o arquivo no editor de texto do Spyder, e leia-o com <code>csv.DictReader</code>. Imprima a média de uma das colunas.
+  </div>
+  <div class="bloco def"><span class="rotulo">Exercício 18.4</span>
+  Modifique o exemplo 18.10 para que ele escreva também, no resumo da tela, qual comprimento produziu o valor de \(g\) mais distante da média. Essa é a maneira mais simples de localizar uma medida suspeita antes de ir ao gráfico.
+  </div>
+  <div class="bloco def"><span class="rotulo">Exercício 18.5</span>
+  Um colega lhe manda um CSV em que os números usam vírgula decimal e o delimitador é o ponto e vírgula. Escreva a função <code>le_numero_br(texto)</code> que converte <code>"9,81"</code> em <code>9.81</code> e devolve <code>None</code> quando o campo está vazio, e use-a para ler o arquivo sem que nenhuma linha quebre o programa.
+  </div>
 
   <nav class="nav-aulas">
-    <a href="aula16.html"><small>Módulo anterior</small>← 16. Matplotlib avançado</a>
-    <a class="prox" href="aula19.html"><small>Próximo módulo</small>19. SciPy →</a>
+    <a href="aula17.html"><small>Módulo anterior</small>← 17. Matplotlib avançado</a>
+    <a class="prox" href="aula19.html"><small>Próximo módulo</small>19. Pandas →</a>
   </nav>
 
 </main>
@@ -524,6 +312,5 @@
   Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
 </footer>
 
-<script src="assets/js/comum.js?v=202611091010"></script>
 </body>
 </html>

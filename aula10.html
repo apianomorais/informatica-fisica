@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aula 10: Tipos de dados e variáveis | Informática para Física</title>
+<title>Aula 10: Introdução ao Python e ao Spyder | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
-<script src="assets/js/comum.js?v=202611091010"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
+<script src="assets/js/comum.js?v=202611091035"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -20,20 +20,27 @@
       <span class="grupo">Planilhas</span>
       <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
       <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
-      <a href="aula03.html" class="num" title="Módulo 3: Dados experimentais na planilha">3</a>
-      <a href="aula04.html" class="num" title="Módulo 4: Gráficos em planilha">4</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Estatística descritiva e distribuições">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Propagação de erros e barras de erro">4</a>
+      <a href="aula05.html" class="num" title="Módulo 5: Gráficos e simulação na planilha">5</a>
+      <span class="grupo">LaTeX</span>
+      <a href="aula06.html" class="num" title="Módulo 6: O primeiro documento no Overleaf">6</a>
+      <a href="aula07.html" class="num" title="Módulo 7: Equações em LaTeX">7</a>
+      <a href="aula08.html" class="num" title="Módulo 8: Matrizes, sistemas e alinhamento">8</a>
+      <a href="aula09.html" class="num" title="Módulo 9: Figuras, tabelas e bibliografia">9</a>
       <span class="grupo">Python</span>
-      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
-      <a href="aula10.html" class="num ativo" title="Módulo 10: Tipos de dados e variáveis">10</a>
-      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
-      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
-      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
-      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
-      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
-      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
-      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
-      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
-      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+      <a href="aula10.html" class="num ativo" title="Módulo 10: Introdução ao Python e ao Spyder">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Tipos de dados e variáveis">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de dados: listas e tuplas">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Estruturas de controle">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Funções e modularização">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao NumPy">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Introdução ao Matplotlib: gráficos básicos">16</a>
+      <a href="aula17.html" class="num" title="Módulo 17: Matplotlib avançado: personalização e visualizações especiais">17</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Entrada e saída: teclado, arquivos e CSV">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Análise de dados com Pandas">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Métodos numéricos com SciPy">20</a>
+      <a href="aula21.html" class="num" title="Módulo 21: Matemática simbólica com SymPy">21</a>
     </nav>
   </div>
 </header>
@@ -43,362 +50,319 @@
 <aside class="lateral">
   <h4>Nesta aula</h4>
   <ol>
-    <li><a href="#s1">1. Revisão rápida dos desafios</a></li>
-    <li><a href="#s2">2. Os tipos de dados fundamentais</a></li>
-    <li><a href="#s3">3. Operadores matemáticos</a></li>
-    <li><a href="#s4">4. Conversões entre tipos</a></li>
-    <li><a href="#s5">5. Formatação de números</a></li>
+    <li><a href="#s1">1. Por que Python na Física?</a></li>
+    <li><a href="#s2">2. Conhecendo o Spyder</a></li>
+    <li><a href="#s3">3. Primeiros códigos</a></li>
+    <li><a href="#s4">4. Física na prática!</a></li>
+    <li><a href="#s5">5. Desafios para casa</a></li>
   </ol>
 </aside>
 
 <main class="conteudo">
 
   <p class="chapeu">Aula 10 · Programação em Python</p>
-  <h1>Tipos de dados e variáveis</h1>
-  <p class="subtitulo">Números, texto, lógico e as conversões entre eles. É curto e parece burocrático, mas quase todo erro de aluno iniciante nasce de um tipo que não era o que se pensava.</p>
+  <h1>Introdução ao Python e ao Spyder</h1>
+  <p class="subtitulo">A linguagem, o ambiente de trabalho e os primeiros programas. Tudo o que vem depois nesta unidade se apoia no que acontece aqui: escrever, rodar, errar e ler a mensagem de erro.</p>
 
-  <p>Agora que vocês já sabem navegar no Spyder, vamos mergulhar nos fundamentos do Python. Hoje vamos entender como o computador "pensa" sobre números, textos e outros tipos de dados.</p>
+  <p>Bem-vindos ao mundo da programação científica! Hoje vocês vão descobrir por que Python se tornou a linguagem favorita dos físicos e como usar o Spyder para resolver problemas reais da Física.</p>
 
-  <h2 id="s1">1. Revisão rápida dos desafios</h2>
+  <h2 id="s1">1. Por que Python na Física?</h2>
 
-  <p>Vamos conferir os desafios da aula passada! Quem conseguiu resolver?</p>
+  <p>Python não é apenas mais uma linguagem de programação - é a ferramenta que está revolucionando a pesquisa em Física:</p>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.1: Soluções dos desafios</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Desafio 1: Luz verde (lambda = 500 nm)
-  import math
-  c = 299792458  # m/s
-  lambda_verde = 500e-9  # 500 nm em metros
-  frequencia = c / lambda_verde
-  print(f"Frequência da luz verde: {frequencia:e} Hz")
-  print(f"Isso é {frequencia/1e14:.1f} x 10^14 Hz")
+  <p><strong>Onde Python é usado em Física:</strong></p>
 
-  # Desafio 2: Próton em movimento (v = 0.1c)
-  m_proton = 1.672621898e-27  # kg
-  v = 0.1 * c  # 10% da velocidade da luz
-  energia_cinetica = 0.5 * m_proton * v**2
-  print(f"Energia cinética do próton: {energia_cinetica:e} J")
-  print(f"Em MeV: {energia_cinetica/(1.602e-19 * 1e6):.2f} MeV")</code></pre></div>
-  </div>
-
-  <h2 id="s2">2. Os tipos de dados fundamentais</h2>
-
-  <p>Python trabalha com diferentes "tipos" de informação. É como ter gavetas organizadas para cada coisa!</p>
+  <ul><li><strong>CERN:</strong> Análise de dados do LHC (Large Hadron Collider)</li><li><strong>NASA:</strong> Processamento de imagens de telescópios espaciais</li><li><strong>Gravitational waves:</strong> LIGO usa Python para detectar ondas gravitacionais</li><li><strong>Astrofísica:</strong> Simulações de galáxias e estrelas</li><li><strong>Física médica:</strong> Processamento de imagens de ressonância magnética</li></ul>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>Tipos de dados em Python:</strong>
+  <strong>Por que Python?</strong>
 
-  <ul><li><strong>int:</strong> Números inteiros (sem vírgula)</li><li><strong>float:</strong> Números decimais (com vírgula)</li><li><strong>complex:</strong> Números complexos (a + bj)</li><li><strong>str:</strong> Textos (strings)</li><li><strong>bool:</strong> Verdadeiro/Falso (booleanos)</li></ul>
+  <ul><li>Sintaxe simples e legível (parece com inglês!)</li><li>Bibliotecas científicas poderosas (NumPy, SciPy, Matplotlib)</li><li>Comunidade ativa e colaborativa</li><li>Gratuito e open-source</li><li>Integração fácil com outros programas</li></ul>
 
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.2: Números inteiros (int)</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Números inteiros - sem vírgula
-  num_eletrons = 10
-  carga_positiva = +5
-  carga_negativa = -3
-  numero_muito_grande = 602214141070409084099072  # Número de Avogadro
+  <h2 id="s2">2. Conhecendo o Spyder</h2>
 
-  print(f"Número de elétrons: {num_eletrons}")
-  print(f"Tipo: {type(num_eletrons)}")
-  print(f"Número de Avogadro: {numero_muito_grande:e}")</code></pre></div>
+  <p>O Spyder é seu novo laboratório virtual! Vamos explorar cada ferramenta:</p>
+
+  <p><strong>Os painéis principais:</strong></p>
+
+  <ul><li><strong>Editor (esquerda):</strong> Onde você escreve seus programas (.py)</li><li><strong>Console (canto inferior direito):</strong> Para testes rápidos e resultados</li><li><strong>Variable Explorer (canto superior direito):</strong> Mostra todas suas variáveis</li><li><strong>Help:</strong> Documentação na hora que precisar</li><li><strong>Plots:</strong> Seus gráficos aparecerão aqui</li></ul>
+
+  <p><strong>Configurações que vocês vão querer ajustar:</strong></p>
+
+  <ul><li><strong>Tema:</strong> Tools → Preferences → Appearance (escuro ou claro)</li><li><strong>Fonte:</strong> Tools → Preferences → Editor → Display (tamanho confortável)</li><li><strong>Layout:</strong> View → Window layouts (escolham o que preferem)</li></ul>
+
+  <div class="bloco fisica"><span class="rotulo">Intuição</span>
+  <strong>Atalhos que vão salvar suas vidas:</strong>
+
+  <ul><li><strong>F5:</strong> Executa o programa inteiro</li><li><strong>F9:</strong> Executa apenas a linha onde está o cursor</li><li><strong>Ctrl+1:</strong> Comenta/descomenta linha</li><li><strong>Ctrl+L:</strong> Limpa o console</li></ul>
+
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.3: Números decimais (float)</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Números com vírgula (ponto em Python)
-  pi = 3.14159
-  massa_eletron = 9.109e-31  # Notação científica
-  temperatura = 298.15  # Kelvin
-  razao_aurea = (1 + 5**0.5) / 2
+  <h2 id="s3">3. Primeiros códigos</h2>
 
-  print(f"pi = {pi}")
-  print(f"Massa do elétron: {massa_eletron:e} kg")
-  print(f"Temperatura ambiente: {temperatura} K")
-  print(f"Razão áurea: {razao_aurea:.5f}")
-  print(f"Tipo do pi: {type(pi)}")</code></pre></div>
+  <p>Hora de colocar a mão na massa! Vamos começar simples e ir evoluindo.</p>
+
+  <p><strong>Console vs. Script - qual usar quando?</strong></p>
+
+  <ul><li><strong>Console:</strong> Para testes rápidos, como uma calculadora</li><li><strong>Script (Editor):</strong> Para programas que você quer salvar e reutilizar</li></ul>
+
+  <div class="bloco def"><span class="rotulo"><strong>O comando <code>print()</code> em Python</strong></span>
+  O comando <code>print()</code> é uma função embutida que exibe informações na <strong>saída padrão</strong> (normalmente o terminal). É essencial para:
+
+  <ul><li>Depuração de código</li><li>Exibição de resultados</li><li>Interação com o usuário</li><li>Visualização de dados e variáveis</li></ul>
+
+  <strong>Parâmetros principais:</strong>
+
+  <ul><li><b><code>sep</code></b> Separador entre itens (padrão: espaço)</li><li><b><code>end</code></b> Caractere final (padrão: quebra de linha)</li><li><b><code>file</code></b> Redireciona saída (ex: arquivo)</li></ul>
+
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.4: Números complexos (complex)</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Números complexos - essenciais na Física Quântica!
-  z1 = 3 + 4j  # j é a unidade imaginária
-  z2 = complex(2, -1)  # 2 - 1j
-  impedancia = 50 + 30j  # Impedância elétrica (Ohm)
+  <div class="bloco ex"><span class="rotulo">Exemplo 10.1: Primeiro programa</span>
+  <div class="codigo" data-lingua="Python"><pre><code>print("Olá, Física!")
+  print("Meu nome é Maria")
+  print("Bem-vindos aos Métodos Numéricos!")
 
-  print(f"z1 = {z1}")
-  print(f"z2 = {z2}")
-  print(f"Módulo de z1: {abs(z1)}")
-  print(f"Parte real de z1: {z1.real}")
-  print(f"Parte imaginária de z1: {z1.imag}")
-  print(f"Conjugado de z1: {z1.conjugate()}")</code></pre></div>
+  # Combinando parametros
+  print("Python", "é", "incrível", sep="-", end="!")
+  # Saída: Python-é-incrível!</code></pre></div>
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.5: Texto (strings)</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Strings - para textos e etiquetas
-  nome_experimento = "Interferômetro de Michelson"
-  unidade_energia = "J"  # Joules
-  formula = "E = mc2"
-  resultado = f"A energia é {100} {unidade_energia}"
+  <div class="bloco ex"><span class="rotulo">Exemplo 10.2: Python como calculadora científica</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Operações básicas - teste no console primeiro!
+  soma = 5 + 3
+  produto = 4 * 7
+  divisao = 15 / 4
+  potencia = 2**10
 
-  print(f"Experimento: {nome_experimento}")
-  print(f"Fórmula mais famosa: {formula}")
-  print(resultado)
-  print(f"Comprimento do nome: {len(nome_experimento)}")</code></pre></div>
+  print(f"5 + 3 = {soma}")
+  print(f"4 x 7 = {produto}")
+  print(f"15 / 4 = {divisao}")
+  print(f"2^10 = {potencia}")
+
+  # Agora vamos usar funções matemáticas
+  import math
+  raiz = math.sqrt(16)
+  seno = math.sin(math.pi/2)
+  logaritmo = math.log10(100)
+
+  print(f"sqrt(16) = {raiz}")
+  print(f"sen(pi/2) = {seno}")
+  print(f"log10(100) = {logaritmo}")</code></pre></div>
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.6: Verdadeiro/Falso (bool)</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Booleanos - True ou False
-  tem_carga = True
-  eh_neutron = False
-  temperatura_positiva = temperatura &gt; 0
+  <div class="bloco def"><span class="rotulo"><strong>Bibliotecas em Python e o módulo <code>math</code></strong></span>
+  Uma <strong>biblioteca</strong> (ou módulo) em Python é uma coleção de funções e constantes pré-definidas que ampliam as capacidades da linguagem. Elas permitem:
 
-  print(f"Partícula tem carga? {tem_carga}")
-  print(f"É um nêutron? {eh_neutron}")
-  print(f"Temperatura é positiva? {temperatura_positiva}")
-  print(f"Tipo: {type(tem_carga)}")</code></pre></div>
+  <ul><li>Reutilização de código especializado</li><li>Acesso a funcionalidades avançadas</li><li>Organização lógica de recursos</li><li>Economia de tempo de desenvolvimento</li></ul>
+
+  O comando <code>import</code> é usado para carregar bibliotecas. Para matemática, o módulo <code>math</code> oferece:
+
+  <ul><li><b><code>math.sqrt(x)</code></b> Calcula a raiz quadrada de x</li><li><b><code>math.sin(x)</code></b> Calcula o seno de x (radianos)</li><li><b><code>math.log10(x)</code></b> Calcula o logaritmo decimal de x</li><li><b><code>math.pi</code></b> Constante pi (3.141592...)</li></ul>
+
   </div>
 
-  <h2 id="s3">3. Operadores matemáticos</h2>
+  <div class="bloco ex"><span class="rotulo">Exemplo 10.3: Cálculos matemáticos básicos</span>
+  <div class="codigo" data-lingua="Python"><pre><code>import math
 
-  <p>Vamos dominar as operações que todo físico usa!</p>
+  # Cálculo de hipotenusa pelo Teorema de Pitágoras
+  cateto_a = 3
+  cateto_b = 4
+  hipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)
+  print(f"Hipotenusa: {hipotenusa:.2f}")  # 5.00
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.7: Operadores básicos</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Operações fundamentais
-  a = 10
-  b = 3
+  # Conversão graus para radianos
+  angulo_graus = 30
+  angulo_rad = math.radians(angulo_graus)
+  print(f"Seno de 30°: {math.sin(angulo_rad):.3f}")  # 0.500
 
-  soma = a + b           # 13
-  subtracao = a - b      # 7
-  multiplicacao = a * b  # 30
-  divisao = a / b        # 3.333...
-  divisao_inteira = a // b  # 3 (só a parte inteira)
-  resto = a % b          # 1 (resto da divisão)
-  potencia = a ** b      # 1000
-
-  print(f"a = {a}, b = {b}")
-  print(f"a + b = {soma}")
-  print(f"a - b = {subtracao}")
-  print(f"a x b = {multiplicacao}")
-  print(f"a / b = {divisao:.3f}")
-  print(f"a / b (inteiro) = {divisao_inteira}")
-  print(f"a mod b = {resto}")
-  print(f"a^b = {potencia}")</code></pre></div>
+  # Cálculo logarítmico
+  ph = -math.log10(2.5e-4)
+  print(f"pH da solução: {ph:.1f}")  # 3.6</code></pre></div>
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.8: Aplicações físicas importantes</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Lei de Ohm: V = R x I
-  resistencia = 100  # Ohm
-  corrente = 0.5     # A
-  tensao = resistencia * corrente
+  <div class="bloco def"><span class="rotulo"><strong>Funções Matemáticas em Python (<code>math</code>)</strong></span>
+  O módulo <code>math</code> fornece funções matemáticas avançadas. As principais funções usadas no exemplo são:
 
-  print(f"Lei de Ohm: V = R x I")
-  print(f"V = {resistencia} x {corrente} = {tensao} V")
+  <ul><li><b><code>math.sqrt(x)</code></b> Calcula a raiz quadrada de <code>x</code>.
 
-  # Energia cinética: E = (1/2)mv2
-  massa = 2.5  # kg
-  velocidade = 10  # m/s
-  energia_cinetica = 0.5 * massa * velocidade**2
+  <ul><li><strong>Exemplo:</strong> <code>math.sqrt(25)</code> retorna <code>5.0</code></li><li><strong>Restrição:</strong> <code>x</code> deve ser não-negativo</li></ul>
 
-  print(f"Energia cinética: E = (1/2)mv2")
-  print(f"E = (1/2) x {massa} x {velocidade}2 = {energia_cinetica} J")
+  <p></li><li><b><code>math.radians(x)</code></b> Converte ângulo de graus para radianos.</p>
 
-  # Lei dos gases ideais: PV = Nk_BT
-  P = 101325   # Pa (1 atm)
-  V = 0.0224   # m³ (1 mol de gás a CNTP)
-  N = 6.022e23 # partículas
-  k_B = 1.380649e-23  # J/K
-  T = P * V / (N * k_B)
+  <ul><li><strong>Fórmula:</strong> \({radianos} = {graus} {}{180}\)</li><li><strong>Exemplo:</strong> <code>math.radians(180)</code> retorna <code>3.14159...</code> (\(\))</li></ul>
 
-  print(f"Lei dos gases: PV = Nk_BT")
-  print(f"T = PV/Nk_B = {P} x {V} / ({N:.3e} x {k_B:.3e}) = {T:.1f} K")</code></pre></div>
-  </div>
+  <p></li><li><b><code>math.sin(x)</code></b> Calcula o seno de <code>x</code> (em radianos).</p>
 
-  <h2 id="s4">4. Conversões entre tipos</h2>
+  <ul><li><strong>Exemplo:</strong> <code>math.sin(math.pi/2)</code> retorna <code>1.0</code></li><li><strong>Alternativas:</strong> <code>math.cos()</code>, <code>math.tan()</code></li></ul>
 
-  <p>Às vezes precisamos converter um tipo em outro. É como trocar as gavetas!</p>
+  <p></li><li><b><code>math.log10(x)</code></b> Calcula o logaritmo decimal (base 10) de <code>x</code>.</p>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.9: Conversões comuns</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Conversões de tipos
-  numero_str = "42"
-  numero_int = int(numero_str)     # String para inteiro
-  numero_float = float(numero_str) # String para decimal
+  <ul><li><strong>Exemplo:</strong> <code>math.log10(1000)</code> retorna <code>3.0</code></li><li><strong>Relação com pH:</strong> \({pH} = -_{10}({concentração H}^+)\)</li></ul>
 
-  print(f"String: '{numero_str}' (tipo: {type(numero_str)})")
-  print(f"Inteiro: {numero_int} (tipo: {type(numero_int)})")
-  print(f"Float: {numero_float} (tipo: {type(numero_float)})")
+  <p></li><li><b><code>math.pi</code></b> Constante matemática pi (aproximadamente 3.14159)</li><li><b><strong>Formatação de strings</strong></b> Sintaxe <code>f"{valor:.nf}"</code> para controlar casas decimais:</p>
 
-  # Cuidado com conversões!
-  pi_str = "3.14159"
-  pi_int = int(float(pi_str))  # Precisa converter para float primeiro!
-  print(f"pi como inteiro: {pi_int}")
-
-  # Booleanos para números
-  verdadeiro = int(True)   # 1
-  falso = int(False)       # 0
-  print(f"True = {verdadeiro}, False = {falso}")</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Comandos Essenciais para Processamento de Dados em Python</strong></span>
-  No processamento de dados científicos, estas funções são fundamentais:
-
-  <ul><li><b><code>split(sep)</code></b> Divide uma string em uma lista de substrings usando um separador específico.
-
-  <ul><li><strong>Parâmetro:</strong> <code>sep</code> (string usada como separador)</li><li><strong>Retorno:</strong> Lista de strings</li><li><strong>Exemplo:</strong> <code>"a,b,c".split(",")</code> \(\rightarrow\) <code>["a", "b", "c"]</code></li></ul>
-
-  <p></li><li><b><code>len(iterável)</code></b> Retorna o número de elementos em uma sequência (lista, tupla, string, etc.).</p>
-
-  <ul><li><strong>Exemplos:</strong>
-        
-
-  <ul><li><code>len([1,2,3])</code> \(\rightarrow\) <code>3</code></li><li><code>len("Python")</code> \(\rightarrow\) <code>6</code></li></ul>
-
-  </li></ul>
-
-  <p></li><li><b><code>for ... in ...</code></b> Estrutura de repetição que itera sobre os elementos de uma sequência.</p>
-
-  <ul><li><strong>Sintaxe:</strong> <code>for elemento in sequência:</code></li><li><strong>Uso típico:</strong> Processar cada item de uma coleção</li><li><strong>Exemplo:</strong> <code>for x in [1,2,3]: print(x)</code></li></ul>
-
-  <p></li><li><b><code>sum(iterável)</code></b> Soma os elementos de uma sequência numérica.</p>
-
-  <ul><li><strong>Requisito:</strong> Elementos devem ser números</li><li><strong>Exemplo:</strong> <code>sum([1,2,3])</code> \(\rightarrow\) <code>6</code></li><li><strong>Aplicação:</strong> Cálculo de totais, médias, etc.</li></ul>
+  <ul><li><code>:.2f</code>: 2 casas decimais</li><li><code>:.3f</code>: 3 casas decimais</li><li><code>:.1f</code>: 1 casa decimal</li></ul>
 
   <p></li></ul></p>
 
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.10: Aplicação prática - lendo dados</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Simulando leitura de dados experimentais
-  dados_experimento = "25.3, 24.8, 25.1, 24.9"  # Temperaturas em °C
+  <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas</strong></span>
+  Estas funções são essenciais para:
 
-  # 1. split: converte string em lista de strings
-  temperaturas_str = dados_experimento.split(", ")  # ["25.3", "24.8", ...]
-
-  # 2. for loop + float(): converte cada string em número
-  temperaturas = []
-  for temp_str in temperaturas_str:
-      temperaturas.append(float(temp_str))  # [25.3, 24.8, ...]
-
-  # 3. len: conta elementos (4 temperaturas)
-  # 4. sum: soma todos os valores
-  media = sum(temperaturas) / len(temperaturas)  # Cálculo da média
-
-  print(f"Temperatura média: {media:.2f} °C")  # Formata com 2 decimais</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Fluxo de Processamento de Dados</strong></span>
-  O exemplo mostra um fluxo típico de tratamento de dados científicos:
-
-  <ol><li><strong>Aquisição:</strong> Dados brutos em formato de string (ex: leitura de sensor)</li><li><strong>Separação:</strong> <code>split()</code> para dividir os valores</li><li><strong>Conversão:</strong> <code>for</code> + <code>float()</code> para transformar em números</li><li><strong>Análise:</strong> <code>sum()</code> e <code>len()</code> para calcular estatísticas</li><li><strong>Apresentação:</strong> Formatação de saída com f-strings</li></ol>
-
-  <strong>Aplicações em física:</strong>
-
-  <ul><li>Processamento de dados de sensores</li><li>Análise de medições repetidas</li><li>Cálculo de médias experimentais</li><li>Importação de dados de arquivos CSV</li></ul>
+  <ul><li><strong>Física:</strong> Cálculos de cinemática, óptica e ondulatória</li><li><strong>Engenharia:</strong> Projetos estruturais e análise de tensões</li><li><strong>Química:</strong> Cálculos de pH, cinética química e termodinâmica</li><li><strong>Biologia:</strong> Modelagem de crescimento populacional e bioinformática</li><li><strong>Estatística:</strong> Transformações de dados e modelos probabilísticos</li></ul>
 
   </div>
 
-  <h2 id="s5">5. Formatação de números</h2>
+  <h2 id="s4">4. Física na prática!</h2>
 
-  <p>Como apresentar resultados de forma profissional!</p>
+  <p>Agora vamos resolver problemas reais de Física. Execute cada código e observe o Variable Explorer!</p>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.11: Formatação básica</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Diferentes formas de mostrar números
-  numero = 1234.56789
-  constante_planck = 6.62607015e-34
+  <div class="bloco ex"><span class="rotulo">Exemplo 10.4: As constantes que governam o universo</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Constantes físicas fundamentais - decorar não precisa, 
+  # mas entender é fundamental!
+  c = 299792458  # velocidade da luz (m/s)
+  h = 6.62607015e-34  # constante de Planck (J.s)
+  e = 1.602176634e-19  # carga elementar (C)
+  k_B = 1.380649e-23  # constante de Boltzmann (J/K)
 
-  print(f"Número original: {numero}")
-  print(f"2 casas decimais: {numero:.2f}")
-  print(f"4 casas decimais: {numero:.4f}")
-  print(f"Notação científica: {numero:.2e}")
-  print(f"Separador de milhares: {numero:,.2f}")
-
-  print(f"Constante de Planck: {constante_planck}")
-  print(f"Notação científica: {constante_planck:.3e}")
-  print(f"Formato padrão: {constante_planck:.2g}")</code></pre></div>
+  print("=== CONSTANTES FÍSICAS FUNDAMENTAIS ===")
+  print(f"Velocidade da luz: {c:e} m/s")
+  print(f"Constante de Planck: {h:e} J*s")
+  print(f"Carga elementar: {e:e} C")
+  print(f"Constante de Boltzmann: {k_B:e} J/K")</code></pre></div>
   </div>
 
-  <div class="bloco def"><span class="rotulo"><strong>Função <code>abs()</code> e Formatação de Dados em Física</strong></span>
-  A função <code>abs()</code> e a formatação de saída são essenciais para apresentação de resultados científicos:
+  <div class="bloco def"><span class="rotulo"><strong>Temperatura na Física: Conceitos Fundamentais</strong></span>
+  A <strong>temperatura</strong> é uma grandeza física fundamental que mede o estado térmico de um sistema, relacionada à energia cinética média das partículas. Na Física, trabalhamos com três escalas principais:
 
-  <ul><li><b><code>abs(x)</code></b> Retorna o valor absoluto de <code>x</code> (módulo do número).
+  <p class="centro">
 
-  <ul><li><strong>Propósito:</strong> Calcular magnitudes sem sinal (distâncias, erros, diferenças)</li><li><strong>Matematicamente:</strong> \(|x| = \begin{cases} x & \text{se } x 0 \\ -x & \text{se } x < 0 \end{cases}\)</li><li><strong>Aplicação:</strong> Cálculo de erros absolutos, diferenças entre valores teóricos e experimentais</li></ul>
+  <div class="tabela-rolavel"><table><thead><tr><th><strong>Escala</strong></th><th><strong>Símbolo</strong></th><th><strong>Referências</strong></th></tr></thead><tbody><tr><td>Celsius</td><td>°C</td><td>\({cases} 0°{C} & {ponto de fusão da água} \\ 100°{C} & {ponto de ebulição da água} {cases}\)</td></tr><tr><td>Kelvin</td><td>K</td><td>\({cases} 0\,{K} & {zero absoluto} \\ 273.15\,{K} & {ponto de fusão da água} {cases}\)</td></tr><tr><td>Fahrenheit</td><td>°F</td><td>\({cases} 32°{F} & {ponto de fusão da água} \\ 212°{F} & {ponto de ebulição da água} {cases}\)</td></tr></tbody></table></div>
 
-  <ul><li><code>f"{valor:.nf}"</code>: Formata com <code>n</code> casas decimais</li><li><code>f"{valor:,}"</code>: Adiciona separadores de milhar</li><li><code>f"{valor:.ne}"</code>: Notação científica com <code>n</code> dígitos</li><li><code>f"{valor:.n% }"</code>: Formata como porcentagem com <code>n</code> casas decimais</li></ul>
+  <p></p></p>
 
-  <p></li></ul></p>
+  <strong>Conversões fundamentais:</strong>
 
-  <strong>Exemplos práticos de formatação:</strong>
+  <ul><li><strong>Celsius para Kelvin:</strong> \(T_K = T_C + 273.15\)</li><li><strong>Kelvin para Celsius:</strong> \(T_C = T_K - 273.15\)</li><li><strong>Celsius para Fahrenheit:</strong> \(T_F = {9}{5}T_C + 32\)</li><li><strong>Fahrenheit para Celsius:</strong> \(T_C = {5}{9}(T_F - 32)\)</li></ul>
 
-  <ul><li><code>1234.5678:.2f</code> \(\rightarrow\) <code>"1234.57"</code></li><li><code>9876543:,</code> \(\rightarrow\) <code>"9,876,543"</code></li><li><code>0.000000123:.3e</code> \(\rightarrow\) <code>"1.230e-07"</code></li><li><code>0.856:.2%</code> \(\rightarrow\) <code>"85.60%"</code></li></ul>
+  <strong>Pontos notáveis:</strong>
 
-  <strong>Conceitos de análise experimental:</strong>
-
-  <ul><li><strong>Erro absoluto:</strong> \(E_{\text{abs}} = |\text{valor medido} - \text{valor teórico}|\)</li><li><strong>Erro percentual:</strong> \(E_{%} = \left(\frac{E_{\text{abs}}}{\text{valor teórico}}\right) \times 100%\)</li><li><strong>Aceleração da gravidade:</strong>
-
-  <ul><li>Valor padrão: \(g = 9.80665\,\text{m/s}^2\) (ao nível do mar)</li><li>Varia com altitude e latitude</li></ul>
-
-  <p></li></ul></p>
+  <ul><li><strong>Zero absoluto:</strong> Menor temperatura possível (-273.15°C / 0 K) onde cessa o movimento molecular</li><li><strong>Temperatura ambiente:</strong>  25°C (varia conforme condições climáticas)</li><li><strong>Importância do Kelvin:</strong> Escala absoluta usada em leis físicas como \(PV = Nk_BT\)</li></ul>
 
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 2.12: Análise de medições experimentais</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Medição de aceleração da gravidade
-  g_medido = 9.78452  # Valor obtido experimentalmente
-  g_teorico = 9.80665  # Valor teórico padrão
+  <div class="bloco ex"><span class="rotulo">Exemplo 10.5: Conversões de temperatura</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Todo físico precisa dominar conversões de temperatura
+  temp_celsius = 25  # temperatura ambiente em Juazeiro do Norte
+  temp_kelvin = temp_celsius + 273.15
 
-  # Cálculo de erros usando abs()
-  erro_absoluto = abs(g_medido - g_teorico)
-  erro_percentual = (erro_absoluto / g_teorico) * 100
+  print(f"Temperatura ambiente: {temp_celsius}°C = {temp_kelvin} K")
 
-  # Apresentação profissional de resultados
-  print("=== MEDIÇÃO DA ACELERAÇÃO DA GRAVIDADE ===")
-  print(f"Valor medido:    {g_medido:.5f} m/s2")  # 5 casas decimais
-  print(f"Valor teórico:   {g_teorico:.5f} m/s2")
-  print(f"Erro absoluto:   {erro_absoluto:.5f} m/s2")  # Usa abs()
-  print(f"Erro percentual: {erro_percentual:.3f}%")  # 3 casas decimais
+  # Outras conversões importantes
+  temp_fahrenheit = temp_celsius * 9/5 + 32
+  print(f"Em Fahrenheit: {temp_fahrenheit}°F")
 
-  # Formatação avançada para constantes físicas
-  velocidade_luz = 299792458
-  const_plank = 6.62607015e-34
+  # Zero absoluto
+  zero_absoluto_C = -273.15
+  zero_absoluto_F = zero_absoluto_C * 9/5 + 32
+  print(f"Zero absoluto: {zero_absoluto_C}°C = {zero_absoluto_F}°F")
 
-  print("fundamentais:")
-  print(f"Velocidade da luz: {velocidade_luz:,} m/s")  # Separadores de milhar
-  print(f"Constante de Planck: {const_plank:.3e} J.s")  # Notação científica</code></pre></div>
+  # Ponto de ebulição da água
+  ebulicao_C = 100
+  ebulicao_K = ebulicao_C + 273.15
+  print(f"Ebulição da água: {ebulicao_C}°C = {ebulicao_K} K")</code></pre></div>
   </div>
 
-  <div class="bloco def"><span class="rotulo"><strong>Boas Práticas para Resultados Científicos</strong></span>
-  Ao apresentar resultados experimentais:
+  <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas</strong></span>
+  Estas conversões são essenciais para:
 
-  <ul><li><strong>Use unidades claramente:</strong> Sempre inclua unidades nas legendas e valores</li><li><strong>Erros significativos:</strong> Mostre erros absolutos e percentuais</li><li><strong>Precisão adequada:</strong> Formate com casas decimais apropriadas à precisão do instrumento</li><li><strong>Destaque importantes:</strong> Use cabeçalhos e separadores para organizar informações</li><li><strong>Notação científica:</strong> Para valores muito grandes ou pequenos (\(>10^6\) ou \(<10^{-6}\))</li></ul>
-
-  <strong>Por que usar <code>abs()</code>?</strong>
-
-  <ul><li>Evita erros de sinal em cálculos de diferenças</li><li>Garante que magnitudes sejam sempre positivas</li><li>Fundamental para estatísticas e análise de erros</li></ul>
+  <ul><li><strong>Termodinâmica:</strong> Cálculo de eficiência de máquinas térmicas</li><li><strong>Meteorologia:</strong> Análise de padrões climáticos globais</li><li><strong>Criogenia:</strong> Estudo de materiais em baixíssimas temperaturas</li><li><strong>Astrofísica:</strong> Caracterização de estrelas e meio interestelar</li><li><strong>Química:</strong> Determinação de pontos de fusão/ebulição de substâncias</li></ul>
 
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exercício 2.1: Desafios para casa</span>
-  Vocês estão dominando os tipos de dados! Agora vamos aplicar em problemas reais:
+  <div class="bloco def"><span class="rotulo"><strong>A Revolução de \(E=mc^2\): Massa e Energia</strong></span>
+  A equação \(E=mc^2\), proposta por Albert Einstein em 1905, é um dos pilares da física moderna. Ela estabelece a <strong>equivalência entre massa e energia</strong>, revelando que:
 
-  <ol><li><strong>Conversão de unidades:</strong> Converta 65 mph (milhas por hora) para m/s e km/h</li><li><strong>Impedância complexa:</strong> Calcule a impedância total de um circuito com Z1 = 50+30j Ohm e Z2 = 25-40j Ohm em série</li><li><strong>Formatação científica:</strong> Apresente o número de Avogadro (\(6.022 \times 10^{23}\)) com 3 casas decimais em notação científica</li><li><strong>Erro experimental:</strong> Se você mediu \(g = 9.85\) m/s2 e o valor aceito é 9.81 m/s2, qual o erro percentual?</li></ol>
+  <ul><li><strong>Massa é energia concentrada:</strong> A massa de um objeto é medida por seu conteúdo energético</li><li><strong>Fator de conversão:</strong> \(c^2\) é o fator de conversão entre quilogramas e joules</li><li><strong>Significado de \(c\):</strong> \(c = 299\,792\,458\,{m/s}\) (velocidade da luz no vácuo)</li></ul>
+
+  <strong>Implicações fundamentais:</strong>
+
+  <ul><li>Um pequeno valor de massa equivale a enorme quantidade de energia (\(c^2 910^{16}\,{m}^2/{s}^2\))</li><li>Explica a fonte de energia das estrelas (fusão nuclear) e bombas atômicas (fissão nuclear)</li><li>Fundamenta a teoria da relatividade restrita</li></ul>
+
+  <strong>Constantes importantes no exemplo:</strong>
+
+  <ul><li><strong>Massa do elétron:</strong> \(m_e = 9.1093835610^{-31}\,{kg}\)</li><li><strong>Elétron-volt (eV):</strong> Unidade de energia usada em Física Atômica
+  \(1\,{eV} = 1.60217663410^{-19}\,{J}\)</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 10.6: A famosa \(E=mc^2\) na prática</span>
+  <div class="codigo" data-lingua="Python"><pre><code># A equação mais famosa da Física!
+  c = 299792458  # velocidade da luz (m/s)
+  m_eletron = 9.10938356e-31  # massa do elétron (kg)
+
+  # Energia de repouso do elétron
+  E_eletron = m_eletron * c**2
+  print(f"Energia de repouso do elétron: {E_eletron:e} J")
+
+  # Vamos converter para uma unidade mais familiar: eV
+  eV = 1.602176634e-19  # 1 eV em Joules
+  E_eletron_eV = E_eletron / eV
+  print(f"Em elétron-volts: {E_eletron_eV/1e6:.3f} MeV")
+
+  # Quanto de energia tem em 1 grama de matéria?
+  m_grama = 1e-3  # kg
+  E_grama = m_grama * c**2
+  print(f"Energia em 1g de matéria: {E_grama/1e15:.1f} PJ")
+  print("Isso equivale à energia de 17 bombas de Hiroshima!")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Contexto Histórico e Aplicações</strong></span>
+  <strong>Curiosidades:</strong>
+
+  <ul><li>Einstein publicou esta equação como corolário da Teoria da Relatividade Restrita em 1905</li><li>A primeira confirmação experimental veio com a medição da energia liberada em decaimentos nucleares</li><li>1g de matéria contém \(2510^6\) kWh - energia para abastecer uma cidade média por um mês!</li></ul>
+
+  <strong>Aplicações modernas:</strong>
+
+  <ul><li><strong>Energia nuclear:</strong> Reatores de fissão e fusão</li><li><strong>Astrofísica:</strong> Processos em estrelas de nêutrons e buracos negros</li><li><strong>Medicina:</strong> Tomografia por emissão de pósitrons (PET scan)</li><li><strong>Partículas elementares:</strong> Produção de novas partículas em aceleradores</li></ul>
+
+  </div>
+
+  <p><strong>Agora observem o Variable Explorer:</strong>
+  Vejam como todas as variáveis ficam armazenadas ali! Cliquem duas vezes em qualquer variável para ver mais detalhes.</p>
+
+  <h2 id="s5">5. Desafios para casa</h2>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 10.1: Desafios para a próxima aula</span>
+  Vocês já são capazes de fazer cálculos incríveis! Para consolidar o aprendizado:
+
+  <ol><li><strong>Luz verde:</strong> Calcule a frequência de uma onda eletromagnética com \(= 500\) nm (dica: \(f = c/\))</li><li><strong>Próton em movimento:</strong> Determine a energia cinética de um próton com \(v = 0,1c\) (use \(E_k = {1}{2}mv^2\))</li><li><strong>Gravidade:</strong> Converta a constante gravitacional \(G=6.6710^{-11} {m^3/kg s^2}\) para unidades cgs (centímetro-grama-segundo)</li><li><strong>Exploração:</strong> Digite <code>help(math)</code> no console e descubra 3 funções interessantes</li></ol>
 
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
-  <strong>Novos conceitos que vocês dominam:</strong>
+  <strong>O que vocês já sabem fazer:</strong>
 
-  <ul><li>Diferentes tipos de dados (int, float, complex, str, bool)</li><li>Operadores matemáticos e suas aplicações</li><li>Conversões entre tipos</li><li>Formatação profissional de números</li><li>Aplicações diretas na Física</li></ul>
+  <ul><li>Usar Python como calculadora científica</li><li>Navegar pelo Spyder com confiança</li><li>Executar código de diferentes formas (F5, F9)</li><li>Monitorar variáveis no Variable Explorer</li><li>Resolver problemas reais de Física!</li></ul>
 
-  <strong>Funções importantes para lembrar:</strong>
+  <strong>Comandos essenciais para lembrar:</strong>
 
-  <ul><li><code>type()</code>: descobrir o tipo de uma variável</li><li><code>int()</code>, <code>float()</code>, <code>str()</code>: conversões</li><li><code>abs()</code>: valor absoluto</li><li><code>round()</code>: arredondamento</li><li><code>f"{variavel:.2f}"</code>: formatação com 2 casas decimais</li></ul>
+  <ul><li><code>print()</code>: mostrar resultados</li><li><code>import math</code>: funções matemáticas</li><li><code>help()</code>: quando estiver perdido</li><li><code>**</code>: potenciação</li><li><code>f""</code>: formatação de strings</li></ul>
+
+  <strong>Atalhos do Spyder para decorar:</strong>
+
+  <ul><li><strong>F5:</strong> Executar programa completo</li><li><strong>F9:</strong> Executar linha atual</li><li><strong>Ctrl+1:</strong> Comentar/descomentar</li><li><strong>Ctrl+L:</strong> Limpar console</li></ul>
 
   </div>
 
-  <p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+  <p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
 
   <nav class="nav-aulas">
-    <a href="aula09.html"><small>Módulo anterior</small>← 9. Python e Spyder</a>
-    <a class="prox" href="aula11.html"><small>Próximo módulo</small>11. Listas e tuplas →</a>
+    <a href="aula09.html"><small>Módulo anterior</small>← 9. Figuras e tabelas</a>
+    <a class="prox" href="aula11.html"><small>Próximo módulo</small>11. Tipos e variáveis →</a>
   </nav>
 
 </main>
@@ -410,6 +374,5 @@
   Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
 </footer>
 
-<script src="assets/js/comum.js?v=202611091010"></script>
 </body>
 </html>

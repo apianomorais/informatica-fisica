@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 7: Equações em LaTeX | Informática para Física</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
+<script src="assets/js/comum.js?v=202611091035"></script>
+<script src="assets/js/codigo.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="index.html">Informática para Física <span>· LFCA/URCA</span></a>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <span class="grupo">Planilhas</span>
+      <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
+      <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Estatística descritiva e distribuições">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Propagação de erros e barras de erro">4</a>
+      <a href="aula05.html" class="num" title="Módulo 5: Gráficos e simulação na planilha">5</a>
+      <span class="grupo">LaTeX</span>
+      <a href="aula06.html" class="num" title="Módulo 6: O primeiro documento no Overleaf">6</a>
+      <a href="aula07.html" class="num ativo" title="Módulo 7: Equações em LaTeX">7</a>
+      <a href="aula08.html" class="num" title="Módulo 8: Matrizes, sistemas e alinhamento">8</a>
+      <a href="aula09.html" class="num" title="Módulo 9: Figuras, tabelas e bibliografia">9</a>
+      <span class="grupo">Python</span>
+      <a href="aula10.html" class="num" title="Módulo 10: Introdução ao Python e ao Spyder">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Tipos de dados e variáveis">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de dados: listas e tuplas">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Estruturas de controle">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Funções e modularização">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao NumPy">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Introdução ao Matplotlib: gráficos básicos">16</a>
+      <a href="aula17.html" class="num" title="Módulo 17: Matplotlib avançado: personalização e visualizações especiais">17</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Entrada e saída: teclado, arquivos e CSV">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Análise de dados com Pandas">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Métodos numéricos com SciPy">20</a>
+      <a href="aula21.html" class="num" title="Módulo 21: Matemática simbólica com SymPy">21</a>
+    </nav>
+  </div>
+</header>
+
+<div class="envoltorio">
+
+<aside class="lateral">
+  <h4>Nesta aula</h4>
+  <ol>
+    <li><a href="#s1">1. Os dois modos matemáticos</a></li>\n    <li><a href="#s2">2. Equações numeradas e referências</a></li>\n    <li><a href="#s3">3. O alfabeto da matemática</a></li>\n    <li><a href="#s4">4. Funções: por que \sin e não sin</a></li>\n    <li><a href="#s5">5. Unidades e números: o pacote siunitx</a></li>\n    <li><a href="#s6">6. O pacote physics</a></li>\n    <li><a href="#s7">7. Exercícios</a></li>
+  </ol>
+</aside>
+
+<main class="conteudo">
+
+  <p class="chapeu">Aula 7 · LaTeX e Overleaf</p>
+  <h1>Equações em LaTeX</h1>
+  <p class="subtitulo">Esta é a razão de o LaTeX existir e de a física inteira usá-lo. Em meia hora você escreve equações melhores do que qualquer editor de texto produz, e elas se numeram e se citam sozinhas.</p>
+
+  <div class="bloco def">
+    <span class="rotulo">Nesta aula você vai</span>
+    <ul>
+      <li>Escrever equações em linha e destacadas, numeradas ou não.</li>
+      <li>Usar rótulos e referências cruzadas para citar equações sem decorar números.</li>
+      <li>Produzir letras gregas, índices, frações, raízes, somatórios e integrais.</li>
+      <li>Escrever funções e unidades do jeito tipograficamente correto.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1">1. Os dois modos matemáticos</h2>
+
+  <p>Toda matemática no LaTeX vive dentro de um <strong>modo matemático</strong>, e há dois.</p>
+
+  <p>O modo <strong>em linha</strong> coloca a fórmula no meio do texto, sem interromper a
+  leitura. Abre-se com <code>\(</code> e fecha-se com <code>\)</code>:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>A fórmula de Bhaskara, \(x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}\), resolve a equação do
+segundo grau.</code></pre></div>
+
+  <p>O modo <strong>destacado</strong> põe a fórmula centralizada, numa linha só dela. Abre-se
+  com <code>\[</code> e fecha-se com <code>\]</code>:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>A energia de repouso é
+\[
+E = mc^2 .
+\]</code></pre></div>
+
+  <div class="bloco fisica">
+    <span class="rotulo">Sobre o cifrão</span>
+    <p>Você vai ver muito código antigo usando <code>$...$</code> para o modo em linha e
+    <code>$$...$$</code> para o destacado. O primeiro ainda é aceito e funciona; o segundo é
+    herança do TeX puro e <b>não deve ser usado</b> em LaTeX, porque estraga o espaçamento
+    vertical antes e depois da fórmula.</p>
+    <p>Prefira <code>\(...\)</code> e <code>\[...\]</code>. Eles são mais explícitos, dão
+    mensagens de erro melhores quando se esquece de fechar e não têm esse problema.</p>
+  </div>
+
+  <h2 id="s2">2. Equações numeradas e referências</h2>
+
+  <p>Quando a equação precisa ser citada no texto, ela ganha número, e isso se faz com o
+  ambiente <code>equation</code>:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\begin{equation}
+  \vec{F} = m\vec{a}
+  \label{eq:newton}
+\end{equation}
+
+Como mostra a Equação~\ref{eq:newton}, a força é proporcional à aceleração.</code></pre></div>
+
+  <p>O <code>\label</code> dá um nome à equação e o <code>\ref</code> recupera o número dela.
+  Inserindo outra equação antes, tudo se renumera sozinho e o texto continua correto. É essa
+  automação que torna o LaTeX insubstituível em documentos longos.</p>
+
+  <p>Dois detalhes de ofício. O til em <code>Equação~\ref{...}</code> é um espaço que não
+  quebra linha, para que o número não fique órfão no começo da linha seguinte. E a convenção
+  de prefixar o rótulo, <code>eq:</code> para equações, <code>fig:</code> para figuras e
+  <code>tab:</code> para tabelas, evita colisões e torna o código legível.</p>
+
+  <p>Para uma equação destacada sem número, use <code>equation*</code> ou simplesmente
+  <code>\[...\]</code>, que dá no mesmo.</p>
+
+  <h2 id="s3">3. O alfabeto da matemática</h2>
+
+  <p>Índices e expoentes usam <code>_</code> e <code>^</code>. Com mais de um caractere, é
+  preciso agrupar com chaves:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>x^2        v_0        v_{0x}       e^{-x^2}       T^{2}_{max}</code></pre></div>
+
+  <p>Letras gregas minúsculas saem do nome em inglês, e as maiúsculas, do nome com a inicial
+  maiúscula:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\alpha \beta \gamma \delta \epsilon \theta \lambda \mu \nu \pi \rho \sigma \phi \omega
+\Gamma \Delta \Theta \Lambda \Pi \Sigma \Phi \Omega</code></pre></div>
+
+  <p>E as construções que aparecem em toda página de física:</p>
+
+  <div class="tabela-rolavel"><table>
+    <thead><tr><th>Comando</th><th>Resultado</th></tr></thead>
+    <tbody>
+      <tr><td><code>\frac{a}{b}</code></td><td>\(\frac{a}{b}\)</td></tr>
+      <tr><td><code>\sqrt{x}</code> e <code>\sqrt[3]{x}</code></td><td>\(\sqrt{x}\) e \(\sqrt[3]{x}\)</td></tr>
+      <tr><td><code>\vec{v}</code></td><td>\(\vec{v}\)</td></tr>
+      <tr><td><code>\hat{n}</code>, <code>\bar{x}</code>, <code>\dot{x}</code></td><td>\(\hat{n}\), \(\bar{x}\), \(\dot{x}\)</td></tr>
+      <tr><td><code>\sum_{i=1}^{n} x_i</code></td><td>\(\sum_{i=1}^{n} x_i\)</td></tr>
+      <tr><td><code>\int_a^b f(x)\,dx</code></td><td>\(\int_a^b f(x)\,dx\)</td></tr>
+      <tr><td><code>\lim_{x \to 0}</code></td><td>\(\lim_{x \to 0}\)</td></tr>
+      <tr><td><code>\pm</code>, <code>\times</code>, <code>\cdot</code>, <code>\approx</code>, <code>\leq</code>, <code>\neq</code></td><td>\(\pm\), \(\times\), \(\cdot\), \(\approx\), \(\leq\), \(\neq\)</td></tr>
+      <tr><td><code>\infty</code>, <code>\partial</code>, <code>\nabla</code></td><td>\(\infty\), \(\partial\), \(\nabla\)</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="s4">4. Funções: por que \sin e não sin</h2>
+
+  <p>Escrever <code>sin(x)</code> dentro do modo matemático produz o produto das variáveis
+  \(s\), \(i\) e \(n\) por \(x\), em itálico, que é como o LaTeX trata qualquer letra solta. O
+  correto é usar o comando da função:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>errado:  f(t) = A cos(\omega t + \phi)
+certo:   f(t) = A \cos(\omega t + \phi)
+
+\sin \cos \tan \exp \log \ln \max \min \det \lim</code></pre></div>
+
+  <p>A diferença é visível: a função sai em redondo, como manda a norma, e com o espaçamento
+  certo antes do argumento. Em português há ainda o caso do seno, escrito
+  <code>\operatorname{sen}</code> quando se quer a abreviação brasileira.</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 7.1: o relatório do pêndulo</span>
+    <p>As três equações do experimento das aulas anteriores, escritas como ficariam no
+    relatório:</p>
+    <div class="codigo" data-lingua="LaTeX"><pre><code>O período de um pêndulo simples de comprimento \(L\) vale
+\begin{equation}
+  T = 2\pi \sqrt{\frac{L}{g}},
+  \label{eq:periodo}
+\end{equation}
+de onde se obtém a aceleração da gravidade local,
+\begin{equation}
+  g = \frac{4\pi^2 L}{T^2}.
+  \label{eq:gravidade}
+\end{equation}
+
+A incerteza de \(g\) segue da propagação aplicada à Equação~\ref{eq:gravidade}:
+\begin{equation}
+  \frac{\sigma_g}{g} = \sqrt{ \left(\frac{\sigma_L}{L}\right)^2
+    + \left(2\,\frac{\sigma_T}{T}\right)^2 }.
+  \label{eq:incerteza}
+\end{equation}</code></pre></div>
+    <p>Repare no <code>\left(</code> e <code>\right)</code>: eles fazem os parênteses crescerem
+    até a altura do que está dentro. Sem isso, os parênteses sairiam do tamanho normal e a
+    fração ficaria espremida entre eles.</p>
+  </div>
+
+  <h2 id="s5">5. Unidades e números: o pacote siunitx</h2>
+
+  <p>Unidades são texto, não variáveis, e por isso não devem sair em itálico. Escrever
+  <code>9,81 m/s^2</code> dentro do modo matemático produz a multiplicação das letras
+  \(m\), \(s\). O pacote <code>siunitx</code> resolve isso e ainda cuida do espaço entre número
+  e unidade:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\usepackage{siunitx}
+
+\num{1.68e-8}                        1,68 × 10⁻⁸
+\qty{9.81}{\meter\per\second\squared}  9,81 m/s²
+\qty{250.0(1)}{\gram}                  250,0(1) g
+\si{\ohm\meter}                        Ω·m</code></pre></div>
+
+  <p>Em documentos em português, a opção <code>\sisetup{output-decimal-marker={,}}</code> troca
+  o ponto pela vírgula em todos os números de uma vez.</p>
+
+  <h2 id="s6">6. O pacote physics</h2>
+
+  <p>O pacote <code>physics</code> encurta a notação que mais aparece na área:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\usepackage{physics}
+
+\dv{f}{x}          derivada total
+\dv[2]{f}{x}       derivada segunda
+\pdv{f}{x}         derivada parcial
+\pdv[2]{u}{t}      derivada parcial segunda
+\va{v}             vetor
+\abs{x}  \norm{v}  módulo e norma
+\braket{\psi}{\phi}  notação de Dirac</code></pre></div>
+
+  <p>Ele é conveniente e tem um custo: redefine alguns comandos e às vezes conflita com outros
+  pacotes. Se o documento começar a dar erro estranho depois de carregá-lo, é o primeiro
+  suspeito.</p>
+
+  <h2 id="s7">7. Exercícios</h2>
+
+  <div class="bloco ex">
+    <ol>
+      <li><b>7.1</b> Escreva, num documento novo, as três equações do exemplo 7.1 e cite as
+      três no texto com <code>\ref</code>. Depois insira uma equação nova entre a primeira e a
+      segunda e recompile: confira que a numeração e as citações se ajustaram sozinhas.</li>
+      <li><b>7.2</b> Escreva a equação de Schrödinger independente do tempo, a lei de Gauss na
+      forma integral e a transformada de Fourier de \(f(t)\). Use <code>\left</code> e
+      <code>\right</code> onde for preciso.</li>
+      <li><b>7.3</b> Escreva \(f(t)=A\cos(\omega t+\phi)\) de dois jeitos, com e sem o comando
+      <code>\cos</code>, compile os dois e descreva a diferença no resultado.</li>
+      <li><b>7.4</b> Com o <code>siunitx</code>, escreva a tabela de resistividades do cobre
+      (\(1{,}68\times10^{-8}\) Ω·m) e do alumínio (\(2{,}82\times10^{-8}\) Ω·m) com as
+      unidades formatadas e a vírgula como separador decimal.</li>
+      <li><b>7.5</b> Reescreva a equação da onda, \(\partial^2u/\partial t^2 = c^2\,
+      \partial^2u/\partial x^2\), primeiro com <code>\frac</code> e <code>\partial</code> e
+      depois com o <code>physics</code>. Compare o código dos dois.</li>
+    </ol>
+  </div>
+
+
+  <nav class="nav-aulas">
+    <a href="aula06.html"><small>Módulo anterior</small>← 6. Overleaf</a>
+    <a class="prox" href="aula08.html"><small>Próximo módulo</small>8. Matrizes e sistemas →</a>
+  </nav>
+
+</main>
+</div>
+
+<footer class="rodape">
+  <img class="logo-rodape" src="assets/img/logo-lfca.png" alt="LFCA | URCA">
+  <p><strong>Prof. Apiano Morais</strong> · <a href="mailto:apiano.morais@urca.br">apiano.morais@urca.br</a><br>
+  Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
+</footer>
+
+</body>
+</html>

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aula 20: Matemática simbólica com SymPy | Informática para Física</title>
+<title>Aula 20: Métodos numéricos com SciPy | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
-<script src="assets/js/comum.js?v=202611091010"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
+<script src="assets/js/comum.js?v=202611091035"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -20,20 +20,27 @@
       <span class="grupo">Planilhas</span>
       <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
       <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
-      <a href="aula03.html" class="num" title="Módulo 3: Dados experimentais na planilha">3</a>
-      <a href="aula04.html" class="num" title="Módulo 4: Gráficos em planilha">4</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Estatística descritiva e distribuições">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Propagação de erros e barras de erro">4</a>
+      <a href="aula05.html" class="num" title="Módulo 5: Gráficos e simulação na planilha">5</a>
+      <span class="grupo">LaTeX</span>
+      <a href="aula06.html" class="num" title="Módulo 6: O primeiro documento no Overleaf">6</a>
+      <a href="aula07.html" class="num" title="Módulo 7: Equações em LaTeX">7</a>
+      <a href="aula08.html" class="num" title="Módulo 8: Matrizes, sistemas e alinhamento">8</a>
+      <a href="aula09.html" class="num" title="Módulo 9: Figuras, tabelas e bibliografia">9</a>
       <span class="grupo">Python</span>
-      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
-      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
-      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
-      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
-      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
-      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
-      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
-      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
-      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
-      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
-      <a href="aula20.html" class="num ativo" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Introdução ao Python e ao Spyder">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Tipos de dados e variáveis">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de dados: listas e tuplas">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Estruturas de controle">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Funções e modularização">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao NumPy">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Introdução ao Matplotlib: gráficos básicos">16</a>
+      <a href="aula17.html" class="num" title="Módulo 17: Matplotlib avançado: personalização e visualizações especiais">17</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Entrada e saída: teclado, arquivos e CSV">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Análise de dados com Pandas">19</a>
+      <a href="aula20.html" class="num ativo" title="Módulo 20: Métodos numéricos com SciPy">20</a>
+      <a href="aula21.html" class="num" title="Módulo 21: Matemática simbólica com SymPy">21</a>
     </nav>
   </div>
 </header>
@@ -44,444 +51,431 @@
   <h4>Nesta aula</h4>
   <ol>
     <li><a href="#s1">1. Revisão rápida dos desafios</a></li>
-    <li><a href="#s2">2. Numérico vs simbólico</a></li>
-    <li><a href="#s3">3. Símbolos e expressões</a></li>
-    <li><a href="#s4">4. Derivadas</a></li>
-    <li><a href="#s5">5. Integrais</a></li>
-    <li><a href="#s6">6. Resolvendo equações</a></li>
-    <li><a href="#s7">7. Séries de Taylor e limites</a></li>
-    <li><a href="#s8">8. Da expressão simbólica à função numérica</a></li>
-    <li><a href="#s9">9. Saída automática em \LaTeX</a></li>
-    <li><a href="#s10">10. Desafios para casa</a></li>
+    <li><a href="#s2">2. Panorama do SciPy</a></li>
+    <li><a href="#s3">3. Ajuste de curvas — curve_fit</a></li>
+    <li><a href="#s4">4. Integração numérica</a></li>
+    <li><a href="#s5">5. Equações diferenciais — solve_ivp</a></li>
+    <li><a href="#s6">6. Busca de raízes</a></li>
+    <li><a href="#s7">7. Interpolação</a></li>
+    <li><a href="#s8">8. Desafios para casa</a></li>
   </ol>
 </aside>
 
 <main class="conteudo">
 
   <p class="chapeu">Aula 20 · Programação em Python</p>
-  <h1>Matemática simbólica com SymPy</h1>
-  <p class="subtitulo">O computador fazendo álgebra em vez de aritmética: derivadas, integrais e equações resolvidas em símbolos, com a resposta saindo em LaTeX.</p>
+  <h1>Métodos numéricos com SciPy</h1>
+  <p class="subtitulo">Ajuste de curvas, integração, equações diferenciais, raízes e interpolação. É a caixa de ferramentas numérica do físico.</p>
 
-  <p>Hoje vamos dar um salto qualitativo: em vez de aproximar derivadas e
-  integrais <em>numericamente</em>, vamos calculá-las <strong>exatamente</strong>,
-  como um sistema de álgebra computacional.
-  O SymPy transforma o Python em uma calculadora simbólica — e ainda gera
-  o LaTeX\ das expressões automaticamente!</p>
+  <p>O <strong>SciPy</strong> é a caixa de ferramentas numérica do Python científico.
+  Onde o NumPy fornece as estruturas e operações básicas, o SciPy fornece
+  os <em>algoritmos</em>: ajuste de curvas, integração, equações diferenciais,
+  busca de raízes — todos implementados em código compilado e rigorosamente
+  testado.</p>
 
   <h2 id="s1">1. Revisão rápida dos desafios</h2>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 12.1: Solução do desafio — Lei de resfriamento de Newton</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
-  from scipy.optimize import curve_fit
+  <div class="bloco ex"><span class="rotulo">Exemplo 20.1: Solução do desafio — análise de sensor com EQM</span>
+  <div class="codigo" data-lingua="Python"><pre><code>import pandas as pd
+  import numpy as np
 
-  t_min = np.array([0, 2, 4, 6, 8, 10, 12, 15, 20])
-  T_C   = np.array([90, 78, 67, 59, 51, 46, 41, 35, 28])
+  np.random.seed(42)
+  t     = np.linspace(0, 4*np.pi, 200)
+  sinal = np.sin(t)
 
-  def resfriamento(t, T_inf, T0, k):
-      return T_inf + (T0 - T_inf)*np.exp(-k*t)
+  falhas = np.random.choice(200, size=16, replace=False)
+  sinal_falho = sinal.astype(float).copy()
+  sinal_falho[falhas] = np.nan
 
-  popt, pcov = curve_fit(resfriamento, t_min, T_C,
-                         p0=[20, 90, 0.1],
-                         bounds=([0, 0, 0], [50, 150, 5]))
-  T_inf, T0, k = popt
-  erros = np.sqrt(np.diag(pcov))
+  df = pd.DataFrame({"t": t, "sinal": sinal_falho})
+  df["ffill"]  = df["sinal"].fillna(method="ffill")
+  df["bfill"]  = df["sinal"].fillna(method="bfill")
+  df["interp"] = df["sinal"].interpolate()
 
-  print(f"T_inf = ({T_inf:.1f} +/- {erros[0]:.1f}) graus C")
-  print(f"T_0   = ({T0:.1f}  +/- {erros[1]:.1f}) graus C")
-  print(f"k     = ({k:.4f} +/- {erros[2]:.4f}) 1/min")
-  print(f"tau   = {1/k:.1f} min (constante de tempo)")</code></pre></div>
+  for col in ["ffill", "bfill", "interp"]:
+      eqm = np.mean((df.loc[falhas, col] - sinal[falhas])**2)
+      print(f"EQM {col:6s}: {eqm:.6f}")
+  # A interpolacao linear e geralmente a mais precisa em sinais suaves</code></pre></div>
   </div>
 
-  <h2 id="s2">2. Numérico vs simbólico</h2>
+  <h2 id="s2">2. Panorama do SciPy</h2>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>Computação numérica</strong> (NumPy, SciPy) trabalha com números:
-  \(\sqrt{2} \approx 1{,}41421356…\)
+  O SciPy organiza seus algoritmos em <strong>submódulos</strong> especializados.
+  Os mais usados em física são:
 
-  <strong>Computação simbólica</strong> (SymPy) trabalha com símbolos: \(\sqrt{2}\)
-  permanece como \(\sqrt{2}\) até você decidir avaliá-lo numericamente.
-
-  Isso permite:
-
-  <ul><li>Calcular derivadas e integrais <strong>exatas</strong></li><li>Simplificar expressões algebricamente</li><li>Resolver equações analiticamente</li><li>Verificar resultados de cálculos manuais</li><li>Gerar código LaTeX\ automaticamente</li><li>Converter para funções numéricas eficientes com <code>lambdify</code></li></ul>
+  <ul><li><code>scipy.optimize</code>    — ajuste de curvas, minimização, raízes</li><li><code>scipy.integrate</code>   — integração numérica e EDOs</li><li><code>scipy.interpolate</code> — interpolação entre pontos discretos</li><li><code>scipy.stats</code>       — distribuições e testes estatísticos</li><li><code>scipy.linalg</code>      — álgebra linear avançada</li><li><code>scipy.signal</code>      — processamento de sinais</li><li><code>scipy.fft</code>         — transformada de Fourier</li></ul>
 
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 12.2: Numérico vs simbólico — a diferença fundamental</span>
+  <h2 id="s3">3. Ajuste de curvas — <code>curve_fit</code></h2>
+
+  <div class="bloco def"><span class="rotulo"><strong><code>scipy.optimize.curve_fit</code> — a função mais usada
+      em física experimental</strong></span>
+  Ajusta qualquer modelo paramétrico \(y = f(x,\,_1, _2, )\) a
+  dados ruidosos minimizando a soma dos quadrados dos resíduos.
+
+  <div class="codigo" data-lingua="Python"><pre><code>from scipy.optimize import curve_fit
+  popt, pcov = curve_fit(modelo, x_dados, y_dados, p0=chute_inicial)</code></pre></div>
+
+  <ul><li><b><code>modelo</code></b> Função Python <code>def f(x, p1, p2, ...): ...</code></li><li><b><code>p0</code></b> Estimativa inicial dos parâmetros — crucial para
+                              convergência.</li><li><b><code>popt</code></b> Parâmetros ótimos encontrados.</li><li><b><code>pcov</code></b> Matriz de covariância; <code>np.sqrt(np.diag(pcov))</code>
+                              retorna os desvios padrão dos parâmetros.</li><li><b><code>sigma</code></b> Incertezas das medições (pesos).</li><li><b><code>bounds</code></b> Limites nos parâmetros:
+                              <code>([min1,min2],[max1,max2])</code>.</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 20.2: Lei de Hooke — ajuste linear com incertezas</span>
   <div class="codigo" data-lingua="Python"><pre><code>import numpy as np
-  import sympy as sp
+  import matplotlib.pyplot as plt
+  from scipy.optimize import curve_fit
 
-  # Numerico: resultado aproximado
-  print("=== NUMERICO (NumPy) ===")
-  print(f"sqrt(2) = {np.sqrt(2):.15f}")
-  print(f"pi      = {np.pi:.15f}")
-  integral_np = np.trapz(np.sin(np.linspace(0, np.pi, 10000)),
-                         np.linspace(0, np.pi, 10000))
-  print(f"integral aprox = {integral_np:.10f}")
+  # Dados: extensao (m) vs forca (N) de uma mola
+  extensao_m = np.array([0.01, 0.02, 0.03, 0.04, 0.05,
+                         0.06, 0.07, 0.08, 0.09, 0.10])
+  forca_N    = np.array([0.49, 0.98, 1.43, 1.97, 2.48,
+                         3.01, 3.47, 3.98, 4.45, 4.91])
+  incerteza  = np.full_like(forca_N, 0.05)   # +/- 0.05 N
 
-  # Simbolico: resultado exato
-  print("=== SIMBOLICO (SymPy) ===")
-  print(f"sqrt(2) = {sp.sqrt(2)}")           # mostra simbolicamente
-  print(f"sqrt(2) = {float(sp.sqrt(2)):.15f}")  # avalia numericamente
-  print(f"pi      = {sp.pi}")
+  def lei_de_hooke(x, k):
+      """F = k * x"""
+      return k * x
 
-  x = sp.Symbol("x")
-  integral_sp = sp.integrate(sp.sin(x), (x, 0, sp.pi))
-  print(f"Integral exata de sin(x) de 0 a pi = {integral_sp}")  # 2</code></pre></div>
+  popt, pcov = curve_fit(lei_de_hooke, extensao_m, forca_N,
+                         p0=[50], sigma=incerteza, absolute_sigma=True)
+  k_exp  = popt[0]
+  k_erro = np.sqrt(pcov[0, 0])
+
+  print(f"Constante elastica: k = ({k_exp:.2f} +/- {k_erro:.2f}) N/m")
+
+  # Grafico
+  x_fit = np.linspace(0, 0.11, 100)
+  plt.figure(figsize=(9, 5))
+  plt.errorbar(extensao_m, forca_N, yerr=incerteza,
+               fmt="o", color="steelblue", capsize=4, label="Dados exp.")
+  plt.plot(x_fit, lei_de_hooke(x_fit, k_exp), "r-", lw=2,
+           label=f"Ajuste: k = {k_exp:.1f} N/m")
+  plt.xlabel("Extensao (m)"); plt.ylabel("Forca (N)")
+  plt.title("Lei de Hooke - Ajuste Linear")
+  plt.legend(); plt.grid(True, alpha=0.3); plt.tight_layout(); plt.show()</code></pre></div>
   </div>
 
-  <h2 id="s3">3. Símbolos e expressões</h2>
-
-  <div class="bloco def"><span class="rotulo"><strong>Criando símbolos no SymPy</strong></span>
-
-  <ul><li><b><code>x = sp.Symbol('x')</code></b> Símbolo único.</li><li><b><code>x, y, z = sp.symbols('x y z')</code></b> Múltiplos símbolos.</li><li><b><code>t = sp.Symbol('t', positive=True)</code></b> Símbolo com hipótese (\(t > 0\)).</li><li><b><code>n = sp.Symbol('n', integer=True)</code></b> Inteiro simbólico.</li></ul>
-
-  <strong>Constantes simbólicas importantes:</strong>
-
-  <ul><li><code>sp.pi</code>, <code>sp.E</code>, <code>sp.I</code> (unidade imaginária \(i\))</li><li><code>sp.oo</code> (infinito), <code>sp.Rational(a, b)</code> (fração exata \(a/b\))</li></ul>
-
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 12.3: Manipulação algébrica de expressões físicas</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
-
-  x, t, omega, gamma = sp.symbols("x t omega gamma", real=True, positive=True)
-  m, k = sp.symbols("m k", positive=True)
-
-  # Identidade trigonometrica
-  expr = sp.sin(omega*t)**2 + sp.cos(omega*t)**2
-  print(f"sin2 + cos2 = {sp.simplify(expr)}")    # -&gt; 1
-
-  # Expansao e fatoracao
-  poly = (x + 1)**3
-  print(f"(x+1)^3 expandido: {sp.expand(poly)}")
-  print(f"(x+1)^3 fatorado:  {sp.factor(poly)}")
-
-  # Energia de um oscilador harmonico
-  E_cin = sp.Rational(1, 2) * m * omega**2 * x**2
-  E_pot = sp.Rational(1, 2) * k * x**2
-  E_mec = E_cin + E_pot
-  print(f": E = {sp.collect(E_mec, x**2)}")
-
-  # Substituicao numerica
-  val = E_mec.subs([(m, 2), (omega, 3), (k, 18), (x, 0.5)])
-  print(f"Valor numerico: E = {val} J")</code></pre></div>
-  </div>
-
-  <h2 id="s4">4. Derivadas</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 12.4: Cinemática simbólica</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
-
-  t, A, omega, phi, g = sp.symbols("t A omega phi g", real=True, positive=True)
-  v0, theta_0 = sp.symbols("v_0 theta_0", positive=True)
-
-  # --- 1. Movimento Harmonico Simples ---
-  x_MHS = A * sp.cos(omega*t + phi)
-  v_MHS = sp.diff(x_MHS, t)         # 1a derivada
-  a_MHS = sp.diff(x_MHS, t, 2)      # 2a derivada
-
-  print("=== MHS ===")
-  print(f"x(t) = {x_MHS}")
-  print(f"v(t) = {v_MHS}")
-  print(f"a(t) = {sp.simplify(a_MHS)}")
-
-  # Verificando: a = -omega^2 * x ?
-  print(f"a + omega^2*x = {sp.simplify(a_MHS + omega**2 * x_MHS)}")  # 0
-
-  # --- 2. Lancamento obliquo ---
-  x_proj = v0 * sp.cos(theta_0) * t
-  y_proj = v0 * sp.sin(theta_0) * t - sp.Rational(1, 2)*g*t**2
-
-  vy = sp.diff(y_proj, t)
-  ay = sp.diff(y_proj, t, 2)
-  print("=== LANCAMENTO OBLIQUO ===")
-  print(f"y(t)  = {y_proj}")
-  print(f"vy(t) = {vy}")
-  print(f"ay(t) = {ay}")       # deve ser -g
-
-  # Tempo de voo: resolver y = 0
-  t_voo = sp.solve(y_proj, t)
-  print(f"Tempos em que y=0: {t_voo}")
-
-  alcance = sp.simplify(x_proj.subs(t, t_voo[1]))
-  print(f"Alcance: R = {alcance}")    # v0^2 * sin(2*theta0) / g</code></pre></div>
-  </div>
-
-  <h2 id="s5">5. Integrais</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 12.5: Integrais exatas importantes em física</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
-
-  z, x, r = sp.symbols("z x r", real=True)
-  n        = sp.Symbol("n", nonneg=True, integer=True)
-  k_e, q   = sp.symbols("k_e q")
-
-  print("=== INTEGRAIS FUNDAMENTAIS ===")
-
-  # Integral de Gauss (fundamental em mecanica quantica e estatistica)
-  I_gauss = sp.integrate(sp.exp(-z**2), (z, -sp.oo, sp.oo))
-  print(f"Integral de Gauss: {I_gauss}")   # -&gt; sqrt(pi)
-
-  # Funcao Gamma: integral de Euler
-  I_gamma = sp.integrate(x**n * sp.exp(-x), (x, 0, sp.oo))
-  print(f"Integral de Euler: {I_gamma}")   # -&gt; gamma(n+1) = n!
-
-  # Campo eletrico a partir do potencial de Coulomb
-  V_coulomb = k_e * q / r
-  E_r = -sp.diff(V_coulomb, r)
-  print(f": V(r) = {V_coulomb}")
-  print(f"Campo:     E(r) = -dV/dr = {E_r}")   # k_e*q / r^2
-
-  # Integral indefinida (constante de integracao incluida)
-  k_spring = sp.Symbol("k_s", positive=True)
-  U_mola   = sp.integrate(k_spring*x, x)
-  print(f"da mola: U = integral de k*x dx = {U_mola}")</code></pre></div>
-  </div>
-
-  <h2 id="s6">6. Resolvendo equações</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 12.6: Equações algébricas e transcendentais em física</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
-
-  t, v, v0, a_s, g  = sp.symbols("t v v_0 a g", real=True)
-  theta, m, k       = sp.symbols("theta m k", positive=True)
-  omega             = sp.symbols("omega", positive=True)
-
-  # 1. Equacao cinematica: achar t quando v = 0
-  v_t  = v0 + a_s*t
-  t_eq = sp.solve(sp.Eq(v_t, 0), t)
-  print("v = v0 + at = 0  --&gt;  t =", t_eq)   # [-v0/a]
-
-  # 2. Angulo otimo de lancamento: maximizar alcance
-  R       = v0**2 * sp.sin(2*theta) / g
-  dR      = sp.diff(R, theta)
-  theta_m = sp.solve(sp.Eq(dR, 0), theta)
-  print(f"dR/dtheta = {sp.simplify(dR)}")
-  print(f"theta_max  = {theta_m}")     # [pi/4]
-
-  # 3. Frequencia natural do oscilador
-  omega_0 = sp.sqrt(k/m)
-  T_0     = 2*sp.pi/omega_0
-  print(f"_0 = {omega_0}")
-  print(f"T_0     = {sp.simplify(T_0)}")
-
-  # 4. Sistema de equacoes: circuito RC em regime permanente
-  V_R, V_C = sp.symbols("V_R V_C")
-  R_s, C_s, Vs_s = sp.symbols("R C V_s", positive=True)
-  freq_s = sp.Symbol("f", positive=True)
-  Z_C    = 1 / (2*sp.pi*freq_s*C_s*sp.I)
-
-  sol = sp.solve([
-      sp.Eq(V_R + V_C, Vs_s),
-      sp.Eq(V_R / R_s, V_C / Z_C)
-  ], [V_R, V_C])
-  print(f"no resistor: V_R = {sp.simplify(sol[V_R])}")</code></pre></div>
-  </div>
-
-  <h2 id="s7">7. Séries de Taylor e limites</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 12.7: Aproximações clássicas da Física via expansão em série</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
+  <div class="bloco ex"><span class="rotulo">Exemplo 20.3: Decaimento radioativo — modelo exponencial</span>
+  <div class="codigo" data-lingua="Python"><pre><code>from scipy.optimize import curve_fit
   import numpy as np, matplotlib.pyplot as plt
 
-  x, v, c_sym = sp.symbols("x v c", real=True, positive=True)
-  m_sym       = sp.Symbol("m", positive=True)
+  # Dados de contagem: decaimento do Ba-137m
+  tempo_s  = np.array([0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300])
+  contagem = np.array([4800, 3450, 2520, 1830, 1370, 1010, 760, 560, 430, 320, 250])
+  sigma_c  = np.sqrt(contagem)      # Erro de Poisson: sigma = sqrt(N)
 
-  print("=== EXPANSOES DE TAYLOR ===")
+  def decaimento(t, N0, lam):
+      """N(t) = N0 * exp(-lambda * t)"""
+      return N0 * np.exp(-lam * t)
 
-  # 1. Fator de Lorentz para v &lt;&lt; c
-  beta   = v/c_sym
-  gamma  = 1/sp.sqrt(1 - beta**2)
-  g_exp  = sp.series(gamma, beta, 0, n=5).removeO()
-  print(f"(beta) = {g_exp}")
-  print("  -&gt; Para v &lt;&lt; c: gamma ~ 1 + beta^2/2 + ...")
+  popt, pcov = curve_fit(decaimento, tempo_s, contagem,
+                         p0=[5000, 0.005], sigma=sigma_c, absolute_sigma=True)
+  N0_exp, lam_exp = popt
+  N0_err, lam_err = np.sqrt(np.diag(pcov))
 
-  # 2. Energia relativistica expandida em v/c
-  E_rel  = m_sym*c_sym**2 * 1/sp.sqrt(1 - (v/c_sym)**2)
-  E_exp  = sp.series(E_rel, v, 0, n=5).removeO()
-  print(f"(v) ~ {E_exp}")
-  print("  -&gt; mc^2 + mv^2/2 + ... (repouso + cinetica classica)")
+  T_meio     = np.log(2) / lam_exp
+  T_meio_err = T_meio * (lam_err / lam_exp)
 
-  # 3. Visualizacao: sin(x) vs Taylor
-  x_num = np.linspace(-2*np.pi, 2*np.pi, 400)
-  fig, ax = plt.subplots(figsize=(11, 6))
-  ax.plot(x_num, np.sin(x_num), "k-", lw=2.5, label="sin(x) exato")
-  for ordem, cor, ls in [(3,"C1","--"),(5,"C2","-."),(7,"C3",":")]:
-      coefs  = [(-1)**(k) / sp.factorial(2*k+1) for k in range((ordem+1)//2)]
-      Taylor = sum(float(c)*x_num**(2*i+1) for i, c in enumerate(coefs))
-      ax.plot(x_num, Taylor, color=cor, ls=ls, lw=1.5,
-              label=f"Taylor ordem {ordem}")
-  ax.set_ylim(-2, 2); ax.set_xlim(-2*np.pi, 2*np.pi)
-  ax.set_xlabel("x (rad)"); ax.set_ylabel("sin(x)")
-  ax.set_title("Aproximacao de Taylor para sin(x)")
-  ax.legend(); ax.axhline(0, color="k", lw=0.5); ax.grid(True, alpha=0.3)
-  plt.tight_layout(); plt.show()</code></pre></div>
-  </div>
+  print(f"N0 = ({N0_exp:.0f} +/- {N0_err:.0f}) contagens")
+  print(f"lambda = ({lam_exp*1e3:.3f} +/- {lam_err*1e3:.3f}) x10^-3 /s")
+  print(f"T(1/2) exp = ({T_meio:.1f} +/- {T_meio_err:.1f}) s")
+  print(f"T(1/2) ref = 153.0 s  (Ba-137m)")
+  print(f"Erro percentual: {abs(T_meio-153)/153*100:.1f}%")
 
-  <h2 id="s8">8. Da expressão simbólica à função numérica</h2>
-
-  <div class="bloco def"><span class="rotulo"><strong><code>lambdify</code>: ponte entre SymPy e NumPy</strong></span>
-  Converte uma expressão simbólica em função Python eficiente, compatível
-  com arrays NumPy:
-
-  <div class="codigo" data-lingua="Python"><pre><code>f_sym = sp.sin(x)**2 / x               # expressao simbolica
-  f_num = sp.lambdify(x, f_sym, "numpy") # funcao numerica
-  y     = f_num(np.linspace(0.1, 10, 100))</code></pre></div>
-
-  <strong>Fluxo de trabalho típico:</strong>
-
-  <ol><li>Derivar a expressão analítica no SymPy.</li><li>Converter com <code>lambdify</code> para avaliação rápida.</li><li>Plotar com Matplotlib ou ajustar com <code>curve_fit</code>.</li></ol>
-
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 12.8: Potencial de Lennard-Jones — SymPy + NumPy + Matplotlib</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
-  import numpy as np, matplotlib.pyplot as plt
-
-  r, eps, sig = sp.symbols("r epsilon sigma", positive=True)
-
-  # Potencial de Lennard-Jones
-  V_LJ = 4*eps * ((sig/r)**12 - (sig/r)**6)
-
-  # Forca: F = -dV/dr
-  F_LJ = sp.simplify(-sp.diff(V_LJ, r))
-  print("V(r) =", V_LJ)
-  print("F(r) =", F_LJ)
-
-  # Posicao de equilibrio: F = 0
-  r_eq = sp.solve(F_LJ, r)
-  print(f"Equilibrio: r_eq = {r_eq}")    # 2^(1/6) * sigma
-
-  # Converter para funcoes numericas (unidades reduzidas: eps=1, sig=1)
-  params = {eps: 1.0, sig: 1.0}
-  V_num  = sp.lambdify(r, V_LJ.subs(params), "numpy")
-  F_num  = sp.lambdify(r, F_LJ.subs(params), "numpy")
-  r_eq_v = float(r_eq[0].subs(params))
-
-  r_arr = np.linspace(0.85, 3.5, 400)
-
+  # Grafico semilogaritmico
+  t_fit = np.linspace(0, 300, 300)
   fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 5))
 
-  ax1.plot(r_arr, V_num(r_arr), "b-", lw=2)
-  ax1.axhline(0, color="k", lw=0.5)
-  ax1.axhline(-1, color="r", ls="--", lw=1, label="V_min = -epsilon")
-  ax1.axvline(r_eq_v, color="g", ls="--", lw=1.5,
-              label=f"r_eq = 2^(1/6) sigma = {r_eq_v:.3f}")
-  ax1.set_ylim(-1.5, 2); ax1.set_xlabel("r / sigma")
-  ax1.set_ylabel("V(r) / epsilon"); ax1.set_title("Potencial LJ")
-  ax1.legend(); ax1.grid(True, alpha=0.3)
+  ax1.errorbar(tempo_s, contagem, yerr=sigma_c, fmt="o", capsize=4, label="Dados")
+  ax1.plot(t_fit, decaimento(t_fit, *popt), "r-", lw=2,
+           label=f"Ajuste: T(1/2) = {T_meio:.1f} s")
+  ax1.set_xlabel("Tempo (s)"); ax1.set_ylabel("Contagens")
+  ax1.set_title("Escala linear"); ax1.legend(); ax1.grid(True, alpha=0.3)
 
-  ax2.plot(r_arr, F_num(r_arr), "r-", lw=2)
-  ax2.axhline(0, color="k", lw=0.5); ax2.set_ylim(-5, 5)
-  ax2.set_xlabel("r / sigma"); ax2.set_ylabel("F(r)")
-  ax2.set_title("Forca LJ"); ax2.grid(True, alpha=0.3)
-
+  ax2.semilogy(tempo_s, contagem, "o")
+  ax2.semilogy(t_fit, decaimento(t_fit, *popt), "r-", lw=2)
+  ax2.set_xlabel("Tempo (s)"); ax2.set_ylabel("Contagens (log)")
+  ax2.set_title("Escala semilogaritmica"); ax2.grid(True, alpha=0.3)
   plt.tight_layout(); plt.show()</code></pre></div>
   </div>
 
-  <h2 id="s9">9. Saída automática em LaTeX</h2>
+  <h2 id="s4">4. Integração numérica</h2>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 12.9: SymPy gerando código LaTeX\ para relatórios</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import sympy as sp
+  <div class="bloco def"><span class="rotulo"><strong>Funções de integração do SciPy</strong></span>
 
-  t, A, omega, phi = sp.symbols("t A omega phi", real=True)
-  hbar, x_s        = sp.symbols(r"x", positive=True)
+  <ul><li><b><code>quad(f, a, b)</code></b> Integral definida de uma função analítica.
+      Retorna <code>(valor, erro_estimado)</code>.</li><li><b><code>dblquad(f,...)</code></b> Integral dupla.</li><li><b><code>trapezoid(y, x)</code></b> Regra do trapézio para dados discretos.</li><li><b><code>simpson(y, x)</code></b> Regra de Simpson — mais precisa que trapézio.</li><li><b><code>cumulative_trapezoid(y, x)</code></b> Integral acumulada — retorna array; útil para
+      calcular funções potencial a partir de forças.</li></ul>
 
-  expressoes = {
-      "Oscilador amortecido":
-          A * sp.exp(-phi*t) * sp.cos(omega*t),
-      "Integral de Gauss":
-          sp.Integral(sp.exp(-t**2), (t, -sp.oo, sp.oo)),
-      "Serie de Taylor e^x":
-          sp.series(sp.exp(t), t, 0, n=5).removeO(),
-      "Equacao de Euler":
-          sp.exp(sp.I*sp.pi) + 1,
-  }
-
-  print("=== SAIDA LaTeX AUTOMATICA ===")
-  for nome, expr in expressoes.items():
-      print(f"{nome}:")
-      print(f"  Expressao : {expr}")
-      print(f"  LaTeX     : ${sp.latex(expr)}$")
-      print()
-
-  # pretty_print — visualizacao bonita no terminal
-  print("Identidade de Euler (pretty_print):")
-  sp.pprint(sp.Eq(sp.exp(sp.I*sp.pi) + 1, 0), use_unicode=True)
-
-  # Calculando e exibindo em LaTeX
-  integral = sp.integrate(sp.exp(-t**2), (t, -sp.oo, sp.oo))
-  print(f": {sp.latex(integral)}")
-  print(f"Valor: {integral}")</code></pre></div>
   </div>
 
-  <h2 id="s10">10. Desafios para casa</h2>
+  <div class="bloco ex"><span class="rotulo">Exemplo 20.4: Trabalho de uma força variável e energia potencial</span>
+  <div class="codigo" data-lingua="Python"><pre><code>from scipy.integrate import quad, trapezoid, cumulative_trapezoid
+  import numpy as np, matplotlib.pyplot as plt
 
-  <div class="bloco ex"><span class="rotulo">Exercício 12.1: Mecânica analítica</span>
-  Use SymPy para: (a) calcular a energia potencial gravitacional
-  \(U(h) = mgh\); (b) derivar a força \(F = -dU/dh\);
-  (c) calcular o trabalho \(W = \int_0^H F\,dh\) simbolicamente;
-  (d) verificar que \(W = -\Delta U\);
-  (e) exibir todos os resultados em LaTeX\ usando <code>sp.latex()</code>.
+  # F(x) = F0 * sin(pi*x/L)
+  F0, L = 10.0, 5.0
+
+  def forca(x):
+      return F0 * np.sin(np.pi * x / L)
+
+  # --- 1. Integral analitica com quad ---
+  trabalho, erro = quad(forca, 0, L)
+  print(f"Trabalho (quad):     W = {trabalho:.4f} J  (erro: {erro:.2e} J)")
+  print(f"Valor analitico:     W = {2*F0*L/np.pi:.4f} J")
+
+  # --- 2. Integral de dados discretos ---
+  x_dados = np.linspace(0, L, 25)
+  F_dados = forca(x_dados) + np.random.normal(0, 0.1, 25)
+  W_trap  = trapezoid(F_dados, x_dados)
+  print(f"Trapezio (ruidoso):  W = {W_trap:.4f} J")
+
+  # --- 3. Energia potencial acumulada: U(x) = -integral de F ---
+  U = -cumulative_trapezoid(F_dados, x_dados, initial=0)
+
+  fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 5))
+  ax1.plot(x_dados, F_dados, "bo-", markersize=4, label="F(x) medido")
+  ax1.plot(x_dados, forca(x_dados), "r--", label="F(x) teorico")
+  ax1.fill_between(x_dados, 0, F_dados, alpha=0.15)
+  ax1.set_xlabel("Posicao (m)"); ax1.set_ylabel("Forca (N)")
+  ax1.set_title(f"Forca variavel  (W = {W_trap:.2f} J)")
+  ax1.legend(); ax1.grid(True, alpha=0.3)
+
+  ax2.plot(x_dados, U, "g-", lw=2)
+  ax2.set_xlabel("Posicao (m)"); ax2.set_ylabel("Energia potencial (J)")
+  ax2.set_title("Energia Potencial U(x)"); ax2.grid(True, alpha=0.3)
+  plt.tight_layout(); plt.show()</code></pre></div>
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exercício 12.2: Eletromagnetismo simbólico</span>
-  O potencial de um dipolo elétrico é
-  \(V = k_e\,p\cos\theta / r^2\).
-  Calcule simbolicamente: (a) \(E_r = -\partial V/\partial r\);
-  (b) \(E_\theta = -\frac{1}{r}\partial V/\partial\theta\);
-  (c) verifique que \(|\vec{E}|^2 = E_r^2 + E_\theta^2\).
-  Converta \(E_r\) e \(E_\theta\) para funções NumPy com <code>lambdify</code> e
-  plote a intensidade do campo em função de \(r\) para três ângulos.
+  <h2 id="s5">5. Equações diferenciais — <code>solve_ivp</code></h2>
+
+  <div class="bloco def"><span class="rotulo"><strong><code>scipy.integrate.solve_ivp</code></strong></span>
+  Resolve problemas de valor inicial (PVI):
+  \[\frac{d\vec{y}}{dt} = f(t,\,\vec{y}), \quad \vec{y}(t_0) = \vec{y}_0\]
+
+  <div class="codigo" data-lingua="Python"><pre><code>from scipy.integrate import solve_ivp
+  sol = solve_ivp(fun, t_span, y0, t_eval=t_pts, method='RK45')
+  # sol.t  -&gt; tempos; sol.y -&gt; variaveis [n_vars x n_pontos]</code></pre></div>
+
+  <ul><li><b><code>fun</code></b> Função <code>f(t, y)</code> que retorna \(d{y}/dt\).</li><li><b><code>t_span</code></b> Intervalo <code>(t0, tf)</code>.</li><li><b><code>y0</code></b> Condições iniciais.</li><li><b><code>t_eval</code></b> Pontos de saída desejados.</li><li><b><code>method</code></b> <code>'RK45'</code> (padrão), <code>'DOP853'</code>,
+                                 <code>'Radau'</code> (EDOs rígidas).</li><li><b><code>rtol, atol</code></b> Tolerâncias relativa e absoluta do integrador.</li></ul>
+
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exercício 12.3: Comparação simbólico-numérico</span>
-  Use SymPy para resolver <em>analiticamente</em> a EDO do MHS
-  \(\ddot{x} + \omega_0^2 x = 0\), com \(x(0) = A\) e \(\dot{x}(0) = 0\).
-  Converta a solução com <code>lambdify</code> e compare com a solução
-  numérica obtida via <code>solve_ivp</code> (Aula 19).
-  Plote ambas no mesmo gráfico e calcule o erro máximo.
+  <div class="bloco ex"><span class="rotulo">Exemplo 20.5: Pêndulo simples amortecido</span>
+  <div class="codigo" data-lingua="Python"><pre><code>from scipy.integrate import solve_ivp
+  import numpy as np, matplotlib.pyplot as plt
+
+  # Pendulo: d2theta/dt2 = -(g/L)*sin(theta) - gamma*dtheta/dt
+  # Sistema de 1a ordem: y = [theta, omega]
+  # dy/dt = [omega, -(g/L)*sin(theta) - gamma*omega]
+
+  g, L, gamma = 9.81, 1.0, 0.2
+
+  def pendulo(t, y):
+      theta, omega = y
+      return [omega, -(g/L)*np.sin(theta) - gamma*omega]
+
+  y0     = [np.radians(60), 0.0]   # theta0 = 60 graus, omega0 = 0
+  t_eval = np.linspace(0, 20, 1000)
+
+  sol   = solve_ivp(pendulo, (0, 20), y0, t_eval=t_eval,
+                    method="RK45", rtol=1e-8, atol=1e-10)
+  theta = sol.y[0]; omega = sol.y[1]; t = sol.t
+  E_mec = 0.5*(L**2)*(omega**2) + g*L*(1 - np.cos(theta))
+
+  print(f"Periodo (aprox. linear): T = {2*np.pi*np.sqrt(L/g):.3f} s")
+
+  fig, axes = plt.subplots(2, 2, figsize=(13, 9))
+  fig.suptitle("Pendulo Simples Amortecido (theta0 = 60 graus)", fontsize=14)
+
+  axes[0,0].plot(t, np.degrees(theta), "b-", lw=1)
+  axes[0,0].set_title("Angulo vs Tempo"); axes[0,0].set_ylabel("theta (graus)")
+  axes[0,0].grid(True, alpha=0.3)
+
+  axes[0,1].plot(t, omega, "r-", lw=1)
+  axes[0,1].set_title("Velocidade Angular"); axes[0,1].set_ylabel("omega (rad/s)")
+  axes[0,1].grid(True, alpha=0.3)
+
+  axes[1,0].plot(np.degrees(theta), omega, "g-", lw=0.8)
+  axes[1,0].set_title("Espaco de Fase")
+  axes[1,0].set_xlabel("theta (graus)"); axes[1,0].set_ylabel("omega (rad/s)")
+  axes[1,0].grid(True, alpha=0.3)
+
+  axes[1,1].plot(t, E_mec, "m-", lw=1)
+  axes[1,1].set_title("Energia Mecanica (decaimento)")
+  axes[1,1].set_ylabel("Energia (J)"); axes[1,1].grid(True, alpha=0.3)
+
+  for ax in axes.flatten(): ax.set_xlabel("Tempo (s)")
+  plt.tight_layout(); plt.show()</code></pre></div>
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exercício 12.4: Expansão multipolar</span>
-  Use <code>sp.series</code> para expandir
-  \[\frac{1}{\sqrt{r^2 - 2r d\cos\theta + d^2}}\]
-  em potências de \(r/d\) até ordem 4.
-  Identifique os termos monopolar (\(n=0\)), dipolar (\(n=1\)) e
-  quadrupolar (\(n=2\)).
+  <div class="bloco ex"><span class="rotulo">Exemplo 20.6: Comparando pendulo linear vs não-linear</span>
+  <div class="codigo" data-lingua="Python"><pre><code>from scipy.integrate import solve_ivp
+  import numpy as np, matplotlib.pyplot as plt
+
+  g, L = 9.81, 1.0
+  t_eval = np.linspace(0, 15, 1000)
+
+  fig, axes = plt.subplots(2, 2, figsize=(13, 9))
+  axes = axes.flatten()
+
+  for ax, amp in zip(axes, [5, 30, 60, 90]):
+      theta0 = np.radians(amp); y0 = [theta0, 0.0]
+
+      def pendulo_nl(t, y): return [y[1], -(g/L)*np.sin(y[0])]
+      def pendulo_l(t, y):  return [y[1], -(g/L)*y[0]]
+
+      sol_nl = solve_ivp(pendulo_nl, (0,15), y0, t_eval=t_eval, rtol=1e-8)
+      sol_l  = solve_ivp(pendulo_l,  (0,15), y0, t_eval=t_eval, rtol=1e-8)
+
+      ax.plot(t_eval, np.degrees(sol_nl.y[0]), "b-",  lw=1.5, label="Nao-linear")
+      ax.plot(t_eval, np.degrees(sol_l.y[0]),  "r--", lw=1.5, label="Linear")
+      ax.set_title(f"theta0 = {amp} graus")
+      ax.set_xlabel("Tempo (s)"); ax.set_ylabel("theta (graus)")
+      ax.legend(); ax.grid(True, alpha=0.3)
+
+  fig.suptitle("Pendulo: Aproximacao Linear vs Exata", fontsize=14)
+  plt.tight_layout(); plt.show()
+  print("Para angulos grandes, a aproximacao linear falha!")</code></pre></div>
+  </div>
+
+  <h2 id="s6">6. Busca de raízes</h2>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 20.7: Equilíbrio elástico e ressonâncias de uma cavidade</span>
+  <div class="codigo" data-lingua="Python"><pre><code>from scipy.optimize import brentq
+  import numpy as np, matplotlib.pyplot as plt
+
+  # --- 1. Equilíbrio mola-massa ---
+  k, m, g_val = 50.0, 2.0, 9.81
+
+  def forca_liquida(x):
+      return k*x - m*g_val    # F_mola - P = 0
+
+  x_eq = brentq(forca_liquida, -1.0, 1.0)
+  print(f"Equilibrio: x_eq = {x_eq:.4f} m")
+  print(f"Analitico:  x_eq = {m*g_val/k:.4f} m")
+
+  # --- 2. Frequencias de ressonancia de tubo fechado-aberto ---
+  c_som, L = 343.0, 0.5   # m/s, m
+  # Condicao: cos(kL) = 0  =&gt;  kL = (2n-1)*pi/2
+
+  def equacao_tubo(f):
+      k = 2*np.pi*f / c_som
+      return np.cos(k * L)
+
+  print("do tubo fechado-aberto:")
+  for n in range(1, 6):
+      f_central = (2*n - 1) * c_som / (4*L)
+      f_res = brentq(equacao_tubo, f_central*0.9, f_central*1.1)
+      print(f"  Modo {2*n-1}: f = {f_res:.1f} Hz  (teoria: {f_central:.1f} Hz)")
+
+  # Visualizando a forca liquida
+  x_plot = np.linspace(-0.5, 1.0, 200)
+  plt.figure(figsize=(9, 5))
+  plt.plot(x_plot, forca_liquida(x_plot), "b-", lw=2)
+  plt.axhline(0, color="k", lw=0.8)
+  plt.axvline(x_eq, color="r", ls="--", lw=2, label=f"x_eq = {x_eq:.4f} m")
+  plt.xlabel("Posicao (m)"); plt.ylabel("Forca liquida (N)")
+  plt.title("Equilibrio do Sistema Mola-Massa")
+  plt.legend(); plt.grid(True, alpha=0.3); plt.tight_layout(); plt.show()</code></pre></div>
+  </div>
+
+  <h2 id="s7">7. Interpolação</h2>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 20.8: Espectro de transmitância com dados esparsos</span>
+  <div class="codigo" data-lingua="Python"><pre><code>from scipy.interpolate import interp1d, CubicSpline
+  import numpy as np, matplotlib.pyplot as plt
+
+  # Dados de espectrofotometro (resolucao baixa)
+  lam_nm = np.array([400, 425, 450, 475, 500,
+                     525, 550, 575, 600, 650, 700])
+  T_pct  = np.array([92, 88, 70, 45, 23,
+                     31, 55, 72, 84, 90, 93])
+
+  interp_lin    = interp1d(lam_nm, T_pct, kind="linear")
+  interp_cubica = CubicSpline(lam_nm, T_pct)
+
+  lam_fino = np.linspace(400, 700, 300)
+  T_cubica = interp_cubica(lam_fino)
+
+  lam_abs = lam_fino[np.argmin(T_cubica)]
+  print(f"Comprimento de onda de maxima absorcao: {lam_abs:.1f} nm")
+
+  plt.figure(figsize=(10, 6))
+  plt.plot(lam_nm, T_pct, "ko", s=60, zorder=5, label="Dados medidos")
+  plt.plot(lam_fino, interp_lin(lam_fino), "--", color="steelblue",
+           label="Interpolacao linear")
+  plt.plot(lam_fino, T_cubica, "-", color="tomato", lw=2,
+           label="Spline cubica")
+  plt.axvline(lam_abs, color="purple", ls=":", lw=2,
+              label=f"lambda_abs = {lam_abs:.0f} nm")
+  plt.xlabel("Comprimento de onda (nm)"); plt.ylabel("Transmitancia (%)")
+  plt.title("Espectro de Transmitancia")
+  plt.legend(); plt.grid(True, alpha=0.3); plt.tight_layout(); plt.show()</code></pre></div>
+  </div>
+
+  <h2 id="s8">8. Desafios para casa</h2>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 20.1: Lei de resfriamento de Newton</span>
+  Dados: \(t\) = [0, 2, 4, 6, 8, 10, 12, 15, 20] min e
+  \(T\) = [90, 78, 67, 59, 51, 46, 41, 35, 28] °C.
+  Use <code>curve_fit</code> para ajustar
+  \(T(t) = T_+ (T_0 - T_)\,e^{-kt}\)
+  e determine a temperatura ambiente \(T_\) e a constante de tempo
+  \(= 1/k\).
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 20.2: Oscilador harmônico forçado</span>
+  Simule com <code>solve_ivp</code> o sistema
+  \({x} + 2{x} + _0^2 x = A(t)\),
+  com \(_0 = 2\), \(= 0{,}3\), \(A = 1{,}0\).
+  Plote a amplitude em regime estacionário para \(\) variando de
+  \(0{,}5\,_0\) a \(2{,}0\,_0\) e identifique a frequência de
+  ressonância.
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 20.3: Radiação de corpo negro</span>
+  A densidade espectral de energia é
+  \(u() = {8h^3/c^3}{e^{h/k_BT}-1}\).
+  Use <code>quad</code> para calcular a energia total
+  \(U = _0^u()\,d\)
+  para \(T = 5778\) K (Sol) e compare com a lei de Stefan-Boltzmann
+  \(U = {4}{c}T^4\).
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 20.4: Ajuste com incertezas heteroscedásticas</span>
+  Simule dados de um experimento com incerteza que cresce com \(x\)
+  (ex.: \(_i = 0{,}05\,y_i\) para um modelo exponencial).
+  Ajuste com <code>curve_fit</code> usando o parâmetro <code>sigma</code> e compare
+  os resultados com e sem pesos.
+  Mostre que o ajuste ponderado é mais preciso.
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
   <strong>Novos conceitos que vocês dominam:</strong>
 
-  <ul><li><code>sp.Symbol()</code>, <code>sp.symbols()</code> — criação de símbolos
-      com hipóteses</li><li><code>sp.simplify()</code>, <code>sp.expand()</code>, <code>sp.factor()</code> —
-      manipulação algébrica</li><li><code>sp.diff()</code> — derivadas de qualquer ordem</li><li><code>sp.integrate()</code> — integrais definidas e indefinidas exatas</li><li><code>sp.solve()</code> — equações e sistemas algébricos</li><li><code>sp.series()</code> — expansões de Taylor e aproximações</li><li><code>sp.latex()</code> — geração automática de código LaTeX</li><li><code>sp.lambdify()</code> — conversão simbólico \(\to\) NumPy</li><li>Integração SymPy + NumPy + SciPy + Matplotlib</li></ul>
+  <ul><li><code>curve_fit</code> — ajuste de qualquer modelo paramétrico</li><li>Incertezas via matriz de covariância: <code>np.sqrt(np.diag(pcov))</code></li><li><code>quad</code> — integral definida de funções analíticas</li><li><code>trapezoid</code>, <code>simpson</code> — integração de dados discretos</li><li><code>cumulative_trapezoid</code> — energia potencial a partir de força</li><li><code>solve_ivp</code> — pêndulo, oscilador, qualquer EDO</li><li><code>brentq</code> — busca de raízes (equilíbrio, ressonância)</li><li><code>CubicSpline</code> — interpolação suave entre dados</li></ul>
 
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
-  <strong>O ecossistema científico Python completo:</strong>
+  <strong>Escolhendo a ferramenta certa:</strong>
 
-  <p class="centro">
+  <ul><li><strong>Tenho dados e um modelo?</strong> \(\) <code>curve_fit</code></li><li><strong>Preciso integrar uma função?</strong> \(\) <code>quad</code></li><li><strong>Tenho pontos e preciso da área?</strong> \(\) <code>trapezoid</code></li><li><strong>Tenho uma EDO?</strong> \(\) <code>solve_ivp</code></li><li><strong>Preciso encontrar zero ou equilíbrio?</strong> \(\) <code>brentq</code></li><li><strong>Preciso de pontos entre os dados?</strong> \(\) <code>CubicSpline</code></li></ul>
 
-  <div class="tabela-rolavel"><table><thead><tr><th><strong>Biblioteca</strong></th><th><strong>Papel</strong></th><th><strong>Quando usar</strong></th></tr></thead><tbody><tr><td>NumPy</td><td>Arrays e álgebra linear</td><td>Cálculos vetorizados</td></tr><tr><td>Pandas</td><td>Dados tabulares</td><td>Análise e agrupamento</td></tr><tr><td>Matplotlib</td><td>Visualização</td><td>Qualquer gráfico</td></tr><tr><td>SciPy</td><td>Algoritmos numéricos</td><td>Fit, EDO, integração</td></tr><tr><td>SymPy</td><td>Matemática exata</td><td>Derivar, provar, verificar</td></tr></tbody></table></div>
-
-  <p></p></p>
-
-  <strong>Fluxo de trabalho ideal:</strong>
-  SymPy deriva a equação analítica \(\to\) <code>lambdify</code> converte para
-  numérico \(\to\) SciPy resolve ou ajusta \(\to\) Pandas organiza \(\to\)
-  Matplotlib exibe o gráfico.
-
-  <strong>Com isso vocês têm em mãos todas as ferramentas do
-  <em>scientific Python stack</em> usado por pesquisadores do mundo inteiro!</strong>
   </div>
 
+  <p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
   <nav class="nav-aulas">
-    <a href="aula19.html"><small>Módulo anterior</small>← 19. SciPy</a>
-    <span class="em-breve"><small>Em preparação</small>5. Overleaf</span>
+    <a href="aula19.html"><small>Módulo anterior</small>← 19. Pandas</a>
+    <a class="prox" href="aula21.html"><small>Próximo módulo</small>21. SymPy →</a>
   </nav>
 
 </main>
@@ -493,6 +487,5 @@
   Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
 </footer>
 
-<script src="assets/js/comum.js?v=202611091010"></script>
 </body>
 </html>

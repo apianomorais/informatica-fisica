@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aula 4: Gráficos e simulação na planilha | Informática para Física</title>
+<title>Aula 4: Propagação de erros e barras de erro | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
-<script src="assets/js/comum.js?v=202611091010"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
+<script src="assets/js/comum.js?v=202611091035"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -20,20 +20,27 @@
       <span class="grupo">Planilhas</span>
       <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
       <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
-      <a href="aula03.html" class="num" title="Módulo 3: Dados experimentais na planilha">3</a>
-      <a href="aula04.html" class="num ativo" title="Módulo 4: Gráficos em planilha">4</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Estatística descritiva e distribuições">3</a>
+      <a href="aula04.html" class="num ativo" title="Módulo 4: Propagação de erros e barras de erro">4</a>
+      <a href="aula05.html" class="num" title="Módulo 5: Gráficos e simulação na planilha">5</a>
+      <span class="grupo">LaTeX</span>
+      <a href="aula06.html" class="num" title="Módulo 6: O primeiro documento no Overleaf">6</a>
+      <a href="aula07.html" class="num" title="Módulo 7: Equações em LaTeX">7</a>
+      <a href="aula08.html" class="num" title="Módulo 8: Matrizes, sistemas e alinhamento">8</a>
+      <a href="aula09.html" class="num" title="Módulo 9: Figuras, tabelas e bibliografia">9</a>
       <span class="grupo">Python</span>
-      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
-      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
-      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
-      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
-      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
-      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
-      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
-      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
-      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
-      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
-      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Introdução ao Python e ao Spyder">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Tipos de dados e variáveis">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de dados: listas e tuplas">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Estruturas de controle">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Funções e modularização">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao NumPy">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Introdução ao Matplotlib: gráficos básicos">16</a>
+      <a href="aula17.html" class="num" title="Módulo 17: Matplotlib avançado: personalização e visualizações especiais">17</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Entrada e saída: teclado, arquivos e CSV">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Análise de dados com Pandas">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Métodos numéricos com SciPy">20</a>
+      <a href="aula21.html" class="num" title="Módulo 21: Matemática simbólica com SymPy">21</a>
     </nav>
   </div>
 </header>
@@ -43,325 +50,259 @@
 <aside class="lateral">
   <h4>Nesta aula</h4>
   <ol>
-    <li><a href="#s1">1. O gráfico é um resultado</a></li>
-    <li><a href="#s2">2. Qual gráfico para qual dado</a></li>
-    <li><a href="#s3">3. Montando um gráfico, passo a passo</a></li>
-    <li><a href="#s4">4. Dispersão, barras de erro e linha de tendência</a></li>
-    <li><a href="#s5">5. Linearizar para medir um expoente</a></li>
-    <li><a href="#s6">6. Simular na planilha: o método de Euler</a></li>
-    <li><a href="#s7">7. O projétil com resistência do ar</a></li>
-    <li><a href="#s8">8. Exercícios e avaliação</a></li>
+    <li><a href="#s1">1. De onde vem a incerteza</a></li>
+    <li><a href="#s2">2. As duas famílias: A e B</a></li>
+    <li><a href="#s3">3. A regra geral da propagação</a></li>
+    <li><a href="#s4">4. Os quatro casos que resolvem quase tudo</a></li>
+    <li><a href="#s5">5. Propagação na planilha</a></li>
+    <li><a href="#s6">6. O orçamento de incerteza do pêndulo</a></li>
+    <li><a href="#s7">7. Barras de erro no gráfico</a></li>
+    <li><a href="#s8">8. Exercícios</a></li>
   </ol>
 </aside>
 
 <main class="conteudo">
 
   <p class="chapeu">Aula 4 · Planilhas eletrônicas</p>
-  <h1>Gráficos e simulação na planilha</h1>
-  <p class="subtitulo">Esta aula fecha a unidade com as duas coisas que a planilha faz melhor
-  do que parece: desenhar dados de um jeito que revele a física que há neles e resolver
-  numericamente uma equação de movimento, linha a linha, sem programar.</p>
+  <h1>Propagação de erros e barras de erro</h1>
+  <p class="subtitulo">A aula anterior resumiu uma coluna de medidas repetidas num valor com
+  incerteza. Esta trata do caso mais comum no laboratório: a grandeza que interessa não é
+  medida, é calculada a partir de outras, e a incerteza precisa atravessar a conta junto com o
+  valor.</p>
 
   <div class="bloco def">
     <span class="rotulo">Nesta aula você vai</span>
     <ul>
-      <li>Escolher o tipo de gráfico adequado ao dado e montá-lo com eixos rotulados.</li>
-      <li>Fazer um gráfico de dispersão com barras de erro e linha de tendência.</li>
-      <li>Linearizar uma lei de potência para medir o expoente.</li>
-      <li>Integrar a segunda lei de Newton pelo método de Euler, numa planilha, e comparar com
-      a solução analítica.</li>
+      <li>Distinguir incerteza do tipo A, que vem da repetição, da tipo B, que vem do
+      instrumento.</li>
+      <li>Propagar incertezas pela regra geral e pelos quatro casos particulares.</li>
+      <li>Montar um orçamento de incerteza numa planilha e descobrir qual medida domina.</li>
+      <li>Pôr barras de erro num gráfico e usá-las para julgar um ajuste.</li>
     </ul>
   </div>
 
   <!-- ================================================== -->
-  <h2 id="s1">1. O gráfico é um resultado</h2>
+  <h2 id="s1">1. De onde vem a incerteza</h2>
 
-  <p>Numa tabela de quarenta pares de números não se enxerga nada. No gráfico correspondente,
-  a tendência, a curvatura, o ponto fora da curva e a faixa de incerteza aparecem de uma vez
-  só. Essa é a razão de o gráfico ser, num relatório de física, tão resultado quanto o número
-  final.</p>
+  <p>Nenhuma medida é um número só. Uma régua milimetrada não distingue 1,0003 de 1,0007 m, um
+  cronômetro disparado à mão carrega o tempo de reação de quem o disparou, e um multímetro tem
+  a exatidão que o fabricante especificou e nenhuma além dela.</p>
 
-  <p>E é também a razão de ele precisar de cuidado. Um gráfico sem rótulo nos eixos, sem
-  unidade, com escala escolhida para exagerar uma diferença ou com pontos ligados por uma
-  linha que sugere uma lei que não foi medida, não é um resultado: é uma afirmação sem
-  prova.</p>
+  <p>Chamar isso de "erro" é tradição e é meio infeliz, porque sugere engano. O termo técnico é
+  <strong>incerteza</strong>, e ela não é culpa de ninguém: é a largura da faixa dentro da qual
+  o valor verdadeiro plausivelmente está. Uma medida sem incerteza declarada é uma medida que
+  não permite concluir nada, porque não dá para saber se uma diferença observada é real ou é
+  do tamanho do erro.</p>
 
   <!-- ================================================== -->
-  <h2 id="s2">2. Qual gráfico para qual dado</h2>
+  <h2 id="s2">2. As duas famílias: A e B</h2>
 
-  <p>Três tipos resolvem quase tudo nesta disciplina.</p>
+  <p>A incerteza do <strong>tipo A</strong> é a que se obtém repetindo a medida e olhando a
+  dispersão. É o erro padrão da aula anterior, \(\sigma/\sqrt{n}\), e ele diminui quando se
+  mede mais vezes.</p>
 
-  <p>O <strong>gráfico de colunas</strong> compara categorias que não têm ordem natural, como a
-  produção de diferentes amostras ou o resultado de uma enquete. É também o formato do
-  histograma da aula 3, onde as categorias são os intervalos de valor.</p>
+  <p>A incerteza do <strong>tipo B</strong> é a que não aparece na repetição, porque está no
+  instrumento e no procedimento. Medir mil vezes com a mesma régua não melhora a régua. As
+  estimativas usuais são:</p>
 
-  <p>O <strong>gráfico de linhas</strong> mostra a evolução de uma grandeza ao longo de uma
-  sequência ordenada, tipicamente o tempo. A linha que liga os pontos carrega uma afirmação, a
-  de que entre dois pontos medidos a grandeza passou por ali, e por isso ela só é honesta
-  quando essa continuidade existe.</p>
+  <div class="tabela-rolavel"><table>
+    <thead><tr><th>Situação</th><th>Incerteza típica</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><td>escala analógica</td><td>metade da menor divisão</td><td>régua de mm: 0,5 mm</td></tr>
+      <tr><td>instrumento digital</td><td>uma unidade do último dígito</td><td>balança de 0,01 g: 0,01 g</td></tr>
+      <tr><td>especificação do fabricante</td><td>o que estiver no manual</td><td>multímetro: 0,5% da leitura + 2 dígitos</td></tr>
+      <tr><td>tempo de reação humana</td><td>0,1 a 0,2 s</td><td>cronômetro acionado à mão</td></tr>
+    </tbody>
+  </table></div>
 
-  <p>O <strong>gráfico de dispersão</strong> é o que a física usa mais, e é o único em que o
-  eixo horizontal é uma grandeza numérica de verdade, com espaçamento proporcional ao valor.
-  Toda vez que se quer relacionar duas variáveis medidas, como corrente contra tensão ou
-  período contra comprimento, o gráfico é de dispersão, com marcadores e sem linha ligando os
-  pontos.</p>
+  <p>As duas famílias se combinam em quadratura, isto é, somando os quadrados:</p>
 
-  <div class="bloco fisica">
-    <span class="rotulo">A diferença que mais se erra</span>
-    <p>Num gráfico de <b>linhas</b>, a planilha trata a primeira coluna como rótulos de
-    categoria e distribui os pontos <b>igualmente espaçados</b>, qualquer que seja o valor
-    deles. Se a sua coluna de tempos for 0, 1, 2, 5 e 10 segundos, os cinco pontos aparecerão
-    à mesma distância um do outro, e o gráfico estará mentindo.</p>
-    <p>Num gráfico de <b>dispersão</b>, a posição horizontal é proporcional ao valor, que é o
-    que se quer num gráfico científico. A regra é simples: <b>eixo x numérico pede
-    dispersão</b>.</p>
+  <p>\[\sigma=\sqrt{\sigma_A^2+\sigma_B^2}.\]</p>
+
+  <p>A soma em quadratura tem uma consequência que vale guardar: quando uma das parcelas é duas
+  ou três vezes maior que a outra, a menor praticamente desaparece. Com
+  \(\sigma_A=1\) e \(\sigma_B=3\), o total é \(3{,}16\), apenas 5% acima do maior. É por isso
+  que melhorar a segunda melhor fonte de incerteza quase nunca compensa.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s3">3. A regra geral da propagação</h2>
+
+  <p>Seja uma grandeza \(f\) calculada a partir de medidas independentes \(x,y,z,\dots\), cada
+  uma com a sua incerteza. A incerteza de \(f\) é</p>
+
+  <p>\[\sigma_f=\sqrt{\left(\pder{f}{x}\right)^2\sigma_x^2
+  +\left(\pder{f}{y}\right)^2\sigma_y^2
+  +\left(\pder{f}{z}\right)^2\sigma_z^2+\cdots}\]</p>
+
+  <p>A leitura da fórmula é mais simples do que a aparência. Cada derivada parcial diz
+  <strong>quanto \(f\) muda</strong> quando aquela variável muda um pouco; multiplicada pela
+  incerteza da variável, dá a contribuição daquela medida para a incerteza do resultado; e as
+  contribuições se somam em quadratura porque os erros são independentes e tanto fazem para
+  mais quanto para menos.</p>
+
+  <p>A hipótese de independência é importante e às vezes é falsa. Se duas medidas foram feitas
+  com a mesma régua mal calibrada, os erros delas andam juntos, e a soma em quadratura
+  subestima o resultado. Nesse caso o erro é sistemático, e o tratamento é outro: corrigir a
+  calibração, não propagar.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s4">4. Os quatro casos que resolvem quase tudo</h2>
+
+  <p>Aplicando a regra geral às operações mais comuns, saem quatro receitas que dispensam
+  derivar de novo a cada vez.</p>
+
+  <div class="bloco def">
+    <span class="rotulo">As receitas</span>
+    <p><b>Soma e subtração</b>, \(f=x\pm y\): as incertezas <b>absolutas</b> se somam em
+    quadratura.</p>
+    <p>\[\sigma_f=\sqrt{\sigma_x^2+\sigma_y^2}\]</p>
+    <p><b>Produto e quociente</b>, \(f=xy\) ou \(f=x/y\): as incertezas <b>relativas</b> se
+    somam em quadratura.</p>
+    <p>\[\frac{\sigma_f}{|f|}=\sqrt{\left(\frac{\sigma_x}{x}\right)^2
+    +\left(\frac{\sigma_y}{y}\right)^2}\]</p>
+    <p><b>Potência</b>, \(f=x^n\): a incerteza relativa é multiplicada pelo expoente.</p>
+    <p>\[\frac{\sigma_f}{|f|}=|n|\,\frac{\sigma_x}{|x|}\]</p>
+    <p><b>Função de uma variável</b>, \(f=f(x)\): a derivada faz todo o trabalho.</p>
+    <p>\[\sigma_f=\left|\der{f}{x}\right|\sigma_x\]</p>
   </div>
 
+  <p>A terceira receita é a que mais surpreende quem está começando. Num cálculo que envolve
+  \(T^2\), a incerteza relativa do período entra <strong>dobrada</strong>, e num que envolve
+  \(r^3\), a do raio entra triplicada. Medir bem o que está elevado a uma potência alta vale
+  muito mais do que medir bem o resto.</p>
+
   <!-- ================================================== -->
-  <h2 id="s3">3. Montando um gráfico, passo a passo</h2>
+  <h2 id="s5">5. Propagação na planilha</h2>
+
+  <p>Há dois jeitos de fazer isso na planilha, e vale conhecer os dois.</p>
+
+  <p>O <strong>caminho analítico</strong> é escrever a fórmula da incerteza como mais uma
+  coluna. Para \(g=4\pi^2L/T^2\), produto de \(L\) por \(T^{-2}\), a segunda e a terceira
+  receita dão</p>
+
+  <p>\[\frac{\sigma_g}{g}=\sqrt{\left(\frac{\sigma_L}{L}\right)^2
+  +\left(2\,\frac{\sigma_T}{T}\right)^2},\]</p>
+
+  <p>que na planilha vira</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=F2*RAIZ( ($C$2/B2)^2 + (2*$C$3/D2)^2 )</code></pre></div>
+
+  <p>com <code>C2</code> guardando \(\sigma_L\) e <code>C3</code> guardando \(\sigma_T\).</p>
+
+  <p>O <strong>caminho numérico</strong> dispensa derivar. A ideia é perturbar cada entrada
+  pela sua incerteza, ver quanto o resultado muda e somar as mudanças em quadratura:</p>
+
+  <p>\[\sigma_f\approx\sqrt{\sum_i\left[f(x_i+\sigma_i)-f(x_i)\right]^2}.\]</p>
+
+  <p>Na prática, isso é uma coluna para \(f\) com tudo no valor central, uma para \(f\) com
+  \(L\) aumentado de \(\sigma_L\), outra com \(T\) aumentado de \(\sigma_T\), e uma final que
+  combina as diferenças. É mais trabalhoso de montar e serve para qualquer fórmula, por mais
+  feia que ela seja, inclusive as que não se derivam à mão. Os dois caminhos concordam, e
+  conferir um contra o outro é um bom exercício.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s6">6. O orçamento de incerteza do pêndulo</h2>
 
   <div class="bloco ex">
-    <span class="rotulo">Exemplo 4.1: densidade de três líquidos com a temperatura</span>
-    <p>A tabela tem a temperatura na coluna A e, nas colunas B, C e D, as densidades da água,
-    da água salgada com salinidade de \(3{,}5\%\) e da amônia líquida saturada, em kg/m³.</p>
-    <p><b>Passo 1.</b> Selecione os dados incluindo os cabeçalhos, que virarão a legenda.</p>
-    <p><b>Passo 2.</b> Inserir, Gráfico. Escolha dispersão ou linha com marcadores.</p>
-    <p><b>Passo 3.</b> Confira o eixo horizontal. Se a planilha tiver escolhido errado, abra
-    Selecionar dados e indique a coluna A como eixo x.</p>
-    <p><b>Passo 4.</b> Ponha título nos eixos: <code>Temperatura (°C)</code> no horizontal e
-    <code>Densidade (kg/m³)</code> no vertical. A unidade entre parênteses não é
-    opcional.</p>
-    <p><b>Passo 5.</b> Ajuste os limites verticais. Com os três líquidos juntos, a escala vai
-    de 680 a 1030 e as duas curvas de cima ficam praticamente coladas.</p>
-    <p><b>Passo 6.</b> Experimente remover a série da amônia e reajustar a escala. As duas
-    curvas restantes, que pareciam retas horizontais, revelam a variação com a temperatura.</p>
-    <p>O passo 6 é a lição do exemplo. A mesma tabela, com duas escolhas de escala, conta duas
-    histórias diferentes. Escolher a escala é um ato de interpretação, e o critério honesto é
-    mostrar a variação que se está discutindo sem fabricar uma que não existe.</p>
-  </div>
-
-  <!-- ================================================== -->
-  <h2 id="s4">4. Dispersão, barras de erro e linha de tendência</h2>
-
-  <p>Um ponto experimental sem barra de erro afirma que a medida é exata, o que nunca é
-  verdade. No Google Planilhas as barras entram em Personalizar, Série, Barras de erro, onde se
-  pode dar um valor constante, uma porcentagem ou, o que é melhor, uma coluna com a incerteza
-  de cada ponto.</p>
-
-  <p>A <strong>linha de tendência</strong> ajusta uma curva aos pontos. Em Personalizar, Série,
-  Linha de tendência, escolha o tipo linear e marque a exibição da equação e do \(R^2\).</p>
-
-  <p>Para ter os coeficientes como números utilizáveis, e não como um texto desenhado no
-  gráfico, use as funções de ajuste:</p>
-
-  <div class="codigo" data-lingua="Fórmula"><pre><code>=INCLINAÇÃO(y_conhecidos; x_conhecidos)       o coeficiente angular
-=INTERCEPÇÃO(y_conhecidos; x_conhecidos)      o coeficiente linear
-=RQUAD(y_conhecidos; x_conhecidos)            o R²
-=PROJ.LIN(y_conhecidos; x_conhecidos; ; VERDADEIRO)</code></pre></div>
-
-  <p>A última é a mais completa: com o quarto argumento <code>VERDADEIRO</code> ela devolve um
-  bloco de números com os dois coeficientes <strong>e as incertezas deles</strong> na linha de
-  baixo, que é exatamente o que um relatório precisa e o que a linha de tendência desenhada não
-  dá.</p>
-
-  <div class="bloco fisica">
-    <span class="rotulo">O R² não decide nada sozinho</span>
-    <p>Um \(R^2\) de 0,999 não prova que a relação é linear, e um de 0,95 não prova que não é.
-    O que denuncia uma curvatura escondida é o gráfico dos <b>resíduos</b>, isto é, da
-    diferença entre cada ponto e a reta ajustada. Se os resíduos se distribuírem sem padrão em
-    torno do zero, a reta serve; se desenharem um arco, há física faltando no modelo, por mais
-    alto que o \(R^2\) esteja.</p>
-  </div>
-
-  <!-- ================================================== -->
-  <h2 id="s5">5. Linearizar para medir um expoente</h2>
-
-  <p>O período de um pêndulo depende do comprimento segundo \(T=2\pi\sqrt{L/g}\), isto é, uma
-  lei de potência \(T=kL^{1/2}\). Para testar essa potência sem supor que ela vale, tome o
-  logaritmo dos dois lados:</p>
-
-  <p>\[\log T=\log k+\tfrac12\log L.\]</p>
-
-  <p>Num gráfico de \(\log T\) contra \(\log L\), uma lei de potência vira uma
-  <strong>reta</strong>, cuja inclinação é o expoente. Medir a inclinação é medir o expoente, e
-  compará-la com \(0{,}5\) é testar a teoria.</p>
-
-  <div class="bloco ex">
-    <span class="rotulo">Exemplo 4.2: medindo o expoente do pêndulo</span>
-    <p>Com as colunas de \(L\) e \(T\) já calculadas na aula 1, acrescente duas colunas:</p>
-    <div class="codigo" data-lingua="Fórmula"><pre><code>I2:  =LOG10(B2)        log do comprimento
-J2:  =LOG10(E2)        log do período</code></pre></div>
-    <p>E, em duas células à parte,</p>
-    <div class="codigo" data-lingua="Fórmula"><pre><code>=INCLINAÇÃO(J2:J16; I2:I16)       deve ficar perto de 0,5
-=INTERCEPÇÃO(J2:J16; I2:I16)      vale log(2π/√g)</code></pre></div>
-    <p>Do coeficiente linear sai outra estimativa de \(g\), independente da média da aula 3:
-    como o intercepto é \(\log(2\pi/\sqrt{g})\), segue
-    \(g=\left(2\pi/10^{\,b}\right)^2\). Compare as duas estimativas e comente a
-    diferença.</p>
-  </div>
-
-  <!-- ================================================== -->
-  <h2 id="s6">6. Simular na planilha: o método de Euler</h2>
-
-  <p>Até aqui a planilha analisou dados medidos. Ela também resolve equações de movimento, e a
-  ideia cabe em duas linhas de álgebra.</p>
-
-  <p>A segunda lei de Newton diz que \(F=ma\), e a aceleração média num intervalo \(\Delta t\)
-  é</p>
-
-  <p>\[a_t=\frac{v_{t+\Delta t}-v_t}{\Delta t}.\]</p>
-
-  <p>Juntando as duas e isolando a velocidade nova,</p>
-
-  <p>\[v_{t+\Delta t}=v_t+\Delta t\,\frac{F_t}{m}.\]</p>
-
-  <p>Essa é a receita do <strong>método de Euler</strong>: conhecida a velocidade agora,
-  calcula-se a força agora, e com ela a velocidade do instante seguinte. Cada linha da planilha
-  é um instante, e cada coluna é uma grandeza. Arrastar as fórmulas para baixo é integrar a
-  equação do movimento.</p>
-
-  <div class="bloco ex">
-    <span class="rotulo">Exemplo 4.3: uma bala freada pelo ar</span>
-    <p>A lei de Stokes dá, para baixas velocidades, uma força de arrasto proporcional à
-    velocidade e oposta a ela, \(F=-bv\). A receita de Euler fica</p>
-    <p>\[v_{t+\Delta t}=v_t-\Delta t\,\frac{b}{m}\,v_t.\]</p>
-    <p>Com \(v_0=700\) m/s, \(b=0{,}001\) N·s/m, \(m=0{,}005\) kg e \(\Delta t=0{,}01\) s,
-    monte os parâmetros no alto e a simulação abaixo:</p>
+    <span class="rotulo">Exemplo 4.1: de onde vem a incerteza de g</span>
+    <p>No experimento das aulas anteriores, mediu-se \(L\) com régua milimetrada e \(t_{10}\)
+    com cronômetro de mão. As incertezas do tipo B são, então,</p>
+    <p>\[\sigma_L=0{,}5\ \text{mm}=0{,}0005\ \text{m},\qquad
+    \sigma_{t_{10}}=0{,}2\ \text{s}\ \Rightarrow\ \sigma_T=0{,}02\ \text{s}.\]</p>
+    <p>Para o primeiro experimento, com \(L=1{,}00\) m e \(T=1{,}982\) s, as duas contribuições
+    relativas são</p>
     <div class="tabela-rolavel"><table>
-      <thead><tr><th>Célula</th><th>Conteúdo</th><th>O que é</th></tr></thead>
+      <thead><tr><th>Fonte</th><th>Contribuição relativa</th><th>Valor</th><th>Peso no total</th></tr></thead>
       <tbody>
-        <tr><td><code>B1</code></td><td>0,005</td><td>massa (kg)</td></tr>
-        <tr><td><code>B2</code></td><td>0,001</td><td>b (N·s/m)</td></tr>
-        <tr><td><code>B3</code></td><td>0,01</td><td>Δt (s)</td></tr>
-        <tr><td><code>A6</code></td><td>0</td><td>tempo inicial</td></tr>
-        <tr><td><code>B6</code></td><td>700</td><td>velocidade inicial</td></tr>
-        <tr><td><code>C6</code></td><td><code>=-$B$2*B6</code></td><td>força agora</td></tr>
-        <tr><td><code>A7</code></td><td><code>=A6+$B$3</code></td><td>tempo seguinte</td></tr>
-        <tr><td><code>B7</code></td><td><code>=B6+$B$3*C6/$B$1</code></td><td>velocidade seguinte</td></tr>
-        <tr><td><code>C7</code></td><td><code>=-$B$2*B7</code></td><td>força seguinte</td></tr>
+        <tr><td>comprimento</td><td>\(\sigma_L/L\)</td><td>0,05%</td><td>0,1%</td></tr>
+        <tr><td>período</td><td>\(2\sigma_T/T\)</td><td>2,02%</td><td>99,9%</td></tr>
+        <tr><td><b>total</b></td><td>\(\sqrt{\cdot}\)</td><td><b>2,02%</b></td><td>100%</td></tr>
       </tbody>
     </table></div>
-    <p>Selecione a linha 7 inteira e arraste para baixo por algumas centenas de linhas. Em
-    seguida faça um gráfico de dispersão do tempo contra a velocidade.</p>
-    <p>Os cifrões são o que fazem isso funcionar: massa, \(b\) e \(\Delta t\) ficam travados
-    no alto, enquanto a velocidade e a força caminham linha a linha.</p>
-    <p>A conferência é imediata, porque este caso tem solução exata,
-    \(v(t)=v_0e^{-bt/m}\), com tempo característico \(\tau=m/b=5\) s. Depois de cinco passos,
-    isto é, \(t=0{,}05\) s, a planilha dá \(693{,}028\) m/s e a exponencial dá
-    \(693{,}035\) m/s. A diferença de sete milésimos é o erro do método, e ela encolhe quando
-    \(\Delta t\) encolhe.</p>
+    <p>de modo que \(g=10{,}05\pm0{,}20\) m/s² <b>numa única medida</b>.</p>
+    <p>A conclusão prática salta aos olhos: o cronômetro responde por praticamente toda a
+    incerteza, e a régua é irrelevante. Trocar a régua por um paquímetro não melhoraria nada.
+    Cronometrar 50 oscilações em vez de 10, isso sim, dividiria a contribuição dominante por
+    cinco.</p>
   </div>
 
   <div class="bloco fisica">
-    <span class="rotulo">O preço do passo</span>
-    <p>Euler troca a curva por uma sequência de retas, e o erro de cada passo é proporcional a
-    \(\Delta t^2\). Acumulado ao longo de um intervalo fixo, o erro final fica proporcional a
-    \(\Delta t\): é um método de <b>primeira ordem</b>. Dividir o passo por dez reduz o erro
-    por dez e multiplica por dez o número de linhas.</p>
-    <p>Há um limite prático do outro lado. Se \(\Delta t\) for maior que o tempo característico
-    do problema, aqui \(\tau=m/b\), a simulação não apenas erra: ela diverge, com a velocidade
-    trocando de sinal e crescendo. Vale experimentar \(\Delta t=12\) s neste exemplo para ver
-    acontecer. O módulo 19 do curso de Python retoma esse assunto com métodos melhores.</p>
+    <span class="rotulo">Fechando a história das três aulas</span>
+    <p>Agora dá para juntar as peças. A incerteza de <b>uma</b> medida é de \(2{,}0\%\), a
+    dispersão observada nas quinze medidas foi de \(0{,}9\%\), e o erro padrão da média ficou
+    em \(0{,}2\%\). A média saiu \(1{,}5\%\) acima do valor esperado para o Crato.</p>
+    <p>Um desvio de \(1{,}5\%\) é pequeno diante da incerteza de uma medida isolada, e por isso
+    nenhuma medida individual denunciaria o problema. Mas é mais de seis vezes o erro padrão da
+    média,
+    e o erro padrão é a escala certa para comparar <b>médias</b>. A conclusão é que existe um
+    efeito sistemático.</p>
+    <p>E ele é quantificável. Como \(g\propto1/T^2\), um desvio de \(+1{,}5\%\) em \(g\) exige
+    um desvio de \(-0{,}75\%\) em \(T\), isto é, \(0{,}15\) s a menos na cronometragem das dez
+    oscilações. Essa é exatamente a ordem de grandeza do tempo de reação de quem aperta o botão
+    antecipando o fim do movimento. O erro aleatório do cronômetro vai para os dois lados e
+    some na média; o <b>viés</b> de antecipação vai sempre para o mesmo lado e sobrevive a
+    quantas repetições se queira.</p>
   </div>
 
   <!-- ================================================== -->
-  <h2 id="s7">7. O projétil com resistência do ar</h2>
+  <h2 id="s7">7. Barras de erro no gráfico</h2>
 
-  <p>Sem arrasto, o lançamento oblíquo tem solução fechada e é assunto de Física I:</p>
+  <p>Com a coluna de incertezas pronta, ela entra no gráfico. No Google Planilhas, as barras
+  ficam em Personalizar, Série, Barras de erro, onde se escolhe valor constante, porcentagem ou
+  uma coluna personalizada, que é a opção correta quando cada ponto tem a sua incerteza.</p>
 
-  <p>\[x=v_{0x}t,\qquad y=v_{0y}t-\tfrac12gt^2,\qquad
-  h=\frac{v_0^2\sen^2\theta_0}{2g},\qquad A=\frac{v_0^2\sen2\theta_0}{g},\]</p>
+  <p>A barra de erro muda o que o gráfico permite concluir, e em três situações:</p>
 
-  <p>com o alcance máximo em \(\theta_0=45°\). Essas fórmulas valem enquanto a curvatura da
-  Terra, a variação de \(g\) com a altura e a resistência do ar puderem ser desprezadas.</p>
+  <p>Para <strong>comparar dois pontos</strong>. Se as barras se superpõem com folga, a
+  diferença entre eles não é significativa, por mais que os centros pareçam distantes.</p>
 
-  <p>Levando o arrasto em conta, com \(\vet{F}_{ar}=-b\vet{v}\), a força total passa a ser
-  \(\vet{F}=m\vet{g}-b\vet{v}\) e as equações se acoplam:</p>
+  <p>Para <strong>julgar um ajuste</strong>. Uma reta boa passa <em>dentro</em> de cerca de dois
+  terços das barras, que é o que se espera de incertezas de um desvio padrão. Se ela passa por
+  todas, com sobra, as incertezas foram superestimadas; se escapa de quase todas, ou o modelo
+  está errado, ou as incertezas foram subestimadas.</p>
 
-  <p>\[\frac{dv_x}{dt}=-\frac{b}{m}v_x,\qquad
-  \frac{dv_y}{dt}=-\frac{b}{m}v_y-g,\qquad
-  \frac{dx}{dt}=v_x,\qquad \frac{dy}{dt}=v_y.\]</p>
-
-  <p>Não há mais solução elementar, e é exatamente aí que a simulação ganha o seu lugar. Euler
-  em duas dimensões é a mesma receita, aplicada a cada componente:</p>
-
-  <p>\[F_{x,n}=-bv_{x,n},\qquad F_{y,n}=-bv_{y,n}-mg,\]</p>
-  <p>\[v_{x,n+1}=v_{x,n}+\Delta t\frac{F_{x,n}}{m},\qquad
-  v_{y,n+1}=v_{y,n}+\Delta t\frac{F_{y,n}}{m},\]</p>
-  <p>\[x_{n+1}=x_n+\Delta t\,v_{x,n},\qquad y_{n+1}=y_n+\Delta t\,v_{y,n}.\]</p>
-
-  <div class="bloco ex">
-    <span class="rotulo">Exemplo 4.4: montando o lançamento com arrasto</span>
-    <p>Nas colunas A e B, os parâmetros fixos: massa, \(b\), \(g\), \(\Delta t\), \(v_0\) e
-    \(\theta_0\). Nas colunas C a I, uma coluna para cada grandeza que caminha:</p>
-    <div class="codigo" data-lingua="Fórmula"><pre><code>C: t     D: x     E: y     F: vx     G: vy     H: Fx     I: Fy</code></pre></div>
-    <p>Na primeira linha de simulação entram as condições iniciais,</p>
-    <div class="codigo" data-lingua="Fórmula"><pre><code>C2:  0
-D2:  0
-E2:  0
-F2:  =$B$5*COS(RADIANOS($B$6))
-G2:  =$B$5*SEN(RADIANOS($B$6))
-H2:  =-$B$2*F2
-I2:  =-$B$2*G2 - $B$1*$B$3</code></pre></div>
-    <p>e na segunda linha, as fórmulas que serão arrastadas para baixo:</p>
-    <div class="codigo" data-lingua="Fórmula"><pre><code>C3:  =C2+$B$4
-D3:  =D2+$B$4*F2
-E3:  =E2+$B$4*G2
-F3:  =F2+$B$4*H2/$B$1
-G3:  =G2+$B$4*I2/$B$1
-H3:  =-$B$2*F3
-I3:  =-$B$2*G3 - $B$1*$B$3</code></pre></div>
-    <p>A trajetória é o gráfico de dispersão de \(y\) contra \(x\). Para encontrar a altura
-    máxima basta <code>=MÁXIMO(E2:E2000)</code>, e para o alcance, o valor de \(x\) na linha em
-    que \(y\) troca de sinal, que se acha com <code>CORRESP</code> e <code>ÍNDICE</code>.</p>
-  </div>
+  <p>Para <strong>enxergar o peso de cada ponto</strong>. Pontos com barra pequena merecem mais
+  confiança que pontos com barra grande, e um ajuste honesto leva isso em conta. É o que fazem
+  os mínimos quadrados ponderados, assunto que a unidade de Python retoma no módulo de
+  SciPy.</p>
 
   <!-- ================================================== -->
-  <h2 id="s8">8. Exercícios e avaliação</h2>
+  <h2 id="s8">8. Exercícios</h2>
 
   <div class="bloco ex">
     <ol>
-      <li><b>4.1</b> Monte o gráfico do exemplo 4.1 com os três líquidos e depois só com os
-      dois mais densos, ajustando a escala. Entregue os dois gráficos e um parágrafo sobre o
-      que cada um permite ver.</li>
+      <li><b>4.1</b> Um bloco tem massa \(m=250{,}0\pm0{,}1\) g e volume
+      \(V=32{,}5\pm0{,}5\) cm³. Calcule a densidade e a incerteza dela na planilha, pela
+      receita do quociente. Diga qual das duas medidas domina o resultado e por quê.</li>
 
-      <li><b>4.2</b> Faça o gráfico de dispersão de \(T^2\) contra \(L\) para os dados do
-      pêndulo, com barras de erro, e ajuste uma reta. Obtenha \(g\) da inclinação, que vale
-      \(4\pi^2/g\), e compare com a média da aula 3.</li>
+      <li><b>4.2</b> Monte a coluna de incerteza de \(g\) para os quinze experimentos do
+      pêndulo, pelo caminho analítico da seção 5. Em seguida monte o caminho numérico, com as
+      colunas perturbadas, e verifique que os dois concordam em pelo menos três casas.</li>
 
-      <li><b>4.3</b> Faça o gráfico dos resíduos do ajuste anterior. Diga se eles mostram
-      padrão e o que isso significa.</li>
+      <li><b>4.3</b> Refaça o orçamento do exemplo 4.1 supondo que se cronometrem 50
+      oscilações em vez de 10. Recalcule a incerteza relativa total e diga em quanto ela
+      melhora. Depois descubra quantas oscilações seriam necessárias para que o cronômetro
+      deixasse de ser a fonte dominante, e comente se esse número é praticável num
+      laboratório.</li>
 
-      <li><b>4.4</b> Execute a linearização do exemplo 4.2 e obtenha o expoente. Discuta se o
-      valor encontrado é compatível com \(0{,}5\), considerando a dispersão dos dados.</li>
+      <li><b>4.4</b> O período de um pêndulo é \(T=2\pi\sqrt{L/g}\). Use a receita da função de
+      uma variável para obter \(\sigma_T\) a partir de \(\sigma_L\), e compare com o resultado
+      de aplicar a receita da potência com \(n=1/2\).</li>
 
-      <li><b>4.5</b> Monte a simulação da bala do exemplo 4.3 e acrescente uma coluna com a
-      solução exata \(v_0e^{-bt/m}\) e outra com a diferença entre as duas. Refaça com
-      \(\Delta t\) igual a \(0{,}1\), \(0{,}01\) e \(0{,}001\) s e mostre, num gráfico, que o
-      erro final cai proporcionalmente a \(\Delta t\).</li>
+      <li><b>4.5</b> Faça o gráfico de \(T^2\) contra \(L\) com as barras de erro da coluna que
+      você calculou, ajuste a reta e conte quantos pontos têm a reta dentro da barra. Comente
+      se o número está perto dos dois terços esperados e o que isso diz sobre a sua estimativa
+      de incerteza.</li>
 
-      <li><b>4.6</b> Na mesma simulação, use \(\Delta t=12\) s e descreva o que acontece.
-      Explique por que o método diverge e relacione o limite com o tempo característico
-      \(m/b\).</li>
+      <li><b>4.6</b> Em meia página: explique por que medir mil vezes não reduz a incerteza do
+      tipo B, e dê um exemplo, do seu próprio laboratório, de uma incerteza que só desaparece
+      trocando o procedimento, e não repetindo a medida.</li>
     </ol>
   </div>
 
-  <div class="bloco def">
-    <span class="rotulo">Avaliação da unidade</span>
-    <p>Calcule, pelo método de Euler, a trajetória de uma partícula sujeita às forças
-    \(\vet{F}=\left(-bv_x,\,-bv_y-mg\right)\), com \(b=0{,}005\) N·s/m, \(m=0{,}1\) kg e
-    \(g=9{,}8\) m/s². Parta de \(x_0=0\) e \(y_0=0\) e escolha você mesmo a velocidade de
-    lançamento \(v_0\) e o ângulo \(\theta_0\).</p>
-    <p>Com a simulação pronta, obtenha a altura máxima, o alcance, que é o ponto aproximado em
-    que o projétil toca o chão, e o tempo de voo. Compare cada um dos três com o valor que as
-    fórmulas sem resistência do ar dariam para o mesmo lançamento.</p>
-    <p>Entregue a planilha com o gráfico da trajetória e complete a frase: "A diferença da
-    altura máxima devido à resistência do ar com b = ⟨valor⟩ foi ⟨valor⟩."</p>
-  </div>
-
   <nav class="nav-aulas">
-    <a href="aula03.html"><small>Módulo anterior</small>← 3. Dados e ajuste</a>
-    <a class="prox" href="aula09.html"><small>Próximo módulo</small>9. Python e Spyder →</a>
+    <a href="aula03.html"><small>Módulo anterior</small>← 3. Estatística</a>
+    <a class="prox" href="aula05.html"><small>Próximo módulo</small>5. Gráficos e simulação →</a>
   </nav>
 
 </main>

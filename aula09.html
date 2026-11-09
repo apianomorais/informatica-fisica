@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aula 9: Introdução ao Python e ao Spyder | Informática para Física</title>
+<title>Aula 9: Figuras, tabelas e bibliografia | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
-<script src="assets/js/comum.js?v=202611091010"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
+<script src="assets/js/comum.js?v=202611091035"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -20,20 +20,27 @@
       <span class="grupo">Planilhas</span>
       <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
       <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
-      <a href="aula03.html" class="num" title="Módulo 3: Dados experimentais na planilha">3</a>
-      <a href="aula04.html" class="num" title="Módulo 4: Gráficos em planilha">4</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Estatística descritiva e distribuições">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Propagação de erros e barras de erro">4</a>
+      <a href="aula05.html" class="num" title="Módulo 5: Gráficos e simulação na planilha">5</a>
+      <span class="grupo">LaTeX</span>
+      <a href="aula06.html" class="num" title="Módulo 6: O primeiro documento no Overleaf">6</a>
+      <a href="aula07.html" class="num" title="Módulo 7: Equações em LaTeX">7</a>
+      <a href="aula08.html" class="num" title="Módulo 8: Matrizes, sistemas e alinhamento">8</a>
+      <a href="aula09.html" class="num ativo" title="Módulo 9: Figuras, tabelas e bibliografia">9</a>
       <span class="grupo">Python</span>
-      <a href="aula09.html" class="num ativo" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
-      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
-      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
-      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
-      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
-      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
-      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
-      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
-      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
-      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
-      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Introdução ao Python e ao Spyder">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Tipos de dados e variáveis">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de dados: listas e tuplas">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Estruturas de controle">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Funções e modularização">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao NumPy">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Introdução ao Matplotlib: gráficos básicos">16</a>
+      <a href="aula17.html" class="num" title="Módulo 17: Matplotlib avançado: personalização e visualizações especiais">17</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Entrada e saída: teclado, arquivos e CSV">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Análise de dados com Pandas">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Métodos numéricos com SciPy">20</a>
+      <a href="aula21.html" class="num" title="Módulo 21: Matemática simbólica com SymPy">21</a>
     </nav>
   </div>
 </header>
@@ -43,323 +50,287 @@
 <aside class="lateral">
   <h4>Nesta aula</h4>
   <ol>
-    <li><a href="#s1">1. Por que Python na Física?</a></li>
-    <li><a href="#s2">2. Conhecendo o Spyder</a></li>
-    <li><a href="#s3">3. Primeiros códigos</a></li>
-    <li><a href="#s4">4. Física na prática!</a></li>
-    <li><a href="#s5">5. Desafios para casa</a></li>
+    <li><a href="#s1">1. Figuras</a></li>\n    <li><a href="#s2">2. O ambiente figure e as referências cruzadas</a></li>\n    <li><a href="#s3">3. Tabelas</a></li>\n    <li><a href="#s4">4. Bibliografia com BibTeX</a></li>\n    <li><a href="#s5">5. A classe urca-experimental</a></li>\n    <li><a href="#s6">6. O relatório completo</a></li>\n    <li><a href="#s7">7. Exercícios</a></li>
   </ol>
 </aside>
 
 <main class="conteudo">
 
-  <p class="chapeu">Aula 9 · Programação em Python</p>
-  <h1>Introdução ao Python e ao Spyder</h1>
-  <p class="subtitulo">A linguagem, o ambiente de trabalho e os primeiros programas. Tudo o que vem depois nesta unidade se apoia no que acontece aqui: escrever, rodar, errar e ler a mensagem de erro.</p>
+  <p class="chapeu">Aula 9 · LaTeX e Overleaf</p>
+  <h1>Figuras, tabelas e bibliografia</h1>
+  <p class="subtitulo">O que falta para o relatório ficar pronto: pôr a imagem no lugar certo com legenda e número, montar tabelas que se consiga ler, e deixar a bibliografia se formatar sozinha. No fim, a classe do departamento, que já traz tudo isso resolvido.</p>
 
-  <p>Bem-vindos ao mundo da programação científica! Hoje vocês vão descobrir por que Python se tornou a linguagem favorita dos físicos e como usar o Spyder para resolver problemas reais da Física.</p>
-
-  <h2 id="s1">1. Por que Python na Física?</h2>
-
-  <p>Python não é apenas mais uma linguagem de programação - é a ferramenta que está revolucionando a pesquisa em Física:</p>
-
-  <p><strong>Onde Python é usado em Física:</strong></p>
-
-  <ul><li><strong>CERN:</strong> Análise de dados do LHC (Large Hadron Collider)</li><li><strong>NASA:</strong> Processamento de imagens de telescópios espaciais</li><li><strong>Gravitational waves:</strong> LIGO usa Python para detectar ondas gravitacionais</li><li><strong>Astrofísica:</strong> Simulações de galáxias e estrelas</li><li><strong>Física médica:</strong> Processamento de imagens de ressonância magnética</li></ul>
-
-  <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>Por que Python?</strong>
-
-  <ul><li>Sintaxe simples e legível (parece com inglês!)</li><li>Bibliotecas científicas poderosas (NumPy, SciPy, Matplotlib)</li><li>Comunidade ativa e colaborativa</li><li>Gratuito e open-source</li><li>Integração fácil com outros programas</li></ul>
-
+  <div class="bloco def">
+    <span class="rotulo">Nesta aula você vai</span>
+    <ul>
+      <li>Inserir figuras com legenda, rótulo e referência cruzada.</li>
+      <li>Montar tabelas legíveis com <code>booktabs</code>.</li>
+      <li>Gerenciar referências bibliográficas num arquivo <code>.bib</code> e citá-las com
+      <code>\cite</code>.</li>
+      <li>Usar a classe <code>urca-experimental</code> para o relatório de laboratório.</li>
+    </ul>
   </div>
 
-  <h2 id="s2">2. Conhecendo o Spyder</h2>
+  <h2 id="s1">1. Figuras</h2>
 
-  <p>O Spyder é seu novo laboratório virtual! Vamos explorar cada ferramenta:</p>
+  <p>A inclusão de imagens vem do pacote <code>graphicx</code>, carregado no preâmbulo. O
+  comando básico recebe o nome do arquivo, que precisa estar no projeto:</p>
 
-  <p><strong>Os painéis principais:</strong></p>
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\usepackage{graphicx}
 
-  <ul><li><strong>Editor (esquerda):</strong> Onde você escreve seus programas (.py)</li><li><strong>Console (canto inferior direito):</strong> Para testes rápidos e resultados</li><li><strong>Variable Explorer (canto superior direito):</strong> Mostra todas suas variáveis</li><li><strong>Help:</strong> Documentação na hora que precisar</li><li><strong>Plots:</strong> Seus gráficos aparecerão aqui</li></ul>
+\includegraphics[width=0.6\textwidth]{pendulo.png}</code></pre></div>
 
-  <p><strong>Configurações que vocês vão querer ajustar:</strong></p>
+  <p>As opções mais usadas são <code>width</code>, <code>height</code>, <code>scale</code> e
+  <code>angle</code>. Dar a largura como fração de <code>\textwidth</code> é melhor do que dar
+  em centímetros, porque a figura se adapta sozinha se as margens mudarem.</p>
 
-  <ul><li><strong>Tema:</strong> Tools → Preferences → Appearance (escuro ou claro)</li><li><strong>Fonte:</strong> Tools → Preferences → Editor → Display (tamanho confortável)</li><li><strong>Layout:</strong> View → Window layouts (escolham o que preferem)</li></ul>
+  <p>Com <code>pdflatex</code>, que é o que o Overleaf usa por padrão, os formatos aceitos são
+  PDF, PNG e JPG. Para gráficos, prefira <strong>PDF</strong>, que é vetorial e não perde
+  qualidade ao ampliar; o PNG serve para fotos e capturas de tela. O último módulo da unidade
+  de Python mostra como exportar gráficos do Matplotlib em PDF para usar aqui.</p>
 
-  <div class="bloco fisica"><span class="rotulo">Intuição</span>
-  <strong>Atalhos que vão salvar suas vidas:</strong>
+  <h2 id="s2">2. O ambiente figure e as referências cruzadas</h2>
 
-  <ul><li><strong>F5:</strong> Executa o programa inteiro</li><li><strong>F9:</strong> Executa apenas a linha onde está o cursor</li><li><strong>Ctrl+1:</strong> Comenta/descomenta linha</li><li><strong>Ctrl+L:</strong> Limpa o console</li></ul>
+  <p>Uma figura num texto científico não é só a imagem: ela precisa de legenda, número e um
+  jeito de ser citada. Isso é o ambiente <code>figure</code>:</p>
 
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{posicao.png}
+  \caption{Posição em função do tempo para o pêndulo de \(1{,}00\) m.}
+  \label{fig:posicao}
+\end{figure}
+
+Como mostra a Figura~\ref{fig:posicao}, a oscilação é praticamente harmônica.</code></pre></div>
+
+  <p>As letras entre colchetes dizem onde o LaTeX pode pôr a figura: <code>h</code> aqui,
+  <code>t</code> no topo da página, <code>b</code> no pé, <code>p</code> numa página só de
+  figuras. Elas são uma <strong>preferência</strong>, não uma ordem.</p>
+
+  <div class="bloco fisica">
+    <span class="rotulo">Por que a figura não fica onde eu pus</span>
+    <p>É a reclamação número um de quem começa. O ambiente <code>figure</code> é um
+    <b>flutuante</b>: o LaTeX escolhe a posição que produz a melhor página, evitando buracos
+    brancos, e pode empurrar a figura para a página seguinte.</p>
+    <p>Isso é proposital e é o comportamento correto num documento impresso. A consequência
+    prática é que você <b>nunca</b> deve escrever "a figura abaixo" nem "a figura ao lado": a
+    figura pode não estar lá. Escreva sempre "a Figura~\ref{fig:...}", que é o que o número
+    serve para resolver.</p>
   </div>
 
-  <h2 id="s3">3. Primeiros códigos</h2>
+  <p>Para pôr duas imagens lado a lado, cada uma com a sua legenda, existe o pacote
+  <code>subcaption</code>:</p>
 
-  <p>Hora de colocar a mão na massa! Vamos começar simples e ir evoluindo.</p>
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\usepackage{subcaption}
 
-  <p><strong>Console vs. Script - qual usar quando?</strong></p>
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\linewidth]{serie_a.png}
+    \caption{Sem resistência do ar}
+    \label{fig:sem}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\linewidth]{serie_b.png}
+    \caption{Com resistência do ar}
+    \label{fig:com}
+  \end{subfigure}
+  \caption{Trajetórias simuladas pelo método de Euler.}
+  \label{fig:trajetorias}
+\end{figure}</code></pre></div>
 
-  <ul><li><strong>Console:</strong> Para testes rápidos, como uma calculadora</li><li><strong>Script (Editor):</strong> Para programas que você quer salvar e reutilizar</li></ul>
+  <h2 id="s3">3. Tabelas</h2>
 
-  <div class="bloco def"><span class="rotulo"><strong>O comando <code>print()</code> em Python</strong></span>
-  O comando <code>print()</code> é uma função embutida que exibe informações na <strong>saída padrão</strong> (normalmente o terminal). É essencial para:
+  <p>A tabela em si é o ambiente <code>tabular</code>, cujo argumento declara o alinhamento de
+  cada coluna: <code>l</code> à esquerda, <code>c</code> centralizado, <code>r</code> à
+  direita. As colunas se separam com <code>&amp;</code> e as linhas com <code>\\</code>, como
+  nas matrizes da aula 8.</p>
 
-  <ul><li>Depuração de código</li><li>Exibição de resultados</li><li>Interação com o usuário</li><li>Visualização de dados e variáveis</li></ul>
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\begin{tabular}{|l|c|r|}
+  \hline
+  Material  & Resistividade & Temperatura \\
+  \hline
+  Cobre     & 1,68e-8 & 20 \\
+  Alumínio  & 2,82e-8 & 20 \\
+  \hline
+\end{tabular}</code></pre></div>
 
-  <strong>Parâmetros principais:</strong>
+  <p>Essa é a forma tradicional, com todas as linhas e grades. A tipografia moderna de tabelas
+  científicas recomenda o contrário, e o pacote <code>booktabs</code> implementa essa
+  recomendação: sem linhas verticais, com três espessuras de linha horizontal e espaçamento
+  calculado.</p>
 
-  <ul><li><b><code>sep</code></b> Separador entre itens (padrão: espaço)</li><li><b><code>end</code></b> Caractere final (padrão: quebra de linha)</li><li><b><code>file</code></b> Redireciona saída (ex: arquivo)</li></ul>
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\usepackage{booktabs}
 
+\begin{tabular}{lcc}
+  \toprule
+  Material  & Resistividade (\si{\ohm\meter}) & Temperatura (\si{\celsius}) \\
+  \midrule
+  Cobre     & \num{1.68e-8} & 20 \\
+  Alumínio  & \num{2.82e-8} & 20 \\
+  \bottomrule
+\end{tabular}</code></pre></div>
+
+  <p>O resultado é visivelmente mais limpo, e é o padrão exigido pelas revistas. A regra que
+  está por trás é simples: linha vertical quase nunca é necessária, porque o alinhamento das
+  colunas já separa os dados.</p>
+
+  <p>Como a figura, a tabela ganha legenda, número e rótulo dentro de um flutuante, que aqui
+  se chama <code>table</code>. Uma convenção: a legenda da <strong>figura</strong> vai
+  <strong>embaixo</strong>, e a da <strong>tabela</strong> vai <strong>em cima</strong>.</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\begin{table}[htbp]
+  \centering
+  \caption{Propriedades de materiais condutores.}
+  \label{tab:materiais}
+  \begin{tabular}{lcc}
+    \toprule
+    ...
+    \bottomrule
+  \end{tabular}
+\end{table}</code></pre></div>
+
+  <h2 id="s4">4. Bibliografia com BibTeX</h2>
+
+  <p>Referências bibliográficas digitadas à mão dão trabalho e envelhecem mal: mudar de estilo
+  obriga a reescrever tudo, e a ordem alfabética precisa ser mantida na unha. O BibTeX separa
+  os <strong>dados</strong> da referência da <strong>formatação</strong> dela.</p>
+
+  <p>O fluxo tem três passos. Primeiro, criar um arquivo <code>refs.bib</code> no projeto, com
+  uma entrada por obra:</p>
+
+  <div class="codigo" data-lingua="BibTeX"><pre><code>@article{einstein1905,
+  author  = {Einstein, Albert},
+  title   = {Zur Elektrodynamik bewegter K\"orper},
+  journal = {Annalen der Physik},
+  volume  = {322},
+  number  = {10},
+  pages   = {891--921},
+  year    = {1905}
+}
+
+@book{halliday2016,
+  author    = {Halliday, David and Resnick, Robert and Walker, Jearl},
+  title     = {Fundamentos de F\'isica},
+  year      = {2016},
+  publisher = {LTC},
+  address   = {Rio de Janeiro}
+}</code></pre></div>
+
+  <p>Segundo, citar no texto pela chave:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>A relatividade restrita foi proposta em~\cite{einstein1905}.
+Segundo Halliday et al.~\cite{halliday2016}, a cinemática relativística...</code></pre></div>
+
+  <p>Terceiro, no fim do documento, declarar o estilo e o arquivo:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\bibliographystyle{abntex2-alf}   % ou plain, unsrt, ieeetr...
+\bibliography{refs}</code></pre></div>
+
+  <p>A lista de referências sai formatada e contendo <strong>apenas</strong> as obras
+  efetivamente citadas, em ordem alfabética ou de aparição, conforme o estilo. Trocar
+  <code>plain</code> por <code>abntex2-alf</code> reformata tudo sem tocar numa vírgula do
+  texto.</p>
+
+  <p>Uma observação sobre a compilação: o BibTeX precisa de mais de uma passagem, porque a
+  primeira descobre quais obras foram citadas, a segunda monta a lista e a terceira acerta os
+  números. No Overleaf isso é automático; basta recompilar duas vezes se as citações saírem
+  como pontos de interrogação.</p>
+
+  <div class="bloco fisica">
+    <span class="rotulo">De onde tirar as entradas .bib</span>
+    <p>Quase nunca é preciso digitar uma entrada à mão. O Google Acadêmico tem, embaixo de cada
+    resultado, um botão de citação com a opção BibTeX. O ADS da NASA, o arXiv, o
+    ScienceDirect e o próprio portal de periódicos da CAPES oferecem o mesmo. Copiar de lá
+    evita erro de digitação em nome, volume e página.</p>
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 1.1: Primeiro programa</span>
-  <div class="codigo" data-lingua="Python"><pre><code>print("Olá, Física!")
-  print("Meu nome é Maria")
-  print("Bem-vindos aos Métodos Numéricos!")
+  <h2 id="s5">5. A classe urca-experimental</h2>
 
-  # Combinando parametros
-  print("Python", "é", "incrível", sep="-", end="!")
-  # Saída: Python-é-incrível!</code></pre></div>
+  <p>O departamento mantém uma classe própria para os relatórios de laboratório. Ela é um
+  arquivo <code>urca-experimental.cls</code>, que fica na mesma pasta do seu <code>.tex</code>
+  no Overleaf, e substitui a declaração de classe:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\documentclass{urca-experimental}</code></pre></div>
+
+  <p>Com ela, o preâmbulo fica curto, porque os pacotes e as configurações já estão dentro da
+  classe. O que ela faz sozinha:</p>
+
+  <ul>
+    <li>Cabeçalho com o nome do departamento e da disciplina em todas as páginas.</li>
+    <li>Página de rosto com os dados do estudante, do professor e do experimento.</li>
+    <li>Cores institucionais e formatação padronizada das seções.</li>
+    <li>Seções já previstas: objetivos, fundamentação, materiais, resultados, erros e
+    conclusões.</li>
+  </ul>
+
+  <p>Os dados de identificação são preenchidos no preâmbulo, com comandos que a classe
+  define:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\disciplina{FÍSICA EXPERIMENTAL I}
+\professor{Nome do Professor}
+\estudante{Nome do Estudante}
+\matricula{20XX.X.XXXXX}
+\turma{Turma A - Manhã}
+\experimento{CONSTANTE DE MOLA E PLANO INCLINADO}</code></pre></div>
+
+  <p>E o corpo usa os ambientes prontos:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\begin{objetivos}
+  Determinar a constante elástica de uma mola pelo método estático e pelo dinâmico.
+\end{objetivos}
+
+\begin{fundamentacao}
+  A lei de Hooke estabelece que \(F = -kx\) ...
+\end{fundamentacao}</code></pre></div>
+
+  <p>A vantagem pedagógica disso é direta: com a formatação resolvida pela classe, sobra
+  atenção para o conteúdo, que é o que está sendo avaliado.</p>
+
+  <h2 id="s6">6. O relatório completo</h2>
+
+  <p>Juntando as quatro aulas da unidade, o relatório de laboratório tem esta forma:</p>
+
+  <ol>
+    <li><b>Preâmbulo:</b> classe, pacotes e dados de identificação.</li>
+    <li><b>Objetivos:</b> o que se quer medir, em duas ou três linhas.</li>
+    <li><b>Fundamentação:</b> as equações da aula 7, numeradas e citadas no texto.</li>
+    <li><b>Materiais e métodos:</b> o que foi usado e como, com as incertezas dos
+    instrumentos.</li>
+    <li><b>Resultados:</b> a tabela de dados com <code>booktabs</code> e os gráficos
+    produzidos na unidade de planilhas, exportados e incluídos como figuras.</li>
+    <li><b>Análise de erros:</b> o orçamento de incerteza da aula 4.</li>
+    <li><b>Conclusões:</b> o valor obtido com incerteza, comparado ao valor de referência.</li>
+    <li><b>Referências:</b> geradas pelo BibTeX a partir do <code>refs.bib</code>.</li>
+  </ol>
+
+  <h2 id="s7">7. Exercícios</h2>
+
+  <div class="bloco ex">
+    <ol>
+      <li><b>9.1</b> Exporte um gráfico da sua planilha do pêndulo como imagem, inclua-o no
+      documento com legenda e rótulo, e cite-o no texto com <code>\ref</code>.</li>
+      <li><b>9.2</b> Monte a tabela dos quinze experimentos com <code>booktabs</code>, com
+      colunas de comprimento, tempo, período e gravidade, e legenda em cima.</li>
+      <li><b>9.3</b> Refaça a mesma tabela na forma tradicional, com <code>\hline</code> e
+      linhas verticais. Ponha as duas lado a lado e diga qual é mais legível e por quê.</li>
+      <li><b>9.4</b> Crie um <code>refs.bib</code> com pelo menos três obras, sendo um livro,
+      um artigo e uma página da internet, e cite as três no texto. Compile com
+      <code>plain</code> e depois com um estilo ABNT, e compare as listas.</li>
+      <li><b>9.5</b> Use duas <code>subfigure</code> para pôr lado a lado os gráficos da
+      trajetória com e sem resistência do ar, que você simulou na aula 5.</li>
+      <li><b>9.6</b> <b>Trabalho da unidade.</b> Escreva o relatório completo do experimento do
+      pêndulo, com a estrutura da seção 6, usando a classe <code>urca-experimental</code>.
+      Ele deve conter pelo menos três equações numeradas e citadas, uma tabela, dois gráficos
+      e três referências. Entregue o PDF e o projeto do Overleaf compartilhado.</li>
+    </ol>
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 1.2: Python como calculadora científica</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Operações básicas - teste no console primeiro!
-  soma = 5 + 3
-  produto = 4 * 7
-  divisao = 15 / 4
-  potencia = 2**10
-
-  print(f"5 + 3 = {soma}")
-  print(f"4 x 7 = {produto}")
-  print(f"15 / 4 = {divisao}")
-  print(f"2^10 = {potencia}")
-
-  # Agora vamos usar funções matemáticas
-  import math
-  raiz = math.sqrt(16)
-  seno = math.sin(math.pi/2)
-  logaritmo = math.log10(100)
-
-  print(f"sqrt(16) = {raiz}")
-  print(f"sen(pi/2) = {seno}")
-  print(f"log10(100) = {logaritmo}")</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Bibliotecas em Python e o módulo <code>math</code></strong></span>
-  Uma <strong>biblioteca</strong> (ou módulo) em Python é uma coleção de funções e constantes pré-definidas que ampliam as capacidades da linguagem. Elas permitem:
-
-  <ul><li>Reutilização de código especializado</li><li>Acesso a funcionalidades avançadas</li><li>Organização lógica de recursos</li><li>Economia de tempo de desenvolvimento</li></ul>
-
-  O comando <code>import</code> é usado para carregar bibliotecas. Para matemática, o módulo <code>math</code> oferece:
-
-  <ul><li><b><code>math.sqrt(x)</code></b> Calcula a raiz quadrada de x</li><li><b><code>math.sin(x)</code></b> Calcula o seno de x (radianos)</li><li><b><code>math.log10(x)</code></b> Calcula o logaritmo decimal de x</li><li><b><code>math.pi</code></b> Constante pi (3.141592...)</li></ul>
-
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 1.3: Cálculos matemáticos básicos</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import math
-
-  # Cálculo de hipotenusa pelo Teorema de Pitágoras
-  cateto_a = 3
-  cateto_b = 4
-  hipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)
-  print(f"Hipotenusa: {hipotenusa:.2f}")  # 5.00
-
-  # Conversão graus para radianos
-  angulo_graus = 30
-  angulo_rad = math.radians(angulo_graus)
-  print(f"Seno de 30°: {math.sin(angulo_rad):.3f}")  # 0.500
-
-  # Cálculo logarítmico
-  ph = -math.log10(2.5e-4)
-  print(f"pH da solução: {ph:.1f}")  # 3.6</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Funções Matemáticas em Python (<code>math</code>)</strong></span>
-  O módulo <code>math</code> fornece funções matemáticas avançadas. As principais funções usadas no exemplo são:
-
-  <ul><li><b><code>math.sqrt(x)</code></b> Calcula a raiz quadrada de <code>x</code>.
-
-  <ul><li><strong>Exemplo:</strong> <code>math.sqrt(25)</code> retorna <code>5.0</code></li><li><strong>Restrição:</strong> <code>x</code> deve ser não-negativo</li></ul>
-
-  <p></li><li><b><code>math.radians(x)</code></b> Converte ângulo de graus para radianos.</p>
-
-  <ul><li><strong>Fórmula:</strong> \(\text{radianos} = \text{graus} \times \frac{\pi}{180}\)</li><li><strong>Exemplo:</strong> <code>math.radians(180)</code> retorna <code>3.14159...</code> (\(\pi\))</li></ul>
-
-  <p></li><li><b><code>math.sin(x)</code></b> Calcula o seno de <code>x</code> (em radianos).</p>
-
-  <ul><li><strong>Exemplo:</strong> <code>math.sin(math.pi/2)</code> retorna <code>1.0</code></li><li><strong>Alternativas:</strong> <code>math.cos()</code>, <code>math.tan()</code></li></ul>
-
-  <p></li><li><b><code>math.log10(x)</code></b> Calcula o logaritmo decimal (base 10) de <code>x</code>.</p>
-
-  <ul><li><strong>Exemplo:</strong> <code>math.log10(1000)</code> retorna <code>3.0</code></li><li><strong>Relação com pH:</strong> \(\text{pH} = -\log_{10}(\text{concentração H}^+)\)</li></ul>
-
-  <p></li><li><b><code>math.pi</code></b> Constante matemática pi (aproximadamente 3.14159)</li><li><b><strong>Formatação de strings</strong></b> Sintaxe <code>f"{valor:.nf}"</code> para controlar casas decimais:</p>
-
-  <ul><li><code>:.2f</code>: 2 casas decimais</li><li><code>:.3f</code>: 3 casas decimais</li><li><code>:.1f</code>: 1 casa decimal</li></ul>
-
-  <p></li></ul></p>
-
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas</strong></span>
-  Estas funções são essenciais para:
-
-  <ul><li><strong>Física:</strong> Cálculos de cinemática, óptica e ondulatória</li><li><strong>Engenharia:</strong> Projetos estruturais e análise de tensões</li><li><strong>Química:</strong> Cálculos de pH, cinética química e termodinâmica</li><li><strong>Biologia:</strong> Modelagem de crescimento populacional e bioinformática</li><li><strong>Estatística:</strong> Transformações de dados e modelos probabilísticos</li></ul>
-
-  </div>
-
-  <h2 id="s4">4. Física na prática!</h2>
-
-  <p>Agora vamos resolver problemas reais de Física. Execute cada código e observe o Variable Explorer!</p>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 1.4: As constantes que governam o universo</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Constantes físicas fundamentais - decorar não precisa, 
-  # mas entender é fundamental!
-  c = 299792458  # velocidade da luz (m/s)
-  h = 6.62607015e-34  # constante de Planck (J.s)
-  e = 1.602176634e-19  # carga elementar (C)
-  k_B = 1.380649e-23  # constante de Boltzmann (J/K)
-
-  print("=== CONSTANTES FÍSICAS FUNDAMENTAIS ===")
-  print(f"Velocidade da luz: {c:e} m/s")
-  print(f"Constante de Planck: {h:e} J*s")
-  print(f"Carga elementar: {e:e} C")
-  print(f"Constante de Boltzmann: {k_B:e} J/K")</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Temperatura na Física: Conceitos Fundamentais</strong></span>
-  A <strong>temperatura</strong> é uma grandeza física fundamental que mede o estado térmico de um sistema, relacionada à energia cinética média das partículas. Na Física, trabalhamos com três escalas principais:
-
-  <p class="centro">
-
-  <div class="tabela-rolavel"><table><thead><tr><th><strong>Escala</strong></th><th><strong>Símbolo</strong></th><th><strong>Referências</strong></th></tr></thead><tbody><tr><td>Celsius</td><td>°C</td><td>\(\begin{cases} 0°\text{C}</td><td>\text{ponto de fusão da água}</td></tr><tr><td>100°\text{C}</td><td>\text{ponto de ebulição da água} \end{cases}\)</td></tr><tr><td>Kelvin</td><td>K</td><td>\(\begin{cases} 0\,\text{K}</td><td>\text{zero absoluto}</td></tr><tr><td>273.15\,\text{K}</td><td>\text{ponto de fusão da água} \end{cases}\)</td></tr><tr><td>Fahrenheit</td><td>°F</td><td>\(\begin{cases} 32°\text{F}</td><td>\text{ponto de fusão da água}</td></tr><tr><td>212°\text{F}</td><td>\text{ponto de ebulição da água} \end{cases}\)</td></tr></tbody></table></div>
-
-  <p></p></p>
-
-  {0.3cm}
-
-  <strong>Conversões fundamentais:</strong>
-
-  <ul><li><strong>Celsius para Kelvin:</strong> \(T_K = T_C + 273.15\)</li><li><strong>Kelvin para Celsius:</strong> \(T_C = T_K - 273.15\)</li><li><strong>Celsius para Fahrenheit:</strong> \(T_F = {9}{5}T_C + 32\)</li><li><strong>Fahrenheit para Celsius:</strong> \(T_C = {5}{9}(T_F - 32)\)</li></ul>
-
-  <strong>Pontos notáveis:</strong>
-
-  <ul><li><strong>Zero absoluto:</strong> Menor temperatura possível (-273.15°C / 0 K) onde cessa o movimento molecular</li><li><strong>Temperatura ambiente:</strong>  25°C (varia conforme condições climáticas)</li><li><strong>Importância do Kelvin:</strong> Escala absoluta usada em leis físicas como \(PV = Nk_BT\)</li></ul>
-
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 1.5: Conversões de temperatura</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Todo físico precisa dominar conversões de temperatura
-  temp_celsius = 25  # temperatura ambiente em Juazeiro do Norte
-  temp_kelvin = temp_celsius + 273.15
-
-  print(f"Temperatura ambiente: {temp_celsius}°C = {temp_kelvin} K")
-
-  # Outras conversões importantes
-  temp_fahrenheit = temp_celsius * 9/5 + 32
-  print(f"Em Fahrenheit: {temp_fahrenheit}°F")
-
-  # Zero absoluto
-  zero_absoluto_C = -273.15
-  zero_absoluto_F = zero_absoluto_C * 9/5 + 32
-  print(f"Zero absoluto: {zero_absoluto_C}°C = {zero_absoluto_F}°F")
-
-  # Ponto de ebulição da água
-  ebulicao_C = 100
-  ebulicao_K = ebulicao_C + 273.15
-  print(f"Ebulição da água: {ebulicao_C}°C = {ebulicao_K} K")</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas</strong></span>
-  Estas conversões são essenciais para:
-
-  <ul><li><strong>Termodinâmica:</strong> Cálculo de eficiência de máquinas térmicas</li><li><strong>Meteorologia:</strong> Análise de padrões climáticos globais</li><li><strong>Criogenia:</strong> Estudo de materiais em baixíssimas temperaturas</li><li><strong>Astrofísica:</strong> Caracterização de estrelas e meio interestelar</li><li><strong>Química:</strong> Determinação de pontos de fusão/ebulição de substâncias</li></ul>
-
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>A Revolução de \(E=mc^2\): Massa e Energia</strong></span>
-  A equação \(E=mc^2\), proposta por Albert Einstein em 1905, é um dos pilares da física moderna. Ela estabelece a <strong>equivalência entre massa e energia</strong>, revelando que:
-
-  <ul><li><strong>Massa é energia concentrada:</strong> A massa de um objeto é medida por seu conteúdo energético</li><li><strong>Fator de conversão:</strong> \(c^2\) é o fator de conversão entre quilogramas e joules</li><li><strong>Significado de \(c\):</strong> \(c = 299\,792\,458\,\text{m/s}\) (velocidade da luz no vácuo)</li></ul>
-
-  {0.3cm}
-
-  <strong>Implicações fundamentais:</strong>
-
-  <ul><li>Um pequeno valor de massa equivale a enorme quantidade de energia (\(c^2 \approx 9\times10^{16}\,\text{m}^2/\text{s}^2\))</li><li>Explica a fonte de energia das estrelas (fusão nuclear) e bombas atômicas (fissão nuclear)</li><li>Fundamenta a teoria da relatividade restrita</li></ul>
-
-  <strong>Constantes importantes no exemplo:</strong>
-
-  <ul><li><strong>Massa do elétron:</strong> \(m_e = 9.10938356\times10^{-31}\,\text{kg}\)</li><li><strong>Elétron-volt (eV):</strong> Unidade de energia usada em Física Atômica
-  \(1\,\text{eV} = 1.602176634\times10^{-19}\,\text{J}\)</li></ul>
-
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 1.6: A famosa \(E=mc^2\) na prática</span>
-  <div class="codigo" data-lingua="Python"><pre><code># A equação mais famosa da Física!
-  c = 299792458  # velocidade da luz (m/s)
-  m_eletron = 9.10938356e-31  # massa do elétron (kg)
-
-  # Energia de repouso do elétron
-  E_eletron = m_eletron * c**2
-  print(f"Energia de repouso do elétron: {E_eletron:e} J")
-
-  # Vamos converter para uma unidade mais familiar: eV
-  eV = 1.602176634e-19  # 1 eV em Joules
-  E_eletron_eV = E_eletron / eV
-  print(f"Em elétron-volts: {E_eletron_eV/1e6:.3f} MeV")
-
-  # Quanto de energia tem em 1 grama de matéria?
-  m_grama = 1e-3  # kg
-  E_grama = m_grama * c**2
-  print(f"Energia em 1g de matéria: {E_grama/1e15:.1f} PJ")
-  print("Isso equivale à energia de 17 bombas de Hiroshima!")</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Contexto Histórico e Aplicações</strong></span>
-  <strong>Curiosidades:</strong>
-
-  <ul><li>Einstein publicou esta equação como corolário da Teoria da Relatividade Restrita em 1905</li><li>A primeira confirmação experimental veio com a medição da energia liberada em decaimentos nucleares</li><li>1g de matéria contém \(\approx 25\times10^6\) kWh - energia para abastecer uma cidade média por um mês!</li></ul>
-
-  <strong>Aplicações modernas:</strong>
-
-  <ul><li><strong>Energia nuclear:</strong> Reatores de fissão e fusão</li><li><strong>Astrofísica:</strong> Processos em estrelas de nêutrons e buracos negros</li><li><strong>Medicina:</strong> Tomografia por emissão de pósitrons (PET scan)</li><li><strong>Partículas elementares:</strong> Produção de novas partículas em aceleradores</li></ul>
-
-  </div>
-
-  <p><strong>Agora observem o Variable Explorer:</strong>
-  Vejam como todas as variáveis ficam armazenadas ali! Cliquem duas vezes em qualquer variável para ver mais detalhes.</p>
-
-  <h2 id="s5">5. Desafios para casa</h2>
-
-  <div class="bloco ex"><span class="rotulo">Exercício 1.1: Desafios para a próxima aula</span>
-  Vocês já são capazes de fazer cálculos incríveis! Para consolidar o aprendizado:
-
-  <ol><li><strong>Luz verde:</strong> Calcule a frequência de uma onda eletromagnética com \(\lambda = 500\) nm (dica: \(f = c/\lambda\))</li><li><strong>Próton em movimento:</strong> Determine a energia cinética de um próton com \(v = 0,1c\) (use \(E_k = \frac{1}{2}mv^2\))</li><li><strong>Gravidade:</strong> Converta a constante gravitacional \(G=6.67\times 10^{-11} \mathrm{m^3/kg \cdot s^2}\) para unidades cgs (centímetro-grama-segundo)</li><li><strong>Exploração:</strong> Digite <code>help(math)</code> no console e descubra 3 funções interessantes</li></ol>
-
-  </div>
-
-  <div class="bloco fisica"><span class="rotulo">Intuição</span>
-  <strong>O que vocês já sabem fazer:</strong>
-
-  <ul><li>Usar Python como calculadora científica</li><li>Navegar pelo Spyder com confiança</li><li>Executar código de diferentes formas (F5, F9)</li><li>Monitorar variáveis no Variable Explorer</li><li>Resolver problemas reais de Física!</li></ul>
-
-  <strong>Comandos essenciais para lembrar:</strong>
-
-  <ul><li><code>print()</code>: mostrar resultados</li><li><code>import math</code>: funções matemáticas</li><li><code>help()</code>: quando estiver perdido</li><li><code>**</code>: potenciação</li><li><code>f""</code>: formatação de strings</li></ul>
-
-  <strong>Atalhos do Spyder para decorar:</strong>
-
-  <ul><li><strong>F5:</strong> Executar programa completo</li><li><strong>F9:</strong> Executar linha atual</li><li><strong>Ctrl+1:</strong> Comentar/descomentar</li><li><strong>Ctrl+L:</strong> Limpar console</li></ul>
-
-  </div>
-
-  <p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
 
   <nav class="nav-aulas">
-    <a href="aula04.html"><small>Módulo anterior</small>← 4. Gráficos</a>
-    <a class="prox" href="aula10.html"><small>Próximo módulo</small>10. Tipos e variáveis →</a>
+    <a href="aula08.html"><small>Módulo anterior</small>← 8. Matrizes e sistemas</a>
+    <a class="prox" href="aula10.html"><small>Próximo módulo</small>10. Python e Spyder →</a>
   </nav>
 
 </main>
@@ -371,6 +342,5 @@
   Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
 </footer>
 
-<script src="assets/js/comum.js?v=202611091010"></script>
 </body>
 </html>

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aula 13: Funções e modularização | Informática para Física</title>
+<title>Aula 13: Estruturas de controle | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
-<script src="assets/js/comum.js?v=202611091010"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
+<script src="assets/js/comum.js?v=202611091035"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -20,20 +20,27 @@
       <span class="grupo">Planilhas</span>
       <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
       <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
-      <a href="aula03.html" class="num" title="Módulo 3: Dados experimentais na planilha">3</a>
-      <a href="aula04.html" class="num" title="Módulo 4: Gráficos em planilha">4</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Estatística descritiva e distribuições">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Propagação de erros e barras de erro">4</a>
+      <a href="aula05.html" class="num" title="Módulo 5: Gráficos e simulação na planilha">5</a>
+      <span class="grupo">LaTeX</span>
+      <a href="aula06.html" class="num" title="Módulo 6: O primeiro documento no Overleaf">6</a>
+      <a href="aula07.html" class="num" title="Módulo 7: Equações em LaTeX">7</a>
+      <a href="aula08.html" class="num" title="Módulo 8: Matrizes, sistemas e alinhamento">8</a>
+      <a href="aula09.html" class="num" title="Módulo 9: Figuras, tabelas e bibliografia">9</a>
       <span class="grupo">Python</span>
-      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
-      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
-      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
-      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
-      <a href="aula13.html" class="num ativo" title="Módulo 13: Funções e modularização">13</a>
-      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
-      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
-      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
-      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
-      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
-      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Introdução ao Python e ao Spyder">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Tipos de dados e variáveis">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de dados: listas e tuplas">12</a>
+      <a href="aula13.html" class="num ativo" title="Módulo 13: Estruturas de controle">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Funções e modularização">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao NumPy">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Introdução ao Matplotlib: gráficos básicos">16</a>
+      <a href="aula17.html" class="num" title="Módulo 17: Matplotlib avançado: personalização e visualizações especiais">17</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Entrada e saída: teclado, arquivos e CSV">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Análise de dados com Pandas">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Métodos numéricos com SciPy">20</a>
+      <a href="aula21.html" class="num" title="Módulo 21: Matemática simbólica com SymPy">21</a>
     </nav>
   </div>
 </header>
@@ -44,976 +51,452 @@
   <h4>Nesta aula</h4>
   <ol>
     <li><a href="#s1">1. Revisão rápida dos desafios</a></li>
-    <li><a href="#s2">2. O que são funções?</a></li>
-    <li><a href="#s3">3. Parâmetros e argumentos</a></li>
-    <li><a href="#s4">4. Escopo de variáveis</a></li>
-    <li><a href="#s5">5. Aplicações práticas e divertidas</a></li>
-    <li><a href="#s6">6. Documentação e boas práticas</a></li>
-    <li><a href="#s7">7. Desafios para casa</a></li>
+    <li><a href="#s2">2. Condicionais - ensinando o programa a decidir</a></li>
+    <li><a href="#s3">3. Loops - repetindo tarefas automaticamente</a></li>
+    <li><a href="#s4">4. Loops aninhados - loops dentro de loops</a></li>
+    <li><a href="#s5">5. Aplicações práticas</a></li>
+    <li><a href="#s6">6. Desafios para casa</a></li>
   </ol>
 </aside>
 
 <main class="conteudo">
 
   <p class="chapeu">Aula 13 · Programação em Python</p>
-  <h1>Funções e modularização</h1>
-  <p class="subtitulo">Empacotar um trecho de código num nome, com entrada e saída bem definidas. É o passo que transforma um script numa ferramenta reutilizável.</p>
+  <h1>Estruturas de controle</h1>
+  <p class="subtitulo">Decidir e repetir, que é o que separa um programa de uma calculadora. Condicionais, laços e a arte de não escrever o mesmo trecho duas vezes.</p>
 
-  <p>Hoje vamos aprender a organizar nosso código em pedaços reutilizáveis! É como criar suas próprias ferramentas personalizadas que podem ser usadas quantas vezes quiser.</p>
+  <p>Agora que vocês sabem trabalhar com listas e tuplas, vamos aprender a fazer o computador tomar decisões e repetir tarefas! É como ensinar o programa a “pensar” e automatizar cálculos.</p>
 
   <h2 id="s1">1. Revisão rápida dos desafios</h2>
 
   <p>Vamos conferir os desafios da aula passada!</p>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.1: Soluções dos desafios</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Desafio 1: Sequência de Fibonacci
-  print("Primeiros 15 números de Fibonacci:")
-  a, b = 1, 1
-  print(f"{a}, {b}", end="")
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.1: Soluções dos desafios</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Desafio 1: Resistores em série e paralelo
+  resistencias = [100, 220, 330, 470, 680]  # ohms
 
-  for i in range(13):  # Mais 13 números (1+1+13=15)
-      proximo = a + b
-      print(f", {proximo}", end="")
-      a, b = b, proximo
-  print()
+  # Série: R_total = R1 + R2 + R3 + ...
+  resistencia_serie = sum(resistencias)
+  print(f"Resistência em série: {resistencia_serie} ohms")
 
-  # Desafio 2: Simulação de lançamento de moeda
-  import random
-  cara = 0
-  coroa = 0
+  # Paralelo: 1/R_total = 1/R1 + 1/R2 + 1/R3 + ...
+  inverso_total = sum([1/R for R in resistencias])
+  resistencia_paralelo = 1 / inverso_total
+  print(f"Resistência em paralelo: {resistencia_paralelo:.2f} ohms")
 
-  print("100 lançamentos de moeda:")
-  for i in range(100):
-      if random.random() &lt; 0.5:
-          cara += 1
-      else:
-          coroa += 1
+  # Desafio 2: Tabela periódica
+  elementos = [
+      ("H", "Hidrogênio", 1, 1.008),
+      ("He", "Hélio", 2, 4.003),
+      ("Li", "Lítio", 3, 6.941),
+      ("Be", "Berílio", 4, 9.012),
+      ("B", "Boro", 5, 10.811)
+  ]
 
-  print(f"Cara: {cara} vezes ({cara}%)")
-  print(f"Coroa: {coroa} vezes ({coroa}%)")
+  for simbolo, nome, Z, massa in elementos:
+      print(f"{simbolo}: {nome} (Z={Z}, A={massa})")
 
-  # Desafio 3: Números primos menores que 50
-  print("úmeros primos menores que 50:")
-  primos = []
+  # Desafio 3: Oscilação amortecida
+  tempos = [0, 1, 2, 3, 4, 5]
+  amplitudes = [10, 7, 5, 3, 2, 1]
 
-  for numero in range(2, 50):
-      eh_primo = True
-      for divisor in range(2, int(numero**0.5) + 1):
-          if numero % divisor == 0:
-              eh_primo = False
-              break
-      if eh_primo:
-          primos.append(numero)
-
-  print(primos)
-  print(f"Total: {len(primos)} números primos")
-
-  # Desafio 4: Movimento parabólico
-  import math
-  print("ória do projétil (45°, v0=20m/s):")
-  v0 = 20  # m/s
-  angulo = 45  # graus
-  g = 9.81  # m/s2
-
-  # Componentes da velocidade inicial
-  vx = v0 * math.cos(math.radians(angulo))
-  vy = v0 * math.sin(math.radians(angulo))
-
-  t = 0
-  while True:
-      x = vx * t
-      y = vy * t - 0.5 * g * t**2
-    
-      if y &lt; 0:  # Tocou o solo
+  for i, (t, A) in enumerate(zip(tempos, amplitudes)):
+      if A &lt; 3:
+          print(f"Amplitude fica menor que 3 no tempo t = {t} s")
           break
-        
-      print(f"t={t:.1f}s: x={x:.1f}m, y={y:.1f}m")
-      t += 0.5
 
-  print(f"Alcance máximo: {x:.1f} metros")</code></pre></div>
+  # Desafio 4: List comprehension - quadrados de ímpares
+  quadrados_impares = [n**2 for n in range(1, 21) if n % 2 == 1]
+  print("Quadrados dos ímpares de 1 a 20:", quadrados_impares)</code></pre></div>
   </div>
 
-  <h2 id="s2">2. O que são funções?</h2>
+  <h2 id="s2">2. Condicionais - ensinando o programa a decidir</h2>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>Funções</strong> são como "mini-programas" dentro do seu programa principal. É uma forma de organizar e reutilizar código! Elas permitem dividir problemas complexos em partes menores e mais gerenciáveis.
+  <strong>Condicionais</strong> permitem que o programa tome decisões baseadas em condições. É como ensinar o computador a fazer escolhas!
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.2: Primeira função - saudação personalizada</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Definindo nossa primeira função
-  def saudar(nome):
-      """Esta função cumprimenta uma pessoa pelo nome"""
-      print(f"Olá, {nome}! Bem-vindo à aula de funções!")
-      print("Espero que você se divirta programando!")
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.2: Estrutura básica - if, elif, else</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Classificando partículas por carga
+  carga = +1  # Carga da partícula (em unidades de e)
 
-  # Usando (chamando) a função
-  saudar("Ana")
-  saudar("Carlos")
-  saudar("Maria")
+  if carga &gt; 0:
+      tipo = "positiva"
+      cor = "vermelha"
+  elif carga &lt; 0:
+      tipo = "negativa" 
+      cor = "azul"
+  else:
+      tipo = "neutra"
+      cor = "verde"
 
-  print()
-  print("Sem função, teríamos que repetir o código:")
-  print("Olá, Ana! Bem-vindo à aula de funções!")
-  print("Espero que você se divirta programando!")
-  print("Olá, Carlos! Bem-vindo à aula de funções!")
-  print("Espero que você se divirta programando!")
-  # ... muito trabalho repetitivo!</code></pre></div>
+  print(f"Partícula {tipo} - representada em {cor}")
+
+  # Exemplo mais complexo: classificação de energia
+  energia_eletron = 0.511  # MeV (energia de repouso)
+  energia_particula = 2.5  # MeV
+
+  if energia_particula &lt; energia_eletron:
+      regime = "não-relativística"
+      formula = "E_k = p2/2m"
+  elif energia_particula &lt; 10 * energia_eletron:
+      regime = "relativística moderada"
+      formula = "E2 = (pc)2 + (mc2)2"
+  else:
+      regime = "ultra-relativística"
+      formula = "E ≈ pc"
+
+  print(f"Regime: {regime}")
+  print(f"Fórmula apropriada: {formula}")</code></pre></div>
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.3: Funções que retornam valores</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Função que calcula e retorna um resultado
-  def calcular_area_retangulo(largura, altura):
-      """Calcula a área de um retângulo"""
-      area = largura * altura
-      return area
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  <strong>Operadores de comparação:</strong>
 
-  # Usando a função
-  area1 = calcular_area_retangulo(5, 3)
-  area2 = calcular_area_retangulo(10, 2)
+  <ul><li><code>==</code>: igual a</li><li><code>!=</code>: diferente de</li><li><code>&lt;</code>: menor que</li><li><code>&gt;</code>: maior que</li><li><code>&lt;=</code>: menor ou igual</li><li><code>&gt;=</code>: maior ou igual</li></ul>
 
-  print(f"Área do retângulo 1: {area1} m2")
-  print(f"Área do retângulo 2: {area2} m2")
-  print(f"Área total: {area1 + area2} m2")
+  </div>
 
-  # Função para conversão de temperatura
-  def celsius_para_fahrenheit(celsius):
-      """Converte temperatura de Celsius para Fahrenheit"""
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.3: Operadores de comparação e lógicos</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Testando condições físicas
+  temperatura = 25  # Celsius
+  pressao = 101325  # Pa
+
+  # Operadores de comparação
+  print(f"Temperatura igual a 25°C? {temperatura == 25}")
+  print(f"Pressão diferente de 1 atm? {pressao != 101325}")
+  print(f"Temperatura maior que 0°C? {temperatura &gt; 0}")
+
+  # Operadores lógicos: and, or, not
+  condicoes_cntp = (temperatura == 0) and (pressao == 101325)
+  print(f"Condições CNTP? {condicoes_cntp}")
+
+  temperatura_confortavel = (temperatura &gt;= 20) and (temperatura &lt;= 30)
+  print(f"Temperatura confortável? {temperatura_confortavel}")
+
+  nao_e_vacuo = not (pressao == 0)
+  print(f"Não é vácuo? {nao_e_vacuo}")</code></pre></div>
+  </div>
+
+  <div class="bloco fisica"><span class="rotulo">Intuição</span>
+  <strong>Operadores lógicos:</strong>
+
+  <ul><li><code>and</code>: verdadeiro apenas se ambas condições forem verdadeiras</li><li><code>or</code>: verdadeiro se pelo menos uma condição for verdadeira</li><li><code>not</code>: inverte o resultado (verdadeiro vira falso e vice-versa)</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.4: Aplicação prática - Classificação de ondas eletromagnéticas</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Sistema de classificação de ondas eletromagnéticas
+  frequencia = 5.4e14  # Hz (luz verde)
+
+  if frequencia &lt; 3e9:
+      tipo_onda = "Rádio"
+      aplicacao = "Comunicações"
+  elif frequencia &lt; 3e12:
+      tipo_onda = "Microondas"
+      aplicacao = "Radar, forno microondas"
+  elif frequencia &lt; 4.3e14:
+      tipo_onda = "Infravermelho"
+      aplicacao = "Visão térmica"
+  elif frequencia &lt; 7.5e14:
+      tipo_onda = "Luz visível"
+      aplicacao = "Visão humana"
+  elif frequencia &lt; 3e16:
+      tipo_onda = "Ultravioleta"
+      aplicacao = "Esterilização"
+  elif frequencia &lt; 3e19:
+      tipo_onda = "Raios X"
+      aplicacao = "Medicina, cristalografia"
+  else:
+      tipo_onda = "Raios Gama"
+      aplicacao = "Medicina nuclear"
+
+  comprimento_onda = 3e8 / frequencia  # c = λ×f
+  print(f"Frequência: {frequencia:.2e} Hz")
+  print(f"Comprimento de onda: {comprimento_onda:.2e} m")
+  print(f"Tipo: {tipo_onda}")
+  print(f"Aplicação: {aplicacao}")</code></pre></div>
+  </div>
+
+  <h2 id="s3">3. Loops - repetindo tarefas automaticamente</h2>
+
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  <strong>Loops</strong> permitem repetir operações sem escrever o mesmo código várias vezes. Existem dois tipos principais:
+
+  <ul><li><code>for</code>: quando sabemos quantas repetições fazer</li><li><code>while</code>: quando repetimos até uma condição ser satisfeita</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.5: Loop for - repetições conhecidas</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Calculando fatorial (importante em estatística)
+  n = 5
+  fatorial = 1
+
+  print(f"Calculando {n}!")
+  for i in range(1, n + 1):
+      fatorial = fatorial * i
+      print(f"{i}! = {fatorial}")
+
+  print(f"Resultado final: {n}! = {fatorial}")
+
+  # Exemplo prático: conversão de temperaturas
+  print("de conversão Celsius → Fahrenheit:")
+  print("Celsius | Fahrenheit")
+  print("-" * 20)
+
+  for celsius in range(0, 101, 10):  # 0°C a 100°C de 10 em 10
       fahrenheit = celsius * 9/5 + 32
-      return fahrenheit
-
-  def fahrenheit_para_celsius(fahrenheit):
-      """Converte temperatura de Fahrenheit para Celsius"""
-      celsius = (fahrenheit - 32) * 5/9
-      return celsius
-
-  # Testando as conversões
-  temp_c = 25
-  temp_f = celsius_para_fahrenheit(temp_c)
-  temp_c_volta = fahrenheit_para_celsius(temp_f)
-
-  print(f"{temp_c}°C = {temp_f}°F")
-  print(f"{temp_f}°F = {temp_c_volta}°C")</code></pre></div>
+      print(f"{celsius:7}° | {fahrenheit:10.1f}°")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>Anatomia de uma função:</strong>
+  <strong>A função</strong> <code>range()</code> tem três formas:
 
-  <ul><li><code>def</code>: palavra-chave para definir função</li><li><code>nome_funcao</code>: nome descritivo da função</li><li><code>(parametros)</code>: informações que a função recebe</li><li><code>return</code>: valor que a função devolve</li><li><code>"""docstring"""</code>: documentação da função</li></ul>
-
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Estrutura Condicional <code>if</code> em Python</strong></span>
-  O comando <code>if</code> é fundamental para controle de fluxo em programas, permitindo executar blocos de código condicionalmente. Sua sintaxe básica é:
-
-  <div class="codigo" data-lingua="Python"><pre><code>if condição:
-      # bloco executado se condição for True
-  elif outra_condição:  # opcional
-      # bloco executado se outra_condição for True
-  else:  # opcional
-      # bloco executado se nenhuma condição anterior for True</code></pre></div>
-
-  <strong>Componentes essenciais:</strong>
-
-  <ul><li><strong>Condição:</strong> Expressão que avalia para <code>True</code> ou <code>False</code></li><li><strong>Indentação:</strong> Define os blocos de código (4 espaços recomendados)</li><li><strong>Operadores de comparação:</strong> <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li><li><strong>Operadores lógicos:</strong> <code>and</code>, <code>or</code>, <code>not</code></li></ul>
-
-  <strong>No exemplo fornecido:</strong>
-
-  <ul><li><code>if len(numeros) == 0:</code> Verifica se a lista está vazia</li><li><code>if not dados:</code> Forma 'pythônica' de checar listas vazias</li></ul>
+  <ul><li><code>range(n)</code>: números de 0 até n-1</li><li><code>range(start, stop)</code>: números de start até stop-1</li><li><code>range(start, stop, passo)</code>: números de start até stop-1, pulando de "passo" em "passo"</li></ul>
 
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.4: Aplicações avançadas de <code>if</code> em funções científicas</span>
-  <div class="codigo" data-lingua="Python"><pre><code>def avaliar_experimento(dados, limite_inferior, limite_superior, nome="experimento"):
-      """Analisa dados experimentais com verificações de validade"""
-    
-      # Verificação de segurança dos dados
-      if not isinstance(dados, list):
-          print("Erro: Dados devem ser uma lista")
-          return None
-        
-      if len(dados) == 0:
-          print("Aviso: Nenhum dado fornecido")
-          return None
-    
-      # Pré-processamento (remove outliers)
-      dados_validos = []
-      for valor in dados:
-          if limite_inferior &lt;= valor &lt;= limite_superior:
-              dados_validos.append(valor)
-          else:
-              print(f"Valor {valor} fora dos limites aceitáveis")
-    
-      # Análise estatística condicional
-      if len(dados_validos) &gt;= 5:  # Mínimo para estatística confiável
-          media = sum(dados_validos) / len(dados_validos)
-          desvio = (sum((x-media)**2 for x in dados_validos)/len(dados_validos))**0.5
-        
-          print(f"=== Resultados para {nome} ===")
-          print(f"Amostras válidas: {len(dados_validos)}/{len(dados)}")
-          print(f"Média: {media:.2f} ± {desvio:.2f}")
-        
-          if desvio &gt; media * 0.2:
-              print("ALERTA: Alta variabilidade nos dados!")
-          elif desvio &gt; media * 0.1:
-              print("OBS: Variabilidade moderada")
-          else:
-              print("Variabilidade dentro do esperado")
-        
-          return {"media": media, "desvio": desvio}
-      else:
-          print("Dados insuficientes para análise (mínimo 5 valores válidos)")
-          return None
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.6: Loop while - repetições condicionais</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Encontrando quando uma população dobra
+  populacao_inicial = 100
+  populacao_atual = populacao_inicial
+  taxa_crescimento = 1.1  # Cresce 10% por ano
+  anos = 0
 
-  # Testando com dados de pH
-  dados_ph = [7.1, 7.3, 6.8, 7.5, 8.2, 6.5, 7.8, 5.9, 7.2, 7.4]
-  resultado = avaliar_experimento(dados_ph, 6.0, 8.0, "níveis de pH")
+  print(f"População inicial: {populacao_inicial}")
+  print("Crescimento anual: 10%")
+  print()
 
-  # Teste com dados inválidos
-  dados_invalidos = [10.2, 4.5, "texto", None]
-  avaliar_experimento(dados_invalidos, 0, 10, "dados inválidos")</code></pre></div>
-  </div>
+  while populacao_atual &lt; 2 * populacao_inicial:
+      anos += 1
+      populacao_atual = populacao_atual * taxa_crescimento
+      print(f"Ano {anos}: {populacao_atual:.0f} habitantes")
 
-  <div class="bloco def"><span class="rotulo"><strong>Padrões de Uso Científico do <code>if</code></strong></span>
-  <strong>Aplicações comuns em análise de dados:</strong>
-
-  <ul><li><strong>Validação de entrada:</strong> Verificar tipo e formato dos dados</li><li><strong>Controle de qualidade:</strong> Filtrar valores fora de faixa aceitável</li><li><strong>Análise de tendências:</strong> Classificar resultados em categorias</li><li><strong>Proteção contra erros:</strong> Evitar divisões por zero ou operações inválidas</li><li><strong>Seleção de algoritmos:</strong> Escolher método de cálculo baseado nos dados</li></ul>
-
-  <strong>Boas práticas:</strong>
-
-  <ul><li>Use <code>if not lista</code> em vez de <code>if len(lista) == 0</code> para verificar listas vazias</li><li>Para múltiplas condições complexas, considere funções separadas</li><li>Documente sempre as condições de contorno</li><li>Prefira condições positivas (<code>if valido</code>) em vez de negativas (<code>if not invalido</code>)</li></ul>
-
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Operadores Úteis para Condições Científicas</strong></span>
-  <strong>Verificação de faixas de valores:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>if limite_inferior &lt;= valor &lt;= limite_superior:  # Teste de intervalo</code></pre></div>
-
-  <strong>Comparação com tolerância (para números decimais):</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>if abs(valor1 - valor2) &lt; 1e-6:  # Considera iguais se diferença &lt; 0.000001</code></pre></div>
-
-  <strong>Teste de tipo seguro:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>if isinstance(valor, (int, float)):  # Aceita inteiros ou floats</code></pre></div>
-
-  <strong>Verificação de valores especiais:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>if math.isnan(valor):  # Testa se é Not a Number
-  if valor is None:      # Teste explícito para None</code></pre></div>
-
-  <strong>Condições complexas:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>if (cond1 and cond2) or (cond3 and not cond4):
-      # Use parênteses para clareza em condições complexas</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Exemplo Físico: Lei de Ohm com Verificações</strong></span>
-  <div class="codigo" data-lingua="Python"><pre><code>def lei_de_ohm(V=None, I=None, R=None):
-      """Calcula a grandeza ausente na lei de Ohm com verificações"""
-      if sum(x is not None for x in [V, I, R]) != 2:
-          print("Erro: Forneça exatamente duas grandezas")
-          return None
-    
-      try:
-          if V is None:
-              return I * R
-          elif I is None:
-              return V / R if R != 0 else None
-          elif R is None:
-              return V / I if I != 0 else None
-      except TypeError:
-          print("Erro: Valores devem ser numéricos")
-          return None
-
-  # Testes
-  print("Resistência:", lei_de_ohm(V=12, I=0.5))  # 24 ohms
-  print("Tensão:", lei_de_ohm(I=0.1, R=100))     # 10 volts
-  print("Corrente:", lei_de_ohm(V=9, R=300))     # 0.03 amps
-  print("Caso inválido:", lei_de_ohm(V=12))      # Erro</code></pre></div>
-  </div>
-
-  <h2 id="s3">3. Parâmetros e argumentos</h2>
-
-  <p>Vamos entender melhor como passar informações para as funções!</p>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.5: Diferentes tipos de parâmetros</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Parâmetros obrigatórios
-  def apresentar_pessoa(nome, idade):
-      print(f"Nome: {nome}")
-      print(f"Idade: {idade} anos")
-
-  apresentar_pessoa("João", 20)
-
-  # Parâmetros com valores padrão (opcionais)
-  def criar_usuario(nome, idade, cidade="Não informada", ativo=True):
-      print(f"Usuário criado:")
-      print(f"  Nome: {nome}")
-      print(f"  Idade: {idade}")
-      print(f"  Cidade: {cidade}")
-      print(f"  Ativo: {'Sim' if ativo else 'Não'}")
-      print()
-
-  # Diferentes formas de chamar a função
-  criar_usuario("Ana", 25)
-  criar_usuario("Carlos", 30, "São Paulo")
-  criar_usuario("Maria", 22, "Rio de Janeiro", False)
-
-  # Usando argumentos nomeados (pode mudar a ordem!)
-  criar_usuario(idade=28, nome="Pedro", ativo=False, cidade="Brasília")</code></pre></div>
+  print(f"ção dobrou em {anos} anos!")
+  print(f"População final: {populacao_atual:.0f} habitantes")</code></pre></div>
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
-  <strong>Tipos de parâmetros:</strong>
-
-  <ul><li><strong>Obrigatórios</strong>: devem sempre ser fornecidos</li><li><strong>Opcionais</strong>: têm valores padrão, podem ser omitidos</li><li><strong>Nomeados</strong>: especificam qual parâmetro está sendo passado</li><li><strong>Posicionais</strong>: ordem importa</li></ul>
-
+  <strong>Cuidado com loops infinitos!</strong> No <code>while</code>, certifique-se de que a condição eventualmente se torna falsa, ou o programa nunca vai parar.
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.6: Funções que recebem listas e as modificam</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Função que modifica uma lista
-  def duplicar_valores(lista):
-      """Duplica todos os valores de uma lista"""
-      for i in range(len(lista)):
-          lista[i] = lista[i] * 2
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.7: Controle de fluxo - break e continue</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Busca do primeiro número primo maior que 10
+  numero = 11  # Começamos testando o 11
 
-  # Função que NÃO modifica a lista original
-  def duplicar_valores_nova_lista(lista):
-      """Retorna uma nova lista com valores duplicados"""
-      nova_lista = []
-      for valor in lista:
-          nova_lista.append(valor * 2)
-      return nova_lista
+  while True:  # Loop "infinito" - sai com break
+      # Teste se é primo
+      eh_primo = True
+      for divisor in range(2, numero):
+          if numero % divisor == 0:  # Se divide exatamente
+              eh_primo = False
+              break  # Não precisa testar outros divisores
+    
+      if eh_primo:
+          print(f"Primeiro primo maior que 10: {numero}")
+          break  # Encontrou - sai do while
+    
+      numero += 1  # Tenta o próximo número
 
-  # Testando
-  numeros_originais = [1, 2, 3, 4, 5]
-  print(f"Lista original: {numeros_originais}")
-
-  # Duplicando sem modificar a original
-  numeros_duplicados = duplicar_valores_nova_lista(numeros_originais)
-  print(f"Nova lista duplicada: {numeros_duplicados}")
-  print(f"Lista original ainda: {numeros_originais}")
-
-  # Duplicando a lista original
-  duplicar_valores(numeros_originais)
-  print(f"Lista original após modificação: {numeros_originais}")</code></pre></div>
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.7: Funções com número variável de argumentos</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Função que aceita qualquer quantidade de números
-  def somar_todos(*numeros):
-      """Soma qualquer quantidade de números"""
-      print(f"Números recebidos: {numeros}")
-      total = sum(numeros)
-      return total
-
-  # Testando
-  resultado1 = somar_todos(1, 2, 3)
-  resultado2 = somar_todos(10, 20, 30, 40, 50)
-  resultado3 = somar_todos(5)
-
-  print(f"Soma 1: {resultado1}")
-  print(f"Soma 2: {resultado2}")
-  print(f"Soma 3: {resultado3}")
-
-  # Função que cria uma mensagem personalizada
-  def criar_mensagem(saudacao, *nomes, despedida="Até logo!"):
-      """Cria mensagem para várias pessoas"""
-      print(saudacao)
-      for nome in nomes:
-          print(f"  - {nome}")
-      print(despedida)
-      print()
-
-  criar_mensagem("Bom dia para:", "Ana", "Bruno", "Carlos")
-  criar_mensagem("Boa tarde,", "Maria", "João", despedida="Tchau!")</code></pre></div>
+  # Exemplo com continue - números pares de 1 a 20
+  print("úmeros pares de 1 a 20:")
+  for n in range(1, 21):
+      if n % 2 == 1:  # Se for ímpar
+          continue  # Pula para a próxima iteração
+      print(n, end=" ")
+  print()  # Nova linha no final</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>Argumentos variáveis:</strong>
+  <strong>Comandos de controle:</strong>
 
-  <ul><li><code>*args</code>: aceita qualquer número de argumentos posicionais</li><li><code>**kwargs</code>: aceita qualquer número de argumentos nomeados</li><li><code>*numeros</code>: coleta argumentos em uma tupla</li></ul>
+  <ul><li><code>break</code>: sai imediatamente do loop</li><li><code>continue</code>: pula para a próxima iteração do loop</li><li><code>numero % divisor</code>: operador módulo - resto da divisão</li></ul>
 
   </div>
 
-  <h2 id="s4">4. Escopo de variáveis</h2>
+  <h2 id="s4">4. Loops aninhados - loops dentro de loops</h2>
 
-  <p>Onde as variáveis "vivem" e podem ser acessadas?</p>
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  Para problemas bidimensionais (matrizes, tabelas, coordenadas), frequentemente precisamos de <strong>loops aninhados</strong> - um loop dentro de outro.
+  </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.8: Variáveis locais vs globais</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Variável global
-  contador_global = 0
-  nome_programa = "Sistema de Análise"
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.8: Criando tabelas</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Criando uma tabela de multiplicação simples
+  print("Tabela de multiplicação (1 a 5):")
+  print("   ", end="")  # Espaço inicial
+  for j in range(1, 6):
+      print(f"{j:4}", end="")  # Cabeçalho das colunas
+  print()  # Nova linha
 
-  def incrementar_contador():
-      """Tenta modificar contador global"""
-      global contador_global  # Precisa declarar como global!
-      contador_global += 1
-      print(f"Contador agora é: {contador_global}")
-
-  def mostrar_info():
-      """Acessa variável global (só leitura)"""
-      print(f"Programa: {nome_programa}")
-      print(f"Contador atual: {contador_global}")
-
-  def exemplo_local():
-      """Demonstra variáveis locais"""
-      variavel_local = "Só existe aqui dentro!"
-      numero_local = 42
-    
-      print(f"Dentro da função: {variavel_local}")
-      print(f"Número local: {numero_local}")
-
-  # Testando
-  print("=== Teste de Escopo ===")
-  mostrar_info()
-  incrementar_contador()
-  incrementar_contador()
-  exemplo_local()
-
-  # Esta linha daria erro - variavel_local não existe aqui!
-  # print(variavel_local)  # NameError!
-
-  print(f"Contador final: {contador_global}")</code></pre></div>
+  for i in range(1, 6):  # Loop externo: linhas
+      print(f"{i}: ", end="")  # Número da linha
+      for j in range(1, 6):  # Loop interno: colunas
+          produto = i * j
+          print(f"{produto:4}", end="")
+      print()  # Nova linha após cada linha da tabela</code></pre></div>
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
-  <strong>Regras de escopo:</strong>
+  <strong>Como funcionam loops aninhados:</strong>
 
-  <ul><li><strong>Variáveis locais</strong>: existem apenas dentro da função</li><li><strong>Variáveis globais</strong>: existem em todo o programa</li><li>Para modificar global: use <code>global nome_variavel</code></li><li>Python procura: local → global → built-in</li></ul>
-
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.9: Exemplo prático - calculadora simples</span>
-  <div class="codigo" data-lingua="Python"><pre><code># Criando uma calculadora com funções
-  def somar(a, b):
-      return a + b
-
-  def subtrair(a, b):
-      return a - b
-
-  def multiplicar(a, b):
-      return a * b
-
-  def dividir(a, b):
-      if b == 0:
-          return "Erro: Divisão por zero!"
-      return a / b
-
-  def calculadora():
-      """Interface simples da calculadora"""
-      print("=== CALCULADORA SIMPLES ===")
-      print("Operações disponíveis:")
-      print("1. Somar")
-      print("2. Subtrair") 
-      print("3. Multiplicar")
-      print("4. Dividir")
-    
-      # Simulando entrada do usuário (normalmente usaria input())
-      operacao = 1  # Vamos simular que escolheu somar
-      num1 = 10
-      num2 = 5
-    
-      print(f"úmeros: {num1} e {num2}")
-    
-      if operacao == 1:
-          resultado = somar(num1, num2)
-          print(f"Resultado: {num1} + {num2} = {resultado}")
-      elif operacao == 2:
-          resultado = subtrair(num1, num2)
-          print(f"Resultado: {num1} - {num2} = {resultado}")
-      elif operacao == 3:
-          resultado = multiplicar(num1, num2)
-          print(f"Resultado: {num1} × {num2} = {resultado}")
-      elif operacao == 4:
-          resultado = dividir(num1, num2)
-          print(f"Resultado: {num1} ÷ {num2} = {resultado}")
-    
-      # Testando todas as operações
-      print("todas as operações:")
-      print(f"{num1} + {num2} = {somar(num1, num2)}")
-      print(f"{num1} - {num2} = {subtrair(num1, num2)}")
-      print(f"{num1} × {num2} = {multiplicar(num1, num2)}")
-      print(f"{num1} ÷ {num2} = {dividir(num1, num2)}")
-
-  # Executar a calculadora
-  calculadora()</code></pre></div>
-  </div>
-
-  <h2 id="s5">5. Aplicações práticas e divertidas</h2>
-
-  <p>Vamos criar funções úteis e interessantes!</p>
-
-  <div class="bloco def"><span class="rotulo"><strong>Bibliotecas <code>random</code> e <code>string</code> em Python</strong></span>
-  As bibliotecas <code>random</code> e <code>string</code> fornecem ferramentas essenciais para geração de valores aleatórios e manipulação de strings.
-
-  <ul><li><b><code>string</code> - Constantes úteis para strings</b>
-
-  <ul><li><code>ascii-letters</code>: Contém todas as letras ASCII (a-z e A-Z)</li><li><code>digits</code>: Contém dígitos de 0 a 9</li><li><code>punctuation</code>: Contém caracteres de pontuação/símbolos</li><li><code>ascii-lowercase</code>: Letras minúsculas (a-z)</li><li><code>ascii-uppercase</code>: Letras maiúsculas (A-Z)</li></ul>
-
-  <p></li><li><b><code>random</code> - Geração de números aleatórios</b></p>
-
-  <ul><li><code>choice(sequência)</code>: Escolhe um elemento aleatório da sequência</li><li><code>randint(a, b)</code>: Inteiro aleatório entre a e b (inclusive)</li><li><code>shuffle(lista)</code>: Embaralha a lista in-place</li><li><code>sample(sequência, k)</code>: Amostra k elementos únicos</li><li><code>random()</code>: Float aleatório entre 0.0 e 1.0</li></ul>
-
-  <p></li></ul></p>
+  <ul><li>O loop externo controla as linhas</li><li>Para cada linha, o loop interno percorre todas as colunas</li><li><code>print(f"{valor:4}", end="")</code> formata com 4 espaços sem quebrar linha</li><li><code>print()</code> sozinho quebra a linha</li></ul>
 
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.10: Gerador Avançado de Senhas Seguras</span>
-  <div class="codigo" data-lingua="Python"><pre><code>import random
-  import string
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.9: Simulação física simples</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Simulação: temperatura em uma grade 4x4
+  print("Distribuição de temperatura (°C) em uma placa:")
+  print("(Simulação simplificada)")
 
-  def gerar_senha_segura(tamanho=12, usar_numeros=True, usar_simbolos=True, usar_maiusculas=True):
-      """Gera senhas seguras com garantia de caracteres mínimos de cada tipo"""
-    
-      # Definindo conjuntos de caracteres
-      minusculas = string.ascii_lowercase
-      maiusculas = string.ascii_uppercase if usar_maiusculas else ""
-      numeros = string.digits if usar_numeros else ""
-      simbolos = string.punctuation if usar_simbolos else ""
-    
-      # Garantindo pelo menos um caractere de cada tipo selecionado
-      senha = []
-      if usar_maiusculas:
-          senha.append(random.choice(maiusculas))
-      if usar_numeros:
-          senha.append(random.choice(numeros))
-      if usar_simbolos:
-          senha.append(random.choice(simbolos))
-    
-      # Completando o restante da senha
-      todos_caracteres = minusculas + maiusculas + numeros + simbolos
-      for _ in range(tamanho - len(senha)):
-          senha.append(random.choice(todos_caracteres))
-    
-      # Embaralhando para não ter padrão previsível
-      random.shuffle(senha)
-    
-      return ''.join(senha)
+  for linha in range(4):
+      for coluna in range(4):
+          # Temperatura mais alta no centro, menor nas bordas
+          distancia_centro = abs(linha - 1.5) + abs(coluna - 1.5)
+          temperatura = 100 - distancia_centro * 10
+          print(f"{temperatura:5.0f}", end=" ")
+      print()  # Nova linha após cada linha da grade
 
-  # Testando o gerador avançado
-  print("=== SENHAS SEGURAS ===")
-  print(f"Básica: {gerar_senha_segura(8, True, False, False)}")
-  print(f"Forte: {gerar_senha_segura(12, True, True, True)}")
-  print(f"Máxima segurança: {gerar_senha_segura(16, True, True, True)}")
-
-  # Gerar senha com requisitos específicos
-  print("para sistema financeiro:")
-  print(gerar_senha_segura(10, True, True, True))</code></pre></div>
+  print(": temperatura decresce do centro para as bordas")</code></pre></div>
   </div>
 
-  <div class="bloco def"><span class="rotulo"><strong>Boas Práticas para Gerar Senhas Seguras</strong></span>
-  Para criar geradores de senhas realmente seguros:
+  <h2 id="s5">5. Aplicações práticas</h2>
 
-  <ul><li><strong>Garanta diversidade:</strong> Inclua pelo menos um caractere de cada tipo</li><li><strong>Use tamanho adequado:</strong> Mínimo de 12 caracteres para segurança</li><li><strong>Embaralhe sempre:</strong> Evite padrões previsíveis</li><li><strong>Evite ambiguidade:</strong> Remova caracteres similares (1, l, I, 0, O)</li><li><strong>Use <code>secrets</code>:</strong> Para aplicações críticas, prefira o módulo <code>secrets</code></li></ul>
+  <p>Vamos combinar tudo que aprendemos em problemas interessantes!</p>
 
-  <strong>Exemplo de remoção de caracteres ambíguos:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>caracteres_seguros = (
-      string.ascii_letters.replace('l','').replace('I','').replace('O','') + 
-      string.digits.replace('0','').replace('1','') +
-      "!@#$%&amp;*"
-  )</code></pre></div>
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.10: Sequência de Fibonacci</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Gerando a famosa sequência de Fibonacci
+  print("Sequência de Fibonacci:")
+  print("(Cada número é a soma dos dois anteriores)")
+
+  # Primeiros dois números
+  a, b = 1, 1
+  print(f"Termo 1: {a}")
+  print(f"Termo 2: {b}")
+
+  # Gerando os próximos 8 termos
+  for i in range(3, 11):
+      proximo = a + b
+      print(f"Termo {i}: {proximo}")
+      a, b = b, proximo  # Atualiza para próxima iteração
+
+  print(f"primeiros 10 números de Fibonacci são:")
+  print("1, 1, 2, 3, 5, 8, 13, 21, 34, 55")</code></pre></div>
   </div>
 
-  <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas dessas Bibliotecas</strong></span>
-  Além de gerar senhas, estas bibliotecas são úteis para:
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.11: Simulação de crescimento populacional</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Simulação: crescimento de bactérias
+  print("Simulação: Crescimento de bactérias")
+  print("Condições: cada bactéria se divide a cada hora")
+  print()
 
-  <ul><li><strong>Simulações:</strong> Geração de dados aleatórios para testes</li><li><strong>Amosragem:</strong> Seleção aleatória de conjuntos de dados</li><li><strong>Criptografia:</strong> Geração de chaves e tokens (com <code>secrets</code>)</li><li><strong>Machine Learning:</strong> Divisão aleatória de conjuntos de treino/teste</li><li><strong>Experimentação:</strong> Ordem aleatória de testes científicos</li></ul>
+  populacao_inicial = 10
+  taxa_crescimento = 2  # Cada bactéria vira 2
+  horas_simulacao = 6
 
-  <strong>Exemplo científico - Amostragem aleatória:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code># Selecionar 10 elementos aleatórios sem repetição
-  amostra = random.sample(range(1000), 10)
+  populacao = populacao_inicial
+  print(f"Hora 0: {populacao} bactérias")
 
-  # Embaralhar ordem experimental
-  condicoes_experimentais = ['A', 'B', 'C', 'D']
-  random.shuffle(condicoes_experimentais)</code></pre></div>
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Segurança: <code>random</code> vs <code>secrets</code></strong></span>
-  Para aplicações de segurança:
-
-  <ul><li><code>random</code>: Adequado para fins gerais não-críticos
-
-  <ul><li>Usa algoritmo pseudo-aleatório (previsível com semente conhecida)</li><li>Bom para simulações e jogos</li></ul>
-
-  <p></li><li><code>secrets</code>: Deve ser usado para criptografia e segurança</p>
-
-  <ul><li>Gera números verdadeiramente aleatórios (usa fontes do SO)</li><li>Fornece <code>token_hex</code>, <code>token_urlsafe</code> para tokens seguros</li><li>Recomendado para senhas, chaves de autenticação, CSRF tokens</li></ul>
-
-  <p></li></ul></p>
-
-  <strong>Exemplo com <code>secrets</code>:</strong>
-  <div class="codigo" data-lingua="Python"><pre><code>import secrets
-
-  # Gerar senha realmente segura
-  senha_ultra_segura = ''.join(secrets.choice(
-      string.ascii_letters + string.digits + string.punctuation
-  ) for _ in range(20))</code></pre></div>
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.11: Validador de CPF - algoritmo simplificado</span>
-  <div class="codigo" data-lingua="Python"><pre><code>def validar_cpf_simples(cpf):
-      """Validação básica de CPF (apenas formato e tamanho)"""
+  for hora in range(1, horas_simulacao + 1):
+      populacao = populacao * taxa_crescimento
+      print(f"Hora {hora}: {populacao} bactérias")
     
-      # Remover pontos e traços
-      cpf_numeros = cpf.replace(".", "").replace("-", "")
-    
-      # Verificar se tem 11 dígitos
-      if len(cpf_numeros) != 11:
-          return False
-    
-      # Verificar se todos são dígitos
-      if not cpf_numeros.isdigit():
-          return False
-    
-      # Verificar se não são todos iguais (111.111.111-11, etc.)
-      if cpf_numeros == cpf_numeros[0] * 11:
-          return False
-    
-      return True
+      # Evento especial na hora 4
+      if hora == 4:
+          print("   → Antibiótico aplicado! 50% das bactérias morrem")
+          populacao = populacao // 2  # Divisão inteira
+          print(f"   → População após antibiótico: {populacao}")
 
-  def formatar_cpf(cpf):
-      """Formata CPF no padrão XXX.XXX.XXX-XX"""
-      cpf_numeros = cpf.replace(".", "").replace("-", "")
-      if len(cpf_numeros) == 11:
-          return f"{cpf_numeros[:3]}.{cpf_numeros[3:6]}.{cpf_numeros[6:9]}-{cpf_numeros[9:]}"
-      return cpf
-
-  # Testando
-  cpfs_teste = [
-      "12345678901",
-      "111.111.111-11",
-      "123.456.789-01",
-      "12345678",
-      "123abc45678"
-  ]
-
-  print("=== VALIDADOR DE CPF ===")
-  for cpf in cpfs_teste:
-      valido = validar_cpf_simples(cpf)
-      status = "✓ VÁLIDO" if valido else "✗ INVÁLIDO"
-      cpf_formatado = formatar_cpf(cpf) if valido else cpf
-      print(f"{cpf_formatado}: {status}")</code></pre></div>
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.12: Sistema de notas e média</span>
-  <div class="codigo" data-lingua="Python"><pre><code>def calcular_media_ponderada(notas, pesos):
-      """Calcula média ponderada dado notas e seus pesos"""
-      if len(notas) != len(pesos):
-          return "Erro: Número de notas e pesos deve ser igual!"
-    
-      soma_produtos = 0
-      soma_pesos = 0
-    
-      for nota, peso in zip(notas, pesos):
-          soma_produtos += nota * peso
-          soma_pesos += peso
-    
-      if soma_pesos == 0:
-          return "Erro: Soma dos pesos não pode ser zero!"
-    
-      return soma_produtos / soma_pesos
-
-  def determinar_situacao(media, nota_minima=7.0):
-      """Determina situação do aluno baseada na média"""
-      if media &gt;= nota_minima:
-          return "APROVADO"
-      elif media &gt;= nota_minima * 0.6:  # 60% da nota mínima
-          return "RECUPERAÇÃO"
-      else:
-          return "REPROVADO"
-
-  def relatorio_aluno(nome, notas, pesos=None):
-      """Gera relatório completo do aluno"""
-      print(f"=== RELATÓRIO: {nome.upper()} ===")
-    
-      if pesos is None:
-          # Média simples
-          media = sum(notas) / len(notas)
-          print("Tipo: Média Simples")
-      else:
-          # Média ponderada
-          media = calcular_media_ponderada(notas, pesos)
-          print("Tipo: Média Ponderada")
-          if isinstance(media, str):  # Se retornou erro
-              print(f"Erro: {media}")
-              return
-    
-      situacao = determinar_situacao(media)
-    
-      print(f"Notas: {notas}")
-      if pesos:
-          print(f"Pesos: {pesos}")
-      print(f"Média: {media:.2f}")
-      print(f"Situação: {situacao}")
-    
-      # Dica motivacional
-      if situacao == "APROVADO":
-          print("Parabéns! Continue assim!")
-      elif situacao == "RECUPERAÇÃO":
-          print("Quase lá! Estude mais um pouco.")
-      else:
-          print("Não desista! Você consegue melhorar!")
-
-  # Testando o sistema
-  alunos = [
-      ("Ana Silva", [8.5, 7.2, 9.1, 8.0]),
-      ("Carlos Santos", [6.0, 5.5, 7.0, 6.8]),
-      ("Maria Oliveira", [9.5, 8.8, 9.2, 9.0])
-  ]
-
-  for nome, notas in alunos:
-      relatorio_aluno(nome, notas)
-
-  # Exemplo com média ponderada
-  print("" + "="*50)
-  print("EXEMPLO COM MÉDIA PONDERADA")
-  relatorio_aluno("João Pedro", [7.0, 8.5, 6.0], [2, 3, 1])</code></pre></div>
-  </div>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.13: Jogo da velha - funções para organizar o código</span>
-  <div class="codigo" data-lingua="Python"><pre><code>def criar_tabuleiro():
-      """Cria um tabuleiro vazio 3x3"""
-      return [[" " for _ in range(3)] for _ in range(3)]
-
-  def mostrar_tabuleiro(tabuleiro):
-      """Exibe o tabuleiro na tela"""
-      print("0   1   2")
-      for i in range(3):
-          print(f"{i}  {tabuleiro[i][0]} | {tabuleiro[i][1]} | {tabuleiro[i][2]} ")
-          if i &lt; 2:
-              print("  -----------")
-
-  def fazer_jogada(tabuleiro, linha, coluna, jogador):
-      """Faz uma jogada no tabuleiro"""
-      if tabuleiro[linha][coluna] == " ":
-          tabuleiro[linha][coluna] = jogador
-          return True
-      return False
-
-  def verificar_vitoria(tabuleiro, jogador):
-      """Verifica se o jogador ganhou"""
-      # Verificar linhas
-      for linha in tabuleiro:
-          if all(casa == jogador for casa in linha):
-              return True
-    
-      # Verificar colunas
-      for col in range(3):
-          if all(tabuleiro[linha][col] == jogador for linha in range(3)):
-              return True
-    
-      # Verificar diagonais
-      if all(tabuleiro[i][i] == jogador for i in range(3)):
-          return True
-      if all(tabuleiro[i][2-i] == jogador for i in range(3)):
-          return True
-    
-      return False
-
-  def tabuleiro_cheio(tabuleiro):
-      """Verifica se o tabuleiro está cheio"""
-      for linha in tabuleiro:
-          if " " in linha:
-              return False
-      return True
-
-  # Simulação de algumas jogadas
-  print("=== JOGO DA VELHA - SIMULAÇÃO ===")
-  tabuleiro = criar_tabuleiro()
-
-  # Simulando uma partida
-  jogadas = [
-      (1, 1, "X"),  # X no centro
-      (0, 0, "O"),  # O no canto
-      (1, 0, "X"),  # X na lateral
-      (2, 2, "O"),  # O no canto oposto
-      (1, 2, "X"),  # X completa a linha do meio
-  ]
-
-  for linha, coluna, jogador in jogadas:
-      fazer_jogada(tabuleiro, linha, coluna, jogador)
-      mostrar_tabuleiro(tabuleiro)
-    
-      if verificar_vitoria(tabuleiro, jogador):
-          print(f"Jogador {jogador} GANHOU!")
-          break
-      elif tabuleiro_cheio(tabuleiro):
-          print("EMPATE!")
-          break
-    
-      print(f"{jogador} jogou na posição ({linha}, {coluna})")</code></pre></div>
-  </div>
-
-  <h2 id="s6">6. Documentação e boas práticas</h2>
-
-  <p>Como escrever funções que outras pessoas (e você no futuro) conseguem entender?</p>
-
-  <div class="bloco ex"><span class="rotulo">Exemplo 5.14: Documentando funções adequadamente</span>
-  <div class="codigo" data-lingua="Python"><pre><code>def calcular_imc(peso, altura):
-      """
-      Calcula o Índice de Massa Corporal (IMC).
-    
-      Parâmetros:
-          peso (float): Peso da pessoa em quilogramas
-          altura (float): Altura da pessoa em metros
-    
-      Retorna:
-          float: Valor do IMC calculado
-        
-      Exemplo:
-          &gt;&gt;&gt; calcular_imc(70, 1.75)
-          22.86
-      """
-      if altura &lt;= 0:
-          raise ValueError("Altura deve ser maior que zero")
-      if peso &lt;= 0:
-          raise ValueError("Peso deve ser maior que zero")
-    
-      imc = peso / (altura ** 2)
-      return round(imc, 2)
-
-  def classificar_imc(imc):
-      """
-      Classifica o IMC segundo padrões da OMS.
-    
-      Parâmetros:
-          imc (float): Valor do Índice de Massa Corporal
-    
-      Retorna:
-          str: Classificação do IMC
-      """
-      if imc &lt; 18.5:
-          return "Abaixo do peso"
-      elif imc &lt; 25:
-          return "Peso normal"
-      elif imc &lt; 30:
-          return "Sobrepeso"
-      else:
-          return "Obesidade"
-
-  def relatorio_saude(nome, peso, altura):
-      """
-      Gera relatório completo de saúde baseado no IMC.
-    
-      Parâmetros:
-          nome (str): Nome da pessoa
-          peso (float): Peso em kg
-          altura (float): Altura em metros
-      """
-      try:
-          imc = calcular_imc(peso, altura)
-          classificacao = classificar_imc(imc)
-        
-          print(f"=== RELATÓRIO DE SAÚDE: {nome.upper()} ===")
-          print(f"Peso: {peso} kg")
-          print(f"Altura: {altura} m")
-          print(f"IMC: {imc}")
-          print(f"Classificação: {classificacao}")
-        
-          # Dicas baseadas na classificação
-          if "normal" in classificacao.lower():
-              print("Seu peso está na faixa ideal!")
-          else:
-              print("Considere consultar um profissional de saúde.")
-            
-      except ValueError as erro:
-          print(f"Erro: {erro}")
-
-  # Testando
-  pessoas = [
-      ("Ana", 65, 1.70),
-      ("Bruno", 80, 1.80),
-      ("Carlos", 90, 1.75),
-      ("Diana", 55, 1.65)
-  ]
-
-  for nome, peso, altura in pessoas:
-      relatorio_saude(nome, peso, altura)</code></pre></div>
+  print(f"ção final: {populacao} bactérias")
+  crescimento_total = populacao / populacao_inicial
+  print(f"Crescimento total: {crescimento_total:.1f}x")</code></pre></div>
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
-  <strong>Boas práticas para funções:</strong>
+  <strong>Divisão inteira</strong> (<code>//</code>): divide e arredonda para baixo, sempre retornando um número inteiro. Exemplo: <code>7 // 2 = 3</code>
+  </div>
 
-  <ul><li><strong>Nome descritivo</strong>: função deve ter nome claro sobre o que faz</li><li><strong>Uma responsabilidade</strong>: cada função deve fazer apenas uma coisa</li><li><strong>Documentação</strong>: sempre inclua docstring explicando a função</li><li><strong>Parâmetros claros</strong>: nomes de parâmetros devem ser autoexplicativos</li><li><strong>Retorno consistente</strong>: sempre retorne o mesmo tipo de dado</li><li><strong>Tratamento de erros</strong>: valide entradas e trate casos especiais</li></ul>
+  <div class="bloco ex"><span class="rotulo">Exemplo 13.12: Análise simples de texto</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Analisando características de um texto
+  texto = "A Física é a ciência que estuda a natureza"
+
+  print(f"Texto analisado: '{texto}'")
+  print("-" * 40)
+
+  # Contando caracteres
+  total_caracteres = len(texto)
+  print(f"Total de caracteres: {total_caracteres}")
+
+  # Contando espaços
+  espacos = 0
+  for caractere in texto:
+      if caractere == ' ':
+          espacos += 1
+
+  print(f"Número de espaços: {espacos}")
+  print(f"Número de palavras: {espacos + 1}")  # Espaços + 1 = palavras
+
+  # Contando vogais
+  vogais = "aeiouAEIOU"
+  contador_vogais = 0
+  for caractere in texto:
+      if caractere in vogais:
+          contador_vogais += 1
+
+  print(f"Número de vogais: {contador_vogais}")
+
+  # Mostrando cada palavra
+  palavras = texto.split()  # Divide o texto em palavras
+  print(f"encontradas:")
+  for i, palavra in enumerate(palavras):
+      print(f"{i+1}. {palavra}")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  <strong>Métodos de string úteis:</strong>
+
+  <ul><li><code>texto.split()</code>: divide o texto em uma lista de palavras</li><li><code>caractere in texto</code>: verifica se um caractere está presente</li><li><code>enumerate(lista)</code>: retorna índice e valor de cada elemento</li></ul>
 
   </div>
 
-  <h2 id="s7">7. Desafios para casa</h2>
+  <h2 id="s6">6. Desafios para casa</h2>
 
-  <p>Agora é hora de criar suas próprias funções! Vamos praticar:</p>
+  <p>Vocês agora dominam as estruturas de controle! Hora de aplicar em problemas desafiadores:</p>
 
-  <div class="bloco ex"><span class="rotulo">Exercício 5.1: Conversor de unidades</span>
-  Crie funções para converter metros em pés, quilogramas em libras, e Celsius em Kelvin. Faça uma função principal que teste todas as conversões.
+  <div class="bloco ex"><span class="rotulo">Exercício 13.1: Sequência de Fibonacci completa</span>
+  Use um loop para gerar os primeiros 15 números da sequência de Fibonacci. Lembre-se: cada número é a soma dos dois anteriores (1, 1, 2, 3, 5, 8, ...)
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exercício 5.2: Calculadora de juros</span>
-  Crie uma função que calcule juros simples e outra para juros compostos. Compare os resultados para diferentes períodos.
+  <div class="bloco ex"><span class="rotulo">Exercício 13.2: Simulação de lançamento de moeda</span>
+  Simule 20 lançamentos de uma moeda (use números aleatórios) e conte quantas vezes saiu cara vs. coroa. Dica: use <code>import random</code> e <code>random.randint(0,1)</code>
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exercício 5.3: Validador de dados</span>
-  Crie funções para validar email (deve ter @ e .), telefone (só números, 10-11 dígitos), e idade (entre 0 e 120 anos).
+  <div class="bloco ex"><span class="rotulo">Exercício 13.3: Números primos</span>
+  Encontre todos os números primos menores que 30. Um número primo só é divisível por 1 e por ele mesmo.
   </div>
 
-  <div class="bloco ex"><span class="rotulo">Exercício 5.4: Jogo de pedra, papel e tesoura</span>
-  Crie funções separadas para: gerar jogada do computador, determinar vencedor, e contar pontuação. Simule 10 rodadas.
-  </div>
-
-  <p>Dicas</p>
-
-  <div class="bloco def"><span class="rotulo"><strong>Fundamentação Teórica - Exercício 1: Conversor de Unidades</strong></span>
-  <strong>Conceitos Físicos Envolvidos:</strong>
-
-  <ul><li><strong>Sistemas de Unidades:</strong> Diferenças entre SI (metro, kg) e sistema imperial (pés, libras)</li><li><strong>Conversão de Distância:</strong> \(1\ \text{m} = 3.28084\ \text{pés}\)</li><li><strong>Conversão de Massa:</strong> \(1\ \text{kg} = 2.20462\ \text{lb}\)</li><li><strong>Escalas Termométricas:</strong> \(K = °C + 273.15\) (zero absoluto = 0K)</li></ul>
-
-  <strong>Implementação Recomendada:</strong>
-
-  <ul><li>Funções puras (sem efeitos colaterais)</li><li>Constantes para fatores de conversão</li><li>Arredondamento para 2-4 casas decimais</li><li>Tratamento de valores negativos (exceto Kelvin)</li></ul>
-
-  </div>
-
-  <div class="bloco def"><span class="rotulo"><strong>Fundamentação Teórica - Exercício 2: Calculadora de Juros</strong></span>
-  <strong>Matemática Financeira:</strong>
-
-  <ul><li><strong>Juros Simples:</strong> \(J = C \cdot i \cdot t\)
-
-  <ul><li>Linear no tempo</li><li>Apenas sobre capital inicial</li></ul>
-
-  <p></li><li><strong>Juros Compostos:</strong> \(M = C \cdot (1 + i)^t\)</p>
-
-  <ul><li>Crescimento exponencial</li><li>"Juros sobre juros"</li></ul>
-
-  <p></li></ul></p>
-
-  <strong>Parâmetros Essenciais:</strong>
-
-  <ul><li>\(C\) = Capital inicial</li><li>\(i\) = Taxa de juros (decimal)</li><li>\(t\) = Tempo/períodos</li><li>\(J\) = Juros acumulados</li><li>\(M\) = Montante final</li></ul>
-
-  <strong>Comparação:</strong>
-  Para \(t>1\), compostos \(>\) simples. Exemplo com \(C=1000\), \(i=0.1\):
-
-  <p class="centro">
-
-  <div class="tabela-rolavel"><table><thead><tr><th>Ano</th><th>Simples</th><th>Composto</th></tr></thead><tbody><tr><td>1</td><td>1100</td><td>1100</td></tr><tr><td>5</td><td>1500</td><td>1610.51</td></tr><tr><td>10</td><td>2000</td><td>2593.74</td></tr></tbody></table></div>
-
-  <p></p></p>
-
+  <div class="bloco ex"><span class="rotulo">Exercício 13.4: Tabuada personalizada</span>
+  Crie uma tabuada de um número escolhido pelo usuário (de 1 a 10). Use <code>input()</code> para pedir o número.
   </div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
   <strong>Novos conceitos que vocês dominam:</strong>
 
-  <ul><li>Definição e chamada de funções</li><li>Parâmetros obrigatórios e opcionais</li><li>Valores de retorno</li><li>Escopo de variáveis (local vs global)</li><li>Documentação de funções (docstrings)</li><li>Modularização de código</li><li>Funções com múltiplos parâmetros</li><li>Tratamento básico de erros</li></ul>
+  <ul><li>Estruturas condicionais (if, elif, else)</li><li>Operadores de comparação (==, !=, <, >, <=, >=)</li><li>Operadores lógicos (and, or, not)</li><li>Loops for e while</li><li>Controle de fluxo (break, continue)</li><li>Loops aninhados para problemas bidimensionais</li><li>Simulações numéricas básicas</li></ul>
 
   </div>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
   <strong>Padrões importantes para lembrar:</strong>
 
-  <ul><li><code>def nome_funcao():</code>: definir função</li><li><code>return valor</code>: retornar resultado</li><li><code>"""docstring"""</code>: documentar função</li><li><code>global variavel</code>: usar variável global</li><li>Nomes descritivos para funções e parâmetros</li><li>Uma função = uma responsabilidade</li><li>Sempre teste suas funções com diferentes valores</li></ul>
+  <ul><li><code>for i in range(n)</code>: repetir n vezes</li><li><code>while condição:</code>: repetir enquanto verdadeiro</li><li><code>if condição: ... elif: ... else:</code>: tomada de decisão</li><li><code>break</code>: sair do loop</li><li><code>continue</code>: pular para próxima iteração</li><li><code>numero % 2 == 0</code>: teste se número é par</li><li><code>//</code>: divisão inteira (sem parte decimal)</li></ul>
 
   </div>
 
-  <p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+  <p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
 
   <nav class="nav-aulas">
-    <a href="aula12.html"><small>Módulo anterior</small>← 12. Controle</a>
-    <a class="prox" href="aula14.html"><small>Próximo módulo</small>14. NumPy →</a>
+    <a href="aula12.html"><small>Módulo anterior</small>← 12. Listas e tuplas</a>
+    <a class="prox" href="aula14.html"><small>Próximo módulo</small>14. Funções →</a>
   </nav>
 
 </main>
@@ -1025,6 +508,5 @@
   Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
 </footer>
 
-<script src="assets/js/comum.js?v=202611091010"></script>
 </body>
 </html>

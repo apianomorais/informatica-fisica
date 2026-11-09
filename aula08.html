@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 8: Matrizes, sistemas e alinhamento | Informática para Física</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091035">
+<script src="assets/js/comum.js?v=202611091035"></script>
+<script src="assets/js/codigo.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="index.html">Informática para Física <span>· LFCA/URCA</span></a>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <span class="grupo">Planilhas</span>
+      <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
+      <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Estatística descritiva e distribuições">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Propagação de erros e barras de erro">4</a>
+      <a href="aula05.html" class="num" title="Módulo 5: Gráficos e simulação na planilha">5</a>
+      <span class="grupo">LaTeX</span>
+      <a href="aula06.html" class="num" title="Módulo 6: O primeiro documento no Overleaf">6</a>
+      <a href="aula07.html" class="num" title="Módulo 7: Equações em LaTeX">7</a>
+      <a href="aula08.html" class="num ativo" title="Módulo 8: Matrizes, sistemas e alinhamento">8</a>
+      <a href="aula09.html" class="num" title="Módulo 9: Figuras, tabelas e bibliografia">9</a>
+      <span class="grupo">Python</span>
+      <a href="aula10.html" class="num" title="Módulo 10: Introdução ao Python e ao Spyder">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Tipos de dados e variáveis">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de dados: listas e tuplas">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Estruturas de controle">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Funções e modularização">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao NumPy">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Introdução ao Matplotlib: gráficos básicos">16</a>
+      <a href="aula17.html" class="num" title="Módulo 17: Matplotlib avançado: personalização e visualizações especiais">17</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Entrada e saída: teclado, arquivos e CSV">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Análise de dados com Pandas">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Métodos numéricos com SciPy">20</a>
+      <a href="aula21.html" class="num" title="Módulo 21: Matemática simbólica com SymPy">21</a>
+    </nav>
+  </div>
+</header>
+
+<div class="envoltorio">
+
+<aside class="lateral">
+  <h4>Nesta aula</h4>
+  <ol>
+    <li><a href="#s1">1. Alinhar: o ambiente align</a></li>\n    <li><a href="#s2">2. Matrizes</a></li>\n    <li><a href="#s3">3. Vetores</a></li>\n    <li><a href="#s4">4. Derivadas e integrais</a></li>\n    <li><a href="#s5">5. Funções definidas por partes</a></li>\n    <li><a href="#s6">6. Equações longas e grupos</a></li>\n    <li><a href="#s7">7. Exercícios</a></li>
+  </ol>
+</aside>
+
+<main class="conteudo">
+
+  <p class="chapeu">Aula 8 · LaTeX e Overleaf</p>
+  <h1>Matrizes, sistemas e alinhamento</h1>
+  <p class="subtitulo">A aula anterior tratou de uma equação por vez. Esta trata de equações que andam juntas: sistemas alinhados, matrizes, deduções em vários passos e funções definidas por partes.</p>
+
+  <div class="bloco def">
+    <span class="rotulo">Nesta aula você vai</span>
+    <ul>
+      <li>Alinhar sistemas de equações com <code>align</code>, e saber por que não usar
+      <code>eqnarray</code>.</li>
+      <li>Escrever matrizes e determinantes com os delimitadores certos.</li>
+      <li>Compor derivadas, integrais simples, duplas e de linha.</li>
+      <li>Definir funções por partes e quebrar equações longas.</li>
+    </ul>
+  </div>
+
+  <h2 id="s1">1. Alinhar: o ambiente align</h2>
+
+  <p>Um sistema de equações fica ilegível se os sinais de igual não estiverem na mesma coluna.
+  O ambiente <code>align</code>, do pacote <code>amsmath</code>, resolve isso com o símbolo
+  <code>&amp;</code>, que marca o ponto de alinhamento, e <code>\\</code>, que separa as
+  linhas:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\begin{align}
+  x + y  &= 5 \\
+  2x - y &= 1
+\end{align}</code></pre></div>
+
+  <p>Cada linha recebe o seu próprio número. Para suprimir a numeração de todas, use
+  <code>align*</code>; para suprimir a de uma linha só, ponha <code>\nonumber</code> antes do
+  <code>\\</code>.</p>
+
+  <p>Com dois pares de <code>&amp;</code> é possível alinhar duas colunas de equações lado a
+  lado:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\begin{align}
+  x + y  &= 5 & 2a + b  &= 10 \\
+  2x - y &= 1 &  a - 3b &= 2
+\end{align}</code></pre></div>
+
+  <div class="bloco fisica">
+    <span class="rotulo">Não use eqnarray</span>
+    <p>Em textos antigos aparece o ambiente <code>eqnarray</code>, que faz algo parecido. Ele
+    é mantido só por compatibilidade e tem três defeitos conhecidos: põe espaço demais em
+    torno do sinal de igual, numera de maneira inconsistente quando combinado com outros
+    ambientes, e oferece controle pobre de alinhamento.</p>
+    <p>Em documento novo, use <code>align</code> sempre. A diferença de qualidade tipográfica
+    é visível a olho nu.</p>
+  </div>
+
+  <h2 id="s2">2. Matrizes</h2>
+
+  <p>O <code>amsmath</code> traz uma família de ambientes que diferem apenas pelo
+  delimitador:</p>
+
+  <div class="tabela-rolavel"><table>
+    <thead><tr><th>Ambiente</th><th>Delimitador</th><th>Usado para</th></tr></thead>
+    <tbody>
+      <tr><td><code>matrix</code></td><td>nenhum</td><td>arranjos sem delimitador</td></tr>
+      <tr><td><code>pmatrix</code></td><td>parênteses</td><td>matrizes, o mais comum</td></tr>
+      <tr><td><code>bmatrix</code></td><td>colchetes</td><td>matrizes, convenção de álgebra linear</td></tr>
+      <tr><td><code>vmatrix</code></td><td>barras verticais</td><td>determinantes</td></tr>
+      <tr><td><code>Vmatrix</code></td><td>barras duplas</td><td>normas</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\[
+A = \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix},
+\qquad
+\det(A) = \begin{vmatrix}
+            a & b \\
+            c & d
+          \end{vmatrix} = ad - bc .
+\]</code></pre></div>
+
+  <p>As colunas se separam com <code>&amp;</code> e as linhas com <code>\\</code>, exatamente
+  como no <code>align</code> e como nas tabelas da aula 9. É a mesma sintaxe em três
+  contextos diferentes.</p>
+
+  <h2 id="s3">3. Vetores</h2>
+
+  <p>Há duas convenções para marcar um vetor, e vale saber que as duas existem:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\vec{v}        setinha em cima, padrão no Brasil e na física
+\mathbf{v}     negrito, comum em livros internacionais e em álgebra linear</code></pre></div>
+
+  <p>Neste curso usamos a setinha, que é a notação dos cursos de física do departamento. O
+  importante é <strong>não misturar as duas</strong> no mesmo documento.</p>
+
+  <h2 id="s4">4. Derivadas e integrais</h2>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\frac{df}{dx}                        derivada simples
+\frac{d^2f}{dx^2}                    derivada segunda
+\frac{\partial f}{\partial x}        derivada parcial
+\frac{\partial^2 f}{\partial x \partial y}   parcial segunda mista
+
+\int_a^b f(x)\, dx                   integral simples
+\iint_D f(x,y)\, dx\, dy             integral dupla
+\oint_C \vec{F} \cdot d\vec{l}       integral de linha fechada</code></pre></div>
+
+  <p>O <code>\,</code> antes do <code>dx</code> é um espaço fino, e é o detalhe que separa uma
+  integral bem composta de uma mal composta. Repare também que o diferencial sai em itálico
+  por padrão; quem segue a norma à risca escreve <code>\mathrm{d}x</code>.</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 8.1: três equações de física</span>
+    <div class="codigo" data-lingua="LaTeX"><pre><code>A equação de onda clássica é
+\begin{equation}
+  \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}.
+\end{equation}
+
+O trabalho de uma força variável entre dois pontos vale
+\begin{equation}
+  W_{a \rightarrow b} = \int_{x_a}^{x_b} F(x)\, dx .
+\end{equation}
+
+E o fluxo do campo elétrico através de uma superfície fechada é
+\begin{equation}
+  \Phi = \oint_S \vec{E} \cdot d\vec{A} = \frac{q_{\text{int}}}{\epsilon_0}.
+\end{equation}</code></pre></div>
+    <p>O <code>\text{int}</code> dentro do índice é o que impede que "int" saia em itálico,
+    como se fosse o produto de três variáveis. A regra vale para qualquer palavra dentro da
+    matemática.</p>
+  </div>
+
+  <h2 id="s5">5. Funções definidas por partes</h2>
+
+  <p>O ambiente <code>cases</code> monta a chave e alinha as condições:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\[
+f(x) =
+\begin{cases}
+  x^2  & \text{se } x \geq 0 \\
+  -x^2 & \text{se } x < 0
+\end{cases}
+\]</code></pre></div>
+
+  <p>Note o espaço depois de <code>se</code> dentro do <code>\text{}</code>: sem ele, a
+  condição ficaria colada no símbolo.</p>
+
+  <h2 id="s6">6. Equações longas e grupos</h2>
+
+  <p>Quatro ambientes resolvem os casos que o <code>align</code> não cobre bem:</p>
+
+  <div class="tabela-rolavel"><table>
+    <thead><tr><th>Ambiente</th><th>Para quê</th></tr></thead>
+    <tbody>
+      <tr><td><code>gather</code></td><td>várias equações centralizadas, sem alinhamento entre elas</td></tr>
+      <tr><td><code>split</code></td><td>quebrar <b>uma</b> equação em linhas, com um número só</td></tr>
+      <tr><td><code>multline</code></td><td>equação muito longa: primeira linha à esquerda, última à direita</td></tr>
+      <tr><td><code>aligned</code></td><td>alinhar passos de cálculo <b>dentro</b> de um <code>equation</code></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\begin{equation}
+\begin{split}
+  (a+b)^3 &= (a+b)(a+b)^2 \\
+          &= (a+b)(a^2 + 2ab + b^2) \\
+          &= a^3 + 3a^2b + 3ab^2 + b^3
+\end{split}
+\end{equation}</code></pre></div>
+
+  <p>Para numerar separadamente equações de um mesmo grupo, como 1a e 1b, existe o
+  <code>subequations</code>:</p>
+
+  <div class="codigo" data-lingua="LaTeX"><pre><code>\begin{subequations}
+\begin{align}
+  x + y &= 1 \label{eq:primeira} \\
+  x - y &= 0 \label{eq:segunda}
+\end{align}
+\end{subequations}</code></pre></div>
+
+  <h2 id="s7">7. Exercícios</h2>
+
+  <div class="bloco ex">
+    <ol>
+      <li><b>8.1</b> Escreva as quatro equações de Maxwell na forma diferencial, alinhadas
+      pelo sinal de igual, num único <code>align</code>, com rótulos e citando duas delas no
+      texto.</li>
+      <li><b>8.2</b> Escreva a matriz de rotação no plano, \(R(\theta)\), com
+      <code>pmatrix</code>, e o determinante dela com <code>vmatrix</code>. Mostre no texto
+      que o determinante vale 1.</li>
+      <li><b>8.3</b> Componha a dedução do alcance de um projétil em quatro passos, usando
+      <code>split</code> dentro de um <code>equation</code>, de modo que o conjunto receba um
+      número só.</li>
+      <li><b>8.4</b> Escreva a função degrau de Heaviside com <code>cases</code>, incluindo o
+      caso \(x=0\).</li>
+      <li><b>8.5</b> Pegue as equações do exercício 8.1 e refaça com <code>eqnarray</code>.
+      Compile as duas versões, ponha as páginas lado a lado e aponte as diferenças de
+      espaçamento.</li>
+      <li><b>8.6</b> Escreva o sistema de equações do método de Euler da aula 5, com as quatro
+      relações de atualização alinhadas em duas colunas.</li>
+    </ol>
+  </div>
+
+
+  <nav class="nav-aulas">
+    <a href="aula07.html"><small>Módulo anterior</small>← 7. Equações</a>
+    <a class="prox" href="aula09.html"><small>Próximo módulo</small>9. Figuras e tabelas →</a>
+  </nav>
+
+</main>
+</div>
+
+<footer class="rodape">
+  <img class="logo-rodape" src="assets/img/logo-lfca.png" alt="LFCA | URCA">
+  <p><strong>Prof. Apiano Morais</strong> · <a href="mailto:apiano.morais@urca.br">apiano.morais@urca.br</a><br>
+  Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
+</footer>
+
+</body>
+</html>
