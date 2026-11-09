@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 3: Estatística descritiva e distribuições | Informática para Física</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
+<script src="assets/js/comum.js?v=202611091010"></script>
+<script src="assets/js/codigo.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="index.html">Informática para Física <span>· LFCA/URCA</span></a>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <span class="grupo">Planilhas</span>
+      <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
+      <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
+      <a href="aula03.html" class="num ativo" title="Módulo 3: Dados experimentais na planilha">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Gráficos em planilha">4</a>
+      <span class="grupo">Python</span>
+      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+    </nav>
+  </div>
+</header>
+
+<div class="envoltorio">
+
+<aside class="lateral">
+  <h4>Nesta aula</h4>
+  <ol>
+    <li><a href="#s1">1. O que uma coluna de medidas tem a dizer</a></li>
+    <li><a href="#s2">2. Tendência central</a></li>
+    <li><a href="#s3">3. Dispersão</a></li>
+    <li><a href="#s4">4. A incerteza do valor médio</a></li>
+    <li><a href="#s5">5. Distribuições e contagem</a></li>
+    <li><a href="#s6">6. O histograma, passo a passo</a></li>
+    <li><a href="#s7">7. Lendo o histograma</a></li>
+    <li><a href="#s8">8. Exercícios</a></li>
+  </ol>
+</aside>
+
+<main class="conteudo">
+
+  <p class="chapeu">Aula 3 · Planilhas eletrônicas</p>
+  <h1>Estatística descritiva e distribuições</h1>
+  <p class="subtitulo">Medir quinze vezes a mesma grandeza produz quinze números diferentes.
+  Essa dispersão não é falha de quem mediu: é informação, e esta aula trata de como extraí-la
+  com as funções da planilha.</p>
+
+  <div class="bloco def">
+    <span class="rotulo">Nesta aula você vai</span>
+    <ul>
+      <li>Calcular média, mediana e moda de uma coluna de medidas.</li>
+      <li>Calcular desvio padrão, variância e erro padrão, e saber qual deles vai no
+      resultado.</li>
+      <li>Escrever um resultado experimental com a incerteza e o número certo de
+      algarismos.</li>
+      <li>Construir um histograma do zero, definindo os intervalos e contando com
+      <code>CONT.SE</code> e <code>FREQUÊNCIA</code>.</li>
+    </ul>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s1">1. O que uma coluna de medidas tem a dizer</h2>
+
+  <p>A planilha do pêndulo das aulas anteriores terminou com uma coluna de quinze valores da
+  aceleração da gravidade, todos calculados do mesmo jeito a partir de medidas feitas do mesmo
+  jeito. Eles vão de \(9{,}7329\) a \(10{,}0904\) m/s².</p>
+
+  <p>A pergunta natural é qual deles é o certo, e a resposta é que nenhum é. Cada medida tem
+  um erro aleatório, vindo do cronômetro, da régua, da reação de quem apertou o botão, e esse
+  erro muda de sinal e de tamanho a cada repetição. O que a estatística descritiva faz é
+  resumir o conjunto em dois números: um que diz <strong>onde</strong> os valores se
+  concentram e outro que diz <strong>quanto</strong> eles se espalham.</p>
+
+  <p>Esses dois números, e não a lista inteira, são o resultado do experimento.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s2">2. Tendência central</h2>
+
+  <p>Três medidas resumem onde está o centro dos dados, e cada uma tem o seu uso.</p>
+
+  <p>A <strong>média aritmética</strong> é a soma dividida pelo número de valores. É a que
+  entra em quase todo resultado de laboratório, porque, quando os erros são aleatórios e
+  simétricos, ela converge para o valor verdadeiro à medida que se mede mais.</p>
+
+  <p>A <strong>mediana</strong> é o valor central com os dados em ordem. Ela ignora o tamanho
+  dos extremos, de modo que uma medida absurda, daquelas em que o cronômetro foi apertado
+  tarde, a desloca muito pouco. Comparar média e mediana é um teste rápido de assimetria: se
+  as duas estão longe uma da outra, ou há um valor atípico, ou a distribuição não é
+  simétrica.</p>
+
+  <p>A <strong>moda</strong> é o valor mais frequente. Em medidas contínuas ela raramente faz
+  sentido, porque é improvável que dois valores coincidam até a última casa, e por isso ela só
+  é útil depois de agrupar os dados em intervalos.</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=MÉDIA(F2:F16)         média aritmética
+=MED(F2:F16)           mediana
+=MODO.ÚNICO(F2:F16)    moda, quando ela existe</code></pre></div>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 3.1: o centro dos quinze valores de g</span>
+    <p>Para a coluna de \(g\) do experimento do pêndulo:</p>
+    <div class="tabela-rolavel"><table>
+      <thead><tr><th>Grandeza</th><th>Fórmula</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td>média</td><td><code>=MÉDIA(F2:F16)</code></td><td>9,9240 m/s²</td></tr>
+        <tr><td>mediana</td><td><code>=MED(F2:F16)</code></td><td>9,9092 m/s²</td></tr>
+        <tr><td>menor</td><td><code>=MÍNIMO(F2:F16)</code></td><td>9,7329 m/s²</td></tr>
+        <tr><td>maior</td><td><code>=MÁXIMO(F2:F16)</code></td><td>10,0904 m/s²</td></tr>
+      </tbody>
+    </table></div>
+    <p>Média e mediana diferem por \(0{,}015\) m/s², que é bem menos que a dispersão dos dados.
+    O conjunto é, portanto, razoavelmente simétrico, sem nenhum valor puxando o resultado para
+    um lado.</p>
+    <p>A moda, aqui, não existe: os quinze valores são todos distintos, e
+    <code>MODO.ÚNICO</code> devolve <code>#N/D</code>. Isso não é erro, é o que tinha de
+    acontecer com uma grandeza contínua.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s3">3. Dispersão</h2>
+
+  <p>O <strong>desvio padrão</strong> mede o quanto os valores se afastam da média. Para uma
+  amostra de \(n\) medidas,</p>
+
+  <p>\[\sigma=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}\left(x_i-\bar{x}\right)^2}.\]</p>
+
+  <p>O \(n-1\) no denominador, em vez de \(n\), é o que distingue o desvio padrão
+  <strong>amostral</strong> do populacional, e é o correto quando se tem uma amostra e se quer
+  estimar a dispersão do processo que a gerou. Na planilha, a função amostral é
+  <code>DESVPAD.A</code>, com A de amostra; a populacional é <code>DESVPAD.P</code>. Num
+  laboratório, use sempre a primeira.</p>
+
+  <p>A <strong>variância</strong> é o quadrado do desvio padrão, e aparece mais nas contas que
+  nos relatórios.</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=DESVPAD.A(F2:F16)     desvio padrão amostral
+=VAR.A(F2:F16)         variância amostral
+=CONT.NÚM(F2:F16)      quantas medidas há</code></pre></div>
+
+  <!-- ================================================== -->
+  <h2 id="s4">4. A incerteza do valor médio</h2>
+
+  <p>Aqui mora a distinção que mais se erra num relatório de laboratório. O desvio padrão
+  \(\sigma\) descreve a dispersão de <strong>uma medida individual</strong>: medindo de novo,
+  é mais ou menos esse o afastamento esperado em relação à média. Ele não diminui medindo
+  mais vezes, porque é uma propriedade do instrumento e do procedimento.</p>
+
+  <p>O que diminui é a incerteza do valor <strong>médio</strong>, chamada erro padrão da
+  média:</p>
+
+  <p>\[\sigma_{\bar{x}}=\frac{\sigma}{\sqrt{n}}.\]</p>
+
+  <p>É esse o número que acompanha o resultado final, e a raiz de \(n\) tem uma consequência
+  prática dura: para reduzir a incerteza pela metade é preciso <strong>quadruplicar</strong> o
+  número de medidas. Melhorar o instrumento costuma ser mais barato que medir quatro vezes
+  mais.</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 3.2: o resultado do experimento do pêndulo</span>
+    <p>Com as três funções sobre a coluna de \(g\):</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>H2:  =MÉDIA(F2:F16)                          9,9240
+H3:  =DESVPAD.A(F2:F16)                      0,0889
+H4:  =CONT.NÚM(F2:F16)                       15
+H5:  =H3/RAIZ(H4)                            0,0230
+H6:  ="g = " &amp; TEXTO(H2;"0,00") &amp; " ± " &amp; TEXTO(H5;"0,00") &amp; " m/s²"</code></pre></div>
+    <p>O resultado é</p>
+    <p class="centro">\(g=9{,}92\pm0{,}02\ \text{m/s²}.\)</p>
+    <p>Repare na regra de escrita: a incerteza fica com <b>um</b> algarismo significativo, e a
+    média é arredondada na <b>mesma casa decimal</b> da incerteza. Escrever
+    \(9{,}92401\pm0{,}02298\) é pior que errado, é desinformativo, porque anuncia uma precisão
+    que a própria incerteza desmente.</p>
+    <p>Falta a parte mais importante, que é olhar o número com olhos de físico. O valor
+    aceito para o Crato, a 7° de latitude sul e 440 m de altitude, é de cerca de
+    \(9{,}78\) m/s². A nossa média está \(1{,}5\%\) acima disso, o que são mais de seis vezes
+    o erro padrão que acabamos de calcular, e isso é demais para ser acaso. A conclusão correta não é "deu
+    próximo": é que existe um <b>erro sistemático</b> no experimento, provavelmente no
+    disparo do cronômetro, que encurta sistematicamente o tempo medido. Estatística descritiva
+    não detecta erro sistemático; só a comparação com o valor esperado detecta.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s5">5. Distribuições e contagem</h2>
+
+  <p>Uma <strong>distribuição</strong> descreve como os valores se repartem entre os possíveis
+  resultados. Na física ela aparece em toda parte: nas medidas de laboratório, onde costuma ser
+  aproximadamente normal; nas contagens de decaimento radioativo, onde é de Poisson; nas
+  velocidades moleculares de um gás, onde é de Maxwell-Boltzmann.</p>
+
+  <p>O caso mais simples de entender é o de dois dados. Cada um sozinho dá seis resultados
+  igualmente prováveis, mas a <strong>soma</strong> dos dois assume onze valores, de 2 a 12,
+  que não são igualmente prováveis: há seis maneiras de somar 7 e uma só de somar 2.</p>
+
+  <p>Lançando dez vezes, a contagem é irregular e quase não se reconhece nada. Com vinte,
+  começa a aparecer um acúmulo no meio. Com quarenta, o desenho em torno do 7 já é claro, e
+  cai de modo aproximadamente simétrico para os lados. É assim que uma distribuição se revela:
+  não em cada medida, mas no padrão que emerge de muitas.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s6">6. O histograma, passo a passo</h2>
+
+  <p>O <strong>histograma</strong> é o retrato dessa contagem. Os dados são agrupados em
+  intervalos de mesma largura, chamados de casas ou <em>bins</em>, e a altura de cada barra é o
+  número de valores que caíram naquele intervalo.</p>
+
+  <p>Toda ferramenta moderna tem um botão que faz o histograma sozinho, com os intervalos
+  escolhidos por ela. Vale construir um à mão pelo menos uma vez, porque a escolha dos
+  intervalos muda a aparência do resultado e é uma decisão de quem analisa, não do
+  programa.</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 3.3: histograma dos valores de g</span>
+    <p><b>Passo 1: os extremos.</b> Em duas células à parte,</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>N1:  =MÍNIMO(F2:F16)      9,732867
+N2:  =MÁXIMO(F2:F16)     10,090372</code></pre></div>
+    <p><b>Passo 2: a largura.</b> Escolhendo \(n=10\) casas entre os dois extremos,</p>
+    <p>\[\Delta g=\frac{g_{\max}-g_{\min}}{n}\]</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>N3:  =(N2-N1)/10          0,0357503</code></pre></div>
+    <p><b>Passo 3: os limites.</b> O limite superior da casa \(i\) é
+    \(\text{limite}_i=g_{\min}+i\,\Delta g\). Em <code>O2</code> ponha o limite inferior e em
+    <code>O3</code> a fórmula, arrastando até <code>O12</code>:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>O2:  =$N$1
+O3:  =O2 + $N$3</code></pre></div>
+    <p>Repare nos cifrões: os dois parâmetros são absolutos e o <code>O2</code> é relativo, de
+    modo que cada limite se apoia no anterior.</p>
+    <p><b>Passo 4: a contagem.</b> A casa \(i\) contém os valores maiores que o limite de
+    baixo e menores ou iguais ao de cima. Com <code>CONT.SE</code>, isso é uma subtração de
+    duas contagens:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>P3:  =CONT.SE(F$2:F$16;"&lt;="&amp;O3) - CONT.SE(F$2:F$16;"&lt;"&amp;O2)</code></pre></div>
+    <p>O <code>&amp;</code> é essencial aqui: ele monta o critério juntando o operador, que é
+    texto, com o valor que está na célula. Escrever <code>"&lt;=O3"</code> entre aspas
+    procuraria literalmente o texto <code>&lt;=O3</code> e devolveria zero.</p>
+    <p><b>Passo 5: conferir.</b> A soma da coluna de contagens tem de dar o número de dados:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>=SOMA(P3:P12)      tem de dar 15</code></pre></div>
+    <p>Para os nossos quinze valores, as casas dão 1, 0, 0, 4, 3, 2, 1, 2, 1 e 1, que somam
+    15.</p>
+  </div>
+
+  <p>Existe um atalho. A função <strong>FREQUÊNCIA</strong> faz a contagem toda de uma vez,
+  recebendo os dados e a lista de limites superiores:</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=FREQUÊNCIA(F2:F16; O3:O12)</code></pre></div>
+
+  <p>Ela devolve um conjunto de valores, e não um só, de modo que no Google Planilhas basta
+  escrevê-la numa célula e os resultados se derramam para baixo. Ela é mais prática que a
+  subtração de <code>CONT.SE</code>, e a subtração é mais transparente: construa uma vez pelo
+  caminho longo, depois use o atalho.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s7">7. Lendo o histograma</h2>
+
+  <p>Com as contagens prontas, selecione a coluna dos valores centrais das casas e a das
+  contagens e insira um gráfico de colunas. Ajuste o rótulo do eixo vertical para
+  <code>Contagem</code> e dê um título.</p>
+
+  <p>O que se procura num histograma de medidas é o seguinte. A <strong>forma</strong>, que
+  para erros puramente aleatórios deve ser um monte único e aproximadamente simétrico. A
+  <strong>largura</strong>, que é a tradução visual do desvio padrão. E, sobretudo, as
+  <strong>anomalias</strong>: um segundo monte sugere que duas condições diferentes foram
+  misturadas na mesma tabela, e um valor isolado longe do grupo é um candidato a erro
+  grosseiro, que precisa ser investigado e não simplesmente apagado.</p>
+
+  <div class="bloco fisica">
+    <span class="rotulo">Quantas casas usar</span>
+    <p>Poucas casas escondem a forma; muitas transformam o histograma num pente de barras de
+    altura 1, que não informa nada. Com quinze pontos, como aqui, qualquer histograma é mais
+    ilustração que evidência, e o número honesto de casas fica entre 4 e 6.</p>
+    <p>Duas receitas usuais para escolher: a regra da raiz, \(n_{\text{casas}}\approx\sqrt{N}\),
+    e a regra de Sturges, \(n_{\text{casas}}\approx1+3{,}3\log_{10}N\). Para \(N=15\) elas dão
+    4 e 5 casas. O exemplo acima usou dez de propósito, para mostrar o efeito: três casas
+    ficaram vazias e as alturas viraram ruído.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s8">8. Exercícios</h2>
+
+  <div class="bloco ex">
+    <ol>
+      <li><b>3.1</b> Sobre a sua coluna de \(g\), calcule média, mediana, desvio padrão
+      amostral, número de medidas e erro padrão. Escreva o resultado final na forma
+      \(g=\ldots\pm\ldots\) m/s², com o número correto de algarismos, usando
+      <code>TEXTO</code> para montar a frase.</li>
+
+      <li><b>3.2</b> Compare <code>DESVPAD.A</code> com <code>DESVPAD.P</code> sobre os mesmos
+      quinze dados. Calcule a razão entre os dois e verifique que ela vale
+      \(\sqrt{n/(n-1)}\). Explique em uma frase por que a diferença encolhe quando \(n\)
+      cresce.</li>
+
+      <li><b>3.3</b> Monte o histograma do exemplo 3.3 com 10 casas e depois com 5. Coloque os
+      dois lado a lado e comente qual deles representa melhor estes dados.</li>
+
+      <li><b>3.4</b> Refaça a contagem do exercício anterior com <code>FREQUÊNCIA</code> e
+      verifique que os resultados coincidem com os da subtração de <code>CONT.SE</code>.</li>
+
+      <li><b>3.5</b> Acrescente à coluna de dados um valor absurdo, como 15 m/s², simulando um
+      erro de digitação. Recalcule média, mediana e desvio padrão e anote o quanto cada um
+      mudou. Explique por que a mediana é chamada de medida robusta.</li>
+
+      <li><b>3.6</b> Simule 200 lançamentos de dois dados com
+      <code>=ALEATÓRIOENTRE(1;6)+ALEATÓRIOENTRE(1;6)</code>, conte a frequência de cada soma
+      de 2 a 12 com <code>CONT.SE</code> e faça o histograma. Compare com as probabilidades
+      teóricas \(k/36\) e discuta a concordância. Pressione a tecla de recálculo algumas vezes
+      e observe o quanto o desenho muda.</li>
+
+      <li><b>3.7</b> Em meia página: a média dos quinze valores ficou \(1{,}5\%\) acima do
+      valor esperado para o Crato, e o erro padrão é de apenas \(0{,}2\%\). Argumente por que
+      isso indica erro sistemático e proponha dois procedimentos experimentais que o
+      reduziriam.</li>
+    </ol>
+  </div>
+
+  <nav class="nav-aulas">
+    <a href="aula02.html"><small>Módulo anterior</small>← 2. Fórmulas</a>
+    <a class="prox" href="aula04.html"><small>Próximo módulo</small>4. Gráficos →</a>
+  </nav>
+
+</main>
+</div>
+
+<footer class="rodape">
+  <img class="logo-rodape" src="assets/img/logo-lfca.png" alt="LFCA | URCA">
+  <p><strong>Prof. Apiano Morais</strong> · <a href="mailto:apiano.morais@urca.br">apiano.morais@urca.br</a><br>
+  Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
+</footer>
+
+</body>
+</html>

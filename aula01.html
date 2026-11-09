@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 1: A planilha como caderno de laboratório | Informática para Física</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
+<script src="assets/js/comum.js?v=202611091010"></script>
+<script src="assets/js/codigo.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="index.html">Informática para Física <span>· LFCA/URCA</span></a>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <span class="grupo">Planilhas</span>
+      <a href="aula01.html" class="num ativo" title="Módulo 1: A planilha como caderno de laboratório">1</a>
+      <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Dados experimentais na planilha">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Gráficos em planilha">4</a>
+      <span class="grupo">Python</span>
+      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+    </nav>
+  </div>
+</header>
+
+<div class="envoltorio">
+
+<aside class="lateral">
+  <h4>Nesta aula</h4>
+  <ol>
+    <li><a href="#s1">1. Por que uma planilha num curso de física</a></li>
+    <li><a href="#s2">2. A estrutura: célula, linha, coluna e aba</a></li>
+    <li><a href="#s3">3. Tipos de dado e formatos</a></li>
+    <li><a href="#s4">4. A primeira planilha, passo a passo</a></li>
+    <li><a href="#s5">5. Dado bruto e dado calculado</a></li>
+    <li><a href="#s6">6. Deixar a planilha legível</a></li>
+    <li><a href="#s7">7. Exercícios</a></li>
+  </ol>
+</aside>
+
+<main class="conteudo">
+
+  <p class="chapeu">Aula 1 · Planilhas eletrônicas</p>
+  <h1>A planilha como caderno de laboratório</h1>
+  <p class="subtitulo">A primeira ferramenta do curso é a mais antiga e a mais subestimada. Uma
+  planilha bem montada resolve em minutos o que um caderno resolve em uma tarde, e, o que
+  importa mais, deixa o caminho da conta à vista de quem for conferir.</p>
+
+  <div class="bloco def">
+    <span class="rotulo">Nesta aula você vai</span>
+    <ul>
+      <li>Criar uma planilha no Google Planilhas e reconhecer célula, linha, coluna, intervalo
+      e aba.</li>
+      <li>Escolher o tipo e o formato de dado certos para cada coluna.</li>
+      <li>Montar uma primeira tabela com cabeçalho, dados e uma coluna calculada.</li>
+      <li>Separar o que foi medido do que foi calculado, que é a regra de ouro do assunto.</li>
+    </ul>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s1">1. Por que uma planilha num curso de física</h2>
+
+  <p>Um experimento de laboratório termina com uma lista de números no caderno: dez medidas do
+  período de um pêndulo, vinte pares de corrente e tensão, trinta posições de uma franja de
+  difração. O que se faz com eles é sempre a mesma sequência. Calcula-se uma coluna nova a
+  partir das medidas, tira-se a média, estima-se a incerteza, faz-se um gráfico e procura-se
+  uma reta.</p>
+
+  <p>Fazer isso na calculadora funciona, e funciona exatamente uma vez. Quando o professor
+  pergunta o que aconteceria se uma medida fosse descartada, ou quando se percebe que a régua
+  estava em centímetros e não em milímetros, a calculadora obriga a refazer tudo. A planilha
+  não: muda-se o número de entrada e as cinquenta contas que dependiam dele se refazem
+  sozinhas.</p>
+
+  <p>Uma <strong>planilha eletrônica</strong> é um programa que organiza dados em linhas e
+  colunas e permite que uma célula contenha, em vez de um valor, uma <strong>fórmula</strong>
+  que calcula o valor a partir de outras células. Essa única ideia, de guardar a receita em vez
+  do resultado, é o que a torna útil para quem faz ciência.</p>
+
+  <div class="bloco fisica">
+    <span class="rotulo">Qual programa usar</span>
+    <p>Os três mais usados são o <b>Microsoft Excel</b>, o <b>LibreOffice Calc</b> e o
+    <b>Google Planilhas</b>. Os três fazem essencialmente a mesma coisa, com os mesmos nomes de
+    função e as mesmas fórmulas.</p>
+    <p>Esta disciplina usa o <b>Google Planilhas</b> por três razões práticas: roda no
+    navegador e não exige instalação nem licença, salva sozinho e guarda o histórico de
+    versões, e permite que duas pessoas da mesma dupla trabalhem no mesmo arquivo ao mesmo
+    tempo. Tudo o que você aprender aqui vale no Excel com, no máximo, um nome de menu
+    diferente.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s2">2. A estrutura: célula, linha, coluna e aba</h2>
+
+  <p>A <strong>célula</strong> é a menor unidade da planilha, e é onde os dados entram. Cada
+  uma tem um endereço único, formado pela letra da coluna e pelo número da linha: a célula
+  <code>A1</code> está na coluna A, linha 1; a <code>B2</code>, na coluna B, linha 2. Esse
+  endereço é o nome pelo qual as fórmulas se referem a ela, e é por isso que ele importa.</p>
+
+  <p>As <strong>colunas</strong> são identificadas por letras e as <strong>linhas</strong> por
+  números. Um conjunto retangular de células é um <strong>intervalo</strong>, escrito com dois
+  pontos: <code>A1:A10</code> é a primeira coluna da linha 1 à 10, e <code>A1:C10</code> é o
+  bloco de três colunas por dez linhas. Quase toda função que você vai usar recebe um intervalo
+  como argumento.</p>
+
+  <p>As <strong>abas</strong>, na parte de baixo da janela, são planilhas dentro do mesmo
+  arquivo. Elas vêm com nomes como <code>Página1</code> e devem ser renomeadas para algo que
+  diga o que há dentro. Num trabalho de laboratório, uma organização que funciona é uma aba
+  chamada <code>Dados</code> com as medidas como foram anotadas, outra chamada
+  <code>Cálculos</code> com as colunas derivadas, e uma terceira chamada <code>Gráficos</code>.
+  Essa separação parece exagero no começo e salva a vida quando a planilha cresce.</p>
+
+  <div class="bloco def">
+    <span class="rotulo">O vocabulário mínimo</span>
+    <ul>
+      <li><b>Célula:</b> uma caixa, endereçada por coluna e linha, como <code>C7</code>.</li>
+      <li><b>Intervalo:</b> um bloco de células, como <code>C2:C41</code>.</li>
+      <li><b>Fórmula:</b> o conteúdo de uma célula que começa com <code>=</code> e produz um
+      valor.</li>
+      <li><b>Função:</b> uma fórmula pronta e nomeada, como <code>MÉDIA</code> ou
+      <code>CONT.SE</code>.</li>
+      <li><b>Aba:</b> uma planilha dentro do arquivo.</li>
+    </ul>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s3">3. Tipos de dado e formatos</h2>
+
+  <p>Uma célula guarda um <strong>valor</strong> e exibe uma <strong>aparência</strong>, e os
+  dois são coisas diferentes. Confundi-los é a origem de uma parte enorme dos erros de quem
+  começa.</p>
+
+  <p>Os tipos que interessam aqui são três. <strong>Número</strong>, que é o que entra em
+  conta. <strong>Texto</strong>, que não entra em conta nenhuma, ainda que pareça um número.
+  E <strong>data e hora</strong>, que por dentro é um número e por fora é um calendário.</p>
+
+  <p>Sobre o mesmo valor numérico a planilha oferece vários formatos de exibição: padrão
+  (<code>1234</code>), decimal com casas fixas (<code>1234,56</code>), porcentagem
+  (<code>0,5</code> aparece como <code>50%</code>), moeda (<code>R$ 1.234,56</code>) e
+  científico (<code>1,23E+03</code>). Mudar o formato <strong>não muda o valor</strong>: uma
+  célula que mostra <code>9,87</code> pode guardar <code>9,8712345</code>, e é o valor guardado
+  que entra nas contas.</p>
+
+  <div class="bloco fisica">
+    <span class="rotulo">A vírgula, o ponto e a dor de cabeça</span>
+    <p>No formato brasileiro, o separador decimal é a <b>vírgula</b>. Ao colar dados vindos de
+    um instrumento, de um site ou de um programa em Python, eles quase sempre vêm com
+    <b>ponto</b>. A planilha então interpreta <code>9.81</code> como texto, ou pior, como a
+    data 9 de janeiro, e todas as contas seguintes dão errado sem avisar.</p>
+    <p>O sintoma é fácil de reconhecer: números entram alinhados à <b>direita</b> da célula, e
+    texto, à <b>esquerda</b>. Se uma coluna de medidas aparece alinhada à esquerda, ela não é
+    numérica. A correção está em Formatar, Número, ou em trocar o ponto pela vírgula com
+    Editar, Localizar e substituir.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s4">4. A primeira planilha, passo a passo</h2>
+
+  <p>O exemplo abaixo não é de física, de propósito: ele serve para exercitar a mecânica da
+  ferramenta antes de misturar a dificuldade do conteúdo.</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 1.1: um orçamento de material</span>
+    <p><b>Passo 1.</b> Crie uma planilha em branco e renomeie a aba para
+    <code>Orçamento</code>, clicando duas vezes no nome lá embaixo.</p>
+    <p><b>Passo 2.</b> Na linha 1, monte o cabeçalho, uma informação por coluna:</p>
+    <div class="tabela-rolavel"><table>
+      <thead><tr><th>A1</th><th>B1</th><th>C1</th><th>D1</th><th>E1</th><th>F1</th><th>G1</th></tr></thead>
+      <tbody><tr><td>ID</td><td>Item</td><td>Descrição</td><td>Tipo</td>
+      <td>Valor unitário</td><td>Quantidade</td><td>Valor total</td></tr></tbody>
+    </table></div>
+    <p><b>Passo 3.</b> Preencha quatro linhas de dados, uma por item: caneta, caderno, lápis e
+    borracha, com os respectivos identificadores de 1 a 4 na coluna A e os preços e
+    quantidades que quiser nas colunas E e F.</p>
+    <p><b>Passo 4.</b> Na célula <code>G2</code>, em vez de digitar o resultado, digite a
+    receita:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>=E2*F2</code></pre></div>
+    <p>Pressione Enter. A célula mostra o produto. Agora clique nela, segure o quadradinho
+    azul do canto inferior direito e arraste até <code>G5</code>: a fórmula é copiada para as
+    outras linhas <strong>ajustando os endereços sozinha</strong>, de modo que
+    <code>G3</code> calcula <code>=E3*F3</code>. Esse comportamento tem nome, é a referência
+    relativa, e a aula 2 trata dele em detalhe.</p>
+    <p><b>Passo 5.</b> Em <code>G6</code>, some a coluna inteira:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>=SOMA(G2:G5)</code></pre></div>
+    <p><b>Passo 6.</b> Mude um preço na coluna E e observe o total mudar sozinho. Esse é o
+    momento em que a planilha deixa de ser uma tabela bonita e passa a ser uma ferramenta de
+    cálculo.</p>
+  </div>
+
+  <p>Repare no que aconteceu no passo 4. A célula <code>G2</code> não guarda o número
+  <code>12</code>: ela guarda a instrução <code>=E2*F2</code> e exibe o resultado dela. É isso
+  que permite mudar a entrada e ver tudo se recalcular, e é isso que um caderno não faz.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s5">5. Dado bruto e dado calculado</h2>
+
+  <p>Há uma regra que vale para toda planilha científica e que convém adotar desde a primeira
+  aula: <strong>nunca escreva por cima de um dado medido</strong>.</p>
+
+  <p>O dado bruto é o que o instrumento mostrou, na unidade em que ele mostrou. Ele entra na
+  planilha uma vez e não é mais tocado. Tudo o mais, conversão de unidade, média, desvio,
+  valor derivado, é coluna nova, calculada por fórmula a partir das colunas anteriores.</p>
+
+  <p>A razão é prática e é de honestidade. Prática, porque se a conversão estiver errada basta
+  corrigir uma fórmula, enquanto se os dados tiverem sido convertidos à mão não há mais como
+  voltar atrás. De honestidade, porque quem lê a planilha precisa conseguir separar o que foi
+  observado do que foi inferido, e essa separação é a base de qualquer resultado que se
+  pretenda verificável.</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 1.2: medidas de um pêndulo</span>
+    <p>Num experimento de pêndulo mede-se o comprimento \(L\) e o tempo de dez oscilações
+    \(t_{10}\). O período e a gravidade saem daí:</p>
+    <p>\[T=\frac{t_{10}}{10},\qquad g=\frac{4\pi^2L}{T^2}.\]</p>
+    <p>A planilha correta tem <b>duas</b> colunas de dado bruto e <b>duas</b> de dado
+    calculado:</p>
+    <div class="tabela-rolavel"><table>
+      <thead><tr><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr></thead>
+      <tbody>
+      <tr><td>Experimento</td><td>L (m) <i>medido</i></td><td>t<sub>10</sub> (s) <i>medido</i></td>
+      <td>T (s) <i>calculado</i></td><td>g (m/s²) <i>calculado</i></td></tr>
+      <tr><td>1</td><td>1,00</td><td>19,82</td><td>=C2/10</td><td>=4*PI()^2*B2/D2^2</td></tr>
+      <tr><td>2</td><td>1,00</td><td>20,14</td><td>=C3/10</td><td>=4*PI()^2*B3/D3^2</td></tr>
+      <tr><td>3</td><td>1,05</td><td>20,35</td><td>=C4/10</td><td>=4*PI()^2*B4/D4^2</td></tr>
+      </tbody>
+    </table></div>
+    <p>Com os três primeiros dos quinze experimentos da planilha da disciplina, as duas últimas
+    colunas dão \(g=10{,}05\), \(9{,}73\) e \(10{,}01\) m/s². A dispersão desses valores é o
+    assunto da aula 3, e ela não é defeito do aluno: é o que a medida tem a dizer.</p>
+    <p>Repare em <code>PI()</code>. É uma função sem argumento, e os parênteses vazios são
+    obrigatórios. Escrever <code>3,14</code> no lugar funciona e é um péssimo hábito: perde
+    precisão e esconde a intenção.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s6">6. Deixar a planilha legível</h2>
+
+  <p>Uma planilha é lida por outra pessoa, e muitas vezes essa pessoa é você mesmo daqui a três
+  meses. Quatro ajustes custam segundos e mudam tudo.</p>
+
+  <p><strong>Ajustar a largura da coluna</strong> ao conteúdo, clicando duas vezes na divisa
+  entre as letras das colunas, para que nada apareça cortado ou como
+  <code>#######</code>.</p>
+
+  <p><strong>Congelar a linha do cabeçalho</strong>, em Exibir, Congelar, 1 linha, para que os
+  nomes das colunas continuem visíveis quando a tabela passar da tela.</p>
+
+  <p><strong>Pôr a unidade no cabeçalho</strong>, e não na célula. Escrever <code>1,05 m</code>
+  numa célula transforma o valor em texto e inviabiliza a conta; escrever <code>1,05</code> na
+  célula e <code>Comprimento (m)</code> no cabeçalho preserva as duas coisas.</p>
+
+  <p><strong>Não deixar linhas nem colunas vazias</strong> no meio da tabela. Quase toda função
+  que recebe um intervalo para de funcionar direito quando encontra um buraco, e a seleção
+  automática de dados para gráficos também.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s7">7. Exercícios</h2>
+
+  <div class="bloco ex">
+    <ol>
+      <li><b>1.1</b> Refaça o orçamento do exemplo 1.1 acrescentando uma coluna de desconto em
+      porcentagem e uma coluna de valor com desconto. Verifique, mudando o desconto de uma
+      linha, que o total geral acompanha.</li>
+
+      <li><b>1.2</b> Monte a planilha do pêndulo com os quinze experimentos da tabela da
+      disciplina, com as quatro colunas do exemplo 1.2. Confira que a sua coluna de \(g\)
+      reproduz os valores \(10{,}0497\) para o primeiro experimento e \(9{,}8813\) para o
+      décimo quinto.</li>
+
+      <li><b>1.3</b> Na mesma planilha, acrescente uma coluna de \(T^2\) e outra de \(L\) em
+      centímetros. Explique por escrito por que a coluna em centímetros deve ser calculada e
+      não digitada.</li>
+
+      <li><b>1.4</b> Crie uma planilha com três abas, chamadas <code>Dados</code>,
+      <code>Cálculos</code> e <code>Resultados</code>, e refaça o exercício 1.2 com os dados
+      numa aba e as contas em outra. Descubra como uma fórmula se refere a uma célula de outra
+      aba, e registre a sintaxe que você encontrou.</li>
+
+      <li><b>1.5</b> Digite numa célula <code>9.81</code> com ponto e em outra
+      <code>9,81</code> com vírgula. Compare o alinhamento das duas e tente somar cada uma com
+      1. Explique o que aconteceu e descreva duas maneiras de corrigir uma coluna inteira que
+      tenha chegado com pontos.</li>
+    </ol>
+  </div>
+
+  <nav class="nav-aulas">
+    <a href="index.html"><small>Voltar</small>← Início</a>
+    <a class="prox" href="aula02.html"><small>Próximo módulo</small>2. Fórmulas →</a>
+  </nav>
+
+</main>
+</div>
+
+<footer class="rodape">
+  <img class="logo-rodape" src="assets/img/logo-lfca.png" alt="LFCA | URCA">
+  <p><strong>Prof. Apiano Morais</strong> · <a href="mailto:apiano.morais@urca.br">apiano.morais@urca.br</a><br>
+  Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
+</footer>
+
+</body>
+</html>

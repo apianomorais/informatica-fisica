@@ -71,6 +71,7 @@ CABECA = '''<!DOCTYPE html>
 <title>Aula {n}: {titulo} | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="stylesheet" href="assets/css/estilo.css">
+<script src="assets/js/comum.js"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -115,7 +116,6 @@ CABECA = '''<!DOCTYPE html>
   Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
 </footer>
 
-<script src="assets/js/comum.js"></script>
 </body>
 </html>
 '''

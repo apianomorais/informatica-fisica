@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 4: Gráficos e simulação na planilha | Informática para Física</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
+<script src="assets/js/comum.js?v=202611091010"></script>
+<script src="assets/js/codigo.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="index.html">Informática para Física <span>· LFCA/URCA</span></a>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <span class="grupo">Planilhas</span>
+      <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
+      <a href="aula02.html" class="num" title="Módulo 2: Fórmulas, referências e funções">2</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Dados experimentais na planilha">3</a>
+      <a href="aula04.html" class="num ativo" title="Módulo 4: Gráficos em planilha">4</a>
+      <span class="grupo">Python</span>
+      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+    </nav>
+  </div>
+</header>
+
+<div class="envoltorio">
+
+<aside class="lateral">
+  <h4>Nesta aula</h4>
+  <ol>
+    <li><a href="#s1">1. O gráfico é um resultado</a></li>
+    <li><a href="#s2">2. Qual gráfico para qual dado</a></li>
+    <li><a href="#s3">3. Montando um gráfico, passo a passo</a></li>
+    <li><a href="#s4">4. Dispersão, barras de erro e linha de tendência</a></li>
+    <li><a href="#s5">5. Linearizar para medir um expoente</a></li>
+    <li><a href="#s6">6. Simular na planilha: o método de Euler</a></li>
+    <li><a href="#s7">7. O projétil com resistência do ar</a></li>
+    <li><a href="#s8">8. Exercícios e avaliação</a></li>
+  </ol>
+</aside>
+
+<main class="conteudo">
+
+  <p class="chapeu">Aula 4 · Planilhas eletrônicas</p>
+  <h1>Gráficos e simulação na planilha</h1>
+  <p class="subtitulo">Esta aula fecha a unidade com as duas coisas que a planilha faz melhor
+  do que parece: desenhar dados de um jeito que revele a física que há neles e resolver
+  numericamente uma equação de movimento, linha a linha, sem programar.</p>
+
+  <div class="bloco def">
+    <span class="rotulo">Nesta aula você vai</span>
+    <ul>
+      <li>Escolher o tipo de gráfico adequado ao dado e montá-lo com eixos rotulados.</li>
+      <li>Fazer um gráfico de dispersão com barras de erro e linha de tendência.</li>
+      <li>Linearizar uma lei de potência para medir o expoente.</li>
+      <li>Integrar a segunda lei de Newton pelo método de Euler, numa planilha, e comparar com
+      a solução analítica.</li>
+    </ul>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s1">1. O gráfico é um resultado</h2>
+
+  <p>Numa tabela de quarenta pares de números não se enxerga nada. No gráfico correspondente,
+  a tendência, a curvatura, o ponto fora da curva e a faixa de incerteza aparecem de uma vez
+  só. Essa é a razão de o gráfico ser, num relatório de física, tão resultado quanto o número
+  final.</p>
+
+  <p>E é também a razão de ele precisar de cuidado. Um gráfico sem rótulo nos eixos, sem
+  unidade, com escala escolhida para exagerar uma diferença ou com pontos ligados por uma
+  linha que sugere uma lei que não foi medida, não é um resultado: é uma afirmação sem
+  prova.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s2">2. Qual gráfico para qual dado</h2>
+
+  <p>Três tipos resolvem quase tudo nesta disciplina.</p>
+
+  <p>O <strong>gráfico de colunas</strong> compara categorias que não têm ordem natural, como a
+  produção de diferentes amostras ou o resultado de uma enquete. É também o formato do
+  histograma da aula 3, onde as categorias são os intervalos de valor.</p>
+
+  <p>O <strong>gráfico de linhas</strong> mostra a evolução de uma grandeza ao longo de uma
+  sequência ordenada, tipicamente o tempo. A linha que liga os pontos carrega uma afirmação, a
+  de que entre dois pontos medidos a grandeza passou por ali, e por isso ela só é honesta
+  quando essa continuidade existe.</p>
+
+  <p>O <strong>gráfico de dispersão</strong> é o que a física usa mais, e é o único em que o
+  eixo horizontal é uma grandeza numérica de verdade, com espaçamento proporcional ao valor.
+  Toda vez que se quer relacionar duas variáveis medidas, como corrente contra tensão ou
+  período contra comprimento, o gráfico é de dispersão, com marcadores e sem linha ligando os
+  pontos.</p>
+
+  <div class="bloco fisica">
+    <span class="rotulo">A diferença que mais se erra</span>
+    <p>Num gráfico de <b>linhas</b>, a planilha trata a primeira coluna como rótulos de
+    categoria e distribui os pontos <b>igualmente espaçados</b>, qualquer que seja o valor
+    deles. Se a sua coluna de tempos for 0, 1, 2, 5 e 10 segundos, os cinco pontos aparecerão
+    à mesma distância um do outro, e o gráfico estará mentindo.</p>
+    <p>Num gráfico de <b>dispersão</b>, a posição horizontal é proporcional ao valor, que é o
+    que se quer num gráfico científico. A regra é simples: <b>eixo x numérico pede
+    dispersão</b>.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s3">3. Montando um gráfico, passo a passo</h2>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 4.1: densidade de três líquidos com a temperatura</span>
+    <p>A tabela tem a temperatura na coluna A e, nas colunas B, C e D, as densidades da água,
+    da água salgada com salinidade de \(3{,}5\%\) e da amônia líquida saturada, em kg/m³.</p>
+    <p><b>Passo 1.</b> Selecione os dados incluindo os cabeçalhos, que virarão a legenda.</p>
+    <p><b>Passo 2.</b> Inserir, Gráfico. Escolha dispersão ou linha com marcadores.</p>
+    <p><b>Passo 3.</b> Confira o eixo horizontal. Se a planilha tiver escolhido errado, abra
+    Selecionar dados e indique a coluna A como eixo x.</p>
+    <p><b>Passo 4.</b> Ponha título nos eixos: <code>Temperatura (°C)</code> no horizontal e
+    <code>Densidade (kg/m³)</code> no vertical. A unidade entre parênteses não é
+    opcional.</p>
+    <p><b>Passo 5.</b> Ajuste os limites verticais. Com os três líquidos juntos, a escala vai
+    de 680 a 1030 e as duas curvas de cima ficam praticamente coladas.</p>
+    <p><b>Passo 6.</b> Experimente remover a série da amônia e reajustar a escala. As duas
+    curvas restantes, que pareciam retas horizontais, revelam a variação com a temperatura.</p>
+    <p>O passo 6 é a lição do exemplo. A mesma tabela, com duas escolhas de escala, conta duas
+    histórias diferentes. Escolher a escala é um ato de interpretação, e o critério honesto é
+    mostrar a variação que se está discutindo sem fabricar uma que não existe.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s4">4. Dispersão, barras de erro e linha de tendência</h2>
+
+  <p>Um ponto experimental sem barra de erro afirma que a medida é exata, o que nunca é
+  verdade. No Google Planilhas as barras entram em Personalizar, Série, Barras de erro, onde se
+  pode dar um valor constante, uma porcentagem ou, o que é melhor, uma coluna com a incerteza
+  de cada ponto.</p>
+
+  <p>A <strong>linha de tendência</strong> ajusta uma curva aos pontos. Em Personalizar, Série,
+  Linha de tendência, escolha o tipo linear e marque a exibição da equação e do \(R^2\).</p>
+
+  <p>Para ter os coeficientes como números utilizáveis, e não como um texto desenhado no
+  gráfico, use as funções de ajuste:</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=INCLINAÇÃO(y_conhecidos; x_conhecidos)       o coeficiente angular
+=INTERCEPÇÃO(y_conhecidos; x_conhecidos)      o coeficiente linear
+=RQUAD(y_conhecidos; x_conhecidos)            o R²
+=PROJ.LIN(y_conhecidos; x_conhecidos; ; VERDADEIRO)</code></pre></div>
+
+  <p>A última é a mais completa: com o quarto argumento <code>VERDADEIRO</code> ela devolve um
+  bloco de números com os dois coeficientes <strong>e as incertezas deles</strong> na linha de
+  baixo, que é exatamente o que um relatório precisa e o que a linha de tendência desenhada não
+  dá.</p>
+
+  <div class="bloco fisica">
+    <span class="rotulo">O R² não decide nada sozinho</span>
+    <p>Um \(R^2\) de 0,999 não prova que a relação é linear, e um de 0,95 não prova que não é.
+    O que denuncia uma curvatura escondida é o gráfico dos <b>resíduos</b>, isto é, da
+    diferença entre cada ponto e a reta ajustada. Se os resíduos se distribuírem sem padrão em
+    torno do zero, a reta serve; se desenharem um arco, há física faltando no modelo, por mais
+    alto que o \(R^2\) esteja.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s5">5. Linearizar para medir um expoente</h2>
+
+  <p>O período de um pêndulo depende do comprimento segundo \(T=2\pi\sqrt{L/g}\), isto é, uma
+  lei de potência \(T=kL^{1/2}\). Para testar essa potência sem supor que ela vale, tome o
+  logaritmo dos dois lados:</p>
+
+  <p>\[\log T=\log k+\tfrac12\log L.\]</p>
+
+  <p>Num gráfico de \(\log T\) contra \(\log L\), uma lei de potência vira uma
+  <strong>reta</strong>, cuja inclinação é o expoente. Medir a inclinação é medir o expoente, e
+  compará-la com \(0{,}5\) é testar a teoria.</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 4.2: medindo o expoente do pêndulo</span>
+    <p>Com as colunas de \(L\) e \(T\) já calculadas na aula 1, acrescente duas colunas:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>I2:  =LOG10(B2)        log do comprimento
+J2:  =LOG10(E2)        log do período</code></pre></div>
+    <p>E, em duas células à parte,</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>=INCLINAÇÃO(J2:J16; I2:I16)       deve ficar perto de 0,5
+=INTERCEPÇÃO(J2:J16; I2:I16)      vale log(2π/√g)</code></pre></div>
+    <p>Do coeficiente linear sai outra estimativa de \(g\), independente da média da aula 3:
+    como o intercepto é \(\log(2\pi/\sqrt{g})\), segue
+    \(g=\left(2\pi/10^{\,b}\right)^2\). Compare as duas estimativas e comente a
+    diferença.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s6">6. Simular na planilha: o método de Euler</h2>
+
+  <p>Até aqui a planilha analisou dados medidos. Ela também resolve equações de movimento, e a
+  ideia cabe em duas linhas de álgebra.</p>
+
+  <p>A segunda lei de Newton diz que \(F=ma\), e a aceleração média num intervalo \(\Delta t\)
+  é</p>
+
+  <p>\[a_t=\frac{v_{t+\Delta t}-v_t}{\Delta t}.\]</p>
+
+  <p>Juntando as duas e isolando a velocidade nova,</p>
+
+  <p>\[v_{t+\Delta t}=v_t+\Delta t\,\frac{F_t}{m}.\]</p>
+
+  <p>Essa é a receita do <strong>método de Euler</strong>: conhecida a velocidade agora,
+  calcula-se a força agora, e com ela a velocidade do instante seguinte. Cada linha da planilha
+  é um instante, e cada coluna é uma grandeza. Arrastar as fórmulas para baixo é integrar a
+  equação do movimento.</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 4.3: uma bala freada pelo ar</span>
+    <p>A lei de Stokes dá, para baixas velocidades, uma força de arrasto proporcional à
+    velocidade e oposta a ela, \(F=-bv\). A receita de Euler fica</p>
+    <p>\[v_{t+\Delta t}=v_t-\Delta t\,\frac{b}{m}\,v_t.\]</p>
+    <p>Com \(v_0=700\) m/s, \(b=0{,}001\) N·s/m, \(m=0{,}005\) kg e \(\Delta t=0{,}01\) s,
+    monte os parâmetros no alto e a simulação abaixo:</p>
+    <div class="tabela-rolavel"><table>
+      <thead><tr><th>Célula</th><th>Conteúdo</th><th>O que é</th></tr></thead>
+      <tbody>
+        <tr><td><code>B1</code></td><td>0,005</td><td>massa (kg)</td></tr>
+        <tr><td><code>B2</code></td><td>0,001</td><td>b (N·s/m)</td></tr>
+        <tr><td><code>B3</code></td><td>0,01</td><td>Δt (s)</td></tr>
+        <tr><td><code>A6</code></td><td>0</td><td>tempo inicial</td></tr>
+        <tr><td><code>B6</code></td><td>700</td><td>velocidade inicial</td></tr>
+        <tr><td><code>C6</code></td><td><code>=-$B$2*B6</code></td><td>força agora</td></tr>
+        <tr><td><code>A7</code></td><td><code>=A6+$B$3</code></td><td>tempo seguinte</td></tr>
+        <tr><td><code>B7</code></td><td><code>=B6+$B$3*C6/$B$1</code></td><td>velocidade seguinte</td></tr>
+        <tr><td><code>C7</code></td><td><code>=-$B$2*B7</code></td><td>força seguinte</td></tr>
+      </tbody>
+    </table></div>
+    <p>Selecione a linha 7 inteira e arraste para baixo por algumas centenas de linhas. Em
+    seguida faça um gráfico de dispersão do tempo contra a velocidade.</p>
+    <p>Os cifrões são o que fazem isso funcionar: massa, \(b\) e \(\Delta t\) ficam travados
+    no alto, enquanto a velocidade e a força caminham linha a linha.</p>
+    <p>A conferência é imediata, porque este caso tem solução exata,
+    \(v(t)=v_0e^{-bt/m}\), com tempo característico \(\tau=m/b=5\) s. Depois de cinco passos,
+    isto é, \(t=0{,}05\) s, a planilha dá \(693{,}028\) m/s e a exponencial dá
+    \(693{,}035\) m/s. A diferença de sete milésimos é o erro do método, e ela encolhe quando
+    \(\Delta t\) encolhe.</p>
+  </div>
+
+  <div class="bloco fisica">
+    <span class="rotulo">O preço do passo</span>
+    <p>Euler troca a curva por uma sequência de retas, e o erro de cada passo é proporcional a
+    \(\Delta t^2\). Acumulado ao longo de um intervalo fixo, o erro final fica proporcional a
+    \(\Delta t\): é um método de <b>primeira ordem</b>. Dividir o passo por dez reduz o erro
+    por dez e multiplica por dez o número de linhas.</p>
+    <p>Há um limite prático do outro lado. Se \(\Delta t\) for maior que o tempo característico
+    do problema, aqui \(\tau=m/b\), a simulação não apenas erra: ela diverge, com a velocidade
+    trocando de sinal e crescendo. Vale experimentar \(\Delta t=12\) s neste exemplo para ver
+    acontecer. O módulo 19 do curso de Python retoma esse assunto com métodos melhores.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s7">7. O projétil com resistência do ar</h2>
+
+  <p>Sem arrasto, o lançamento oblíquo tem solução fechada e é assunto de Física I:</p>
+
+  <p>\[x=v_{0x}t,\qquad y=v_{0y}t-\tfrac12gt^2,\qquad
+  h=\frac{v_0^2\sen^2\theta_0}{2g},\qquad A=\frac{v_0^2\sen2\theta_0}{g},\]</p>
+
+  <p>com o alcance máximo em \(\theta_0=45°\). Essas fórmulas valem enquanto a curvatura da
+  Terra, a variação de \(g\) com a altura e a resistência do ar puderem ser desprezadas.</p>
+
+  <p>Levando o arrasto em conta, com \(\vet{F}_{ar}=-b\vet{v}\), a força total passa a ser
+  \(\vet{F}=m\vet{g}-b\vet{v}\) e as equações se acoplam:</p>
+
+  <p>\[\frac{dv_x}{dt}=-\frac{b}{m}v_x,\qquad
+  \frac{dv_y}{dt}=-\frac{b}{m}v_y-g,\qquad
+  \frac{dx}{dt}=v_x,\qquad \frac{dy}{dt}=v_y.\]</p>
+
+  <p>Não há mais solução elementar, e é exatamente aí que a simulação ganha o seu lugar. Euler
+  em duas dimensões é a mesma receita, aplicada a cada componente:</p>
+
+  <p>\[F_{x,n}=-bv_{x,n},\qquad F_{y,n}=-bv_{y,n}-mg,\]</p>
+  <p>\[v_{x,n+1}=v_{x,n}+\Delta t\frac{F_{x,n}}{m},\qquad
+  v_{y,n+1}=v_{y,n}+\Delta t\frac{F_{y,n}}{m},\]</p>
+  <p>\[x_{n+1}=x_n+\Delta t\,v_{x,n},\qquad y_{n+1}=y_n+\Delta t\,v_{y,n}.\]</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 4.4: montando o lançamento com arrasto</span>
+    <p>Nas colunas A e B, os parâmetros fixos: massa, \(b\), \(g\), \(\Delta t\), \(v_0\) e
+    \(\theta_0\). Nas colunas C a I, uma coluna para cada grandeza que caminha:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>C: t     D: x     E: y     F: vx     G: vy     H: Fx     I: Fy</code></pre></div>
+    <p>Na primeira linha de simulação entram as condições iniciais,</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>C2:  0
+D2:  0
+E2:  0
+F2:  =$B$5*COS(RADIANOS($B$6))
+G2:  =$B$5*SEN(RADIANOS($B$6))
+H2:  =-$B$2*F2
+I2:  =-$B$2*G2 - $B$1*$B$3</code></pre></div>
+    <p>e na segunda linha, as fórmulas que serão arrastadas para baixo:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>C3:  =C2+$B$4
+D3:  =D2+$B$4*F2
+E3:  =E2+$B$4*G2
+F3:  =F2+$B$4*H2/$B$1
+G3:  =G2+$B$4*I2/$B$1
+H3:  =-$B$2*F3
+I3:  =-$B$2*G3 - $B$1*$B$3</code></pre></div>
+    <p>A trajetória é o gráfico de dispersão de \(y\) contra \(x\). Para encontrar a altura
+    máxima basta <code>=MÁXIMO(E2:E2000)</code>, e para o alcance, o valor de \(x\) na linha em
+    que \(y\) troca de sinal, que se acha com <code>CORRESP</code> e <code>ÍNDICE</code>.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s8">8. Exercícios e avaliação</h2>
+
+  <div class="bloco ex">
+    <ol>
+      <li><b>4.1</b> Monte o gráfico do exemplo 4.1 com os três líquidos e depois só com os
+      dois mais densos, ajustando a escala. Entregue os dois gráficos e um parágrafo sobre o
+      que cada um permite ver.</li>
+
+      <li><b>4.2</b> Faça o gráfico de dispersão de \(T^2\) contra \(L\) para os dados do
+      pêndulo, com barras de erro, e ajuste uma reta. Obtenha \(g\) da inclinação, que vale
+      \(4\pi^2/g\), e compare com a média da aula 3.</li>
+
+      <li><b>4.3</b> Faça o gráfico dos resíduos do ajuste anterior. Diga se eles mostram
+      padrão e o que isso significa.</li>
+
+      <li><b>4.4</b> Execute a linearização do exemplo 4.2 e obtenha o expoente. Discuta se o
+      valor encontrado é compatível com \(0{,}5\), considerando a dispersão dos dados.</li>
+
+      <li><b>4.5</b> Monte a simulação da bala do exemplo 4.3 e acrescente uma coluna com a
+      solução exata \(v_0e^{-bt/m}\) e outra com a diferença entre as duas. Refaça com
+      \(\Delta t\) igual a \(0{,}1\), \(0{,}01\) e \(0{,}001\) s e mostre, num gráfico, que o
+      erro final cai proporcionalmente a \(\Delta t\).</li>
+
+      <li><b>4.6</b> Na mesma simulação, use \(\Delta t=12\) s e descreva o que acontece.
+      Explique por que o método diverge e relacione o limite com o tempo característico
+      \(m/b\).</li>
+    </ol>
+  </div>
+
+  <div class="bloco def">
+    <span class="rotulo">Avaliação da unidade</span>
+    <p>Calcule, pelo método de Euler, a trajetória de uma partícula sujeita às forças
+    \(\vet{F}=\left(-bv_x,\,-bv_y-mg\right)\), com \(b=0{,}005\) N·s/m, \(m=0{,}1\) kg e
+    \(g=9{,}8\) m/s². Parta de \(x_0=0\) e \(y_0=0\) e escolha você mesmo a velocidade de
+    lançamento \(v_0\) e o ângulo \(\theta_0\).</p>
+    <p>Com a simulação pronta, obtenha a altura máxima, o alcance, que é o ponto aproximado em
+    que o projétil toca o chão, e o tempo de voo. Compare cada um dos três com o valor que as
+    fórmulas sem resistência do ar dariam para o mesmo lançamento.</p>
+    <p>Entregue a planilha com o gráfico da trajetória e complete a frase: "A diferença da
+    altura máxima devido à resistência do ar com b = ⟨valor⟩ foi ⟨valor⟩."</p>
+  </div>
+
+  <nav class="nav-aulas">
+    <a href="aula03.html"><small>Módulo anterior</small>← 3. Dados e ajuste</a>
+    <a class="prox" href="aula09.html"><small>Próximo módulo</small>9. Python e Spyder →</a>
+  </nav>
+
+</main>
+</div>
+
+<footer class="rodape">
+  <img class="logo-rodape" src="assets/img/logo-lfca.png" alt="LFCA | URCA">
+  <p><strong>Prof. Apiano Morais</strong> · <a href="mailto:apiano.morais@urca.br">apiano.morais@urca.br</a><br>
+  Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
+</footer>
+
+</body>
+</html>

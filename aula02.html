@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 2: Fórmulas, referências e funções | Informática para Física</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611091010">
+<script src="assets/js/comum.js?v=202611091010"></script>
+<script src="assets/js/codigo.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="index.html">Informática para Física <span>· LFCA/URCA</span></a>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <span class="grupo">Planilhas</span>
+      <a href="aula01.html" class="num" title="Módulo 1: A planilha como caderno de laboratório">1</a>
+      <a href="aula02.html" class="num ativo" title="Módulo 2: Fórmulas, referências e funções">2</a>
+      <a href="aula03.html" class="num" title="Módulo 3: Dados experimentais na planilha">3</a>
+      <a href="aula04.html" class="num" title="Módulo 4: Gráficos em planilha">4</a>
+      <span class="grupo">Python</span>
+      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+    </nav>
+  </div>
+</header>
+
+<div class="envoltorio">
+
+<aside class="lateral">
+  <h4>Nesta aula</h4>
+  <ol>
+    <li><a href="#s1">1. A fórmula e os operadores</a></li>
+    <li><a href="#s2">2. Referência relativa, absoluta e mista</a></li>
+    <li><a href="#s3">3. As funções de sempre</a></li>
+    <li><a href="#s4">4. Buscar numa tabela: PROCV, CORRESP e ÍNDICE</a></li>
+    <li><a href="#s5">5. Texto: montar e desmontar</a></li>
+    <li><a href="#s6">6. Decidir: SE, SOMASE e MÉDIASE</a></li>
+    <li><a href="#s7">7. Quando a fórmula dá erro</a></li>
+    <li><a href="#s8">8. Exercícios</a></li>
+  </ol>
+</aside>
+
+<main class="conteudo">
+
+  <p class="chapeu">Aula 2 · Planilhas eletrônicas</p>
+  <h1>Fórmulas, referências e funções</h1>
+  <p class="subtitulo">Esta é a aula que faz a planilha trabalhar. Aqui entram o sinal de
+  cifrão que trava uma referência, as funções que buscam valores em outra tabela e as que
+  desmontam um texto para extrair dele um número, que é a situação em que quase todo dado real
+  chega.</p>
+
+  <div class="bloco def">
+    <span class="rotulo">Nesta aula você vai</span>
+    <ul>
+      <li>Escrever fórmulas com os operadores e entender a ordem em que eles são
+      aplicados.</li>
+      <li>Usar referências relativas, absolutas e mistas, e saber qual delas o problema
+      pede.</li>
+      <li>Buscar valores numa tabela de consulta com <code>PROCV</code>, <code>CORRESP</code> e
+      <code>ÍNDICE</code>.</li>
+      <li>Extrair números de dentro de um texto e montar resultados formatados.</li>
+      <li>Calcular médias e somas condicionais e ler as mensagens de erro.</li>
+    </ul>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s1">1. A fórmula e os operadores</h2>
+
+  <p>Toda fórmula começa com <code>=</code>. Esse sinal é o que diz à planilha que o que vem a
+  seguir não é para ser exibido, e sim calculado.</p>
+
+  <p>Os operadores aritméticos são <code>+</code>, <code>-</code>, <code>*</code>,
+  <code>/</code> e <code>^</code> para potência. A ordem de precedência é a da matemática:
+  potência primeiro, depois multiplicação e divisão, por último soma e subtração, com
+  parênteses mandando em tudo. Há também os de comparação, <code>=</code>, <code>&lt;</code>,
+  <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> e <code>&lt;&gt;</code> para
+  diferente, que produzem <code>VERDADEIRO</code> ou <code>FALSO</code>, e o operador
+  <code>&amp;</code>, que gruda dois textos.</p>
+
+  <div class="bloco fisica">
+    <span class="rotulo">O erro de precedência mais caro</span>
+    <p>Escrever <code>=4*PI()^2*B2/D2^2</code> funciona, porque a potência vem antes da
+    divisão. Mas escrever <code>=B2/2*D2</code> quando se queria \(B_2/(2D_2)\) devolve
+    \(B_2D_2/2\), que é outra coisa, e a planilha não reclama.</p>
+    <p>A regra prática é simples: <b>sempre que houver divisão com mais de um fator no
+    denominador, use parênteses</b>. Eles não custam nada e evitam um erro que não dá
+    sintoma.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s2">2. Referência relativa, absoluta e mista</h2>
+
+  <p>Na aula anterior, arrastar <code>=E2*F2</code> de <code>G2</code> para <code>G3</code>
+  produziu <code>=E3*F3</code>. Os endereços andaram junto, porque uma referência escrita assim
+  é <strong>relativa</strong>: a planilha não guarda "a célula E2", e sim "a célula duas
+  colunas à esquerda, na mesma linha".</p>
+
+  <p>Na maior parte do tempo é isso que se quer. Mas considere uma coluna de medidas que
+  precisa ser dividida por um valor único, guardado numa célula só, digamos o comprimento do
+  pêndulo em <code>B1</code>. Arrastar <code>=A2/B1</code> para baixo produz
+  <code>=A3/B2</code>, e <code>B2</code> está vazia. O resultado é uma coluna de erros ou, pior,
+  de zeros.</p>
+
+  <p>A solução é o cifrão. Pondo <code>$</code> antes da letra, a coluna fica travada; antes do
+  número, a linha fica travada. Com os dois, a referência é <strong>absoluta</strong> e não se
+  move de jeito nenhum:</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=A2/$B$1      a célula B1, sempre, para onde quer que a fórmula seja copiada
+=A2/B$1       trava a linha 1; a coluna acompanha se a fórmula for copiada para o lado
+=A2/$B1       trava a coluna B; a linha acompanha se a fórmula for copiada para baixo
+=A2/B1        não trava nada</code></pre></div>
+
+  <p>As duas do meio são as referências <strong>mistas</strong>, e elas resolvem um caso muito
+  comum: a tabela de mão dupla, em que uma coluna de valores precisa ser combinada com uma
+  linha de valores. O atalho para alternar entre as quatro formas é a tecla <b>F4</b> com o
+  cursor sobre a referência.</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 2.1: parâmetros fixos numa simulação</span>
+    <p>Numa planilha de queda com arrasto, os parâmetros ficam no alto, em células próprias:
+    <code>B1</code> guarda a massa, <code>B2</code> o coeficiente \(b\), <code>B3</code> o
+    passo \(\Delta t\). A coluna de velocidade usa os três:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>=D2 - $B$3*$B$2/$B$1*D2</code></pre></div>
+    <p>Arrastando essa fórmula por mil linhas, os três parâmetros continuam apontando para o
+    alto da planilha e só <code>D2</code> caminha. Mudar a massa em <code>B1</code> refaz as
+    mil linhas de uma vez, que é exatamente o que se quer de uma simulação. A aula 4 monta essa
+    planilha inteira.</p>
+  </div>
+
+  <!-- ================================================== -->
+  <h2 id="s3">3. As funções de sempre</h2>
+
+  <p>Uma função é uma fórmula pronta, com nome e argumentos separados por ponto e vírgula. As
+  que aparecem em praticamente todo trabalho de laboratório são poucas:</p>
+
+  <div class="tabela-rolavel"><table>
+    <thead><tr><th>Função</th><th>O que faz</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><td><code>SOMA</code></td><td>soma um intervalo</td><td><code>=SOMA(G2:G41)</code></td></tr>
+      <tr><td><code>MÉDIA</code></td><td>média aritmética</td><td><code>=MÉDIA(F2:F41)</code></td></tr>
+      <tr><td><code>MED</code></td><td>mediana</td><td><code>=MED(F2:F41)</code></td></tr>
+      <tr><td><code>DESVPAD.A</code></td><td>desvio padrão amostral</td><td><code>=DESVPAD.A(F2:F41)</code></td></tr>
+      <tr><td><code>CONT.NÚM</code></td><td>quantos valores numéricos há</td><td><code>=CONT.NÚM(F2:F41)</code></td></tr>
+      <tr><td><code>MÁXIMO</code> e <code>MÍNIMO</code></td><td>extremos</td><td><code>=MÁXIMO(F2:F41)</code></td></tr>
+      <tr><td><code>MENOR</code> e <code>MAIOR</code></td><td>o k-ésimo menor ou maior</td><td><code>=MENOR(F2:F41;2)</code></td></tr>
+      <tr><td><code>RAIZ</code>, <code>ABS</code>, <code>EXP</code>, <code>LN</code>, <code>LOG10</code></td><td>as de sempre</td><td><code>=RAIZ(B2)</code></td></tr>
+      <tr><td><code>SEN</code>, <code>COS</code>, <code>TAN</code></td><td>em radianos</td><td><code>=SEN(RADIANOS(30))</code></td></tr>
+      <tr><td><code>PI()</code></td><td>a constante</td><td><code>=4*PI()^2*B2/D2^2</code></td></tr>
+      <tr><td><code>ARRED</code></td><td>arredonda para n casas</td><td><code>=ARRED(F2;3)</code></td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Duas observações que custam caro quando esquecidas. As funções trigonométricas trabalham
+  em <strong>radianos</strong>, de modo que um ângulo em graus precisa passar por
+  <code>RADIANOS()</code>. E <code>MENOR(intervalo;1)</code> é o menor valor,
+  <code>MENOR(intervalo;2)</code> é o segundo menor, e assim por diante, o que é útil para
+  encontrar o segundo melhor resultado sem precisar ordenar a tabela.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s4">4. Buscar numa tabela: PROCV, CORRESP e ÍNDICE</h2>
+
+  <p>A situação é esta: existe uma tabela de referência, digamos com as propriedades dos
+  elementos químicos, e existe uma planilha de trabalho em que aparece o nome de um elemento.
+  Queremos que a massa atômica apareça sozinha, sem ninguém copiar à mão.</p>
+
+  <p>A função clássica para isso é <strong>PROCV</strong>, de procura vertical:</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=PROCV(valor_procurado; intervalo_da_tabela; número_da_coluna; [tipo])</code></pre></div>
+
+  <p>Ela procura o <code>valor_procurado</code> na <strong>primeira coluna</strong> do
+  intervalo, desce até encontrá-lo e devolve o valor que está na coluna de número indicado,
+  contando a partir da primeira do intervalo. O quarto argumento deve ser
+  <code>FALSO</code> para busca exata, e esquecer isso é a causa de metade dos resultados
+  errados com <code>PROCV</code>, porque o padrão é a busca aproximada, que exige a tabela
+  ordenada.</p>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 2.2: propriedades de elementos químicos</span>
+    <p>Na aba <code>Tabela</code>, as colunas A a E guardam elemento, símbolo, número atômico,
+    massa atômica e densidade, com os dados do hidrogênio, hélio, carbono, oxigênio e
+    alumínio. Na planilha de trabalho, a célula <code>A2</code> tem o nome de um elemento.
+    Então:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>=PROCV($A2; Tabela!$A$2:$E$20; 4; FALSO)     massa atômica
+=PROCV($A2; Tabela!$A$2:$E$20; 5; FALSO)     densidade</code></pre></div>
+    <p>Repare nos cifrões. O intervalo da tabela é absoluto, porque ele é o mesmo para toda
+    linha; e a coluna do valor procurado é travada com <code>$A2</code>, de modo que a fórmula
+    possa ser arrastada <b>para o lado</b> sem deixar de olhar para a coluna A.</p>
+  </div>
+
+  <p>O <code>PROCV</code> tem uma limitação que incomoda: ele só olha para a direita. Se o que
+  se conhece é a massa atômica e o que se quer é o nome, que está numa coluna à esquerda, ele
+  não serve. A dupla <strong>ÍNDICE</strong> e <strong>CORRESP</strong> resolve isso e é mais
+  flexível:</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=CORRESP(valor_procurado; intervalo_de_uma_coluna; 0)    devolve a POSIÇÃO, não o valor
+=ÍNDICE(intervalo; posição)                              devolve o valor naquela posição
+
+=ÍNDICE(Tabela!$A$2:$A$20; CORRESP($D2; Tabela!$D$2:$D$20; 0))</code></pre></div>
+
+  <p>A leitura é esta: <code>CORRESP</code> encontra em que linha da coluna de massas está o
+  valor procurado, e <code>ÍNDICE</code> pega o nome que está naquela mesma linha. O zero no
+  terceiro argumento de <code>CORRESP</code> pede correspondência exata, e tem o mesmo papel
+  que o <code>FALSO</code> do <code>PROCV</code>.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s5">5. Texto: montar e desmontar</h2>
+
+  <p>Dados reais raramente chegam em colunas limpas. Um registrador de dados, um arquivo de
+  log ou um caderno digitado produzem linhas como esta, com tudo numa célula só:</p>
+
+  <div class="codigo" data-lingua="Texto"><pre><code>Exp#1 - Comprimento: 1.00m - Tempo(10osc): 19.82s</code></pre></div>
+
+  <p>Para usar esses números é preciso extraí-los, e as três funções que fazem isso são
+  <code>PROCURAR</code>, que acha a posição de um texto dentro de outro;
+  <code>EXT.TEXTO</code>, que recorta um pedaço a partir de uma posição; e <code>VALOR</code>,
+  que converte o pedaço recortado em número.</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=PROCURAR(texto_procurado; onde_procurar; [posição_inicial])
+=EXT.TEXTO(texto; posição_inicial; quantos_caracteres)
+=VALOR(texto)</code></pre></div>
+
+  <div class="bloco ex">
+    <span class="rotulo">Exemplo 2.3: desmontando o registro do pêndulo</span>
+    <p>Com o texto acima em <code>A2</code>, o número do experimento está entre o
+    <code>#</code> e o primeiro espaço depois dele:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>=VALOR(EXT.TEXTO(A2;
+        PROCURAR("#";A2)+1;
+        PROCURAR(" ";A2;PROCURAR("#";A2)) - PROCURAR("#";A2) - 1))</code></pre></div>
+    <p>O comprimento vem logo depois de <code>"Comprimento: "</code>, que tem 13 caracteres, e
+    termina no <code>m</code>:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>=VALOR(SUBSTITUIR(EXT.TEXTO(A2;
+        PROCURAR("Comprimento: ";A2)+13;
+        PROCURAR("m";A2;PROCURAR("Comprimento: ";A2)+13)
+          - PROCURAR("Comprimento: ";A2) - 13);".";","))</code></pre></div>
+    <p>E o tempo vem depois de <code>"Tempo(10osc): "</code>, que tem 14 caracteres, com cinco
+    dígitos de largura fixa:</p>
+    <div class="codigo" data-lingua="Fórmula"><pre><code>=VALOR(SUBSTITUIR(EXT.TEXTO(A2; PROCURAR("Tempo(10osc): ";A2)+14; 5);".";","))</code></pre></div>
+    <p>Daí em diante é a física da aula 1: o período é o tempo dividido por dez e a gravidade
+    sai de \(g=4\pi^2L/T^2\).</p>
+  </div>
+
+  <div class="bloco fisica">
+    <span class="rotulo">A armadilha do ponto decimal</span>
+    <p>Repare no <code>SUBSTITUIR</code> das duas últimas fórmulas, que não aparece na
+    primeira. Ele está lá porque o texto de origem escreve os decimais com <b>ponto</b>,
+    enquanto a planilha, em português, usa <b>vírgula</b>.</p>
+    <p>Sem essa troca, <code>VALOR("1.00")</code> não devolve 1: devolve <b>100</b>, porque o
+    ponto é lido como separador de milhar. E <code>VALOR("19.82")</code> devolve
+    <b>1982</b>. A conta seguinte continua rodando, sem erro nenhum na tela, e produz uma
+    gravidade da ordem de \(10^{-4}\) m/s². É o tipo de defeito que só se encontra olhando o
+    resultado e perguntando se ele faz sentido físico.</p>
+  </div>
+
+  <p>O caminho inverso, montar um texto a partir de números, se faz com <code>&amp;</code> e
+  com <strong>TEXTO</strong>, que formata um número segundo um padrão:</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=TEXTO(123,456; "0,00")              devolve 123,46
+=TEXTO(0,3456; "0,00%")              devolve 34,56%
+=TEXTO(12345; "0,00E+00")            devolve 1,23E+04
+="g = " &amp; TEXTO(F2; "0,00") &amp; " m/s²"   devolve g = 9,87 m/s²</code></pre></div>
+
+  <p>Essa última linha é a maneira certa de apresentar um resultado com unidade. A coluna
+  <code>F</code> continua numérica e serve para contas; a coluna de apresentação é outra, e é
+  texto.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s6">6. Decidir: SE, SOMASE e MÉDIASE</h2>
+
+  <p>A função <strong>SE</strong> escolhe entre dois resultados conforme uma condição:</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=SE(condição; valor_se_verdadeiro; valor_se_falso)
+
+=SE(F2 &gt; 10; "acima"; "abaixo")
+=SE(ABS(F2-9,81) &lt; 0,1; "compatível"; "revisar")</code></pre></div>
+
+  <p>As versões condicionais das funções de agregação são ainda mais úteis num laboratório,
+  porque permitem separar subconjuntos sem reorganizar a tabela:</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=SOMASE(intervalo_critério; critério; [intervalo_soma])
+=MÉDIASE(intervalo_critério; critério; [intervalo_média])
+=CONT.SE(intervalo; critério)
+
+=MÉDIASE(C2:C16; 1; F2:F16)      média de g só nos experimentos com L = 1,00 m
+=CONT.SE(F2:F16; "&gt;=10")         quantos valores de g ficaram em 10 ou acima</code></pre></div>
+
+  <p>O critério pode ser um número, um texto ou uma comparação escrita entre aspas. Essa última
+  forma, com o operador dentro das aspas, é a que a aula 3 usa para construir um histograma
+  inteiro sem nenhuma ferramenta especial.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s7">7. Quando a fórmula dá erro</h2>
+
+  <p>As mensagens de erro são curtas e dizem exatamente o que houve. Vale decorá-las, porque
+  ler o erro é mais rápido que adivinhar:</p>
+
+  <div class="tabela-rolavel"><table>
+    <thead><tr><th>Erro</th><th>Significa</th><th>Causa típica</th></tr></thead>
+    <tbody>
+      <tr><td><code>#DIV/0!</code></td><td>divisão por zero</td><td>a célula do denominador está vazia</td></tr>
+      <tr><td><code>#VALOR!</code></td><td>tipo errado</td><td>conta com uma célula que contém texto</td></tr>
+      <tr><td><code>#N/D</code></td><td>não encontrado</td><td><code>PROCV</code> ou <code>CORRESP</code> não acharam o valor</td></tr>
+      <tr><td><code>#REF!</code></td><td>referência perdida</td><td>a célula apontada foi apagada</td></tr>
+      <tr><td><code>#NOME?</code></td><td>nome desconhecido</td><td>função escrita errado, ou texto sem aspas</td></tr>
+      <tr><td><code>#NÚM!</code></td><td>número impossível</td><td>raiz de negativo, resultado grande demais</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Para esconder um erro esperado, e só nesse caso, existe o <code>SEERRO</code>:</p>
+
+  <div class="codigo" data-lingua="Fórmula"><pre><code>=SEERRO(PROCV(A2; Tabela!$A$2:$E$20; 4; FALSO); "não cadastrado")</code></pre></div>
+
+  <p>Convém usá-lo com parcimônia. Ele é apropriado quando a ausência do dado é uma
+  possibilidade prevista, e é perigoso quando serve para calar um erro que você não
+  entendeu.</p>
+
+  <!-- ================================================== -->
+  <h2 id="s8">8. Exercícios</h2>
+
+  <div class="bloco ex">
+    <ol>
+      <li><b>2.1</b> Monte a tabela de cinco elementos químicos numa aba de consulta e, noutra
+      aba, uma lista com os nomes em ordem diferente. Traga a massa atômica e a densidade com
+      <code>PROCV</code>. Em seguida refaça a busca da densidade com <code>ÍNDICE</code> e
+      <code>CORRESP</code> e explique em que situação a segunda forma é a única
+      possível.</li>
+
+      <li><b>2.2</b> Cole numa coluna os quinze registros de texto do experimento do pêndulo,
+      no formato do exemplo 2.3. Extraia número, comprimento e tempo, calcule período e
+      gravidade e produza uma coluna de apresentação no formato
+      <code>g = 9,87 m/s²</code>.</li>
+
+      <li><b>2.3</b> Na mesma planilha, encontre o menor e o maior valor de \(g\) com
+      <code>MENOR</code> e <code>MAIOR</code>, e depois o segundo menor e o terceiro maior.
+      Combine <code>ÍNDICE</code> com <code>CORRESP</code> e <code>MENOR</code> para descobrir
+      <b>qual experimento</b> produziu o menor valor.</li>
+
+      <li><b>2.4</b> Ainda na mesma planilha, calcule com <code>MÉDIASE</code> a média de
+      \(g\) considerando só os experimentos com comprimento de 1,00 m, e compare com a média de
+      todos. Discuta em duas linhas se a diferença é relevante.</li>
+
+      <li><b>2.5</b> Faça de propósito o erro da armadilha do ponto decimal: extraia o tempo
+      sem o <code>SUBSTITUIR</code> e calcule \(g\). Anote o valor obtido, explique por que ele
+      saiu assim e diga qual verificação física o teria denunciado de imediato.</li>
+
+      <li><b>2.6</b> Crie uma tabela de mão dupla do alcance de um projétil, com a velocidade
+      inicial variando nas linhas, de 10 a 50 m/s, e o ângulo nas colunas, de 15° a 75°, usando
+      \(A=v_0^2\sen(2\theta_0)/g\). Escreva <b>uma única</b> fórmula na primeira célula, com
+      referências mistas, e preencha a tabela inteira arrastando. Confirme que o máximo de cada
+      linha cai em 45°.</li>
+    </ol>
+  </div>
+
+  <nav class="nav-aulas">
+    <a href="aula01.html"><small>Módulo anterior</small>← 1. A planilha</a>
+    <a class="prox" href="aula03.html"><small>Próximo módulo</small>3. Dados e ajuste →</a>
+  </nav>
+
+</main>
+</div>
+
+<footer class="rodape">
+  <img class="logo-rodape" src="assets/img/logo-lfca.png" alt="LFCA | URCA">
+  <p><strong>Prof. Apiano Morais</strong> · <a href="mailto:apiano.morais@urca.br">apiano.morais@urca.br</a><br>
+  Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
+</footer>
+
+</body>
+</html>
