@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informática para Física | LFCA/URCA</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611090946">
+<script src="assets/js/codigo.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="index.html">Informática para Física <span>· LFCA/URCA</span></a>
+    <nav class="menu">
+      <a href="index.html" class="ativo">Início</a>
+      <span class="grupo">Python</span>
+      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+    </nav>
+  </div>
+</header>
+
+<div class="envoltorio">
+<main class="conteudo">
+
+  <div class="heroi">
+    <span class="placa-logo">
+      <img src="assets/img/logo-lfca.png" alt="LFCA | URCA (Laboratório de Física Computacional Aplicada)" style="width: 80%; height: auto;">
+    </span>
+    <h1>Informática para Física</h1>
+    <p>Material interativo da disciplina · DF050</p>
+    <p class="meta">
+      Prof. Apiano Morais · Laboratório de Física Computacional Aplicada (LFCA)<br>
+      Universidade Regional do Cariri (URCA) · apiano.morais@urca.br
+    </p>
+  </div>
+
+  <h2 id="apresentacao">Três ferramentas, um só fluxo de trabalho</h2>
+
+  <p>Um experimento de laboratório produz uma tabela de medidas. Essa tabela precisa ser
+  organizada, as incertezas precisam ser propagadas, um ajuste precisa ser feito, um gráfico
+  precisa ser desenhado e tudo isso precisa chegar a outra pessoa na forma de um relatório que
+  ela consiga ler. Nenhuma dessas etapas é física, e todas elas tomam tempo de quem faz
+  física.</p>
+
+  <p>Esta disciplina trata das três ferramentas que dão conta delas. A <strong>planilha</strong>
+  organiza e explora os dados com rapidez e sem programar. O <strong>LaTeX</strong> compõe o
+  texto científico, com equações, figuras numeradas e bibliografia que se mantêm coerentes
+  sozinhas. E o <strong>Python</strong> automatiza o que se repete, calcula o que a planilha
+  não alcança e produz gráficos em qualidade de publicação.</p>
+
+  <p>As três não competem entre si: elas se encaixam. O curso termina com um trabalho em que os
+  dados saem de uma planilha, passam por um programa em Python e chegam a um relatório em
+  LaTeX, que é exatamente o caminho que um artigo de física percorre.</p>
+
+  <div class="bloco def">
+    <span class="rotulo">Como usar este material</span>
+    <p>Cada aula é uma página só, com os códigos prontos para copiar. O botão
+    <b>copiar</b> no canto de cada bloco põe o programa na área de transferência, de onde ele
+    vai direto para o Spyder. Os programas são para serem rodados, quebrados e consertados:
+    ler código sem executar é como ler uma partitura sem tocar.</p>
+    <p>As ferramentas oficiais da disciplina são o <b>Google Planilhas</b>, o
+    <b>Overleaf</b> e o <b>Spyder</b>, todas gratuitas. As duas primeiras rodam no navegador e
+    não exigem instalação; o Spyder vem junto com a distribuição Anaconda.</p>
+  </div>
+
+    <h3 class="unidade">Planilhas eletrônicas</h3>
+    <div class="cartoes">
+    <div class="cartao em-preparo">
+      <span class="numero">Aula 1</span>
+      <h3>A planilha como caderno de laboratório</h3>
+      <p>Criar, formatar e organizar uma planilha no Google Planilhas; tipos de dado, congelamento de linhas, validação e o hábito de separar dados brutos de dados calculados.</p>
+    </div>
+    <div class="cartao em-preparo">
+      <span class="numero">Aula 2</span>
+      <h3>Fórmulas, referências e funções</h3>
+      <p>Referências relativas, absolutas e mistas, operadores, funções matemáticas, estatísticas e lógicas, e o que fazer quando a fórmula devolve erro.</p>
+    </div>
+    <div class="cartao em-preparo">
+      <span class="numero">Aula 3</span>
+      <h3>Dados experimentais na planilha</h3>
+      <p>Média, desvio padrão, incerteza do valor médio, algarismos significativos e ajuste linear por mínimos quadrados, com LINEST e os coeficientes com incerteza.</p>
+    </div>
+    <div class="cartao em-preparo">
+      <span class="numero">Aula 4</span>
+      <h3>Gráficos em planilha</h3>
+      <p>Dispersão com barras de erro, escalas logarítmicas, linearização, linha de tendência e a leitura física dos coeficientes. O que faz um gráfico ser honesto.</p>
+    </div>
+    </div>
+    <h3 class="unidade">LaTeX e Overleaf</h3>
+    <div class="cartoes">
+    <div class="cartao em-preparo">
+      <span class="numero">Aula 5</span>
+      <h3>O primeiro documento no Overleaf</h3>
+      <p>Estrutura de um arquivo .tex, classes e pacotes, compilação, erros de compilação e como lê-los, e o primeiro relatório com título, seções e parágrafos.</p>
+    </div>
+    <div class="cartao em-preparo">
+      <span class="numero">Aula 6</span>
+      <h3>Equações em LaTeX</h3>
+      <p>Modo em linha e destacado, frações, índices, raízes, somatórios, integrais, matrizes, alinhamento de várias linhas e os símbolos que a física usa todo dia.</p>
+    </div>
+    <div class="cartao em-preparo">
+      <span class="numero">Aula 7</span>
+      <h3>Figuras, tabelas e referências cruzadas</h3>
+      <p>Inserir e posicionar figuras, montar tabelas legíveis, legendas, rótulos e referências cruzadas que se renumeram sozinhas.</p>
+    </div>
+    <div class="cartao em-preparo">
+      <span class="numero">Aula 8</span>
+      <h3>Bibliografia, Beamer e o relatório completo</h3>
+      <p>Citações e referências com BibTeX, apresentação em Beamer e a montagem do relatório de laboratório do começo ao fim.</p>
+    </div>
+    </div>
+    <h3 class="unidade">Programação em Python</h3>
+    <div class="cartoes">
+    <a class="cartao" href="aula09.html">
+      <span class="numero">Aula 9</span>
+      <h3>Introdução ao Python e ao Spyder</h3>
+      <p>A linguagem, o Spyder e os primeiros programas: print, variáveis, o módulo math e as primeiras aplicações em física.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">Spyder</span>
+        <span class="etiqueta">print</span>
+        <span class="etiqueta">math</span>
+      </div>
+    </a>
+    <a class="cartao" href="aula10.html">
+      <span class="numero">Aula 10</span>
+      <h3>Tipos de dados e variáveis</h3>
+      <p>Inteiro, real, texto e lógico; operadores, conversões entre tipos e formatação de números com f-strings.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">Tipos</span>
+        <span class="etiqueta">f-strings</span>
+      </div>
+    </a>
+    <a class="cartao" href="aula11.html">
+      <span class="numero">Aula 11</span>
+      <h3>Estruturas de dados: listas e tuplas</h3>
+      <p>Listas e tuplas: criar, indexar, fatiar, percorrer e modificar, com aplicações a séries de medidas.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">Listas</span>
+        <span class="etiqueta">Tuplas</span>
+      </div>
+    </a>
+    <a class="cartao" href="aula12.html">
+      <span class="numero">Aula 12</span>
+      <h3>Estruturas de controle</h3>
+      <p>Condicionais, laços for e while, laços aninhados e as aplicações que eles abrem.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">if</span>
+        <span class="etiqueta">for</span>
+        <span class="etiqueta">while</span>
+      </div>
+    </a>
+    <a class="cartao" href="aula13.html">
+      <span class="numero">Aula 13</span>
+      <h3>Funções e modularização</h3>
+      <p>Definir funções, parâmetros e argumentos, escopo de variáveis, documentação e boas práticas.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">def</span>
+        <span class="etiqueta">Escopo</span>
+      </div>
+    </a>
+    <a class="cartao" href="aula14.html">
+      <span class="numero">Aula 14</span>
+      <h3>Introdução ao NumPy</h3>
+      <p>Arrays, criação, indexação, fatiamento e operações vetorizadas, com a comparação de desempenho contra listas.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">NumPy</span>
+        <span class="etiqueta">Vetorização</span>
+      </div>
+    </a>
+    <a class="cartao" href="aula15.html">
+      <span class="numero">Aula 15</span>
+      <h3>Introdução ao Matplotlib: gráficos básicos</h3>
+      <p>O primeiro gráfico, gráficos de linha, dispersão, barras e histogramas, e como salvar a figura.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">Matplotlib</span>
+        <span class="etiqueta">Gráficos</span>
+      </div>
+    </a>
+    <a class="cartao" href="aula16.html">
+      <span class="numero">Aula 16</span>
+      <h3>Matplotlib avançado: personalização e visualizações especiais</h3>
+      <p>Estilos e temas, paletas de cor, visualizações especiais, anotações e exportação em qualidade de publicação.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">Estilos</span>
+        <span class="etiqueta">Exportação</span>
+      </div>
+    </a>
+    <div class="cartao em-preparo">
+      <span class="numero">Aula 17</span>
+      <h3>Entrada e saída: teclado, arquivos e CSV</h3>
+      <p>Ler do teclado, validar entradas com try e except, abrir, escrever e ler arquivos de texto e CSV.</p>
+    </div>
+    <a class="cartao" href="aula18.html">
+      <span class="numero">Aula 18</span>
+      <h3>Análise de dados com Pandas</h3>
+      <p>Series e DataFrame, carregamento de dados experimentais, seleção, filtros, agrupamento e dados faltantes.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">Pandas</span>
+        <span class="etiqueta">DataFrame</span>
+      </div>
+    </a>
+    <a class="cartao" href="aula19.html">
+      <span class="numero">Aula 19</span>
+      <h3>Métodos numéricos com SciPy</h3>
+      <p>Ajuste de curvas com curve_fit, integração, equações diferenciais com solve_ivp, raízes e interpolação.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">SciPy</span>
+        <span class="etiqueta">curve_fit</span>
+      </div>
+    </a>
+    <a class="cartao" href="aula20.html">
+      <span class="numero">Aula 20</span>
+      <h3>Matemática simbólica com SymPy</h3>
+      <p>Símbolos e expressões, derivadas, integrais, equações, séries de Taylor e saída automática em LaTeX.</p>
+      <div class="etiquetas">
+        <span class="etiqueta">SymPy</span>
+        <span class="etiqueta">Simbólico</span>
+      </div>
+    </a>
+    </div>
+
+</main>
+</div>
+
+<footer class="rodape">
+  <img class="logo-rodape" src="assets/img/logo-lfca.png" alt="LFCA | URCA">
+  <p><strong>Prof. Apiano Morais</strong> · <a href="mailto:apiano.morais@urca.br">apiano.morais@urca.br</a><br>
+  Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
+</footer>
+
+<script src="assets/js/comum.js?v=202611090946"></script>
+</body>
+</html>

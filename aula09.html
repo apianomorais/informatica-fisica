@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 9: Introdução ao Python e ao Spyder | Informática para Física</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611090946">
+<script src="assets/js/codigo.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="index.html">Informática para Física <span>· LFCA/URCA</span></a>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <span class="grupo">Python</span>
+      <a href="aula09.html" class="num ativo" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
+      <a href="aula11.html" class="num" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+    </nav>
+  </div>
+</header>
+
+<div class="envoltorio">
+
+<aside class="lateral">
+  <h4>Nesta aula</h4>
+  <ol>
+    <li><a href="#s1">1. Por que Python na Física?</a></li>
+    <li><a href="#s2">2. Conhecendo o Spyder</a></li>
+    <li><a href="#s3">3. Primeiros códigos</a></li>
+    <li><a href="#s4">4. Física na prática!</a></li>
+    <li><a href="#s5">5. Desafios para casa</a></li>
+  </ol>
+</aside>
+
+<main class="conteudo">
+
+  <p class="chapeu">Aula 9 · Programação em Python</p>
+  <h1>Introdução ao Python e ao Spyder</h1>
+  <p class="subtitulo">A linguagem, o ambiente de trabalho e os primeiros programas. Tudo o que vem depois nesta unidade se apoia no que acontece aqui: escrever, rodar, errar e ler a mensagem de erro.</p>
+
+  <p>Bem-vindos ao mundo da programação científica! Hoje vocês vão descobrir por que Python se tornou a linguagem favorita dos físicos e como usar o Spyder para resolver problemas reais da Física.</p>
+
+  <h2 id="s1">1. Por que Python na Física?</h2>
+
+  <p>Python não é apenas mais uma linguagem de programação - é a ferramenta que está revolucionando a pesquisa em Física:</p>
+
+  <p><strong>Onde Python é usado em Física:</strong></p>
+
+  <ul><li><strong>CERN:</strong> Análise de dados do LHC (Large Hadron Collider)</li><li><strong>NASA:</strong> Processamento de imagens de telescópios espaciais</li><li><strong>Gravitational waves:</strong> LIGO usa Python para detectar ondas gravitacionais</li><li><strong>Astrofísica:</strong> Simulações de galáxias e estrelas</li><li><strong>Física médica:</strong> Processamento de imagens de ressonância magnética</li></ul>
+
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  <strong>Por que Python?</strong>
+
+  <ul><li>Sintaxe simples e legível (parece com inglês!)</li><li>Bibliotecas científicas poderosas (NumPy, SciPy, Matplotlib)</li><li>Comunidade ativa e colaborativa</li><li>Gratuito e open-source</li><li>Integração fácil com outros programas</li></ul>
+
+  </div>
+
+  <h2 id="s2">2. Conhecendo o Spyder</h2>
+
+  <p>O Spyder é seu novo laboratório virtual! Vamos explorar cada ferramenta:</p>
+
+  <p><strong>Os painéis principais:</strong></p>
+
+  <ul><li><strong>Editor (esquerda):</strong> Onde você escreve seus programas (.py)</li><li><strong>Console (canto inferior direito):</strong> Para testes rápidos e resultados</li><li><strong>Variable Explorer (canto superior direito):</strong> Mostra todas suas variáveis</li><li><strong>Help:</strong> Documentação na hora que precisar</li><li><strong>Plots:</strong> Seus gráficos aparecerão aqui</li></ul>
+
+  <p><strong>Configurações que vocês vão querer ajustar:</strong></p>
+
+  <ul><li><strong>Tema:</strong> Tools → Preferences → Appearance (escuro ou claro)</li><li><strong>Fonte:</strong> Tools → Preferences → Editor → Display (tamanho confortável)</li><li><strong>Layout:</strong> View → Window layouts (escolham o que preferem)</li></ul>
+
+  <div class="bloco fisica"><span class="rotulo">Intuição</span>
+  <strong>Atalhos que vão salvar suas vidas:</strong>
+
+  <ul><li><strong>F5:</strong> Executa o programa inteiro</li><li><strong>F9:</strong> Executa apenas a linha onde está o cursor</li><li><strong>Ctrl+1:</strong> Comenta/descomenta linha</li><li><strong>Ctrl+L:</strong> Limpa o console</li></ul>
+
+  </div>
+
+  <h2 id="s3">3. Primeiros códigos</h2>
+
+  <p>Hora de colocar a mão na massa! Vamos começar simples e ir evoluindo.</p>
+
+  <p><strong>Console vs. Script - qual usar quando?</strong></p>
+
+  <ul><li><strong>Console:</strong> Para testes rápidos, como uma calculadora</li><li><strong>Script (Editor):</strong> Para programas que você quer salvar e reutilizar</li></ul>
+
+  <div class="bloco def"><span class="rotulo"><strong>O comando <code>print()</code> em Python</strong></span>
+  O comando <code>print()</code> é uma função embutida que exibe informações na <strong>saída padrão</strong> (normalmente o terminal). É essencial para:
+
+  <ul><li>Depuração de código</li><li>Exibição de resultados</li><li>Interação com o usuário</li><li>Visualização de dados e variáveis</li></ul>
+
+  <strong>Parâmetros principais:</strong>
+
+  <ul><li><b><code>sep</code></b> Separador entre itens (padrão: espaço)</li><li><b><code>end</code></b> Caractere final (padrão: quebra de linha)</li><li><b><code>file</code></b> Redireciona saída (ex: arquivo)</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 1.1: Primeiro programa</span>
+  <div class="codigo" data-lingua="Python"><pre><code>print("Olá, Física!")
+  print("Meu nome é Maria")
+  print("Bem-vindos aos Métodos Numéricos!")
+
+  # Combinando parametros
+  print("Python", "é", "incrível", sep="-", end="!")
+  # Saída: Python-é-incrível!</code></pre></div>
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 1.2: Python como calculadora científica</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Operações básicas - teste no console primeiro!
+  soma = 5 + 3
+  produto = 4 * 7
+  divisao = 15 / 4
+  potencia = 2**10
+
+  print(f"5 + 3 = {soma}")
+  print(f"4 x 7 = {produto}")
+  print(f"15 / 4 = {divisao}")
+  print(f"2^10 = {potencia}")
+
+  # Agora vamos usar funções matemáticas
+  import math
+  raiz = math.sqrt(16)
+  seno = math.sin(math.pi/2)
+  logaritmo = math.log10(100)
+
+  print(f"sqrt(16) = {raiz}")
+  print(f"sen(pi/2) = {seno}")
+  print(f"log10(100) = {logaritmo}")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Bibliotecas em Python e o módulo <code>math</code></strong></span>
+  Uma <strong>biblioteca</strong> (ou módulo) em Python é uma coleção de funções e constantes pré-definidas que ampliam as capacidades da linguagem. Elas permitem:
+
+  <ul><li>Reutilização de código especializado</li><li>Acesso a funcionalidades avançadas</li><li>Organização lógica de recursos</li><li>Economia de tempo de desenvolvimento</li></ul>
+
+  O comando <code>import</code> é usado para carregar bibliotecas. Para matemática, o módulo <code>math</code> oferece:
+
+  <ul><li><b><code>math.sqrt(x)</code></b> Calcula a raiz quadrada de x</li><li><b><code>math.sin(x)</code></b> Calcula o seno de x (radianos)</li><li><b><code>math.log10(x)</code></b> Calcula o logaritmo decimal de x</li><li><b><code>math.pi</code></b> Constante pi (3.141592...)</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 1.3: Cálculos matemáticos básicos</span>
+  <div class="codigo" data-lingua="Python"><pre><code>import math
+
+  # Cálculo de hipotenusa pelo Teorema de Pitágoras
+  cateto_a = 3
+  cateto_b = 4
+  hipotenusa = math.sqrt(cateto_a**2 + cateto_b**2)
+  print(f"Hipotenusa: {hipotenusa:.2f}")  # 5.00
+
+  # Conversão graus para radianos
+  angulo_graus = 30
+  angulo_rad = math.radians(angulo_graus)
+  print(f"Seno de 30°: {math.sin(angulo_rad):.3f}")  # 0.500
+
+  # Cálculo logarítmico
+  ph = -math.log10(2.5e-4)
+  print(f"pH da solução: {ph:.1f}")  # 3.6</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Funções Matemáticas em Python (<code>math</code>)</strong></span>
+  O módulo <code>math</code> fornece funções matemáticas avançadas. As principais funções usadas no exemplo são:
+
+  <ul><li><b><code>math.sqrt(x)</code></b> Calcula a raiz quadrada de <code>x</code>.
+
+  <ul><li><strong>Exemplo:</strong> <code>math.sqrt(25)</code> retorna <code>5.0</code></li><li><strong>Restrição:</strong> <code>x</code> deve ser não-negativo</li></ul>
+
+  <p></li><li><b><code>math.radians(x)</code></b> Converte ângulo de graus para radianos.</p>
+
+  <ul><li><strong>Fórmula:</strong> \(\text{radianos} = \text{graus} \times \frac{\pi}{180}\)</li><li><strong>Exemplo:</strong> <code>math.radians(180)</code> retorna <code>3.14159...</code> (\(\pi\))</li></ul>
+
+  <p></li><li><b><code>math.sin(x)</code></b> Calcula o seno de <code>x</code> (em radianos).</p>
+
+  <ul><li><strong>Exemplo:</strong> <code>math.sin(math.pi/2)</code> retorna <code>1.0</code></li><li><strong>Alternativas:</strong> <code>math.cos()</code>, <code>math.tan()</code></li></ul>
+
+  <p></li><li><b><code>math.log10(x)</code></b> Calcula o logaritmo decimal (base 10) de <code>x</code>.</p>
+
+  <ul><li><strong>Exemplo:</strong> <code>math.log10(1000)</code> retorna <code>3.0</code></li><li><strong>Relação com pH:</strong> \(\text{pH} = -\log_{10}(\text{concentração H}^+)\)</li></ul>
+
+  <p></li><li><b><code>math.pi</code></b> Constante matemática pi (aproximadamente 3.14159)</li><li><b><strong>Formatação de strings</strong></b> Sintaxe <code>f"{valor:.nf}"</code> para controlar casas decimais:</p>
+
+  <ul><li><code>:.2f</code>: 2 casas decimais</li><li><code>:.3f</code>: 3 casas decimais</li><li><code>:.1f</code>: 1 casa decimal</li></ul>
+
+  <p></li></ul></p>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas</strong></span>
+  Estas funções são essenciais para:
+
+  <ul><li><strong>Física:</strong> Cálculos de cinemática, óptica e ondulatória</li><li><strong>Engenharia:</strong> Projetos estruturais e análise de tensões</li><li><strong>Química:</strong> Cálculos de pH, cinética química e termodinâmica</li><li><strong>Biologia:</strong> Modelagem de crescimento populacional e bioinformática</li><li><strong>Estatística:</strong> Transformações de dados e modelos probabilísticos</li></ul>
+
+  </div>
+
+  <h2 id="s4">4. Física na prática!</h2>
+
+  <p>Agora vamos resolver problemas reais de Física. Execute cada código e observe o Variable Explorer!</p>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 1.4: As constantes que governam o universo</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Constantes físicas fundamentais - decorar não precisa, 
+  # mas entender é fundamental!
+  c = 299792458  # velocidade da luz (m/s)
+  h = 6.62607015e-34  # constante de Planck (J.s)
+  e = 1.602176634e-19  # carga elementar (C)
+  k_B = 1.380649e-23  # constante de Boltzmann (J/K)
+
+  print("=== CONSTANTES FÍSICAS FUNDAMENTAIS ===")
+  print(f"Velocidade da luz: {c:e} m/s")
+  print(f"Constante de Planck: {h:e} J*s")
+  print(f"Carga elementar: {e:e} C")
+  print(f"Constante de Boltzmann: {k_B:e} J/K")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Temperatura na Física: Conceitos Fundamentais</strong></span>
+  A <strong>temperatura</strong> é uma grandeza física fundamental que mede o estado térmico de um sistema, relacionada à energia cinética média das partículas. Na Física, trabalhamos com três escalas principais:
+
+  <p class="centro">
+
+  <div class="tabela-rolavel"><table><thead><tr><th><strong>Escala</strong></th><th><strong>Símbolo</strong></th><th><strong>Referências</strong></th></tr></thead><tbody><tr><td>Celsius</td><td>°C</td><td>\(\begin{cases} 0°\text{C}</td><td>\text{ponto de fusão da água}</td></tr><tr><td>100°\text{C}</td><td>\text{ponto de ebulição da água} \end{cases}\)</td></tr><tr><td>Kelvin</td><td>K</td><td>\(\begin{cases} 0\,\text{K}</td><td>\text{zero absoluto}</td></tr><tr><td>273.15\,\text{K}</td><td>\text{ponto de fusão da água} \end{cases}\)</td></tr><tr><td>Fahrenheit</td><td>°F</td><td>\(\begin{cases} 32°\text{F}</td><td>\text{ponto de fusão da água}</td></tr><tr><td>212°\text{F}</td><td>\text{ponto de ebulição da água} \end{cases}\)</td></tr></tbody></table></div>
+
+  <p></p></p>
+
+  {0.3cm}
+
+  <strong>Conversões fundamentais:</strong>
+
+  <ul><li><strong>Celsius para Kelvin:</strong> \(T_K = T_C + 273.15\)</li><li><strong>Kelvin para Celsius:</strong> \(T_C = T_K - 273.15\)</li><li><strong>Celsius para Fahrenheit:</strong> \(T_F = {9}{5}T_C + 32\)</li><li><strong>Fahrenheit para Celsius:</strong> \(T_C = {5}{9}(T_F - 32)\)</li></ul>
+
+  <strong>Pontos notáveis:</strong>
+
+  <ul><li><strong>Zero absoluto:</strong> Menor temperatura possível (-273.15°C / 0 K) onde cessa o movimento molecular</li><li><strong>Temperatura ambiente:</strong>  25°C (varia conforme condições climáticas)</li><li><strong>Importância do Kelvin:</strong> Escala absoluta usada em leis físicas como \(PV = Nk_BT\)</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 1.5: Conversões de temperatura</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Todo físico precisa dominar conversões de temperatura
+  temp_celsius = 25  # temperatura ambiente em Juazeiro do Norte
+  temp_kelvin = temp_celsius + 273.15
+
+  print(f"Temperatura ambiente: {temp_celsius}°C = {temp_kelvin} K")
+
+  # Outras conversões importantes
+  temp_fahrenheit = temp_celsius * 9/5 + 32
+  print(f"Em Fahrenheit: {temp_fahrenheit}°F")
+
+  # Zero absoluto
+  zero_absoluto_C = -273.15
+  zero_absoluto_F = zero_absoluto_C * 9/5 + 32
+  print(f"Zero absoluto: {zero_absoluto_C}°C = {zero_absoluto_F}°F")
+
+  # Ponto de ebulição da água
+  ebulicao_C = 100
+  ebulicao_K = ebulicao_C + 273.15
+  print(f"Ebulição da água: {ebulicao_C}°C = {ebulicao_K} K")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas</strong></span>
+  Estas conversões são essenciais para:
+
+  <ul><li><strong>Termodinâmica:</strong> Cálculo de eficiência de máquinas térmicas</li><li><strong>Meteorologia:</strong> Análise de padrões climáticos globais</li><li><strong>Criogenia:</strong> Estudo de materiais em baixíssimas temperaturas</li><li><strong>Astrofísica:</strong> Caracterização de estrelas e meio interestelar</li><li><strong>Química:</strong> Determinação de pontos de fusão/ebulição de substâncias</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>A Revolução de \(E=mc^2\): Massa e Energia</strong></span>
+  A equação \(E=mc^2\), proposta por Albert Einstein em 1905, é um dos pilares da física moderna. Ela estabelece a <strong>equivalência entre massa e energia</strong>, revelando que:
+
+  <ul><li><strong>Massa é energia concentrada:</strong> A massa de um objeto é medida por seu conteúdo energético</li><li><strong>Fator de conversão:</strong> \(c^2\) é o fator de conversão entre quilogramas e joules</li><li><strong>Significado de \(c\):</strong> \(c = 299\,792\,458\,\text{m/s}\) (velocidade da luz no vácuo)</li></ul>
+
+  {0.3cm}
+
+  <strong>Implicações fundamentais:</strong>
+
+  <ul><li>Um pequeno valor de massa equivale a enorme quantidade de energia (\(c^2 \approx 9\times10^{16}\,\text{m}^2/\text{s}^2\))</li><li>Explica a fonte de energia das estrelas (fusão nuclear) e bombas atômicas (fissão nuclear)</li><li>Fundamenta a teoria da relatividade restrita</li></ul>
+
+  <strong>Constantes importantes no exemplo:</strong>
+
+  <ul><li><strong>Massa do elétron:</strong> \(m_e = 9.10938356\times10^{-31}\,\text{kg}\)</li><li><strong>Elétron-volt (eV):</strong> Unidade de energia usada em Física Atômica
+  \(1\,\text{eV} = 1.602176634\times10^{-19}\,\text{J}\)</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 1.6: A famosa \(E=mc^2\) na prática</span>
+  <div class="codigo" data-lingua="Python"><pre><code># A equação mais famosa da Física!
+  c = 299792458  # velocidade da luz (m/s)
+  m_eletron = 9.10938356e-31  # massa do elétron (kg)
+
+  # Energia de repouso do elétron
+  E_eletron = m_eletron * c**2
+  print(f"Energia de repouso do elétron: {E_eletron:e} J")
+
+  # Vamos converter para uma unidade mais familiar: eV
+  eV = 1.602176634e-19  # 1 eV em Joules
+  E_eletron_eV = E_eletron / eV
+  print(f"Em elétron-volts: {E_eletron_eV/1e6:.3f} MeV")
+
+  # Quanto de energia tem em 1 grama de matéria?
+  m_grama = 1e-3  # kg
+  E_grama = m_grama * c**2
+  print(f"Energia em 1g de matéria: {E_grama/1e15:.1f} PJ")
+  print("Isso equivale à energia de 17 bombas de Hiroshima!")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Contexto Histórico e Aplicações</strong></span>
+  <strong>Curiosidades:</strong>
+
+  <ul><li>Einstein publicou esta equação como corolário da Teoria da Relatividade Restrita em 1905</li><li>A primeira confirmação experimental veio com a medição da energia liberada em decaimentos nucleares</li><li>1g de matéria contém \(\approx 25\times10^6\) kWh - energia para abastecer uma cidade média por um mês!</li></ul>
+
+  <strong>Aplicações modernas:</strong>
+
+  <ul><li><strong>Energia nuclear:</strong> Reatores de fissão e fusão</li><li><strong>Astrofísica:</strong> Processos em estrelas de nêutrons e buracos negros</li><li><strong>Medicina:</strong> Tomografia por emissão de pósitrons (PET scan)</li><li><strong>Partículas elementares:</strong> Produção de novas partículas em aceleradores</li></ul>
+
+  </div>
+
+  <p><strong>Agora observem o Variable Explorer:</strong>
+  Vejam como todas as variáveis ficam armazenadas ali! Cliquem duas vezes em qualquer variável para ver mais detalhes.</p>
+
+  <h2 id="s5">5. Desafios para casa</h2>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 1.1: Desafios para a próxima aula</span>
+  Vocês já são capazes de fazer cálculos incríveis! Para consolidar o aprendizado:
+
+  <ol><li><strong>Luz verde:</strong> Calcule a frequência de uma onda eletromagnética com \(\lambda = 500\) nm (dica: \(f = c/\lambda\))</li><li><strong>Próton em movimento:</strong> Determine a energia cinética de um próton com \(v = 0,1c\) (use \(E_k = \frac{1}{2}mv^2\))</li><li><strong>Gravidade:</strong> Converta a constante gravitacional \(G=6.67\times 10^{-11} \mathrm{m^3/kg \cdot s^2}\) para unidades cgs (centímetro-grama-segundo)</li><li><strong>Exploração:</strong> Digite <code>help(math)</code> no console e descubra 3 funções interessantes</li></ol>
+
+  </div>
+
+  <div class="bloco fisica"><span class="rotulo">Intuição</span>
+  <strong>O que vocês já sabem fazer:</strong>
+
+  <ul><li>Usar Python como calculadora científica</li><li>Navegar pelo Spyder com confiança</li><li>Executar código de diferentes formas (F5, F9)</li><li>Monitorar variáveis no Variable Explorer</li><li>Resolver problemas reais de Física!</li></ul>
+
+  <strong>Comandos essenciais para lembrar:</strong>
+
+  <ul><li><code>print()</code>: mostrar resultados</li><li><code>import math</code>: funções matemáticas</li><li><code>help()</code>: quando estiver perdido</li><li><code>**</code>: potenciação</li><li><code>f""</code>: formatação de strings</li></ul>
+
+  <strong>Atalhos do Spyder para decorar:</strong>
+
+  <ul><li><strong>F5:</strong> Executar programa completo</li><li><strong>F9:</strong> Executar linha atual</li><li><strong>Ctrl+1:</strong> Comentar/descomentar</li><li><strong>Ctrl+L:</strong> Limpar console</li></ul>
+
+  </div>
+
+  <p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+  <nav class="nav-aulas">
+    <a href="index.html"><small>Voltar</small>← Início</a>
+    <a class="prox" href="aula10.html"><small>Próximo módulo</small>10. Tipos e variáveis →</a>
+  </nav>
+
+</main>
+</div>
+
+<footer class="rodape">
+  <img class="logo-rodape" src="assets/img/logo-lfca.png" alt="LFCA | URCA">
+  <p><strong>Prof. Apiano Morais</strong> · <a href="mailto:apiano.morais@urca.br">apiano.morais@urca.br</a><br>
+  Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
+</footer>
+
+<script src="assets/js/comum.js?v=202611090946"></script>
+</body>
+</html>

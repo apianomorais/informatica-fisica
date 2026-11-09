@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 11: Estruturas de dados: listas e tuplas | Informática para Física</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611090946">
+<script src="assets/js/codigo.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="index.html">Informática para Física <span>· LFCA/URCA</span></a>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <span class="grupo">Python</span>
+      <a href="aula09.html" class="num" title="Módulo 9: Introdução ao Python e ao Spyder">9</a>
+      <a href="aula10.html" class="num" title="Módulo 10: Tipos de dados e variáveis">10</a>
+      <a href="aula11.html" class="num ativo" title="Módulo 11: Estruturas de dados: listas e tuplas">11</a>
+      <a href="aula12.html" class="num" title="Módulo 12: Estruturas de controle">12</a>
+      <a href="aula13.html" class="num" title="Módulo 13: Funções e modularização">13</a>
+      <a href="aula14.html" class="num" title="Módulo 14: Introdução ao NumPy">14</a>
+      <a href="aula15.html" class="num" title="Módulo 15: Introdução ao Matplotlib: gráficos básicos">15</a>
+      <a href="aula16.html" class="num" title="Módulo 16: Matplotlib avançado: personalização e visualizações especiais">16</a>
+      <a href="aula18.html" class="num" title="Módulo 18: Análise de dados com Pandas">18</a>
+      <a href="aula19.html" class="num" title="Módulo 19: Métodos numéricos com SciPy">19</a>
+      <a href="aula20.html" class="num" title="Módulo 20: Matemática simbólica com SymPy">20</a>
+    </nav>
+  </div>
+</header>
+
+<div class="envoltorio">
+
+<aside class="lateral">
+  <h4>Nesta aula</h4>
+  <ol>
+    <li><a href="#s1">1. Revisão rápida dos desafios</a></li>
+    <li><a href="#s2">2. Listas - suas coleções de dados</a></li>
+    <li><a href="#s3">3. Tuplas - dados que não mudam</a></li>
+    <li><a href="#s4">4. Operações úteis com listas</a></li>
+    <li><a href="#s5">5. Aplicações em Física</a></li>
+    <li><a href="#s6">6. Desafios para casa</a></li>
+  </ol>
+</aside>
+
+<main class="conteudo">
+
+  <p class="chapeu">Aula 11 · Programação em Python</p>
+  <h1>Estruturas de dados: listas e tuplas</h1>
+  <p class="subtitulo">Como guardar muitos valores num nome só, percorrê-los e modificá-los. Listas e tuplas são a base de tudo o que vem a seguir, do NumPy ao Pandas.</p>
+
+  <p>Agora que vocês dominam os tipos básicos, vamos aprender a organizar múltiplos dados! É como ter caixas organizadoras para seus experimentos.</p>
+
+  <h2 id="s1">1. Revisão rápida dos desafios</h2>
+
+  <p>Vamos conferir os desafios da aula passada!</p>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.1: Soluções dos desafios</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Desafio 1: Conversão de unidades (65 mph)
+  mph_para_ms = 65 * 0.44704  # 1 mph = 0.44704 m/s
+  mph_para_kmh = 65 * 1.60934  # 1 mph = 1.60934 km/h
+
+  print(f"65 mph = {mph_para_ms:.2f} m/s")
+  print(f"65 mph = {mph_para_kmh:.1f} km/h")
+
+  # Desafio 2: Impedância complexa em série
+  Z1 = 50 + 30j  # ohm
+  Z2 = 25 - 40j  # ohm
+  Z_total = Z1 + Z2  # Em série: Z_total = Z1 + Z2
+
+  print(f"Z₁ = {Z1} Ω")
+  print(f"Z2 = {Z2} Ω")
+  print(f"Z_total = {Z_total} ohm")
+  print(f"Módulo: {abs(Z_total):.2f} Ω")
+
+  # Desafio 3: Número de Avogadro formatado
+  avogadro = 6.022e23
+  print(f"Número de Avogadro: {avogadro:.3e}")
+
+  # Desafio 4: Erro experimental
+  g_medido = 9.85
+  g_aceito = 9.81
+  erro_percentual = abs(g_medido - g_aceito) / g_aceito * 100
+  print(f"Erro percentual: {erro_percentual:.2f}%")</code></pre></div>
+  </div>
+
+  <h2 id="s2">2. Listas - suas coleções de dados</h2>
+
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  Listas são como vetores na matemática - uma sequência ordenada de elementos que podem ser modificados!
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.2: Criando listas</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Diferentes formas de criar listas
+  temperaturas = [25.3, 24.8, 25.1, 24.9, 25.0]  # Dados experimentais
+  nomes_elementos = ["Hidrogênio", "Hélio", "Lítio", "Berílio"]
+  numeros_atomicos = [1, 2, 3, 4]
+  lista_vazia = []  # Lista vazia para preencher depois
+  lista_mista = ["Elétron", -1, 9.109e-31, True]  # Tipos mistos
+
+  print("Temperaturas:", temperaturas)
+  print("Elementos:", nomes_elementos)
+  print("Números atômicos:", numeros_atomicos)
+  print("Lista mista:", lista_mista)
+  print("Tamanho da lista de temperaturas:", len(temperaturas))</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  A função <code>len()</code> retorna o número de elementos em uma sequência (lista, tupla, string). É fundamental para saber quantos dados temos!
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.3: Acessando elementos (indexação)</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Indexação - lembrando que Python começa do 0!
+  posicoes = [0.0, 1.2, 4.8, 10.8, 19.2]  # Posições em metros
+
+  print("Primeira posição:", posicoes[0])      # Índice 0
+  print("Segunda posição:", posicoes[1])       # Índice 1
+  print("Última posição:", posicoes[-1])       # Índice -1 (último)
+  print("Penúltima posição:", posicoes[-2])    # Índice -2
+
+  # Calculando velocidades entre pontos
+  velocidade_01 = (posicoes[1] - posicoes[0]) / 1  # Δx/Δt
+  velocidade_12 = (posicoes[2] - posicoes[1]) / 1
+  print(f"Velocidade 0→1: {velocidade_01} m/s")
+  print(f"Velocidade 1→2: {velocidade_12} m/s")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Slicing em Python: Fatiando Dados Científicos</strong></span>
+  O <em>slicing</em> é uma técnica poderosa para extrair subconjuntos de dados de sequências (listas, arrays, strings). Sua sintaxe básica é:
+
+  <p class="centro"><code>sequência[início:fim:passo]</code></p>
+
+  <ul><li><b><strong>Parâmetros:</strong></b>
+
+  <ul><li><code>início</code>: Índice inicial (inclusivo, 0 se omitido)</li><li><code>fim</code>: Índice final (exclusivo, fim da lista se omitido)</li><li><code>passo</code>: Intervalo entre elementos (1 por padrão)</li></ul>
+
+  <p></li><li><b><strong>Comportamentos especiais:</strong></b></p>
+
+  <ul><li>Índices negativos contam do final: <code>-1</code> é último elemento</li><li><code>passo negativo</code>: Inverte a ordem da seleção</li><li>Omissão de parâmetros: <code>[:]</code> copia toda a lista</li></ul>
+
+  <p></li></ul></p>
+
+  <strong>Notação matemática equivalente:</strong>
+  Dada uma sequência \(A = [a_0, a_1, …, a_{n-1}]\),
+  \[A[i:j:k] = [a_i, a_{i+k}, a_{i+2k}, …] \quad \text{para} \quad i i+mk < j\]
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.4: Fatiamento de dados experimentais de oscilação</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Dados de oscilação amortecida
+  tempos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  # segundos
+  amplitudes = [0, 0.8, 0.3, -0.5, -0.9, -0.2, 0.6, 1.0, 0.4, -0.4, -0.7]
+
+  # Operações básicas de fatiamento
+  print("Todos os dados:", amplitudes)
+  print("Primeiro ciclo (0-2s):", amplitudes[0:3])  # índices 0,1,2
+  print("Fase final (últimos 3s):", amplitudes[-3:]) # índices -3,-2,-1
+  print("Transição (3-6s):", amplitudes[3:7])        # índices 3,4,5,6
+
+  # Amostragem estratégica
+  print("Pontos alternados (amostragem):", amplitudes[::2])
+  print("Dados reversos (pós-experimento):", amplitudes[::-1])
+
+  # Análise de metades do experimento
+  metade = len(amplitudes) // 2
+  primeira_metade = amplitudes[:metade]
+  segunda_metade = amplitudes[metade:]
+
+  print("Amplitude média inicial:", sum(primeira_metade)/len(primeira_metade))
+  print("Amplitude média final:", sum(segunda_metade)/len(segunda_metade))</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Aplicações em Análise de Dados Físicos</strong></span>
+  O slicing é essencial para:
+
+  <ul><li><strong>Seleção temporal:</strong> Analisar fases específicas de experimentos</li><li><strong>Redução de dados:</strong> Amostrar grandes conjuntos de dados (ex: dados de aceleradores de partículas)</li><li><strong>Análise comparativa:</strong> Comparar segmentos temporais distintos</li><li><strong>Pré-processamento:</strong> Preparar dados para transformadas de Fourier</li><li><strong>Inversão temporal:</strong> Estudar simetrias em sinais físicos</li></ul>
+
+  <strong>Exemplos práticos:</strong>
+
+  <ul><li>Extrair o primeiro pulso de um sinal de ECG</li><li>Analisar apenas os dados de descida de um pêndulo</li><li>Comparar a amplitude inicial e final em oscilações amortecidas</li><li>Reduzir dados de telescópios espaciais para processamento eficiente</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Padrões Avançados de Slicing</strong></span>
+  Combinações úteis para física experimental:
+
+  <ul><li><code>dados[5:-5]</code> Remove bordas (primeiros e últimos 5 pontos)</li><li><code>dados[1::2]</code> Elementos ímpares (segundo, quarto, etc.)</li><li><code>dados[4:15:3]</code> Amostra a cada 3 pontos entre índices 4-14</li><li><code>dados[::-2]</code> Elementos em ordem reversa pulando um sim um não</li><li><code>dados[início:fim]</code> + <code>dados[fim:início:-1]</code> Segmentos diretos e reversos</li></ul>
+
+  <strong>Equivalência física:</strong>
+
+  <p>\[\text{<code>dados[início:fim]</code>} &\equiv \int_{t_{\text{início}}}^{t_{\text{fim}}} f(t)  dt \\
+  \text{<code>dados[::k]</code>} &\equiv \text{Subamostragem (decimation)} \\
+  \text{<code>dados[::-1]</code>} &\equiv \text{Reversão temporal } f(-t)\]</p>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.5: Modificando listas</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Listas são mutáveis - podemos alterar!
+  medidas = [9.8, 9.7, 9.9, 10.2, 9.6]  # Medidas de aceleração
+
+  print("Medidas originais:", medidas)
+
+  # Alterando um valor específico
+  medidas[3] = 9.8  # Corrigindo o valor 10.2 que parecia errado
+  print("Após correção:", medidas)
+
+  # Adicionando novos dados
+  medidas.append(9.9)  # Adiciona no final
+  print("Após adicionar valor:", medidas)
+
+  # Adicionando múltiplos valores
+  novas_medidas = [9.7, 9.8, 9.6]
+  medidas.extend(novas_medidas)  # ou medidas += novas_medidas
+  print("Após adicionar lista:", medidas)
+
+  # Inserindo em posição específica
+  medidas.insert(0, 9.5)  # Insere no início (índice 0)
+  print("Após inserir no início:", medidas)
+
+  # Removendo valores
+  medidas.remove(9.5)  # Remove a primeira ocorrência
+  print("Após remover 9.5:", medidas)
+
+  ultimo_valor = medidas.pop()  # Remove e retorna o último
+  print("Último valor removido:", ultimo_valor)
+  print("Lista final:", medidas)</code></pre></div>
+  </div>
+
+  <h2 id="s3">3. Tuplas - dados que não mudam</h2>
+
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  Tuplas são como listas, mas imutáveis - perfeitas para constantes físicas e configurações que não devem ser alteradas!
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Tratamento de Erros com <code>try-except</code> e Tuplas Imutáveis</strong></span>
+  Em programação científica, é crucial lidar com erros e proteger dados críticos. As estruturas <code>try-except</code> e tuplas atendem a essas necessidades:
+
+  <ul><li><b><code>try-except</code></b> Mecanismo para tratamento de exceções (erros em tempo de execução).
+
+  <ul><li><strong>Sintaxe:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>try:
+      # Código que pode gerar erro
+  except TipoErro as e:
+      # Tratamento do erro</code></pre></div></li><li><strong>Propósito:</strong> Prevenir que o programa pare inesperadamente</li><li><strong>Aplicação científica:</strong> Validar dados, lidar com cálculos inválidos, proteger constantes fundamentais</li></ul>
+
+  <p></li><li><b><strong>Tuplas</strong></b> Estruturas imutáveis para dados que não devem ser alterados.</p>
+
+  <ul><li><strong>Sintaxe:</strong> <code>tupla = (valor1, valor2, ...)</code></li><li><strong>Características:</strong>
+        
+
+  <ul><li>Imutáveis: Não podem ser modificadas após criação</li><li>Eficientes: Consomem menos recursos que listas</li><li>Seguras: Protegem dados contra alterações acidentais</li></ul>
+
+  </li><li><strong>Uso ideal:</strong> Constantes físicas, coordenadas, parâmetros fixos de experimentos</li></ul>
+
+  <p></li></ul></p>
+
+  <strong>Relação entre conceitos:</strong>
+  A tentativa de modificar uma tupla gera <code>TypeError</code>, que pode ser tratado com <code>try-except</code> para:
+
+  <ul><li>Alertar sobre a imutabilidade</li><li>Sugerir alternativas (ex: usar lista)</li><li>Registrar o erro sem interromper o fluxo</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.6: Gerenciando constantes físicas e erros</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Constantes físicas fundamentais (valores não mudam!)
+  constantes = (299792458, 6.62607015e-34, 1.602176634e-19)
+  nomes = ("c", "h", "e")
+
+  # Acesso seguro
+  print(f"Constante de Planck (h): {constantes[1]:.4e} J·s")
+
+  # Desempacotamento para variáveis individuais
+  c, h, carga_eletron = constantes
+  print(f"Velocidade da luz: {c} m/s")
+
+  # Tentativa de modificação com tratamento de erro
+  try:
+      constantes[0] = 300000000  # Tentando alterar 'c'
+  except TypeError as erro:
+      print(": Tentativa de violar leis da física!")
+      print(f"Detalhes: {erro}")
+      print("Solução: Crie uma nova tupla se precisar de valores diferentes")
+    
+      # Sugestão prática
+      novas_constantes = (300000000,) + constantes[1:]
+      print("tupla com valor modificado:", novas_constantes)</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Boas Práticas para Dados Científicos</strong></span>
+  <strong>Quando usar tuplas:</strong>
+
+  <ul><li>Valores constantes (velocidade da luz, carga do elétron)</li><li>Parâmetros fixos de experimentos</li><li>Chaves de dicionários que requerem imutabilidade</li><li>Coordenadas espaciais (x,y,z) e pontos geométricos</li></ul>
+
+  <strong>Quando usar <code>try-except</code>:</strong>
+
+  <ul><li>Operações com risco de erro matemático (divisão por zero, log de negativo)</li><li>Conversão de dados de usuário (<code>float(input())</code>)</li><li>Acesso a arquivos externos (pode estar ausente ou corrompido)</li><li>Cálculos que podem extrapolar limites físicos</li></ul>
+
+  <strong>Erros comuns em Física Computacional:</strong>
+
+  <ul><li><code>TypeError</code>: Operação com tipo inadequado (ex: alterar tupla)</li><li><code>ValueError</code>: Valor fora do domínio (ex: raiz quadrada de negativo)</li><li><code>ZeroDivisionError</code>: Divisão por zero em equações</li><li><code>IndexError</code>: Acesso a índice inválido em listas</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Desempacotamento de Tuplas em Física</strong></span>
+  Técnica poderosa para atribuição múltipla:
+  <div class="codigo" data-lingua="Python"><pre><code># Posição e velocidade em 3D
+  estado_particula = ((0.5, 1.2, -0.3), (2.1, 0.8, -1.5))  # (posição, velocidade)
+
+  # Desempacotamento direto
+  (pos, vel) = estado_particula
+
+  # Desempacotamento aninhado
+  (x, y, z) = pos
+  (vx, vy, vz) = vel
+
+  print(f"Posição: x={x}, y={y}, z={z}")
+  print(f"Velocidade: vx={vx}, vy={vy}, vz={vz}")
+
+  # Aplicações comuns:
+  # - Leitura de dados estruturados
+  # - Retorno de múltiplos valores de funções
+  # - Manipulação de coordenadas</code></pre></div>
+  </div>
+
+  <div class="bloco fisica"><span class="rotulo">Intuição</span>
+  <strong>Quando usar listas vs tuplas:</strong>
+
+  <ul><li><strong>LISTAS</strong>: Use quando os dados podem mudar (resultados experimentais, medições em progresso)</li><li><strong>TUPLAS</strong>: Use para dados fixos (constantes físicas, configurações, coordenadas)</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.7: Listas vs Tuplas na prática</span>
+  <div class="codigo" data-lingua="Python"><pre><code># LISTAS: dados que podem mudar
+  resultados_experimento = []  # Começamos vazio
+  for i in range(5):
+      # Simulando coleta de dados
+      medida = 9.8 + (i - 2) * 0.1  # Variação artificial
+      resultados_experimento.append(medida)
+
+  print("Resultados coletados:", resultados_experimento)
+
+  # TUPLAS: dados fixos, configurações
+  configuracao_experimento = (
+      "Pêndulo simples",  # tipo de experimento
+      1.0,                # comprimento (m)
+      0.1,                # massa (kg)
+      25                  # temperatura (°C)
+  )
+
+  nome, L, m, T = configuracao_experimento
+  print(f"Experimento: {nome}")
+  print(f"L = {L} m, m = {m} kg, T = {T}°C")</code></pre></div>
+  </div>
+
+  <h2 id="s4">4. Operações úteis com listas</h2>
+
+  <p>Vamos dominar as ferramentas essenciais para análise de dados!</p>
+
+  <div class="bloco def"><span class="rotulo"><strong>Funções Estatísticas Básicas em Python</strong></span>
+  Em análise de dados experimentais, estas funções são essenciais para caracterização inicial de medições:
+
+  <ul><li><b><code>len(iterável)</code></b> Conta o número de elementos em uma sequência.
+
+  <ul><li><strong>Aplicação:</strong> Determinar tamanho da amostra</li><li><strong>Exemplo:</strong> <code>len([1.2, 1.5, 1.8])</code> \(\rightarrow\) 3</li></ul>
+
+  <p></li><li><b><code>min(iterável)</code></b> Retorna o menor valor numérico da sequência.</p>
+
+  <ul><li><strong>Aplicação:</strong> Identificar valor mínimo em séries temporais</li><li><strong>Exemplo:</strong> <code>min([1.2, 1.5, 1.8])</code> \(\rightarrow\) 1.2</li></ul>
+
+  <p></li><li><b><code>max(iterável)</code></b> Retorna o maior valor numérico da sequência.</p>
+
+  <ul><li><strong>Aplicação:</strong> Detectar picos em sinais físicos</li><li><strong>Exemplo:</strong> <code>max([1.2, 1.5, 1.8])</code> \(\rightarrow\) 1.8</li></ul>
+
+  <p></li><li><b><code>sum(iterável)</code></b> Calcula a soma de todos os elementos numéricos.</p>
+
+  <ul><li><strong>Aplicação:</strong> Cálculo de integrais discretas, médias</li><li><strong>Exemplo:</strong> <code>sum([1.2, 1.5, 1.8])</code> \(\rightarrow\) 4.5</li></ul>
+
+  <p></li><li><b><code>list.index(valor)</code></b> Retorna o índice da primeira ocorrência de um valor.</p>
+
+  <ul><li><strong>Aplicação:</strong> Localizar eventos específicos em séries temporais</li><li><strong>Exemplo:</strong> <code>[1.2, 1.5, 1.8].index(1.5)</code> \(\rightarrow\) 1</li></ul>
+
+  <p></li><li><b><code>list.count(valor)</code></b> Conta ocorrências de um valor específico.</p>
+
+  <ul><li><strong>Aplicação:</strong> Verificar repetição de valores experimentais</li><li><strong>Exemplo:</strong> <code>[1.5, 2.1, 1.5].count(1.5)</code> \(\rightarrow\) 2</li></ul>
+
+  <p></li></ul></p>
+
+  <strong>Relacionamento entre funções:</strong>
+  A média aritmética pode ser calculada como:
+  \[\text{média} = \frac{<code>sum(valores)</code>}{<code>len(valores)</code>}\]
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.8: Análise de dados de um experimento de lei de Ohm</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Dados de tensão e corrente (experimento lei de Ohm)
+  voltagens = [1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3.0, 3.3, 3.6, 3.9]  # V
+  correntes = [0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.30, 0.33, 0.36, 0.39]  # A
+
+  # Análise estatística básica
+  print("=== ESTATÍSTICAS DAS MEDIÇÕES ===")
+  print(f"Número de pontos: {len(voltagens)}")
+  print(f"Faixa de tensão: {min(voltagens)} V a {max(voltagens)} V")
+  print(f"Tensão média: {sum(voltagens)/len(voltagens):.2f} V")
+
+  # Localizando ponto de máxima tensão
+  indice_max = voltagens.index(max(voltagens))
+  corrente_max = correntes[indice_max]
+  print(f"de máxima tensão ({max(voltagens)} V):")
+  print(f"Corrente correspondente: {corrente_max} A")
+
+  # Verificando linearidade
+  resistencias = [v/i for v,i in zip(voltagens, correntes)]
+  print(f"ência média: {sum(resistencias)/len(resistencias):.2f} Ohm")
+  print(f"Variação da resistência: ±{max(resistencias)-min(resistencias):.2f} Ohm")
+
+  # Contando medições acima de 3V
+  medições_altas = sum(1 for v in voltagens if v &gt; 3)
+  print(f"ções com tensão &gt; 3V: {medições_altas}")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Interpretação Física dos Resultados</strong></span>
+  <strong>Análise do experimento:</strong>
+
+  <ul><li><strong>Número de pontos:</strong> Tamanho da amostra (10 medições)</li><li><strong>Faixa de tensão:</strong> 1.2V a 3.9V (variação de 2.7V)</li><li><strong>Tensão média:</strong> 2.55V (centro da faixa experimental)</li><li><strong>Resistência média:</strong> \(\approx 10\) (valor esperado pela lei de Ohm)</li><li><strong>Variação da resistência:</strong> Indica precisão do equipamento</li></ul>
+
+  <strong>Conceitos físicos aplicados:</strong>
+
+  <ul><li><strong>Lei de Ohm:</strong> \(V = R \times I\)</li><li><strong>Linearidade:</strong> Proporcionalidade direta entre tensão e corrente</li><li><strong>Precisão experimental:</strong> Calculada pela variação das medições</li><li><strong>Seletividade:</strong> Filtragem de dados por critérios (ex: tensão > 3V)</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Boas Práticas em Análise Experimental</strong></span>
+  Ao analisar dados físicos:
+
+  <ol><li>Sempre calcule estatísticas básicas (mín, máx, média)</li><li>Verifique o tamanho da amostra (representatividade estatística)</li><li>Relacione variáveis dependentes (ex: corrente com tensão)</li><li>Calcule grandezas derivadas (ex: resistência a partir de \(V\) e \(I\))</li><li>Documente unidades em todos os resultados</li><li>Analise a dispersão dos valores (indicador de precisão)</li></ol>
+
+  <strong>Erros comuns:</strong>
+
+  <ul><li>Confundir <code>len()</code> (contagem de elementos) com <code>list.count()</code> (contagem de ocorrências)</li><li>Não verificar consistência entre listas relacionadas (ex: mesma quantidade de medições de V e I)</li><li>Esquecer de converter unidades antes de cálculos</li><li>Interpretar índice computacional como tempo físico (considerar intervalo entre medições)</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Ordenação de Dados em Python</strong></span>
+  Em análise científica, ordenar dados é essencial para identificação de padrões, análise de tendências e preparação para algoritmos mais complexos. As principais funções são:
+
+  <ul><li><b><code>sorted(iterável)</code></b> Retorna uma nova lista ordenada sem modificar o original.
+
+  <ul><li><strong>Parâmetros:</strong>
+        
+
+  <ul><li><code>reverse=False</code>: Ordem crescente/decrescente</li><li><code>key=None</code>: Função personalizada de ordenação</li></ul>
+
+  </li><li><strong>Vantagem:</strong> Não altera os dados originais</li><li><strong>Exemplo:</strong> <code>sorted([3,1,2])</code> \(\rightarrow\) <code>[1,2,3]</code></li></ul>
+
+  <p></li><li><b><code>list.sort()</code></b> Ordena a lista in-place (modifica o original).</p>
+
+  <ul><li><strong>Parâmetros:</strong> Mesmos de <code>sorted()</code></li><li><strong>Vantagem:</strong> Mais eficiente em memória para grandes conjuntos</li><li><strong>Exemplo:</strong> <code>lst = [3,1,2]; lst.sort()</code> \(\rightarrow\) <code>lst</code> vira <code>[1,2,3]</code></li></ul>
+
+  <p></li><li><b><code>enumerate(iterável)</code></b> Gera pares (índice, elemento) para iteração.</p>
+
+  <ul><li><strong>Aplicação:</strong> Manter referência à posição original durante ordenação</li><li><strong>Exemplo:</strong> <code>list(enumerate(['a','b']))</code> \(\rightarrow\) <code>[(0,'a'), (1,'b')]</code></li></ul>
+
+  <p></li><li><b><code>zip(iteráveis)</code></b> Combina múltiplas listas em pares/tuplas.</p>
+
+  <ul><li><strong>Aplicação:</strong> Manter relações entre dados correlacionados</li><li><strong>Exemplo:</strong> <code>zip([1,2], ['a','b'])</code> \(\rightarrow\) <code>[(1,'a'), (2,'b')]</code></li></ul>
+
+  <p></li></ul></p>
+
+  <strong>Algoritmo subjacente:</strong> Python usa TimSort (híbrido de MergeSort e InsertionSort), eficiente para dados parcialmente ordenados.
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.9: Ordenando dados químicos e mantendo relações</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Dados de elementos químicos
+  massas = [12.01, 1.008, 16.00, 14.01, 32.06]  # C, H, O, N, S
+  elementos = ["Carbono", "Hidrogênio", "Oxigênio", "Nitrogênio", "Enxofre"]
+  simbolos = ["C", "H", "O", "N", "S"]
+
+  # 1. Ordenar por massa mantendo relações entre listas
+  dados_combinados = list(zip(massas, elementos, simbolos))
+  dados_combinados.sort(key=lambda x: x[0])  # Ordena pela massa (primeiro elemento)
+
+  print("ordenados por massa atômica:")
+  for massa, elemento, simbolo in dados_combinados:
+      print(f"{simbolo} ({elemento}): {massa} u")
+
+  # 2. Ordenar alfabeticamente sem perder referências
+  dados_alfabeticos = sorted(zip(elementos, massas, simbolos), key=lambda x: x[0])
+
+  print("em ordem alfabética:")
+  for elemento, massa, simbolo in dados_alfabeticos:
+      print(f"{elemento} ({simbolo}): {massa} u")
+
+  # 3. Encontrar elementos mais leves e pesados
+  mais_leve = min(dados_combinados, key=lambda x: x[0])
+  mais_pesado = max(dados_combinados, key=lambda x: x[0])
+
+  print(f"mais leve: {mais_leve[1]} ({mais_leve[0]} u)")
+  print(f"Elemento mais pesado: {mais_pesado[1]} ({mais_pesado[0]} u)")
+
+  # 4. Ordenação decrescente por massa
+  dados_decrescente = sorted(dados_combinados, key=lambda x: x[0], reverse=True)
+
+  print("do mais pesado para o mais leve:")
+  for massa, elemento, simbolo in dados_decrescente:
+      print(f"{simbolo}: {massa} u")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas da Ordenação</strong></span>
+  <strong>Em química e física:</strong>
+
+  <ul><li>Organizar elementos por propriedades periódicas</li><li>Ordenar partículas por energia em aceleradores</li><li>Classificar estrelas por magnitude aparente</li><li>Preparar dados para análise estatística (quartis, mediana)</li><li>Identificar outliers em medições experimentais</li></ul>
+
+  <strong>Exemplos específicos:</strong>
+
+  <ul><li>Ordenar proteínas por peso molecular em bioquímica</li><li>Classificar planetas por distância do Sol em astronomia</li><li>Organizar dados climáticos por temperatura</li><li>Ordenar partículas subatômicas por vida média</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Técnicas Avançadas de Ordenação Científica</strong></span>
+  <strong>Ordenação personalizada com <code>key</code>:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code># Ordenar moléculas por polaridade
+  moleculas = ["H2O", "CO2", "NH3", "CH4"]
+  polaridades = [1.85, 0, 1.47, 0]
+
+  # Ordenar por polaridade decrescente
+  moleculas_ordenadas = [mol for mol, _ in sorted(zip(moleculas, polaridades), key=lambda x: x[1], reverse=True)]</code></pre></div>
+
+  <strong>Ordenação estável (mantém ordem relativa de itens iguais):</strong>
+  <div class="codigo" data-lingua="Python"><pre><code># Ordenar primeiro por tipo, depois por massa
+  particulas = [("elétron", 0.511), ("próton", 938), ("nêutron", 940), ("elétron", 0.511)]
+  particulas_ordenadas = sorted(particulas, key=lambda x: x[0])  # Ordena por nome
+  particulas_ordenadas = sorted(particulas_ordenadas, key=lambda x: x[1])  # Depois por massa</code></pre></div>
+
+  <strong>Ordenação de estruturas complexas:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code># Ordenar planetas por densidade
+  planetas = [
+      {"nome": "Terra", "densidade": 5.52},
+      {"nome": "Marte", "densidade": 3.93},
+      {"nome": "Vênus", "densidade": 5.24}
+  ]
+
+  planetas_ordenados = sorted(planetas, key=lambda p: p["densidade"], reverse=True)</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Boas Práticas em Ordenação Científica</strong></span>
+
+  <ul><li><strong>Mantenha relações:</strong> Use <code>zip</code> para ordenar listas correlacionadas simultaneamente</li><li><strong>Preserve originais:</strong> Faça cópias (<code>copy()</code>) antes de <code>sort()</code> se precisar dos dados originais</li><li><strong>Chaves eficientes:</strong> Funções <code>key</code> simples melhoram desempenho</li><li><strong>Estabilidade:</strong> Saiba quando a ordem relativa de itens iguais importa</li><li><strong>Grandes datasets:</strong> Para dados muito grandes, considere bibliotecas como NumPy/Pandas</li><li><strong>Documentação:</strong> Sempre documente o critério de ordenação usado</li></ul>
+
+  <strong>Erro comum:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code># ERRADO: Ordenar listas correlacionadas separadamente
+  massas.sort()
+  elementos.sort()  # Relação original é perdida!
+
+  # CORRETO: Ordenar mantendo a relação
+  dados_combinados = sorted(zip(massas, elementos))</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>List Comprehensions: Elegância e Eficiência em Python</strong></span>
+  As <em>list comprehensions</em> são uma construção sintática que permite criar listas de forma concisa e expressiva, substituindo loops tradicionais por uma notação mais compacta e matemática.
+
+  <p class="centro"><code>[expressão for item in iterável if condição]</code></p>
+
+  <strong>Vantagens sobre loops tradicionais:</strong>
+
+  <ul><li><strong>Concisão:</strong> Redução de múltiplas linhas para uma única linha</li><li><strong>Legibilidade:</strong> Sintaxe próxima à notação matemática de conjuntos</li><li><strong>Eficiência:</strong> Geralmente mais rápida que loops equivalentes</li><li><strong>Expressividade:</strong> Facilita operações de mapeamento e filtragem</li></ul>
+
+  <strong>Comparação com notação matemática:</strong>
+
+  <ul><li>Matemática: \(\{ \sin(\text{rad}(x)) x A, x 90 \}\)</li><li>Python: <code>[math.sin(math.radians(x)) for x in angulos if x &lt;= 90]</code></li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.10: Aplicações científicas com list comprehensions</span>
+  <div class="codigo" data-lingua="Python"><pre><code>import math
+
+  # 1. Cálculo de funções trigonométricas
+  angulos = [0, 30, 45, 60, 90, 120, 180]
+  senos = [math.sin(math.radians(a)) for a in angulos]
+  cossenos = [math.cos(math.radians(a)) for a in angulos]
+
+  print("Ângulos:", angulos)
+  print("Senos:", [f"{s:.4f}" for s in senos])
+  print("Cossenos:", [f"{c:.4f}" for c in cossenos])
+
+  # 2. Filtragem de dados científicos
+  dados_crudos = [12.5, -1.3, 8.9, 15.2, -0.7, 10.3, 999]  # 999 = outlier
+  dados_validos = [d for d in dados_crudos if 0 &lt;= d &lt;= 100]  # Filtra valores físicos
+
+  print("válidos:", dados_validos)
+
+  # 3. Transformações complexas
+  # Cálculo de comprimento de onda a partir de frequências
+  frequencias = [440, 880, 1320, 1760]  # Hz (notas musicais)
+  c = 343  # Velocidade do som (m/s) a 20°C
+  comprimentos_onda = [c/f for f in frequencias]
+
+  print("de onda (m):", [f"{l:.3f}" for l in comprimentos_onda])
+
+  # 4. Criação de tabelas de constantes físicas
+  elementos = ["H", "He", "Li", "Be"]
+  massas = [1.008, 4.0026, 6.94, 9.0122]
+  tabela = [[elem, massa] for elem, massa in zip(elementos, massas)]
+
+  print("de massas atômicas:")
+  for linha in tabela:
+      print(f"{linha[0]}: {linha[1]} u")
+    
+  # 5. List comprehension aninhada
+  # Matriz de rotação 2D para múltiplos ângulos
+  angulos = [0, 45, 90]
+  matrizes_rotacao = [
+      [[math.cos(math.radians(a)), -math.sin(math.radians(a))],
+       [math.sin(math.radians(a)), math.cos(math.radians(a))]] 
+      for a in angulos
+  ]
+
+  print("de rotação para 45°:")
+  for linha in matrizes_rotacao[1]:
+      print(linha)</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Comparação: Loop Tradicional vs List Comprehension</strong></span>
+  <strong>Conversão de temperatura - Forma tradicional:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>celsius = [0, 10, 20, 30, 40]
+  fahrenheit = []
+  for c in celsius:
+      f = c * 9/5 + 32
+      fahrenheit.append(f)</code></pre></div>
+
+  <strong>List Comprehension:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>fahrenheit = [c * 9/5 + 32 for c in celsius]</code></pre></div>
+
+  <strong>Vantagens observadas:</strong>
+
+  <ul><li>Redução de 4 linhas para 1 linha</li><li>Eliminação de variáveis temporárias</li><li>Código mais declarativo e menos imperativo</li><li>Mais fácil de paralelizar mentalmente</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Aplicações Científicas Avançadas</strong></span>
+  As list comprehensions são ideais para:
+
+  <strong>Física Computacional:</strong>
+
+  <ul><li>Transformações de coordenadas</li><li>Cálculo de campos vetoriais</li><li>Geração de malhas para simulações</li><li>Processamento de dados de sensores</li></ul>
+
+  <strong>Química Computacional:</strong>
+
+  <ul><li>Cálculo de propriedades moleculares</li><li>Filtragem de compostos por critérios</li><li>Conversão entre escalas de temperatura</li><li>Geração de tabelas periódicas personalizadas</li></ul>
+
+  <strong>Engenharia:</strong>
+
+  <ul><li>Análise de tensões em estruturas</li><li>Simulação de circuitos elétricos</li><li>Processamento de sinais digitais</li><li>Otimização de parâmetros</li></ul>
+
+  <strong>Dica de desempenho:</strong>
+  Para grandes volumes de dados ( > 1 milhão de elementos), considere:
+
+  <ul><li><code>map()</code> + <code>filter()</code> para objetos geradores</li><li>Bibliotecas especializadas (NumPy, Pandas)</li><li>Paralelização com <code>multiprocessing</code></li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Quando Evitar List Comprehensions</strong></span>
+  Embora poderosas, nem sempre são a melhor escolha:
+
+  <ul><li><strong>Códigos complexos:</strong> Quando a lógica é muito intrincada</li><li><strong>Múltiplos passos:</strong> Quando são necessárias várias transformações</li><li><strong>Efeitos colaterais:</strong> Quando precisa modificar estado externo</li><li><strong>Legibilidade:</strong> Se comprometer a clareza do código</li></ul>
+
+  <strong>Exemplo de abuso:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code># Código difícil de ler
+  resultado = [y for x in dados if (cond1 or cond2) and not cond3 for y in transform1(x) if filtro(y)]</code></pre></div>
+
+  <strong>Versão mais legível:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>resultado = []
+  for x in dados:
+      if (cond1 or cond2) and not cond3:
+          for y in transform1(x):
+              if filtro(y):
+                  resultado.append(y)</code></pre></div>
+  </div>
+
+  <h2 id="s5">5. Aplicações em Física</h2>
+
+  <p>Vamos usar tudo que aprendemos em problemas reais!</p>
+
+  <div class="bloco def"><span class="rotulo"><strong>Análise Cinemática Computacional</strong></span>
+  Este exemplo demonstra como processar dados experimentais de movimento retilíneo para calcular grandezas cinemáticas derivadas. As principais etapas são:
+
+  <ul><li><b><strong>1. Velocidade Instantânea:</strong></b> Taxa de variação temporal da posição
+      \[v_i = \frac{\Delta x_i}{\Delta t_i} = \frac{x_{i+1} - x_i}{t_{i+1} - t_i}\]
+
+  <ul><li>Calculada por diferenças finitas progressivas</li><li>Aproximação válida para \(\Delta t\) pequenos</li></ul>
+
+  <p></li><li><b><strong>2. Aceleração Instantânea:</strong></b> Taxa de variação temporal da velocidade
+      \[a_i = \frac{\Delta v_i}{\Delta t_i} = \frac{v_{i+1} - v_i}{t_{i+1} - t_i}\]</p>
+
+  <ul><li>Derivada segunda da posição em relação ao tempo</li></ul>
+
+  <p></li><li><b><strong>3. Movimento Uniformemente Acelerado (MUA):</strong></b> \[x(t) = x_0 + v_0t + \frac{1}{2}at^2\]</p>
+
+  <ul><li>Aceleração constante (\(a = \text{constante}\))</li><li>Neste caso: \(x(t) = 2t^2\) (verificação analítica)</li></ul>
+
+  <p></li></ul></p>
+
+  <strong>Técnicas computacionais utilizadas:</strong>
+
+  <ul><li><code>range(len(t)-1)</code> para iterar sobre intervalos</li><li>Diferenças finitas para cálculo de derivadas</li><li>List comprehensions para implementação concisa</li><li><code>sum()/len()</code> para cálculo de média</li></ul>
+
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exemplo 3.11: Análise completa de movimento retilíneo</span>
+  <div class="codigo" data-lingua="Python"><pre><code># Dados experimentais: posição vs tempo (movimento uniformemente acelerado)
+  t = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  # segundos
+  x = [0, 2, 8, 18, 32, 50, 72, 98, 128, 162, 200]  # metros
+
+  # 1. Velocidades instantâneas (diferenças finitas)
+  velocidades = []
+  for i in range(len(t)-1):
+      dx = x[i+1] - x[i]
+      dt = t[i+1] - t[i]
+      velocidades.append(dx/dt)
+
+  # 2. Acelerações instantâneas
+  aceleracoes = []
+  for i in range(len(velocidades)-1):
+      dv = velocidades[i+1] - velocidades[i]
+      dt = t[i+2] - t[i+1]  # Usando o próximo intervalo de tempo
+      aceleracoes.append(dv/dt)
+
+  # 3. Verificação de MUA usando list comprehensions
+  # Teoria: x(t) = x0 + v0*t + (1/2)*a*t2 → Para este caso: x(t) = 2*t2
+  pos_teorica = [2 * tempo**2 for tempo in t]
+  erros = [abs(x_exp - x_teo) for x_exp, x_teo in zip(x, pos_teorica)]
+
+  # 4. Análise estatística
+  acel_media = sum(aceleracoes) / len(aceleracoes)
+  max_erro = max(erros)
+  erro_relativo_medio = sum(erros)/len(erros) / (sum(x)/len(x))
+
+  # Resultados
+  print("=== RESULTADOS DA ANÁLISE ===")
+  print(f"Aceleração média experimental: {acel_media:.2f} m/s2 (teórica: 4.0 m/s2)")
+  print(f"Velocidades calculadas: {[f'{v:.1f}' for v in velocidades]}")
+  print(f"Acelerações calculadas: {[f'{a:.1f}' for a in aceleracoes]}")
+  print(f"Erro máximo na posição: {max_erro:.2f} m")
+  print(f"Erro relativo médio: {erro_relativo_medio:.2%}")
+
+  # 5. Visualização dos resultados
+  print("(s) | Posição (m) | Pos.Teórica (m) | Erro (m)")
+  for i in range(len(t)):
+      print(f"{t[i]:5} | {x[i]:9} | {pos_teorica[i]:14} | {erros[i]:8.2f}")
+
+  # Conclusão física
+  if abs(acel_media - 4.0) &lt; 0.2 and max_erro &lt; 1:
+      print("ÃO: Movimento uniformemente acelerado com a ≈ 4 m/s2")
+  else:
+      print("ÃO: Movimento não perfeitamente uniformemente acelerado")</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Interpretação Física dos Resultados</strong></span>
+  <strong>Análise do movimento:</strong>
+
+  <ul><li><strong>Equação do movimento:</strong> \(x(t) = 2t^2\) (MUA com \(a = 4\,\text{m/s}^2\))</li><li><strong>Velocidade teórica:</strong> \(v(t) = 4t\) (derivada de \(x(t)\))</li><li><strong>Aceleração teórica:</strong> \(a(t) = 4\,\text{m/s}^2\) (constante)</li></ul>
+
+  <strong>Verificação experimental:</strong>
+
+  <ul><li>Aceleração média próxima de \(4\,\text{m/s}^2\) confirma MUA</li><li>Pequenos erros na posição (devido à discretização temporal)</li><li>Velocidades calculadas seguem \(v = 4t\): [2.0, 6.0, 10.0, 14.0, ...]</li><li>Acelerações próximas de 4.0 m/s2 em todos os intervalos</li></ul>
+
+  <strong>Erros numéricos:</strong>
+
+  <ul><li><strong>Diferenças finitas:</strong> Aproximação de derivadas com erro \(O(\Delta t)\)</li><li><strong>Discretização:</strong> Amostragem temporal não captura variações instantâneas</li><li><strong>Arredondamento:</strong> Limitação na precisão dos dados de entrada</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Melhorias para Análise Experimental Real</strong></span>
+  Para dados experimentais com ruído, utilize estas técnicas:
+
+  <strong>Suavização de dados:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code># Média móvel para reduzir ruído
+  def media_movel(dados, janela=3):
+      return [sum(dados[i:i+janela])/janela for i in range(len(dados)-janela+1)]
+
+  x_suav = media_movel(x, 3)  # Aplicar antes de calcular derivadas</code></pre></div>
+
+  <strong>Derivada de maior ordem:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code># Diferença central (mais precisa)
+  velocidades = []
+  for i in range(1, len(t)-1):
+      dx = x[i+1] - x[i-1]
+      dt = t[i+1] - t[i-1]
+      velocidades.append(dx/dt)</code></pre></div>
+
+  <strong>Ajuste de curvas:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code># Ajuste polinomial (grau 2 para MUA)
+  import numpy as np
+  coefs = np.polyfit(t, x, 2)  # [a, b, c] para ax2 + bx + c
+  a_experimental = coefs[0] * 2  # a = 2 * coeficiente quadrático</code></pre></div>
+
+  <strong>Visualização gráfica:</strong>
+  <div class="codigo" data-lingua="Python"><pre><code>import matplotlib.pyplot as plt
+  plt.plot(t, x, 'o', label='Experimental')
+  plt.plot(t, [coefs[0]*ti**2 + coefs[1]*ti + coefs[2] for ti in t], label='Ajuste')
+  plt.xlabel('Tempo (s)'); plt.ylabel('Posição (m)')
+  plt.legend(); plt.grid(True); plt.show()</code></pre></div>
+  </div>
+
+  <div class="bloco def"><span class="rotulo"><strong>Aplicações em Física Experimental</strong></span>
+  Esta metodologia aplica-se a:
+
+  <ul><li><strong>Mecânica:</strong> Análise de queda livre, movimento de projéteis</li><li><strong>Robótica:</strong> Trajetórias de braços mecânicos</li><li><strong>Biomecânica:</strong> Cinemática do movimento humano</li><li><strong>Astrofísica:</strong> Movimento orbital de corpos celestes</li><li><strong>Controle de processos:</strong> Velocidade de reações químicas</li></ul>
+
+  <strong>Caso real:</strong> 
+
+  <ul><li>Galileu Galilei (1638) - Estudo da queda livre</li><li>Método: Inclinação de planos para "diluir" a gravidade</li><li>Instrumentos: Relógio de água e régua graduada</li><li>Conclusão: \(x t^2\) (primeira confirmação de MUA)</li></ul>
+
+  </div>
+
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  <strong>A função</strong> <code>range()</code> gera uma sequência de números:
+
+  <ul><li><code>range(n)</code>: números de 0 até n-1</li><li><code>range(start, stop)</code>: números de start até stop-1</li><li><code>range(len(lista) - 1)</code>: índices válidos para comparar elementos consecutivos</li><li>Essencial para loops que percorrem listas fazendo cálculos entre elementos adjacentes</li></ul>
+
+  </div>
+
+  <h2 id="s6">6. Desafios para casa</h2>
+
+  <p>Vocês já são capazes de trabalhar com coleções de dados! Hora de aplicar:</p>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 3.1: Análise de resistores</span>
+  Um conjunto de \(N\) resistores ôhmicos de resistências \(R_1\), \(R_2\), \(R_3\), \(...\), \(R_N\), quando ligados sequencialmente dizemos que são ligados em série. Neste caso, a queda na tensão elétrica em cada resistor é dada pela Lei de Ohm \(\Delta V_1=R_1 I\), \(\Delta V_2=R_2 I\), \(\Delta V_3=R_3 I\), \(...\), \(\Delta V_N=R_N I\) com a corrente \(I\) passando por todos os resistores. Assim, a queda na tensão do primeiro ao último resistor será
+
+  <p>\[\Delta V_1 +\Delta V_2+ ...+\Delta V_N = \left(R_1+R_2+R_3+...+R_N\right)I\]</p>
+
+  e a resistência equivalente dos resistores ôhmicos em série é
+
+  <p>\[R_{serie} = R_1+R_2+...+R_N\]</p>
+
+  Quando os mesmos resistores estão ligados lado a lado, dizemos que a ligação é em paralelo. Neste caso, a corrente se divide entre os resistores \(I=I_1+I_2+...+I_N\) a depender do valor da resistência de cada resistor. Mas a queda no potencial de todos os resistores é a mesma \(\Delta V = I_1 R_1 = I_2 R_2 = ...= I_3 R_3\), ou
+
+  <p>\[I_1 = \frac{\Delta V}{R_1}, \quad I_2 = \frac{\Delta V}{R_2}, \quad ..., I_N = \frac{\Delta V}{R_N}\]</p>
+
+  e a resistência equivalente dos resistores ôhmicos em paralelo é
+
+  <p>\[\frac{1}{R_{paralelo}}=\frac{1}{R_1}+\frac{1}{R_2}+...+\frac{1}{R_N}\]</p>
+
+  Dada a lista de resistências <code>[100, 220, 330, 470, 680]</code> ohms, calcule a resistência equivalente em série e em paralelo.
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 3.2: Tabela periódica</span>
+  Crie tuplas para os primeiros 5 elementos com (símbolo, nome, número_atômico, massa_atômica).
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 3.3: Oscilação amortecida</span>
+  Para tempos <code>[0, 1, 2, 3, 4, 5]</code> e amplitudes <code>[10, 7, 5, 3, 2, 1]</code>, encontre em que tempo a amplitude fica menor que 3.
+  </div>
+
+  <div class="bloco ex"><span class="rotulo">Exercício 3.4: List comprehension</span>
+  Crie uma lista com os quadrados dos números ímpares de 1 a 20.
+  </div>
+
+  <div class="bloco def"><span class="rotulo">Conceito chave</span>
+  <strong>Novos conceitos que vocês dominam:</strong>
+
+  <ul><li>Listas: criação, indexação, fatiamento, modificação</li><li>Tuplas: dados imutáveis e desempacotamento</li><li>Operações estatísticas básicas (min, max, sum, len)</li><li>Ordenação e busca em listas</li><li>List comprehensions para código elegante</li><li>Aplicações diretas em análise de dados físicos</li></ul>
+
+  </div>
+
+  <div class="bloco fisica"><span class="rotulo">Intuição</span>
+  <strong>Métodos importantes para lembrar:</strong>
+
+  <ul><li><code>append()</code>: adicionar elemento no final</li><li><code>extend()</code>: adicionar múltiplos elementos</li><li><code>insert()</code>: inserir em posição específica</li><li><code>remove()</code>: remover elemento específico</li><li><code>pop()</code>: remover e retornar elemento</li><li><code>index()</code>: encontrar posição de elemento</li><li><code>count()</code>: contar ocorrências</li><li><code>sort()</code>: ordenar in-place</li><li><code>sorted()</code>: retornar cópia ordenada</li></ul>
+
+  </div>
+
+  <p>%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+  <nav class="nav-aulas">
+    <a href="aula10.html"><small>Módulo anterior</small>← 10. Tipos e variáveis</a>
+    <a class="prox" href="aula12.html"><small>Próximo módulo</small>12. Controle →</a>
+  </nav>
+
+</main>
+</div>
+
+<footer class="rodape">
+  <img class="logo-rodape" src="assets/img/logo-lfca.png" alt="LFCA | URCA">
+  <p><strong>Prof. Apiano Morais</strong> · <a href="mailto:apiano.morais@urca.br">apiano.morais@urca.br</a><br>
+  Laboratório de Física Computacional Aplicada (LFCA) · Universidade Regional do Cariri</p>
+</footer>
+
+<script src="assets/js/comum.js?v=202611090946"></script>
+</body>
+</html>
