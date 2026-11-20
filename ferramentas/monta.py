@@ -8,9 +8,17 @@ são escritas à mão e não passam por aqui.
 
 Uso:  python3 ferramentas/monta.py
 """
+import datetime
 import json
 import pathlib
 import re
+
+# Carimbo de versao nos arquivos de CSS e JS. Sem ele, o navegador do aluno
+# continua servindo a folha de estilo e os widgets antigos depois de uma
+# atualizacao, e ferramentas/versao.py so resolvia ate a geracao seguinte,
+# porque o molde reescrevia os enderecos sem o carimbo.
+VERSAO = datetime.datetime.now().strftime('%Y%m%d%H%M')
+
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 AULAS = json.loads((RAIZ / 'conteudo' / 'aulas.json').read_text(encoding='utf-8'))
@@ -70,9 +78,9 @@ CABECA = '''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula {n}: {titulo} | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css">
-<script src="assets/js/comum.js"></script>
-<script src="assets/js/codigo.js"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v={versao}">
+<script src="assets/js/comum.js?v={versao}"></script>
+<script src="assets/js/codigo.js?v={versao}"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
@@ -178,7 +186,7 @@ def monta():
         if n + 1 <= 21:
             nav.append('    <a href="aula%02d.html"><small>Próxima aula</small>'
                        '%d. %s →</a>' % (n + 1, n + 1, TITULOS.get(n + 1, '')))
-        pagina = CABECA.format(n=n, titulo=titulo, sub=SUB[n], indice=indice,
+        pagina = CABECA.format(n=n, versao=VERSAO, titulo=titulo, sub=SUB[n], indice=indice,
                                corpo=corpo, navegacao='\n'.join(nav))
         (RAIZ / ('aula%02d.html' % n)).write_text(pagina, encoding='utf-8')
         feitas.append(n)
