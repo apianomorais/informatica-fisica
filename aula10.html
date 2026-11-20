@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 10: Introdução ao Python e ao Spyder | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
-<script src="assets/js/comum.js?v=202611091426"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611200053">
+<script src="assets/js/comum.js?v=202611200053"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -191,7 +191,7 @@ print(f"pH da solução: {ph:.1f}")  # 3.6</code></pre></div>
 
   <p></li><li><b><code>math.radians(x)</code></b> Converte ângulo de graus para radianos.</p>
 
-  <ul><li><strong>Fórmula:</strong> \({radianos} = {graus} {}{180}\)</li><li><strong>Exemplo:</strong> <code>math.radians(180)</code> retorna <code>3.14159...</code> (\(\))</li></ul>
+  <ul><li><strong>Fórmula:</strong> \(\text{radianos} = \text{graus} \times \frac{\pi}{180}\)</li><li><strong>Exemplo:</strong> <code>math.radians(180)</code> retorna <code>3.14159...</code> (\(\pi\))</li></ul>
 
   <p></li><li><b><code>math.sin(x)</code></b> Calcula o seno de <code>x</code> (em radianos).</p>
 
@@ -199,7 +199,7 @@ print(f"pH da solução: {ph:.1f}")  # 3.6</code></pre></div>
 
   <p></li><li><b><code>math.log10(x)</code></b> Calcula o logaritmo decimal (base 10) de <code>x</code>.</p>
 
-  <ul><li><strong>Exemplo:</strong> <code>math.log10(1000)</code> retorna <code>3.0</code></li><li><strong>Relação com pH:</strong> \({pH} = -_{10}({concentração H}^+)\)</li></ul>
+  <ul><li><strong>Exemplo:</strong> <code>math.log10(1000)</code> retorna <code>3.0</code></li><li><strong>Relação com pH:</strong> \(\text{pH} = -\log_{10}(\text{concentração H}^+)\)</li></ul>
 
   <p></li><li><b><code>math.pi</code></b> Constante matemática pi (aproximadamente 3.14159)</li><li><b><strong>Formatação de strings</strong></b> Sintaxe <code>f"{valor:.nf}"</code> para controlar casas decimais:</p>
 
@@ -240,13 +240,13 @@ print(f"Constante de Boltzmann: {k_B:e} J/K")</code></pre></div>
 
   <p class="centro">
 
-  <div class="tabela-rolavel"><table><thead><tr><th><strong>Escala</strong></th><th><strong>Símbolo</strong></th><th><strong>Referências</strong></th></tr></thead><tbody><tr><td>Celsius</td><td>°C</td><td>\({cases} 0°{C} & {ponto de fusão da água} \\ 100°{C} & {ponto de ebulição da água} {cases}\)</td></tr><tr><td>Kelvin</td><td>K</td><td>\({cases} 0\,{K} & {zero absoluto} \\ 273.15\,{K} & {ponto de fusão da água} {cases}\)</td></tr><tr><td>Fahrenheit</td><td>°F</td><td>\({cases} 32°{F} & {ponto de fusão da água} \\ 212°{F} & {ponto de ebulição da água} {cases}\)</td></tr></tbody></table></div>
+  <div class="tabela-rolavel"><table><thead><tr><th><strong>Escala</strong></th><th><strong>Símbolo</strong></th><th><strong>Referências</strong></th></tr></thead><tbody><tr><td>Celsius</td><td>°C</td><td>\(\begin{cases} 0°\text{C} & \text{ponto de fusão da água} \\ 100°\text{C} & \text{ponto de ebulição da água} \end{cases}\)</td></tr><tr><td>Kelvin</td><td>K</td><td>\(\begin{cases} 0\,\text{K} & \text{zero absoluto} \\ 273.15\,\text{K} & \text{ponto de fusão da água} \end{cases}\)</td></tr><tr><td>Fahrenheit</td><td>°F</td><td>\(\begin{cases} 32°\text{F} & \text{ponto de fusão da água} \\ 212°\text{F} & \text{ponto de ebulição da água} \end{cases}\)</td></tr></tbody></table></div>
 
   <p></p></p>
 
   <strong>Conversões fundamentais:</strong>
 
-  <ul><li><strong>Celsius para Kelvin:</strong> \(T_K = T_C + 273.15\)</li><li><strong>Kelvin para Celsius:</strong> \(T_C = T_K - 273.15\)</li><li><strong>Celsius para Fahrenheit:</strong> \(T_F = {9}{5}T_C + 32\)</li><li><strong>Fahrenheit para Celsius:</strong> \(T_C = {5}{9}(T_F - 32)\)</li></ul>
+  <ul><li><strong>Celsius para Kelvin:</strong> \(T_K = T_C + 273.15\)</li><li><strong>Kelvin para Celsius:</strong> \(T_C = T_K - 273.15\)</li><li><strong>Celsius para Fahrenheit:</strong> \(T_F = \dfrac{9}{5}T_C + 32\)</li><li><strong>Fahrenheit para Celsius:</strong> \(T_C = \dfrac{5}{9}(T_F - 32)\)</li></ul>
 
   <strong>Pontos notáveis:</strong>
 
@@ -286,16 +286,16 @@ print(f"Ebulição da água: {ebulicao_C}°C = {ebulicao_K} K")</code></pre></di
   <div class="bloco def"><span class="rotulo"><strong>A Revolução de \(E=mc^2\): Massa e Energia</strong></span>
   A equação \(E=mc^2\), proposta por Albert Einstein em 1905, é um dos pilares da física moderna. Ela estabelece a <strong>equivalência entre massa e energia</strong>, revelando que:
 
-  <ul><li><strong>Massa é energia concentrada:</strong> A massa de um objeto é medida por seu conteúdo energético</li><li><strong>Fator de conversão:</strong> \(c^2\) é o fator de conversão entre quilogramas e joules</li><li><strong>Significado de \(c\):</strong> \(c = 299\,792\,458\,{m/s}\) (velocidade da luz no vácuo)</li></ul>
+  <ul><li><strong>Massa é energia concentrada:</strong> A massa de um objeto é medida por seu conteúdo energético</li><li><strong>Fator de conversão:</strong> \(c^2\) é o fator de conversão entre quilogramas e joules</li><li><strong>Significado de \(c\):</strong> \(c = 299\,792\,458\,\text{m/s}\) (velocidade da luz no vácuo)</li></ul>
 
   <strong>Implicações fundamentais:</strong>
 
-  <ul><li>Um pequeno valor de massa equivale a enorme quantidade de energia (\(c^2 910^{16}\,{m}^2/{s}^2\))</li><li>Explica a fonte de energia das estrelas (fusão nuclear) e bombas atômicas (fissão nuclear)</li><li>Fundamenta a teoria da relatividade restrita</li></ul>
+  <ul><li>Um pequeno valor de massa equivale a enorme quantidade de energia (\(c^2 \approx 9\times10^{16}\,\text{m}^2/\text{s}^2\))</li><li>Explica a fonte de energia das estrelas (fusão nuclear) e bombas atômicas (fissão nuclear)</li><li>Fundamenta a teoria da relatividade restrita</li></ul>
 
   <strong>Constantes importantes no exemplo:</strong>
 
-  <ul><li><strong>Massa do elétron:</strong> \(m_e = 9.1093835610^{-31}\,{kg}\)</li><li><strong>Elétron-volt (eV):</strong> Unidade de energia usada em Física Atômica
-  \(1\,{eV} = 1.60217663410^{-19}\,{J}\)</li></ul>
+  <ul><li><strong>Massa do elétron:</strong> \(m_e = 9.10938356\times10^{-31}\,\text{kg}\)</li><li><strong>Elétron-volt (eV):</strong> Unidade de energia usada em Física Atômica
+  \(1\,\text{eV} = 1.602176634\times10^{-19}\,\text{J}\)</li></ul>
 
   </div>
 
@@ -323,7 +323,7 @@ print("Isso equivale à energia de 17 bombas de Hiroshima!")</code></pre></div>
   <div class="bloco def"><span class="rotulo"><strong>Contexto Histórico e Aplicações</strong></span>
   <strong>Curiosidades:</strong>
 
-  <ul><li>Einstein publicou esta equação como corolário da Teoria da Relatividade Restrita em 1905</li><li>A primeira confirmação experimental veio com a medição da energia liberada em decaimentos nucleares</li><li>1g de matéria contém \(2510^6\) kWh - energia para abastecer uma cidade média por um mês!</li></ul>
+  <ul><li>Einstein publicou esta equação como corolário da Teoria da Relatividade Restrita em 1905</li><li>A primeira confirmação experimental veio com a medição da energia liberada em decaimentos nucleares</li><li>1g de matéria contém \(\approx 25\times10^6\) kWh - energia para abastecer uma cidade média por um mês!</li></ul>
 
   <strong>Aplicações modernas:</strong>
 
@@ -339,7 +339,7 @@ print("Isso equivale à energia de 17 bombas de Hiroshima!")</code></pre></div>
   <div class="bloco ex"><span class="rotulo">Exercício 10.1: Desafios para a próxima aula</span>
   Vocês já são capazes de fazer cálculos incríveis! Para consolidar o aprendizado:
 
-  <ol><li><strong>Luz verde:</strong> Calcule a frequência de uma onda eletromagnética com \(= 500\) nm (dica: \(f = c/\))</li><li><strong>Próton em movimento:</strong> Determine a energia cinética de um próton com \(v = 0,1c\) (use \(E_k = {1}{2}mv^2\))</li><li><strong>Gravidade:</strong> Converta a constante gravitacional \(G=6.6710^{-11} {m^3/kg s^2}\) para unidades cgs (centímetro-grama-segundo)</li><li><strong>Exploração:</strong> Digite <code>help(math)</code> no console e descubra 3 funções interessantes</li></ol>
+  <ol><li><strong>Luz verde:</strong> Calcule a frequência de uma onda eletromagnética com \(\lambda = 500\) nm (dica: \(f = c/\lambda\))</li><li><strong>Próton em movimento:</strong> Determine a energia cinética de um próton com \(v = 0,1c\) (use \(E_k = \frac{1}{2}mv^2\))</li><li><strong>Gravidade:</strong> Converta a constante gravitacional \(G=6.67\times 10^{-11} \mathrm{m^3/kg \cdot s^2}\) para unidades cgs (centímetro-grama-segundo)</li><li><strong>Exploração:</strong> Digite <code>help(math)</code> no console e descubra 3 funções interessantes</li></ol>
 
   </div>
 

@@ -86,7 +86,12 @@ def limpa_simples(s):
     return s
 
 
-MATH = re.compile(r'\\\[.*?\\\]|(?<!\\)\$\$.+?\$\$|(?<!\\)\$.+?(?<!\\)\$', re.S)
+# O \(...\) precisa estar aqui: quando a matemática inline já foi
+# convertida de $...$ para \(...\) antes da limpeza, uma MATH que não o
+# reconheça deixa a expressão cair no ramo de fora, que apaga TODO
+# comando com barra. Foi assim que \infty, \theta, \frac e \partial
+# sumiram de meia dúzia de fórmulas das aulas 10 a 21.
+MATH = re.compile(r'\\\[.*?\\\]|\\\(.*?\\\)|(?<!\\)\$\$.+?\$\$|(?<!\\)\$.+?(?<!\\)\$', re.S)
 
 
 def inline(s):

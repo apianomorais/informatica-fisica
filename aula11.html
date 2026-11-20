@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 11: Tipos de dados e variáveis | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
-<script src="assets/js/comum.js?v=202611091426"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611200053">
+<script src="assets/js/comum.js?v=202611200053"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -248,14 +248,14 @@ print(f"True = {verdadeiro}, False = {falso}")</code></pre></div>
 
   <ul><li><b><code>split(sep)</code></b> Divide uma string em uma lista de substrings usando um separador específico.
 
-  <ul><li><strong>Parâmetro:</strong> <code>sep</code> (string usada como separador)</li><li><strong>Retorno:</strong> Lista de strings</li><li><strong>Exemplo:</strong> <code>"a,b,c".split(",")</code> \(\) <code>["a", "b", "c"]</code></li></ul>
+  <ul><li><strong>Parâmetro:</strong> <code>sep</code> (string usada como separador)</li><li><strong>Retorno:</strong> Lista de strings</li><li><strong>Exemplo:</strong> <code>"a,b,c".split(",")</code> \(\rightarrow\) <code>["a", "b", "c"]</code></li></ul>
 
   <p></li><li><b><code>len(iterável)</code></b> Retorna o número de elementos em uma sequência (lista, tupla, string, etc.).</p>
 
   <ul><li><strong>Exemplos:</strong>
         
 
-  <ul><li><code>len([1,2,3])</code> \(\) <code>3</code></li><li><code>len("Python")</code> \(\) <code>6</code></li></ul>
+  <ul><li><code>len([1,2,3])</code> \(\rightarrow\) <code>3</code></li><li><code>len("Python")</code> \(\rightarrow\) <code>6</code></li></ul>
 
   </li></ul>
 
@@ -265,7 +265,7 @@ print(f"True = {verdadeiro}, False = {falso}")</code></pre></div>
 
   <p></li><li><b><code>sum(iterável)</code></b> Soma os elementos de uma sequência numérica.</p>
 
-  <ul><li><strong>Requisito:</strong> Elementos devem ser números</li><li><strong>Exemplo:</strong> <code>sum([1,2,3])</code> \(\) <code>6</code></li><li><strong>Aplicação:</strong> Cálculo de totais, médias, etc.</li></ul>
+  <ul><li><strong>Requisito:</strong> Elementos devem ser números</li><li><strong>Exemplo:</strong> <code>sum([1,2,3])</code> \(\rightarrow\) <code>6</code></li><li><strong>Aplicação:</strong> Cálculo de totais, médias, etc.</li></ul>
 
   <p></li></ul></p>
 
@@ -326,7 +326,7 @@ print(f"Formato padrão: {constante_planck:.2g}")</code></pre></div>
 
   <ul><li><b><code>abs(x)</code></b> Retorna o valor absoluto de <code>x</code> (módulo do número).
 
-  <ul><li><strong>Propósito:</strong> Calcular magnitudes sem sinal (distâncias, erros, diferenças)</li><li><strong>Matematicamente:</strong> \(|x| = {cases} x & {se } x 0 \\ -x & {se } x < 0 {cases}\)</li><li><strong>Aplicação:</strong> Cálculo de erros absolutos, diferenças entre valores teóricos e experimentais</li></ul>
+  <ul><li><strong>Propósito:</strong> Calcular magnitudes sem sinal (distâncias, erros, diferenças)</li><li><strong>Matematicamente:</strong> \(|x| = \begin{cases} x & \text{se } x \geq 0 \\ -x & \text{se } x < 0 \end{cases}\)</li><li><strong>Aplicação:</strong> Cálculo de erros absolutos, diferenças entre valores teóricos e experimentais</li></ul>
 
   <ul><li><code>f"{valor:.nf}"</code>: Formata com <code>n</code> casas decimais</li><li><code>f"{valor:,}"</code>: Adiciona separadores de milhar</li><li><code>f"{valor:.ne}"</code>: Notação científica com <code>n</code> dígitos</li><li><code>f"{valor:.n% }"</code>: Formata como porcentagem com <code>n</code> casas decimais</li></ul>
 
@@ -334,13 +334,13 @@ print(f"Formato padrão: {constante_planck:.2g}")</code></pre></div>
 
   <strong>Exemplos práticos de formatação:</strong>
 
-  <ul><li><code>1234.5678:.2f</code> \(\) <code>"1234.57"</code></li><li><code>9876543:,</code> \(\) <code>"9,876,543"</code></li><li><code>0.000000123:.3e</code> \(\) <code>"1.230e-07"</code></li><li><code>0.856:.2%</code> \(\) <code>"85.60%"</code></li></ul>
+  <ul><li><code>1234.5678:.2f</code> \(\rightarrow\) <code>"1234.57"</code></li><li><code>9876543:,</code> \(\rightarrow\) <code>"9,876,543"</code></li><li><code>0.000000123:.3e</code> \(\rightarrow\) <code>"1.230e-07"</code></li><li><code>0.856:.2%</code> \(\rightarrow\) <code>"85.60%"</code></li></ul>
 
   <strong>Conceitos de análise experimental:</strong>
 
-  <ul><li><strong>Erro absoluto:</strong> \(E_{{abs}} = |{valor medido} - {valor teórico}|\)</li><li><strong>Erro percentual:</strong> \(E_{\%} = ({E_{{abs}}}{{valor teórico}}) 100\%\)</li><li><strong>Aceleração da gravidade:</strong>
+  <ul><li><strong>Erro absoluto:</strong> \(E_{\text{abs}} = |\text{valor medido} - \text{valor teórico}|\)</li><li><strong>Erro percentual:</strong> \(E_{\%} = \left(\frac{E_{\text{abs}}}{\text{valor teórico}}\right) \times 100\%\)</li><li><strong>Aceleração da gravidade:</strong>
 
-  <ul><li>Valor padrão: \(g = 9.80665\,{m/s}^2\) (ao nível do mar)</li><li>Varia com altitude e latitude</li></ul>
+  <ul><li>Valor padrão: \(g = 9.80665\,\text{m/s}^2\) (ao nível do mar)</li><li>Varia com altitude e latitude</li></ul>
 
   <p></li></ul></p>
 
@@ -385,7 +385,7 @@ print(f"Constante de Planck: {const_plank:.3e} J.s")  # Notação científica</c
   <div class="bloco ex"><span class="rotulo">Exercício 11.1: Desafios para casa</span>
   Vocês estão dominando os tipos de dados! Agora vamos aplicar em problemas reais:
 
-  <ol><li><strong>Conversão de unidades:</strong> Converta 65 mph (milhas por hora) para m/s e km/h</li><li><strong>Impedância complexa:</strong> Calcule a impedância total de um circuito com Z1 = 50+30j Ohm e Z2 = 25-40j Ohm em série</li><li><strong>Formatação científica:</strong> Apresente o número de Avogadro (\(6.022 10^{23}\)) com 3 casas decimais em notação científica</li><li><strong>Erro experimental:</strong> Se você mediu \(g = 9.85\) m/s2 e o valor aceito é 9.81 m/s2, qual o erro percentual?</li></ol>
+  <ol><li><strong>Conversão de unidades:</strong> Converta 65 mph (milhas por hora) para m/s e km/h</li><li><strong>Impedância complexa:</strong> Calcule a impedância total de um circuito com Z1 = 50+30j Ohm e Z2 = 25-40j Ohm em série</li><li><strong>Formatação científica:</strong> Apresente o número de Avogadro (\(6.022 \times 10^{23}\)) com 3 casas decimais em notação científica</li><li><strong>Erro experimental:</strong> Se você mediu \(g = 9.85\) m/s2 e o valor aceito é 9.81 m/s2, qual o erro percentual?</li></ol>
 
   </div>
 

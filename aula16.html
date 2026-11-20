@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 16: Introdução ao Matplotlib: gráficos básicos | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
-<script src="assets/js/comum.js?v=202611091426"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611200053">
+<script src="assets/js/comum.js?v=202611200053"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -281,7 +281,7 @@ plt.show()
 print("Agora sim! Uma função matemática linda!")</code></pre></div>
   </div>
 
-  <figure><img src="assets/img/a07_03.png" alt="Gráfico da função \((x)\) com 100 pontos suaves." loading="lazy"><figcaption>Gráfico da função \((x)\) com 100 pontos suaves.</figcaption></figure>
+  <figure><img src="assets/img/a07_03.png" alt="Gráfico da função \(\sin(x)\) com 100 pontos suaves." loading="lazy"><figcaption>Gráfico da função \(\sin(x)\) com 100 pontos suaves.</figcaption></figure>
 
   <div class="bloco def"><span class="rotulo"><strong>Geração de Dados com NumPy</strong></span>
   <strong>Funções NumPy Essenciais:</strong>
@@ -298,9 +298,9 @@ print("Agora sim! Uma função matemática linda!")</code></pre></div>
 
   <strong>Matematicamente:</strong>
 
-  <ul><li>Domínio: \(x [0, 2]\)</li><li>Função: \(y = (x)\)</li><li>Propriedades:
+  <ul><li>Domínio: \(x \in [0, 2\pi]\)</li><li>Função: \(y = \sin(x)\)</li><li>Propriedades:
 
-  <ul><li>Periódica (\(2\))</li><li>Amplitude \([-1, 1]\)</li><li>Zeros em \(0, , 2\)</li></ul>
+  <ul><li>Periódica (\(2\pi\))</li><li>Amplitude \([-1, 1]\)</li><li>Zeros em \(0, \pi, 2\pi\)</li></ul>
 
   <p></li></ul></p>
 
@@ -326,7 +326,7 @@ print("Agora sim! Uma função matemática linda!")</code></pre></div>
 
   <ul><li><strong>Poucos pontos (ex: 10):</strong> Gráfico "quebrado", perde detalhes</li><li><strong>Muitos pontos (ex: 1000):</strong> Sobrecarga desnecessária</li><li><strong>100 pontos:</strong>
 
-  <ul><li>Resolução adequada para visualização</li><li>Espaçamento de \({2}{100} 0.063\) radianos</li><li>Curva suave em monitores comuns</li></ul>
+  <ul><li>Resolução adequada para visualização</li><li>Espaçamento de \(\frac{2\pi}{100} \approx 0.063\) radianos</li><li>Curva suave em monitores comuns</li></ul>
 
   <p></li></ul></p>
 
@@ -408,7 +408,7 @@ plt.show()
 print("Duas funções no mesmo gráfico! Agora dá para comparar!")</code></pre></div>
   </div>
 
-  <figure><img src="assets/img/a07_04.png" alt="Gráfico comparativo das funções \((x)\) e \((x)\)." loading="lazy"><figcaption>Gráfico comparativo das funções \((x)\) e \((x)\).</figcaption></figure>
+  <figure><img src="assets/img/a07_04.png" alt="Gráfico comparativo das funções \(\sin(x)\) e \(\cos(x)\)." loading="lazy"><figcaption>Gráfico comparativo das funções \(\sin(x)\) e \(\cos(x)\).</figcaption></figure>
 
   <div class="bloco ex"><span class="rotulo">Exemplo 16.8: Personalizando cores e estilos</span>
 <div class="codigo" data-lingua="Python"><pre><code># Mesmos dados, visual melhor
@@ -437,7 +437,7 @@ plt.show()
 print("Agora sim! Visual profissional!")</code></pre></div>
   </div>
 
-  <figure><img src="assets/img/a07_05.png" alt="Funções trigonométricas estilizadas com linhas de referência em \(y=0\) e \(x=\)." loading="lazy"><figcaption>Funções trigonométricas estilizadas com linhas de referência em \(y=0\) e \(x=\).</figcaption></figure>
+  <figure><img src="assets/img/a07_05.png" alt="Funções trigonométricas estilizadas com linhas de referência em \(y=0\) e \(x=\pi\)." loading="lazy"><figcaption>Funções trigonométricas estilizadas com linhas de referência em \(y=0\) e \(x=\pi\).</figcaption></figure>
 
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
   <strong>Opções de personalização:</strong>
@@ -656,7 +656,7 @@ print(": plt.savefig('nome_arquivo.png')")</code></pre></div>
   <p>Agora é hora de praticar e criar seus próprios gráficos!</p>
 
   <div class="bloco ex"><span class="rotulo">Exercício 16.1: Gráfico de funções matemáticas</span>
-  Crie um gráfico mostrando as funções \(y = x^2\), \(y = x^3\) e \(y = {x}\) no intervalo [0, 10]. Use cores diferentes e adicione legenda.
+  Crie um gráfico mostrando as funções \(y = x^2\), \(y = x^3\) e \(y = \sqrt{x}\) no intervalo [0, 10]. Use cores diferentes e adicione legenda.
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exercício 16.2: Análise de vendas</span>

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 20: Métodos numéricos com SciPy | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
-<script src="assets/js/comum.js?v=202611091426"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611200053">
+<script src="assets/js/comum.js?v=202611200053"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -112,7 +112,7 @@ for col in ["ffill", "bfill", "interp"]:
 
   <div class="bloco def"><span class="rotulo"><strong><code>scipy.optimize.curve_fit</code> — a função mais usada
       em física experimental</strong></span>
-  Ajusta qualquer modelo paramétrico \(y = f(x,\,_1, _2, )\) a
+  Ajusta qualquer modelo paramétrico \(y = f(x,\,\theta_1, \theta_2, \ldots)\) a
   dados ruidosos minimizando a soma dos quadrados dos resíduos.
 
 <div class="codigo" data-lingua="Python"><pre><code>from scipy.optimize import curve_fit
@@ -262,7 +262,7 @@ plt.tight_layout(); plt.show()</code></pre></div>
 sol = solve_ivp(fun, t_span, y0, t_eval=t_pts, method='RK45')
 # sol.t  -&gt; tempos; sol.y -&gt; variaveis [n_vars x n_pontos]</code></pre></div>
 
-  <ul><li><b><code>fun</code></b> Função <code>f(t, y)</code> que retorna \(d{y}/dt\).</li><li><b><code>t_span</code></b> Intervalo <code>(t0, tf)</code>.</li><li><b><code>y0</code></b> Condições iniciais.</li><li><b><code>t_eval</code></b> Pontos de saída desejados.</li><li><b><code>method</code></b> <code>'RK45'</code> (padrão), <code>'DOP853'</code>,
+  <ul><li><b><code>fun</code></b> Função <code>f(t, y)</code> que retorna \(d\vec{y}/dt\).</li><li><b><code>t_span</code></b> Intervalo <code>(t0, tf)</code>.</li><li><b><code>y0</code></b> Condições iniciais.</li><li><b><code>t_eval</code></b> Pontos de saída desejados.</li><li><b><code>method</code></b> <code>'RK45'</code> (padrão), <code>'DOP853'</code>,
                                  <code>'Radau'</code> (EDOs rígidas).</li><li><b><code>rtol, atol</code></b> Tolerâncias relativa e absoluta do integrador.</li></ul>
 
   </div>
@@ -426,32 +426,32 @@ plt.legend(); plt.grid(True, alpha=0.3); plt.tight_layout(); plt.show()</code></
   Dados: \(t\) = [0, 2, 4, 6, 8, 10, 12, 15, 20] min e
   \(T\) = [90, 78, 67, 59, 51, 46, 41, 35, 28] °C.
   Use <code>curve_fit</code> para ajustar
-  \(T(t) = T_+ (T_0 - T_)\,e^{-kt}\)
-  e determine a temperatura ambiente \(T_\) e a constante de tempo
-  \(= 1/k\).
+  \(T(t) = T_\infty + (T_0 - T_\infty)\,e^{-kt}\)
+  e determine a temperatura ambiente \(T_\infty\) e a constante de tempo
+  \(\tau = 1/k\).
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exercício 20.2: Oscilador harmônico forçado</span>
   Simule com <code>solve_ivp</code> o sistema
-  \({x} + 2{x} + _0^2 x = A(t)\),
-  com \(_0 = 2\), \(= 0{,}3\), \(A = 1{,}0\).
-  Plote a amplitude em regime estacionário para \(\) variando de
-  \(0{,}5\,_0\) a \(2{,}0\,_0\) e identifique a frequência de
+  \(\ddot{x} + 2\gamma\dot{x} + \omega_0^2 x = A\cos(\omega t)\),
+  com \(\omega_0 = 2\pi\), \(\gamma = 0{,}3\), \(A = 1{,}0\).
+  Plote a amplitude em regime estacionário para \(\omega\) variando de
+  \(0{,}5\,\omega_0\) a \(2{,}0\,\omega_0\) e identifique a frequência de
   ressonância.
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exercício 20.3: Radiação de corpo negro</span>
   A densidade espectral de energia é
-  \(u() = {8h^3/c^3}{e^{h/k_BT}-1}\).
+  \(u(\nu) = \frac{8\pi h\nu^3/c^3}{e^{h\nu/k_BT}-1}\).
   Use <code>quad</code> para calcular a energia total
-  \(U = _0^u()\,d\)
+  \(U = \int_0^\infty u(\nu)\,d\nu\)
   para \(T = 5778\) K (Sol) e compare com a lei de Stefan-Boltzmann
-  \(U = {4}{c}T^4\).
+  \(U = \frac{4\sigma}{c}T^4\).
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exercício 20.4: Ajuste com incertezas heteroscedásticas</span>
   Simule dados de um experimento com incerteza que cresce com \(x\)
-  (ex.: \(_i = 0{,}05\,y_i\) para um modelo exponencial).
+  (ex.: \(\sigma_i = 0{,}05\,y_i\) para um modelo exponencial).
   Ajuste com <code>curve_fit</code> usando o parâmetro <code>sigma</code> e compare
   os resultados com e sem pesos.
   Mostre que o ajuste ponderado é mais preciso.
@@ -467,7 +467,7 @@ plt.legend(); plt.grid(True, alpha=0.3); plt.tight_layout(); plt.show()</code></
   <div class="bloco fisica"><span class="rotulo">Intuição</span>
   <strong>Escolhendo a ferramenta certa:</strong>
 
-  <ul><li><strong>Tenho dados e um modelo?</strong> \(\) <code>curve_fit</code></li><li><strong>Preciso integrar uma função?</strong> \(\) <code>quad</code></li><li><strong>Tenho pontos e preciso da área?</strong> \(\) <code>trapezoid</code></li><li><strong>Tenho uma EDO?</strong> \(\) <code>solve_ivp</code></li><li><strong>Preciso encontrar zero ou equilíbrio?</strong> \(\) <code>brentq</code></li><li><strong>Preciso de pontos entre os dados?</strong> \(\) <code>CubicSpline</code></li></ul>
+  <ul><li><strong>Tenho dados e um modelo?</strong> \(\rightarrow\) <code>curve_fit</code></li><li><strong>Preciso integrar uma função?</strong> \(\rightarrow\) <code>quad</code></li><li><strong>Tenho pontos e preciso da área?</strong> \(\rightarrow\) <code>trapezoid</code></li><li><strong>Tenho uma EDO?</strong> \(\rightarrow\) <code>solve_ivp</code></li><li><strong>Preciso encontrar zero ou equilíbrio?</strong> \(\rightarrow\) <code>brentq</code></li><li><strong>Preciso de pontos entre os dados?</strong> \(\rightarrow\) <code>CubicSpline</code></li></ul>
 
   </div>
 

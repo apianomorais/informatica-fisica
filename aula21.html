@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 21: Matemática simbólica com SymPy | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
-<script src="assets/js/comum.js?v=202611091426"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611200053">
+<script src="assets/js/comum.js?v=202611200053"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -103,10 +103,10 @@ print(f"tau   = {1/k:.1f} min (constante de tempo)")</code></pre></div>
 
   <div class="bloco def"><span class="rotulo">Conceito chave</span>
   <strong>Computação numérica</strong> (NumPy, SciPy) trabalha com números:
-  \({2} 1{,}41421356\)
+  \(\sqrt{2} \approx 1{,}41421356\ldots\)
 
-  <strong>Computação simbólica</strong> (SymPy) trabalha com símbolos: \({2}\)
-  permanece como \({2}\) até você decidir avaliá-lo numericamente.
+  <strong>Computação simbólica</strong> (SymPy) trabalha com símbolos: \(\sqrt{2}\)
+  permanece como \(\sqrt{2}\) até você decidir avaliá-lo numericamente.
 
   Isso permite:
 
@@ -428,24 +428,24 @@ print(f"Valor: {integral}")</code></pre></div>
   <div class="bloco ex"><span class="rotulo">Exercício 21.1: Mecânica analítica</span>
   Use SymPy para: (a) calcular a energia potencial gravitacional
   \(U(h) = mgh\); (b) derivar a força \(F = -dU/dh\);
-  (c) calcular o trabalho \(W = _0^H F\,dh\) simbolicamente;
-  (d) verificar que \(W = -U\);
+  (c) calcular o trabalho \(W = \int_0^H F\,dh\) simbolicamente;
+  (d) verificar que \(W = -\Delta U\);
   (e) exibir todos os resultados em LaTeX\ usando <code>sp.latex()</code>.
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exercício 21.2: Eletromagnetismo simbólico</span>
   O potencial de um dipolo elétrico é
-  \(V = k_e\,p/ r^2\).
-  Calcule simbolicamente: (a) \(E_r = -V/r\);
-  (b) \(E_= -{1}{r}V/\);
-  (c) verifique que \(|{E}|^2 = E_r^2 + E_^2\).
-  Converta \(E_r\) e \(E_\) para funções NumPy com <code>lambdify</code> e
+  \(V = k_e\,p\cos\theta / r^2\).
+  Calcule simbolicamente: (a) \(E_r = -\partial V/\partial r\);
+  (b) \(E_\theta = -\frac{1}{r}\partial V/\partial\theta\);
+  (c) verifique que \(|\vec{E}|^2 = E_r^2 + E_\theta^2\).
+  Converta \(E_r\) e \(E_\theta\) para funções NumPy com <code>lambdify</code> e
   plote a intensidade do campo em função de \(r\) para três ângulos.
   </div>
 
   <div class="bloco ex"><span class="rotulo">Exercício 21.3: Comparação simbólico-numérico</span>
   Use SymPy para resolver <em>analiticamente</em> a EDO do MHS
-  \({x} + _0^2 x = 0\), com \(x(0) = A\) e \({x}(0) = 0\).
+  \(\ddot{x} + \omega_0^2 x = 0\), com \(x(0) = A\) e \(\dot{x}(0) = 0\).
   Converta a solução com <code>lambdify</code> e compare com a solução
   numérica obtida via <code>solve_ivp</code> (Aula 20).
   Plote ambas no mesmo gráfico e calcule o erro máximo.
@@ -464,7 +464,7 @@ print(f"Valor: {integral}")</code></pre></div>
 
   <ul><li><code>sp.Symbol()</code>, <code>sp.symbols()</code> — criação de símbolos
       com hipóteses</li><li><code>sp.simplify()</code>, <code>sp.expand()</code>, <code>sp.factor()</code> —
-      manipulação algébrica</li><li><code>sp.diff()</code> — derivadas de qualquer ordem</li><li><code>sp.integrate()</code> — integrais definidas e indefinidas exatas</li><li><code>sp.solve()</code> — equações e sistemas algébricos</li><li><code>sp.series()</code> — expansões de Taylor e aproximações</li><li><code>sp.latex()</code> — geração automática de código LaTeX</li><li><code>sp.lambdify()</code> — conversão simbólico \(\) NumPy</li><li>Integração SymPy + NumPy + SciPy + Matplotlib</li></ul>
+      manipulação algébrica</li><li><code>sp.diff()</code> — derivadas de qualquer ordem</li><li><code>sp.integrate()</code> — integrais definidas e indefinidas exatas</li><li><code>sp.solve()</code> — equações e sistemas algébricos</li><li><code>sp.series()</code> — expansões de Taylor e aproximações</li><li><code>sp.latex()</code> — geração automática de código LaTeX</li><li><code>sp.lambdify()</code> — conversão simbólico \(\to\) NumPy</li><li>Integração SymPy + NumPy + SciPy + Matplotlib</li></ul>
 
   </div>
 
@@ -478,8 +478,8 @@ print(f"Valor: {integral}")</code></pre></div>
   <p></p></p>
 
   <strong>Fluxo de trabalho ideal:</strong>
-  SymPy deriva a equação analítica \(\) <code>lambdify</code> converte para
-  numérico \(\) SciPy resolve ou ajusta \(\) Pandas organiza \(\)
+  SymPy deriva a equação analítica \(\to\) <code>lambdify</code> converte para
+  numérico \(\to\) SciPy resolve ou ajusta \(\to\) Pandas organiza \(\to\)
   Matplotlib exibe o gráfico.
 
   <strong>Com isso vocês têm em mãos todas as ferramentas do

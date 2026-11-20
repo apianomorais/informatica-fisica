@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aula 12: Estruturas de dados: listas e tuplas | Informática para Física</title>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/estilo.css?v=202611091426">
-<script src="assets/js/comum.js?v=202611091426"></script>
+<link rel="stylesheet" href="assets/css/estilo.css?v=202611200053">
+<script src="assets/js/comum.js?v=202611200053"></script>
 <script src="assets/js/codigo.js"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
@@ -157,7 +157,7 @@ print(f"Velocidade 1→2: {velocidade_12} m/s")</code></pre></div>
   <p></li></ul></p>
 
   <strong>Notação matemática equivalente:</strong>
-  Dada uma sequência \(A = [a_0, a_1, , a_{n-1}]\),
+  Dada uma sequência \(A = [a_0, a_1, \dots, a_{n-1}]\),
   \[A[i:j:k] = [a_i, a_{i+k}, a_{i+2k}, \dots] \quad \text{para} \quad i \leq i+mk < j\]
   </div>
 
@@ -376,27 +376,27 @@ print(f"L = {L} m, m = {m} kg, T = {T}°C")</code></pre></div>
 
   <ul><li><b><code>len(iterável)</code></b> Conta o número de elementos em uma sequência.
 
-  <ul><li><strong>Aplicação:</strong> Determinar tamanho da amostra</li><li><strong>Exemplo:</strong> <code>len([1.2, 1.5, 1.8])</code> \(\) 3</li></ul>
+  <ul><li><strong>Aplicação:</strong> Determinar tamanho da amostra</li><li><strong>Exemplo:</strong> <code>len([1.2, 1.5, 1.8])</code> \(\rightarrow\) 3</li></ul>
 
   <p></li><li><b><code>min(iterável)</code></b> Retorna o menor valor numérico da sequência.</p>
 
-  <ul><li><strong>Aplicação:</strong> Identificar valor mínimo em séries temporais</li><li><strong>Exemplo:</strong> <code>min([1.2, 1.5, 1.8])</code> \(\) 1.2</li></ul>
+  <ul><li><strong>Aplicação:</strong> Identificar valor mínimo em séries temporais</li><li><strong>Exemplo:</strong> <code>min([1.2, 1.5, 1.8])</code> \(\rightarrow\) 1.2</li></ul>
 
   <p></li><li><b><code>max(iterável)</code></b> Retorna o maior valor numérico da sequência.</p>
 
-  <ul><li><strong>Aplicação:</strong> Detectar picos em sinais físicos</li><li><strong>Exemplo:</strong> <code>max([1.2, 1.5, 1.8])</code> \(\) 1.8</li></ul>
+  <ul><li><strong>Aplicação:</strong> Detectar picos em sinais físicos</li><li><strong>Exemplo:</strong> <code>max([1.2, 1.5, 1.8])</code> \(\rightarrow\) 1.8</li></ul>
 
   <p></li><li><b><code>sum(iterável)</code></b> Calcula a soma de todos os elementos numéricos.</p>
 
-  <ul><li><strong>Aplicação:</strong> Cálculo de integrais discretas, médias</li><li><strong>Exemplo:</strong> <code>sum([1.2, 1.5, 1.8])</code> \(\) 4.5</li></ul>
+  <ul><li><strong>Aplicação:</strong> Cálculo de integrais discretas, médias</li><li><strong>Exemplo:</strong> <code>sum([1.2, 1.5, 1.8])</code> \(\rightarrow\) 4.5</li></ul>
 
   <p></li><li><b><code>list.index(valor)</code></b> Retorna o índice da primeira ocorrência de um valor.</p>
 
-  <ul><li><strong>Aplicação:</strong> Localizar eventos específicos em séries temporais</li><li><strong>Exemplo:</strong> <code>[1.2, 1.5, 1.8].index(1.5)</code> \(\) 1</li></ul>
+  <ul><li><strong>Aplicação:</strong> Localizar eventos específicos em séries temporais</li><li><strong>Exemplo:</strong> <code>[1.2, 1.5, 1.8].index(1.5)</code> \(\rightarrow\) 1</li></ul>
 
   <p></li><li><b><code>list.count(valor)</code></b> Conta ocorrências de um valor específico.</p>
 
-  <ul><li><strong>Aplicação:</strong> Verificar repetição de valores experimentais</li><li><strong>Exemplo:</strong> <code>[1.5, 2.1, 1.5].count(1.5)</code> \(\) 2</li></ul>
+  <ul><li><strong>Aplicação:</strong> Verificar repetição de valores experimentais</li><li><strong>Exemplo:</strong> <code>[1.5, 2.1, 1.5].count(1.5)</code> \(\rightarrow\) 2</li></ul>
 
   <p></li></ul></p>
 
@@ -435,11 +435,11 @@ print(f"ções com tensão &gt; 3V: {medições_altas}")</code></pre></div>
   <div class="bloco def"><span class="rotulo"><strong>Interpretação Física dos Resultados</strong></span>
   <strong>Análise do experimento:</strong>
 
-  <ul><li><strong>Número de pontos:</strong> Tamanho da amostra (10 medições)</li><li><strong>Faixa de tensão:</strong> 1.2V a 3.9V (variação de 2.7V)</li><li><strong>Tensão média:</strong> 2.55V (centro da faixa experimental)</li><li><strong>Resistência média:</strong> \(10\) (valor esperado pela lei de Ohm)</li><li><strong>Variação da resistência:</strong> Indica precisão do equipamento</li></ul>
+  <ul><li><strong>Número de pontos:</strong> Tamanho da amostra (10 medições)</li><li><strong>Faixa de tensão:</strong> 1.2V a 3.9V (variação de 2.7V)</li><li><strong>Tensão média:</strong> 2.55V (centro da faixa experimental)</li><li><strong>Resistência média:</strong> \(\approx 10\Omega\) (valor esperado pela lei de Ohm)</li><li><strong>Variação da resistência:</strong> Indica precisão do equipamento</li></ul>
 
   <strong>Conceitos físicos aplicados:</strong>
 
-  <ul><li><strong>Lei de Ohm:</strong> \(V = R I\)</li><li><strong>Linearidade:</strong> Proporcionalidade direta entre tensão e corrente</li><li><strong>Precisão experimental:</strong> Calculada pela variação das medições</li><li><strong>Seletividade:</strong> Filtragem de dados por critérios (ex: tensão > 3V)</li></ul>
+  <ul><li><strong>Lei de Ohm:</strong> \(V = R \times I\)</li><li><strong>Linearidade:</strong> Proporcionalidade direta entre tensão e corrente</li><li><strong>Precisão experimental:</strong> Calculada pela variação das medições</li><li><strong>Seletividade:</strong> Filtragem de dados por critérios (ex: tensão > 3V)</li></ul>
 
   </div>
 
@@ -464,19 +464,19 @@ print(f"ções com tensão &gt; 3V: {medições_altas}")</code></pre></div>
 
   <ul><li><code>reverse=False</code>: Ordem crescente/decrescente</li><li><code>key=None</code>: Função personalizada de ordenação</li></ul>
 
-  </li><li><strong>Vantagem:</strong> Não altera os dados originais</li><li><strong>Exemplo:</strong> <code>sorted([3,1,2])</code> \(\) <code>[1,2,3]</code></li></ul>
+  </li><li><strong>Vantagem:</strong> Não altera os dados originais</li><li><strong>Exemplo:</strong> <code>sorted([3,1,2])</code> \(\rightarrow\) <code>[1,2,3]</code></li></ul>
 
   <p></li><li><b><code>list.sort()</code></b> Ordena a lista in-place (modifica o original).</p>
 
-  <ul><li><strong>Parâmetros:</strong> Mesmos de <code>sorted()</code></li><li><strong>Vantagem:</strong> Mais eficiente em memória para grandes conjuntos</li><li><strong>Exemplo:</strong> <code>lst = [3,1,2]; lst.sort()</code> \(\) <code>lst</code> vira <code>[1,2,3]</code></li></ul>
+  <ul><li><strong>Parâmetros:</strong> Mesmos de <code>sorted()</code></li><li><strong>Vantagem:</strong> Mais eficiente em memória para grandes conjuntos</li><li><strong>Exemplo:</strong> <code>lst = [3,1,2]; lst.sort()</code> \(\rightarrow\) <code>lst</code> vira <code>[1,2,3]</code></li></ul>
 
   <p></li><li><b><code>enumerate(iterável)</code></b> Gera pares (índice, elemento) para iteração.</p>
 
-  <ul><li><strong>Aplicação:</strong> Manter referência à posição original durante ordenação</li><li><strong>Exemplo:</strong> <code>list(enumerate(['a','b']))</code> \(\) <code>[(0,'a'), (1,'b')]</code></li></ul>
+  <ul><li><strong>Aplicação:</strong> Manter referência à posição original durante ordenação</li><li><strong>Exemplo:</strong> <code>list(enumerate(['a','b']))</code> \(\rightarrow\) <code>[(0,'a'), (1,'b')]</code></li></ul>
 
   <p></li><li><b><code>zip(iteráveis)</code></b> Combina múltiplas listas em pares/tuplas.</p>
 
-  <ul><li><strong>Aplicação:</strong> Manter relações entre dados correlacionados</li><li><strong>Exemplo:</strong> <code>zip([1,2], ['a','b'])</code> \(\) <code>[(1,'a'), (2,'b')]</code></li></ul>
+  <ul><li><strong>Aplicação:</strong> Manter relações entre dados correlacionados</li><li><strong>Exemplo:</strong> <code>zip([1,2], ['a','b'])</code> \(\rightarrow\) <code>[(1,'a'), (2,'b')]</code></li></ul>
 
   <p></li></ul></p>
 
@@ -580,7 +580,7 @@ dados_combinados = sorted(zip(massas, elementos))</code></pre></div>
 
   <strong>Comparação com notação matemática:</strong>
 
-  <ul><li>Matemática: \(\{ ({rad}(x)) x A, x 90 \}\)</li><li>Python: <code>[math.sin(math.radians(x)) for x in angulos if x &lt;= 90]</code></li></ul>
+  <ul><li>Matemática: \(\{ \sin(\text{rad}(x)) \mid x \in A, x \leq 90 \}\)</li><li>Python: <code>[math.sin(math.radians(x)) for x in angulos if x &lt;= 90]</code></li></ul>
 
   </div>
 
@@ -700,7 +700,7 @@ for x in dados:
   <ul><li><b><strong>1. Velocidade Instantânea:</strong></b> Taxa de variação temporal da posição
       \[v_i = \frac{\Delta x_i}{\Delta t_i} = \frac{x_{i+1} - x_i}{t_{i+1} - t_i}\]
 
-  <ul><li>Calculada por diferenças finitas progressivas</li><li>Aproximação válida para \(t\) pequenos</li></ul>
+  <ul><li>Calculada por diferenças finitas progressivas</li><li>Aproximação válida para \(\Delta t\) pequenos</li></ul>
 
   <p></li><li><b><strong>2. Aceleração Instantânea:</strong></b> Taxa de variação temporal da velocidade
       \[a_i = \frac{\Delta v_i}{\Delta t_i} = \frac{v_{i+1} - v_i}{t_{i+1} - t_i}\]</p>
@@ -709,7 +709,7 @@ for x in dados:
 
   <p></li><li><b><strong>3. Movimento Uniformemente Acelerado (MUA):</strong></b> \[x(t) = x_0 + v_0t + \frac{1}{2}at^2\]</p>
 
-  <ul><li>Aceleração constante (\(a = {constante}\))</li><li>Neste caso: \(x(t) = 2t^2\) (verificação analítica)</li></ul>
+  <ul><li>Aceleração constante (\(a = \text{constante}\))</li><li>Neste caso: \(x(t) = 2t^2\) (verificação analítica)</li></ul>
 
   <p></li></ul></p>
 
@@ -771,15 +771,15 @@ else:
   <div class="bloco def"><span class="rotulo"><strong>Interpretação Física dos Resultados</strong></span>
   <strong>Análise do movimento:</strong>
 
-  <ul><li><strong>Equação do movimento:</strong> \(x(t) = 2t^2\) (MUA com \(a = 4\,{m/s}^2\))</li><li><strong>Velocidade teórica:</strong> \(v(t) = 4t\) (derivada de \(x(t)\))</li><li><strong>Aceleração teórica:</strong> \(a(t) = 4\,{m/s}^2\) (constante)</li></ul>
+  <ul><li><strong>Equação do movimento:</strong> \(x(t) = 2t^2\) (MUA com \(a = 4\,\text{m/s}^2\))</li><li><strong>Velocidade teórica:</strong> \(v(t) = 4t\) (derivada de \(x(t)\))</li><li><strong>Aceleração teórica:</strong> \(a(t) = 4\,\text{m/s}^2\) (constante)</li></ul>
 
   <strong>Verificação experimental:</strong>
 
-  <ul><li>Aceleração média próxima de \(4\,{m/s}^2\) confirma MUA</li><li>Pequenos erros na posição (devido à discretização temporal)</li><li>Velocidades calculadas seguem \(v = 4t\): [2.0, 6.0, 10.0, 14.0, ...]</li><li>Acelerações próximas de 4.0 m/s2 em todos os intervalos</li></ul>
+  <ul><li>Aceleração média próxima de \(4\,\text{m/s}^2\) confirma MUA</li><li>Pequenos erros na posição (devido à discretização temporal)</li><li>Velocidades calculadas seguem \(v = 4t\): [2.0, 6.0, 10.0, 14.0, ...]</li><li>Acelerações próximas de 4.0 m/s2 em todos os intervalos</li></ul>
 
   <strong>Erros numéricos:</strong>
 
-  <ul><li><strong>Diferenças finitas:</strong> Aproximação de derivadas com erro \(O(t)\)</li><li><strong>Discretização:</strong> Amostragem temporal não captura variações instantâneas</li><li><strong>Arredondamento:</strong> Limitação na precisão dos dados de entrada</li></ul>
+  <ul><li><strong>Diferenças finitas:</strong> Aproximação de derivadas com erro \(O(\Delta t)\)</li><li><strong>Discretização:</strong> Amostragem temporal não captura variações instantâneas</li><li><strong>Arredondamento:</strong> Limitação na precisão dos dados de entrada</li></ul>
 
   </div>
 
@@ -822,7 +822,7 @@ plt.legend(); plt.grid(True); plt.show()</code></pre></div>
 
   <strong>Caso real:</strong> 
 
-  <ul><li>Galileu Galilei (1638) - Estudo da queda livre</li><li>Método: Inclinação de planos para "diluir" a gravidade</li><li>Instrumentos: Relógio de água e régua graduada</li><li>Conclusão: \(x t^2\) (primeira confirmação de MUA)</li></ul>
+  <ul><li>Galileu Galilei (1638) - Estudo da queda livre</li><li>Método: Inclinação de planos para "diluir" a gravidade</li><li>Instrumentos: Relógio de água e régua graduada</li><li>Conclusão: \(x \propto t^2\) (primeira confirmação de MUA)</li></ul>
 
   </div>
 
@@ -838,7 +838,7 @@ plt.legend(); plt.grid(True); plt.show()</code></pre></div>
   <p>Vocês já são capazes de trabalhar com coleções de dados! Hora de aplicar:</p>
 
   <div class="bloco ex"><span class="rotulo">Exercício 12.1: Análise de resistores</span>
-  Um conjunto de \(N\) resistores ôhmicos de resistências \(R_1\), \(R_2\), \(R_3\), \(...\), \(R_N\), quando ligados sequencialmente dizemos que são ligados em série. Neste caso, a queda na tensão elétrica em cada resistor é dada pela Lei de Ohm \(V_1=R_1 I\), \(V_2=R_2 I\), \(V_3=R_3 I\), \(...\), \(V_N=R_N I\) com a corrente \(I\) passando por todos os resistores. Assim, a queda na tensão do primeiro ao último resistor será
+  Um conjunto de \(N\) resistores ôhmicos de resistências \(R_1\), \(R_2\), \(R_3\), \(...\), \(R_N\), quando ligados sequencialmente dizemos que são ligados em série. Neste caso, a queda na tensão elétrica em cada resistor é dada pela Lei de Ohm \(\Delta V_1=R_1 I\), \(\Delta V_2=R_2 I\), \(\Delta V_3=R_3 I\), \(...\), \(\Delta V_N=R_N I\) com a corrente \(I\) passando por todos os resistores. Assim, a queda na tensão do primeiro ao último resistor será
 
   <p>\[\Delta V_1 +\Delta V_2+ ...+\Delta V_N = \left(R_1+R_2+R_3+...+R_N\right)I\]</p>
 
@@ -846,7 +846,7 @@ plt.legend(); plt.grid(True); plt.show()</code></pre></div>
 
   <p>\[R_{serie} = R_1+R_2+...+R_N\]</p>
 
-  Quando os mesmos resistores estão ligados lado a lado, dizemos que a ligação é em paralelo. Neste caso, a corrente se divide entre os resistores \(I=I_1+I_2+...+I_N\) a depender do valor da resistência de cada resistor. Mas a queda no potencial de todos os resistores é a mesma \(V = I_1 R_1 = I_2 R_2 = ...= I_3 R_3\), ou
+  Quando os mesmos resistores estão ligados lado a lado, dizemos que a ligação é em paralelo. Neste caso, a corrente se divide entre os resistores \(I=I_1+I_2+...+I_N\) a depender do valor da resistência de cada resistor. Mas a queda no potencial de todos os resistores é a mesma \(\Delta V = I_1 R_1 = I_2 R_2 = ...= I_3 R_3\), ou
 
   <p>\[I_1 = \frac{\Delta V}{R_1}, \quad I_2 = \frac{\Delta V}{R_2}, \quad ..., I_N = \frac{\Delta V}{R_N}\]</p>
 
